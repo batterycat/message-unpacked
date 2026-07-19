@@ -1,0 +1,36 @@
+schemaVersion: 1
+locale: zh-TW
+resources:
+  - id: tw.anti-fraud.165-call
+    officialName: 165反詐騙諮詢專線
+    purpose: consult
+    owner: 內政部警政署
+    phone: '165'
+    canonicalUrl: https://165.npa.gov.tw/
+    sourceUrl: https://www.cib.npa.gov.tw/ch/app/folder/2065
+    guidance: 對可疑訊息有疑慮時，可先停止操作並撥打 165 諮詢；不要依照訊息中的電話回撥。
+    lastVerifiedAt: 2026-07-18
+  - id: tw.anti-fraud.165-web
+    officialName: 165全民防騙網／165打詐儀錶板
+    purpose: query
+    owner: 內政部警政署
+    canonicalUrl: https://165.npa.gov.tw/
+    sourceUrl: https://165.npa.gov.tw/
+    guidance: 查詢近期詐騙手法與官方公告時，請自行輸入或確認網址為 165.npa.gov.tw。
+    lastVerifiedAt: 2026-07-18
+  - id: tw.online-fraud-report
+    officialName: 網路詐騙通報查詢網
+    purpose: report
+    owner: 數位發展部數位產業署
+    canonicalUrl: https://fraudbuster.digiat.org.tw/accessibility/
+    sourceUrl: https://moda.gov.tw/ADI/antifraud/af-toolbox/16212
+    guidance: 遇到可疑的網路廣告、帳號或網址時，可使用官方列示的服務查詢或通報。
+    lastVerifiedAt: 2026-07-18
+  - id: tw.police.110
+    officialName: 110報案專線
+    purpose: emergency
+    owner: 內政部警政署
+    phone: '110'
+    sourceUrl: https://www.npa.gov.tw/
+    guidance: 犯罪正在發生、有人身安全疑慮，或需要警方立即協助時使用。
+    lastVerifiedAt: 2026-07-18

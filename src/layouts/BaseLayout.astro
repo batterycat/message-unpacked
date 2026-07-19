@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+
+import type { Locale, MessageCatalog } from '../i18n/catalogs';
+
+interface Props {
+  catalog: MessageCatalog;
+  locale: Locale;
+}
+
+const { catalog, locale } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={catalog.meta.description} />
+    <meta name="theme-color" content="#eaf6fd" />
+    {Astro.site && <link rel="canonical" href={Astro.url} />}
+    <title>{catalog.meta.title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{catalog.nav.skipToContent}</a>
+    <slot />
+  </body>
+</html>

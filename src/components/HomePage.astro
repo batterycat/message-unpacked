@@ -1,0 +1,229 @@
+---
+import { getCollection } from 'astro:content';
+import {
+  ArrowRightIcon,
+  BookOpenIcon,
+  ChartBarIcon,
+  CodeIcon,
+  FolderOpenIcon,
+  GraduationCapIcon,
+  LightbulbIcon,
+  MagnifyingGlassIcon,
+  ShieldCheckIcon,
+  UsersThreeIcon,
+} from '@phosphor-icons/react/ssr';
+
+import { loadResponseRegistry } from '../domain/resources/load';
+import { getCatalog, localePath, localeTeacherPath } from '../i18n/locale';
+import type { Locale } from '../i18n/catalogs';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ScenarioDemo } from './ScenarioDemo';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const catalog = getCatalog(locale);
+const caseEntries = await getCollection(
+  'cases',
+  ({ data }) => data.status === 'published' && data.locale === locale,
+);
+const scenarios = caseEntries
+  .map((entry) => entry.data)
+  .sort((left, right) => left.id.localeCompare(right.id));
+const responseRegistry = await loadResponseRegistry(locale);
+const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
+const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`;
+---
+
+<BaseLayout {catalog} {locale}>
+  <header class="site-header">
+    <a class="brand" href={localePath(locale)} aria-label="Message, Unpacked.">
+      <span class="brand-mark" aria-hidden="true">M.U.</span>
+      <span>
+        <strong>Message, Unpacked.</strong>
+        <small>{catalog.nav.brandDescriptor}</small>
+      </span>
+    </a>
+    <nav aria-label={catalog.nav.primary}>
+      <a href="#demo"
+        ><BookOpenIcon aria-hidden="true" weight="bold" />{
+          catalog.nav.learningChallenge
+        }</a
+      >
+      <a href={localeTeacherPath(locale)}
+        ><GraduationCapIcon aria-hidden="true" weight="bold" />{
+          catalog.nav.teacherArea
+        }</a
+      >
+      <a href="#demo"
+        ><FolderOpenIcon aria-hidden="true" weight="bold" />{
+          catalog.nav.caseLibrary
+        }</a
+      >
+      <a href="#about"
+        ><UsersThreeIcon aria-hidden="true" weight="bold" />{
+          catalog.nav.contribute
+        }</a
+      >
+    </nav>
+    <div class="language-switch" aria-label={catalog.nav.language}>
+      <span aria-current="page">{locale === 'zh-TW' ? '中文' : 'EN'}</span>
+      <a href={localePath(alternateLocale)} hreflang={alternateLocale}>
+        {locale === 'zh-TW' ? 'EN' : '中文'}
+      </a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">{catalog.hero.eyebrow}</p>
+        <h1 aria-label={catalog.hero.title}>
+          <span aria-hidden="true">{catalog.hero.titleLineOne}</span>
+          <span aria-hidden="true">{catalog.hero.titleLineTwo}</span>
+        </h1>
+        <p class="hero-description">{catalog.hero.description}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#demo">
+            <BookOpenIcon aria-hidden="true" weight="bold" />
+            {catalog.hero.start}
+          </a>
+          <a class="button button-secondary" href={localeTeacherPath(locale)}>
+            <UsersThreeIcon aria-hidden="true" weight="bold" />
+            {catalog.hero.teacher}
+          </a>
+        </div>
+        <p class="hero-note">
+          <ShieldCheckIcon aria-hidden="true" weight="fill" />
+          {catalog.hero.note}
+        </p>
+      </div>
+      <div class="hero-art">
+        <img
+          src={heroImagePath}
+          alt=""
+          width="1672"
+          height="942"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </section>
+
+    <section class="learning-path" aria-labelledby="learning-path-title">
+      <div class="learning-heading">
+        <span>{catalog.learningPath.label}</span>
+        <strong id="learning-path-title">{catalog.learningPath.title}</strong>
+      </div>
+      <ol>
+        <li>
+          <span class="step-icon"
+            ><MagnifyingGlassIcon aria-hidden="true" weight="duotone" /></span
+          >
+          <span
+            ><b>1. {catalog.learningPath.stepOne}</b><small
+              >{catalog.learningPath.stepOneDescription}</small
+            ></span
+          >
+          <ArrowRightIcon className="step-arrow" aria-hidden="true" />
+        </li>
+        <li>
+          <span class="step-icon"
+            ><LightbulbIcon aria-hidden="true" weight="duotone" /></span
+          >
+          <span
+            ><b>2. {catalog.learningPath.stepTwo}</b><small
+              >{catalog.learningPath.stepTwoDescription}</small
+            ></span
+          >
+          <ArrowRightIcon className="step-arrow" aria-hidden="true" />
+        </li>
+        <li>
+          <span class="step-icon"
+            ><ChartBarIcon aria-hidden="true" weight="duotone" /></span
+          >
+          <span
+            ><b>3. {catalog.learningPath.stepThree}</b><small
+              >{catalog.learningPath.stepThreeDescription}</small
+            ></span
+          >
+          <ArrowRightIcon className="step-arrow" aria-hidden="true" />
+        </li>
+        <li>
+          <span class="step-icon"
+            ><ShieldCheckIcon aria-hidden="true" weight="duotone" /></span
+          >
+          <span
+            ><b>4. {catalog.learningPath.stepFour}</b><small
+              >{catalog.learningPath.stepFourDescription}</small
+            ></span
+          >
+        </li>
+      </ol>
+    </section>
+
+    <section id="demo" class="demo-section">
+      <ScenarioDemo
+        client:load
+        {catalog}
+        {locale}
+        resources={responseRegistry.resources}
+        {scenarios}
+        teacherSetupHref={localeTeacherPath(locale)}
+      />
+    </section>
+
+    <section id="teacher" class="teacher-section">
+      <div class="teacher-callout">
+        <div>
+          <p class="eyebrow">{catalog.teacherSetup.eyebrow}</p>
+          <h2>{catalog.modes.teacherTitle}</h2>
+          <p>{catalog.modes.teacherDescription}</p>
+        </div>
+        <a class="button button-primary" href={localeTeacherPath(locale)}>
+          <GraduationCapIcon aria-hidden="true" weight="bold" />
+          {catalog.hero.teacher}
+        </a>
+      </div>
+    </section>
+
+    <section class="mode-section" aria-label={catalog.nav.teacherArea}>
+      <article class="mode-card">
+        <p>{catalog.modes.studentLabel}</p>
+        <h2>{catalog.modes.studentTitle}</h2>
+        <span>{catalog.modes.studentDescription}</span>
+        <BookOpenIcon aria-hidden="true" weight="duotone" />
+      </article>
+      <article class="mode-card featured">
+        <p>{catalog.modes.teacherLabel}</p>
+        <h2>{catalog.modes.teacherTitle}</h2>
+        <span>{catalog.modes.teacherDescription}</span>
+        <GraduationCapIcon aria-hidden="true" weight="duotone" />
+      </article>
+      <article id="about" class="mode-card">
+        <p>{catalog.modes.openLabel}</p>
+        <h2>{catalog.modes.openTitle}</h2>
+        <span>{catalog.modes.openDescription}</span>
+        <CodeIcon aria-hidden="true" weight="duotone" />
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <strong>Message, Unpacked.</strong>
+      <span>{catalog.footer.statement}</span>
+    </div>
+    <nav aria-label={catalog.nav.about}>
+      <a href={localeTeacherPath(locale)}>{catalog.nav.teacherArea}</a>
+      <a href="#demo">{catalog.nav.caseLibrary}</a>
+      <a href="#about">{catalog.nav.about}</a>
+    </nav>
+    <div class="license-list">
+      <span>{catalog.footer.codeLicense}</span>
+      <span>{catalog.footer.contentLicense}</span>
+    </div>
+  </footer>
+</BaseLayout>

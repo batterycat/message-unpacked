@@ -1,0 +1,64 @@
+id: gaming-account-expiry.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: gaming-account-expiry
+locale: zh-TW
+status: published
+title: 今晚到期的遊戲帳號
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 綜整帳號停權威脅、限時處理與偽造登入頁等常見手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [線上遊戲, 帳號安全]
+  skills: [辨識急迫話術, 獨立查證網址]
+  riskTypes: [帳號竊取, 釣魚連結]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.warning
+    sender: 遊戲安全中心
+    body: 系統偵測到異常登入，帳號將於今晚 23:59 永久停權。請立即前往 https://account-check.example.com 完成驗證。
+    timestamp: '18:42'
+    direction: incoming
+clues:
+  - id: clue.urgency
+    label: 用期限製造壓力
+    explanation: 要你立刻行動，會降低你查證寄件者與網址的意願。
+  - id: clue.link
+    label: 訊息附上登入連結
+    explanation: 安全做法是自行開啟官方 App 或手動輸入已知官方網址，而不是點訊息連結。
+choices:
+  - id: choice.trustworthy
+    label: 系統通知，可以直接驗證
+    classification: trustworthy
+    reasoning: 顯示名稱可以偽造，通知中的連結也不能證明它來自官方。
+    score: 0
+  - id: choice.fraud
+    label: 高度疑似詐騙，不點連結
+    classification: fraud
+    reasoning: 你辨識出急迫威脅與可疑登入連結，並避免從訊息進入帳號頁面。
+    score: 100
+  - id: choice.verify
+    label: 資訊不足，先從官方 App 查證
+    classification: insufficient-evidence
+    reasoning: 獨立打開官方 App 查證是安全行動；這則訊息本身也具備典型釣魚特徵。
+    score: 80
+recommendedActionIds: [tw.anti-fraud.165-call, tw.anti-fraud.165-web]
+debrief:
+  headline: 真正重要的是不要沿著對方設計的路走
+  explanation: 詐騙者把停權與倒數期限放在一起，目的是讓你忽略網址與登入流程。即使帳號真的有異常，也應從自己保存的官方 App 或書籤進入。
+  safeActions:
+    - 不點訊息中的登入或驗證連結。
+    - 自行開啟官方 App，檢查安全通知與登入紀錄。
+    - 若已輸入密碼，立刻從可信裝置更改密碼並登出其他工作階段。
+review:
+  lastReviewedAt: 2026-07-18
+  maintenanceStatus: active

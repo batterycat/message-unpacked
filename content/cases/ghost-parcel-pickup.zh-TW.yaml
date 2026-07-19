@@ -1,0 +1,88 @@
+id: ghost-parcel-pickup.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: ghost-parcel-pickup
+locale: zh-TW
+status: published
+title: 不記得買過的超商包裹
+channel: sms
+classification: insufficient-evidence
+provenance:
+  kind: documented
+  note: 改編自刑事警察局公布的幽靈包裹報案案例；寄件者、金額與訊息內容均為教學重寫。
+sources:
+  - id: source.cib.ghost-parcel
+    title: 收貨可以，受騙不行，刑事局呼籲警覺超商包裹詐騙陷阱
+    publisher: 內政部警政署刑事警察局
+    canonicalUrl: https://www.cib.npa.gov.tw/ch/app/news/view?id=1887&module=news&serno=c5b90907-6e6b-4396-9168-8e23c5f9b404
+    publishedAt: 2025-10-18
+    accessedAt: 2026-07-19
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: 僅改寫官方公布的案件事實與處理原則，未複製原文或圖片。
+impact:
+  eventSummary: 刑事警察局公布一宗民眾誤以為家人代訂商品，付款領取未曾下單的超商包裹，拆封後才確認遭遇幽靈包裹詐騙的案件。
+  period: 2025年10月
+  location: 臺灣
+  victimCount:
+    count: 1
+    qualifier: reported
+    sourceIds: [source.cib.ghost-parcel]
+  financialLoss:
+    amount: 1000
+    currency: TWD
+    qualifier: at-least
+    sourceIds: [source.cib.ghost-parcel]
+    note: 官方資料記載付款金額為新臺幣一千餘元，此處以至少一千元呈現。
+  sourceIds: [source.cib.ghost-parcel]
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response, post-incident]
+  topic: 網路購物
+  readingLevel: easy
+  difficulty: intermediate
+  contexts: [網路購物, 超商取貨, 家庭]
+  skills: [核對訂單, 跨管道詢問家人, 保留交易證據]
+  riskTypes: [幽靈包裹, 貨到付款]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.arrival
+    sender: 取貨通知
+    body: 您的包裹已送達指定門市，貨到付款 1,180 元，請於本週日前完成取件。
+    timestamp: '15:34'
+    direction: incoming
+clues:
+  - id: clue.no-order
+    label: 自己不記得下單
+    explanation: 包裹可能是家人代訂，也可能是未經同意寄送；不能只靠通知判斷。
+  - id: clue.cod
+    label: 取件時才付款
+    explanation: 貨到付款不代表包裹一定可信，付款前仍要核對訂單、金額與寄件資訊。
+choices:
+  - id: choice.trustworthy
+    label: 包裹已到超商，應該是家人買的，直接付款
+    classification: trustworthy
+    reasoning: 超商通知只能證明有包裹，不能證明自己或家人真的下過訂單。
+    score: 15
+  - id: choice.fraud
+    label: 一定是詐騙，立刻刪除所有購物帳號
+    classification: fraud
+    reasoning: 這則訊息有風險，但仍可能是家人代訂；刪帳號也無法處理眼前包裹。
+    score: 45
+  - id: choice.verify
+    label: 先核對訂單並問家人，無法確認就不付款取件
+    classification: insufficient-evidence
+    reasoning: 你保留兩種可能，並用不先付款的方式完成獨立查證。
+    score: 100
+recommendedActionIds: [tw.anti-fraud.165-call]
+debrief:
+  headline: 有包裹不代表有訂單
+  explanation: 收到真實的超商通知，也可能是詐騙者寄出的未訂購包裹。先查自己的訂單、詢問家人並核對寄件資訊，無法確認時就拒絕付款取件。
+  safeActions:
+    - 付款前核對購物紀錄、金額與寄件者。
+    - 未訂購或無法確認的包裹直接拒收。
+    - 若已付款，保留完整外箱、繳費憑證與包裹單據，儘快聯繫超商申訴。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

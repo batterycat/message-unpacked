@@ -1,0 +1,36 @@
+schemaVersion: 1
+locale: en
+resources:
+  - id: tw.anti-fraud.165-call
+    officialName: 165 Anti-Fraud Consultation Hotline
+    purpose: consult
+    owner: National Police Agency, Ministry of the Interior
+    phone: '165'
+    canonicalUrl: https://165.npa.gov.tw/
+    sourceUrl: https://www.cib.npa.gov.tw/ch/app/folder/2065
+    guidance: If a message seems suspicious, stop and call 165 using the official number rather than a number supplied by the message.
+    lastVerifiedAt: 2026-07-18
+  - id: tw.anti-fraud.165-web
+    officialName: 165 Anti-Fraud Information Website and Dashboard
+    purpose: query
+    owner: National Police Agency, Ministry of the Interior
+    canonicalUrl: https://165.npa.gov.tw/
+    sourceUrl: https://165.npa.gov.tw/
+    guidance: Use the official 165 website to review current scam patterns and notices.
+    lastVerifiedAt: 2026-07-18
+  - id: tw.online-fraud-report
+    officialName: Online Fraud Reporting and Query Service
+    purpose: report
+    owner: Administration for Digital Industries, Ministry of Digital Affairs
+    canonicalUrl: https://fraudbuster.digiat.org.tw/accessibility/
+    sourceUrl: https://moda.gov.tw/ADI/antifraud/af-toolbox/16212
+    guidance: Use the officially listed service to query or report suspicious online ads, accounts, or URLs.
+    lastVerifiedAt: 2026-07-18
+  - id: tw.police.110
+    officialName: 110 Police Emergency Hotline
+    purpose: emergency
+    owner: National Police Agency, Ministry of the Interior
+    phone: '110'
+    sourceUrl: https://www.npa.gov.tw/
+    guidance: Use when an offence is in progress, someone may be in danger, or immediate police assistance is needed.
+    lastVerifiedAt: 2026-07-18

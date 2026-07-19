@@ -1,0 +1,67 @@
+id: group-project-attachment.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: group-project-attachment
+locale: zh-TW
+status: published
+title: 同學寄來的報告壓縮檔
+channel: email
+classification: insufficient-evidence
+provenance:
+  kind: fictional
+  note: 為練習處理熟悉姓名搭配未知寄件位址與未預期附件的情境而建立的教學虛構案例。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response, ethics]
+  topic: 校園與學習
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [校園, 電子郵件, 分組報告]
+  skills: [核對寄件者, 確認未預期附件, 使用既有群組查證]
+  riskTypes: [惡意附件, 身分冒用]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.attachment
+    sender: 怡安（report-share@files.example.net）
+    body: 我把明天要交的自然科報告整理好了，附件是「期末報告.zip」。你今晚一定要先解壓縮確認，不然明天來不及改。
+    timestamp: 週日 20:43
+    direction: incoming
+clues:
+  - id: clue.unknown-address
+    label: 姓名熟悉但寄件位址陌生
+    explanation: 顯示名稱可以自行填寫，不能只憑姓名確認寄件者。
+  - id: clue.unexpected-file
+    label: 沒有事先約定壓縮附件
+    explanation: 未預期的壓縮檔可能藏有不安全內容，應先確認是否真由同學寄出。
+  - id: clue.deadline
+    label: 用作業期限催促開檔
+    explanation: 真實期限也可能被利用，讓你在確認身分前先打開附件。
+choices:
+  - id: choice.trustworthy
+    label: 是同學的名字又有作業期限，直接解壓縮
+    classification: trustworthy
+    reasoning: 顯示名稱與作業資訊都可能被冒用，仍需確認寄件位址與附件來源。
+    score: 10
+  - id: choice.fraud
+    label: 一定是同學故意害我，立刻在群組公開指責
+    classification: fraud
+    reasoning: 附件有風險，但也可能是同學換信箱或誤用分享服務；公開指責沒有完成查證。
+    score: 35
+  - id: choice.verify
+    label: 先不開附件，從原本的分組群組確認是否由本人寄出
+    classification: insufficient-evidence
+    reasoning: 你保護裝置，也使用寄件者無法控制的既有管道確認檔案來源。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 熟悉的名字，不等於可信的附件
+  explanation: 安全判斷要同時看寄件位址、是否預期收到檔案，以及能否換管道確認。先不開檔不會妨礙合作，反而能避免帳號冒用擴散。
+  safeActions:
+    - 未確認前不要下載、解壓縮或執行附件。
+    - 從原本的班級或分組群組詢問本人。
+    - 若確認帳號遭冒用，提醒同學更改密碼並通知其他收件者。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active
