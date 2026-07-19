@@ -1,0 +1,17 @@
+node_modules/
+.agents/
+.codex/
+.trellis/
+.pnpm-store/
+dist/
+.astro/
+playwright-report/
+test-results/
+coverage/
+AGENTS.md
+design-qa.md
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example

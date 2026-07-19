@@ -1,0 +1,86 @@
+id: utility-bill-phishing.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: utility-bill-phishing
+locale: zh-TW
+status: published
+title: 今晚停電的帳單催繳簡訊
+channel: sms
+classification: fraud
+provenance:
+  kind: documented
+  note: 改編自刑事警察局偵破的釣魚簡訊盜刷集團案件；網址、帳單資訊與訊息內容均為教學重寫。
+sources:
+  - id: source.cib.sms-phishing
+    title: 簡訊有詐，刑事局偵破釣魚簡訊盜刷集團案
+    publisher: 內政部警政署刑事警察局
+    canonicalUrl: https://www.cib.npa.gov.tw/ch/app/news/view?id=1885&module=news&serno=fec7d7af-30c3-429d-86a1-de452f9049a5
+    publishedAt: 2025-10-02
+    accessedAt: 2026-07-19
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: 僅改寫偵辦結果與釣魚手法，未使用原始釣魚網址、個資、原文或圖片。
+impact:
+  eventSummary: 刑事警察局偵破一個假冒公用事業、監理機關、電信與銀行發送釣魚簡訊的集團；被害人輸入信用卡資料與 OTP 後遭盜刷。
+  period: 2025年5月至8月
+  location: 臺東縣、彰化縣等地
+  victimCount:
+    count: 31
+    qualifier: reported
+    sourceIds: [source.cib.sms-phishing]
+  nonFinancialImpact: 被害人的信用卡資料與一次性驗證碼遭取得並用於未授權交易。
+  sourceIds: [source.cib.sms-phishing]
+learning:
+  stages: [7-9, 10-12]
+  dimensions: [prevention, response, post-incident]
+  topic: 家庭與生活
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [家庭, 簡訊, 帳單]
+  skills: [辨識停用威脅, 檢查網址, 從帳單或官方入口查證]
+  riskTypes: [釣魚簡訊, 信用卡盜刷, OTP竊取]
+  sensitiveContent: [財物損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.overdue
+    sender: 公用事業帳務中心
+    body: 您本期電費尚未繳納，今晚 22:00 將停止供電。請立即至 https://power-bill.example.com 補繳 680 元並完成信用卡驗證。
+    timestamp: '17:26'
+    direction: incoming
+clues:
+  - id: clue.shutdown
+    label: 以今晚停用製造壓力
+    explanation: 短期限讓人來不及核對帳單、寄件者與正常催繳流程。
+  - id: clue.payment-link
+    label: 要求從簡訊連結輸入付款資料
+    explanation: 安全做法是自行開啟既有官方 App、紙本帳單或手動輸入已知網址。
+  - id: clue.generic-sender
+    label: 寄件者名稱模糊
+    explanation: 只寫帳務中心，沒有可獨立核對的戶號或正式聯絡資訊。
+choices:
+  - id: choice.trustworthy
+    label: 停電會影響家人，先用信用卡補繳
+    classification: trustworthy
+    reasoning: 正因影響重大，更應從既有帳單或官方入口確認，不能沿用簡訊連結。
+    score: 0
+  - id: choice.fraud
+    label: 高度疑似釣魚簡訊，不點連結並請家人查帳單
+    classification: fraud
+    reasoning: 你同時避開可疑付款頁，並用家庭帳單或官方入口確認是否真的欠費。
+    score: 100
+  - id: choice.verify
+    label: 先點開看看網址像不像真的，但不輸入資料
+    classification: insufficient-evidence
+    reasoning: 不輸入資料較安全，但開啟可疑連結本身沒有必要，也可能帶來額外風險。
+    score: 55
+recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+debrief:
+  headline: 越怕服務中斷，越要離開簡訊查證
+  explanation: 詐騙者利用電費、監理、電信或銀行等重要服務製造焦慮。真正安全的處理方式，是從家中既有帳單、官方 App 或自行找到的客服管道確認。
+  safeActions:
+    - 不點簡訊內的催繳或信用卡驗證連結。
+    - 請家人從紙本帳單、官方 App 或已知客服查證。
+    - 若已輸入信用卡或 OTP，立即告知家長並聯繫發卡銀行處理。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -1,0 +1,63 @@
+id: club-cancellation-notice.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: club-cancellation-notice
+locale: zh-TW
+status: published
+title: 導師通知社團活動暫停
+channel: chat
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為練習辨認具有獨立查證管道的正常校園通知而建立的教學虛構情境。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention]
+  topic: 校園與學習
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [校園, 班級群組, 社團]
+  skills: [辨識低風險通知, 使用校務平台交叉確認]
+  riskTypes: [誤判正常通知]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.cancellation
+    sender: 林老師
+    body: 明天放學後的攝影社因活動中心維修暫停一次，已同步到你們平常使用的校務平台。這則通知不需要回覆個資，也沒有附登入連結。
+    timestamp: '16:32'
+    direction: incoming
+clues:
+  - id: clue.existing-channel
+    label: 使用既有班級群組
+    explanation: 訊息出現在平常的班級管道，並提供另一個既有平台可核對。
+  - id: clue.no-secret
+    label: 不要求秘密資料或緊急付款
+    explanation: 通知只說明行程變動，沒有要求離開原管道、登入陌生網站或交付個資。
+choices:
+  - id: choice.trustworthy
+    label: 具有可信特徵，可從校務平台再確認行程
+    classification: trustworthy
+    reasoning: 你根據既有管道、可交叉確認與沒有高風險要求做出判斷。
+    score: 100
+  - id: choice.fraud
+    label: 只要活動取消就可能是詐騙，不要相信
+    classification: fraud
+    reasoning: 行程變動本身不是詐騙證據；過度拒絕正常通知會影響學校生活。
+    score: 20
+  - id: choice.verify
+    label: 完全無法判斷，必須私訊老師索取更多個資
+    classification: insufficient-evidence
+    reasoning: 可以從既有校務平台核對，不需要向老師索取或提供更多個資。
+    score: 55
+recommendedActionIds: []
+debrief:
+  headline: 可信訊息也要能說出可信在哪裡
+  explanation: 防詐不是一律拒絕訊息，而是檢查管道、請求與查證方式。這則通知沒有引導到陌生入口，且可從原本的校務平台確認。
+  safeActions:
+    - 從平常使用的校務平台查看社團公告。
+    - 若平台內容不一致，再當面或用既有方式詢問老師。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -1,0 +1,97 @@
+id: fake-investment-ad.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: fake-investment-ad
+locale: zh-TW
+status: published
+title: 名人老師保證獲利的投資群
+channel: chat
+classification: fraud
+provenance:
+  kind: documented
+  note: 改編自刑事警察局偵辦的偽冒投顧名人廣告引流假投資案件；群組名稱與對話均為虛構。
+sources:
+  - id: source.cib.fake-investment-ads
+    title: 廣告行銷公司利用社群平臺發送涉詐投資廣告偵辦案
+    publisher: 內政部警政署刑事警察局
+    canonicalUrl: https://www.cib.npa.gov.tw/ch/app/news/view?id=1885&module=news&serno=cf19696e-0fde-41fb-877a-76d18fe79930
+    publishedAt: 2026-06-22
+    accessedAt: 2026-07-19
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: 僅改寫偵辦結果、被害規模與手法，未複製原文、照片或涉案名稱。
+impact:
+  eventSummary: 刑事警察局偵辦一宗以社群廣告偽冒投顧名人、將點擊者引流到假投資群組的案件；群組內另以假帳號營造多人獲利假象。
+  period: 2025年8月至2026年5月查緝期間
+  location: 臺南市
+  victimCount:
+    count: 6
+    qualifier: reported
+    sourceIds: [source.cib.fake-investment-ads]
+  financialLoss:
+    amount: 15800000
+    currency: TWD
+    qualifier: estimated
+    sourceIds: [source.cib.fake-investment-ads]
+    note: 官方資料以初步清查財損約新臺幣一千五百八十萬元表述。
+  nonFinancialImpact: 詐騙群組使用大量假帳號製造活躍與獲利假象，干擾使用者判斷社會證據的可信度。
+  sourceIds: [source.cib.fake-investment-ads]
+learning:
+  stages: [7-9, 10-12]
+  dimensions: [prevention, response, law]
+  topic: 投資與廣告
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [社群平台, 網路廣告, 金融素養]
+  skills: [辨識保證獲利話術, 檢查群組假見證, 拒絕私下投資]
+  riskTypes: [假投資, 名人冒用, 群組操弄]
+  sensitiveContent: [重大財物損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.invitation
+    sender: 理財研究社管理員
+    body: 你是學生也能從小額開始。名人老師親自帶單，群友本週全部獲利，保證不會賠；先加入私人群組並下載專用投資程式。
+    timestamp: '19:05'
+    direction: incoming
+  - id: message.proof
+    sender: 理財研究社管理員
+    body: 群裡已經有三百多人跟單，大家都貼出金紀錄，今天入金還送體驗金。
+    timestamp: '19:07'
+    direction: incoming
+clues:
+  - id: clue.guarantee
+    label: 宣稱保證獲利
+    explanation: 合法投資存在風險，任何穩賺不賠或保證收益的承諾都應高度警覺。
+  - id: clue.private-app
+    label: 要求下載專用程式並私下入金
+    explanation: 離開合法金融機構與官方商店，會讓資金與帳號缺乏正常保護。
+  - id: clue.social-proof
+    label: 用大量群友見證催促
+    explanation: 群組帳號、獲利截圖與對話可能由同一批人製造，不能當成獨立證據。
+choices:
+  - id: choice.trustworthy
+    label: 很多人都獲利，可以先用少量零用錢試試
+    classification: trustworthy
+    reasoning: 小額也可能被持續誘導加碼，群友與截圖不能證明投資平臺真實。
+    score: 0
+  - id: choice.fraud
+    label: 這是假投資高風險訊息，不加入群組也不下載程式
+    classification: fraud
+    reasoning: 你辨識出保證獲利、名人冒用、私下入金與群組造勢的完整詐騙鏈。
+    score: 100
+  - id: choice.verify
+    label: 先加入群組觀察，只要不匯款就沒風險
+    classification: insufficient-evidence
+    reasoning: 暫不匯款較安全，但加入群組仍會暴露帳號並持續承受操弄與誘導。
+    score: 50
+recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+debrief:
+  headline: 群組很熱鬧，也可能只是一場布置
+  explanation: 詐騙者不只偽造一則廣告，還會安排群友、獲利截圖與客服共同演出。看到保證獲利、下載陌生程式或私下交付資金時，應直接停止。
+  safeActions:
+    - 不加入來路不明的投資群組、不下載指定程式。
+    - 不因名人照片、影片或群友見證就相信投資邀請。
+    - 把可疑廣告交給可信任的大人，並透過官方管道查詢或通報。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

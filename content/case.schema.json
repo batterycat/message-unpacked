@@ -1,0 +1,570 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 96,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "contentVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "translationGroupId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 96,
+      "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+    },
+    "locale": {
+      "type": "string",
+      "enum": [
+        "zh-TW",
+        "en"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "retired"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "channel": {
+      "type": "string",
+      "enum": [
+        "sms",
+        "chat",
+        "email"
+      ]
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "trustworthy",
+        "fraud",
+        "insufficient-evidence"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "documented",
+            "composite",
+            "classic-pattern",
+            "fictional"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "sources": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 96,
+            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "publisher": {
+            "type": "string",
+            "minLength": 1
+          },
+          "canonicalUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "publishedAt": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "accessedAt": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "official",
+              "news",
+              "research",
+              "court-record",
+              "other"
+            ]
+          },
+          "usage": {
+            "type": "string",
+            "enum": [
+              "facts-paraphrased",
+              "licensed-adaptation",
+              "permission"
+            ]
+          },
+          "licenseNote": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "publisher",
+          "canonicalUrl",
+          "accessedAt",
+          "kind",
+          "usage",
+          "licenseNote"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "impact": {
+      "type": "object",
+      "properties": {
+        "eventSummary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period": {
+          "type": "string",
+          "minLength": 1
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1
+        },
+        "victimCount": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "reported",
+                "estimated",
+                "at-least",
+                "up-to"
+              ]
+            },
+            "sourceIds": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 96,
+                "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+              }
+            }
+          },
+          "required": [
+            "count",
+            "qualifier",
+            "sourceIds"
+          ],
+          "additionalProperties": false
+        },
+        "financialLoss": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "enum": [
+                "TWD",
+                "USD",
+                "OTHER"
+              ]
+            },
+            "qualifier": {
+              "type": "string",
+              "enum": [
+                "reported",
+                "estimated",
+                "at-least",
+                "up-to",
+                "aggregate"
+              ]
+            },
+            "sourceIds": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 96,
+                "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+              }
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "amount",
+            "currency",
+            "qualifier",
+            "sourceIds"
+          ],
+          "additionalProperties": false
+        },
+        "nonFinancialImpact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceIds": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 96,
+            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          }
+        }
+      },
+      "required": [
+        "eventSummary",
+        "sourceIds"
+      ],
+      "additionalProperties": false
+    },
+    "learning": {
+      "type": "object",
+      "properties": {
+        "stages": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "1-2",
+              "3-4",
+              "5-6",
+              "7-9",
+              "10-12"
+            ]
+          }
+        },
+        "dimensions": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prevention",
+              "response",
+              "post-incident",
+              "law",
+              "ethics"
+            ]
+          }
+        },
+        "topic": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "readingLevel": {
+          "type": "string",
+          "enum": [
+            "easy",
+            "standard",
+            "advanced"
+          ]
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "introductory",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "contexts": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "skills": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "riskTypes": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "sensitiveContent": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "trustedAdultRecommended": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "stages",
+        "dimensions",
+        "topic",
+        "readingLevel",
+        "difficulty",
+        "contexts",
+        "skills",
+        "riskTypes",
+        "sensitiveContent",
+        "trustedAdultRecommended"
+      ],
+      "additionalProperties": false
+    },
+    "messages": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 96,
+            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          },
+          "sender": {
+            "type": "string",
+            "minLength": 1
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1
+          },
+          "timestamp": {
+            "type": "string",
+            "minLength": 1
+          },
+          "direction": {
+            "default": "incoming",
+            "type": "string",
+            "enum": [
+              "incoming",
+              "outgoing"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "sender",
+          "body",
+          "direction"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "clues": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 96,
+            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "explanation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "choices": {
+      "minItems": 3,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 96,
+            "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "classification": {
+            "type": "string",
+            "enum": [
+              "trustworthy",
+              "fraud",
+              "insufficient-evidence"
+            ]
+          },
+          "reasoning": {
+            "type": "string",
+            "minLength": 1
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "classification",
+          "reasoning",
+          "score"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "recommendedActionIds": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 96,
+        "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$"
+      }
+    },
+    "debrief": {
+      "type": "object",
+      "properties": {
+        "headline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "safeActions": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "headline",
+        "explanation",
+        "safeActions"
+      ],
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "lastReviewedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "maintenanceStatus": {
+          "type": "string",
+          "enum": [
+            "active",
+            "needs-review",
+            "retired"
+          ]
+        }
+      },
+      "required": [
+        "lastReviewedAt",
+        "maintenanceStatus"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "schemaVersion",
+    "contentVersion",
+    "translationGroupId",
+    "locale",
+    "status",
+    "title",
+    "channel",
+    "classification",
+    "provenance",
+    "sources",
+    "learning",
+    "messages",
+    "clues",
+    "choices",
+    "recommendedActionIds",
+    "debrief",
+    "review"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:message-unpacked:schema:case:1",
+  "title": "Message, Unpacked. case",
+  "description": "Authoring schema for a version 1 Message, Unpacked. teaching case."
+}

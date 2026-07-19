@@ -1,0 +1,59 @@
+name: Case proposal
+description: Propose a scam pattern, documented event, or safe-message exercise.
+title: '[Case] '
+labels: [content]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not paste personal data, live suspicious links, paywalled text, or copied screenshots. A citation does not grant permission to copy a source.
+  - type: dropdown
+    id: provenance
+    attributes:
+      label: Proposed provenance
+      options:
+        - Documented real-event adaptation
+        - Composite adaptation
+        - Classic pattern
+        - Teaching fiction
+    validations:
+      required: true
+  - type: dropdown
+    id: channel
+    attributes:
+      label: Message channel
+      options:
+        - SMS
+        - Chat
+        - Email
+        - Multiple or undecided
+    validations:
+      required: true
+  - type: textarea
+    id: learning
+    attributes:
+      label: Learning goal
+      description: What should a grades 7–9 learner notice and do more safely?
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Case outline
+      description: Summarize the situation in your own words without personal data.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Primary sources
+      description: For documented or composite cases, list authoritative source URLs and publication dates.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I removed personal data and did not include a live suspicious destination.
+          required: true
+        - label: I understand that sources and copied material require separate licensing review.
+          required: true
