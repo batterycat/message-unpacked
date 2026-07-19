@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../case.schema.json
+id: upper-primary-club-signup.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: upper-primary-club-signup
+locale: zh-TW
+status: published
+title: 社團報名截止提醒
+channel: sms
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為高年級學生建立的教學虛構情境，不使用真實學校資料。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention]
+  topic: 校園與學習
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [校園, 社團活動]
+  skills: [核對已知管道, 辨認正常請求]
+  riskTypes: [誤判正常通知]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.club
+    sender: 六年級導師
+    body: 科學社報名今天截止。請從學校首頁的社團報名入口查看名額；老師不會用簡訊索取密碼或轉帳。
+    timestamp: '12:10'
+    direction: incoming
+clues:
+  - id: clue.known-entry
+    label: 指向平常使用的學校入口
+    explanation: 從自己知道的學校首頁進入，比點擊陌生訊息中的連結更容易確認真偽。
+  - id: clue.no-secret
+    label: 沒有索取密碼或款項
+    explanation: 正常通知清楚說明不會要求交付秘密或轉帳，降低被冒用的風險。
+choices:
+  - id: choice.trustworthy
+    label: 從學校首頁查看報名資訊
+    classification: trustworthy
+    reasoning: 你依照已知入口查證，也注意到訊息沒有索取秘密或款項。
+    score: 100
+  - id: choice.fraud
+    label: 只要是簡訊就一律刪除
+    classification: fraud
+    reasoning: 不能只靠訊息形式判斷；重點是內容是否能安全、獨立地查證。
+    score: 20
+  - id: choice.verify
+    label: 點擊任何報名連結，只要看到校徽就相信
+    classification: insufficient-evidence
+    reasoning: 校徽或頁面外觀都可能被複製，應使用自己知道的學校入口。
+    score: 55
+recommendedActionIds: []
+debrief:
+  headline: 可信也要從自己的入口確認
+  explanation: 正常通知不代表任何相似訊息都可信；使用已知的學校首頁與老師既有管道，才能降低被仿冒的風險。
+  safeActions:
+    - 從書籤或學校首頁進入報名系統。
+    - 對寄件者或內容有疑問時，直接問老師，不回覆陌生號碼。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

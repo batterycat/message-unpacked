@@ -82,3 +82,19 @@ After deployment, verify:
 4. Student and projector modes lead to different reveal behavior.
 5. A documented case shows its source and qualified impact after answering.
 6. The 320 px layout has no horizontal overflow.
+
+## Phase 2: ephemeral classroom rooms
+
+The optional second-stage service lives under `workers/` and uses Cloudflare
+Durable Objects. Each room name maps to one `ClassroomRoom` instance; the Worker
+relays teacher phase changes and anonymous answer tallies over WebSockets.
+
+The static site remains the source of the case content and continues to work
+without this service. The room Worker must not be treated as an account system
+or a place to store student history. Before a public classroom launch, add
+short-lived teacher authorization, rate limits, connection expiry, abuse
+monitoring, and a privacy review.
+
+See [`workers/README.md`](../workers/README.md) for the Wrangler commands and
+the current protocol boundary. Configure `ALLOWED_ORIGIN` to the exact public
+origin before deployment; leaving it unset is only suitable for local testing.

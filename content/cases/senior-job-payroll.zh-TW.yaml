@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=../case.schema.json
+id: senior-job-payroll.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: senior-job-payroll
+locale: zh-TW
+status: published
+title: 打工薪資驗證費
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫假打工以薪資、保證金或帳戶驗證名義要求先付款的常見手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topic: 家庭與生活
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [求職, 行動支付]
+  skills: [辨認先付款要求, 核對雇主身分, 保存證據]
+  riskTypes: [假求職, 預付費用]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.job
+    sender: 人資專員
+    body: 恭喜錄取居家資料整理。請先匯 3,000 元設備保證金到個人帳戶，完成後才能開通薪資帳戶，今天 18:00 前有效。
+    timestamp: '17:32'
+    direction: incoming
+  - id: message.job-follow-up
+    sender: 人資專員
+    body: 不方便提供公司統編或正式合約，因為名額是內部保留，請勿向其他人詢問。
+    timestamp: '17:33'
+    direction: incoming
+clues:
+  - id: clue.prepayment
+    label: 尚未工作就要求匯保證金
+    explanation: 正常求職應能說明雇主身分、工作內容與契約，不應以個人帳戶要求先付款。
+  - id: clue.no-contract
+    label: 拒絕提供正式資訊並要求保密
+    explanation: 無法讓你獨立核對的雇主，加上急迫和保密要求，是高度風險組合。
+choices:
+  - id: choice.trustworthy
+    label: 先匯款，拿到工作後再確認公司
+    classification: trustworthy
+    reasoning: 先付款會讓你承擔損失，不能取代核對雇主與正式合約。
+    score: 0
+  - id: choice.fraud
+    label: 不匯款，保存對話並核對雇主資料
+    classification: fraud
+    reasoning: 你辨識出預付費用、個人帳戶、拒絕提供正式資料和急迫催促。
+    score: 100
+  - id: choice.verify
+    label: 先問對方能不能把保證金降到 500 元
+    classification: insufficient-evidence
+    reasoning: 金額變小不會讓要求變合法，仍應停止付款並獨立核對雇主。
+    score: 15
+recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+debrief:
+  headline: 求職不該先交錢買資格
+  explanation: 高中職學生可能接觸打工與求職訊息，應核對公司、職缺、合約與付款對象。只要要求先匯款又不讓你查證，就先停止。
+  safeActions:
+    - 不匯款、不提供身分證件或網銀資料。
+    - 保存職缺網址、帳號、對話與匯款要求，請家長、老師或輔導窗口協助。
+    - 有疑慮時撥 165 諮詢，必要時使用官方通報管道。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

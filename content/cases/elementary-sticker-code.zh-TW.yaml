@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../case.schema.json
+id: elementary-sticker-code.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: elementary-sticker-code
+locale: zh-TW
+status: published
+title: 免費貼圖的驗證碼
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以免費貼圖、遊戲道具或抽獎名義索取驗證碼的常見手法。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention, response]
+  topic: 社群與交友
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [聊天軟體, 貼圖活動]
+  skills: [保護驗證碼, 辨認催促]
+  riskTypes: [免費贈品, 驗證碼竊取]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.sticker
+    sender: 貼圖活動小幫手
+    body: 恭喜你抽中免費貼圖！請把手機收到的六位數驗證碼回傳，兩分鐘後就失效，才能領取。
+    timestamp: '18:22'
+    direction: incoming
+clues:
+  - id: clue.otp
+    label: 要求回傳手機驗證碼
+    explanation: 驗證碼是用來確認帳號操作的秘密，收到它的人可能就能登入或重設帳號。
+  - id: clue.urgency
+    label: 用兩分鐘製造壓力
+    explanation: 催促你不要思考或詢問大人，是常見的操弄方式；時間限制不會讓交出驗證碼變安全。
+choices:
+  - id: choice.trustworthy
+    label: 趕快回傳，才不會錯過貼圖
+    classification: trustworthy
+    reasoning: 免費貼圖與倒數時間都不能成為交出驗證碼的理由。
+    score: 0
+  - id: choice.fraud
+    label: 不回傳驗證碼，停止對話並找大人確認
+    classification: fraud
+    reasoning: 你辨識出索取驗證碼與催促的組合，先保護帳號再求助。
+    score: 100
+  - id: choice.verify
+    label: 先回傳一半驗證碼，看看對方是不是可靠
+    classification: insufficient-evidence
+    reasoning: 驗證碼不能分段試用；任何一部分都不應交給陌生人。
+    score: 10
+recommendedActionIds: []
+debrief:
+  headline: 驗證碼不是領獎券
+  explanation: 免費贈品、抽獎或貼圖活動若要求你提供驗證碼，應立即停止。國小學生可以把訊息交給家人或老師一起確認。
+  safeActions:
+    - 不回傳驗證碼、密碼或簡訊內容。
+    - 保留訊息並請可信任的大人協助檢查帳號是否安全。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -36,6 +36,12 @@ and should stay stable and easy to scan. `learning.contexts` contains the more
 specific situations used for cataloguing and future search. Do not add every
 context to the teacher topic list.
 
+The teacher setup supports all five learning stages: `1-2`, `3-4`, `5-6`,
+`7-9`, and `10-12`. Declare the narrowest suitable stage rather than marking
+every case for every age group. A case may support more than one adjacent stage
+when the reading load, decision complexity, and trusted-adult guidance remain
+appropriate for each declared group.
+
 ## Safe Examples
 
 Use reserved destinations such as `example.com` and fictional names. Never place

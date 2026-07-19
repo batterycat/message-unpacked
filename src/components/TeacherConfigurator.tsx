@@ -20,6 +20,7 @@ import {
   type ActivityMode,
   type LearningStage,
 } from '../domain/activity/config';
+import { learningStages } from '../domain/cases/schema';
 import type { Locale, MessageCatalog } from '../i18n/catalogs';
 import styles from './TeacherConfigurator.module.css';
 
@@ -46,7 +47,7 @@ export function TeacherConfigurator({
   locale,
   scenarios,
 }: TeacherConfiguratorProps) {
-  const [stage] = useState<LearningStage>('7-9');
+  const [stage, setStage] = useState<LearningStage>('7-9');
   const availableScenarios = useMemo(
     () =>
       scenarios.filter((scenario) => scenario.learning.stages.includes(stage)),
@@ -70,6 +71,7 @@ export function TeacherConfigurator({
   const [selectedCount, setSelectedCount] = useState(0);
   const [copied, setCopied] = useState(false);
   const unavailable = availableScenarios.length === 0 || topics.length === 0;
+  const selectedTopic = topics.includes(topic) ? topic : (topics[0] ?? '');
 
   function createLink(event: { preventDefault: () => void }) {
     event.preventDefault();
@@ -80,7 +82,7 @@ export function TeacherConfigurator({
       locale,
       mode,
       stage,
-      topic,
+      topic: selectedTopic,
     });
     const baseUrl = new URL(activityPath, window.location.href);
     setActivityUrl(buildActivityUrl(baseUrl.toString(), config));
@@ -115,15 +117,26 @@ export function TeacherConfigurator({
         <form className={styles.form} onSubmit={createLink}>
           <label>
             <span>{catalog.teacherSetup.stage}</span>
-            <select value={stage} disabled>
-              <option value="7-9">{catalog.teacherSetup.stageSevenNine}</option>
+            <select
+              value={stage}
+              onChange={(event) => {
+                setStage(event.target.value as LearningStage);
+                setActivityUrl(null);
+                setSelectedCount(0);
+              }}
+            >
+              {learningStages.map((option) => (
+                <option value={option} key={option}>
+                  {catalog.teacherSetup.stageOptions[option]}
+                </option>
+              ))}
             </select>
           </label>
 
           <label>
             <span>{catalog.teacherSetup.topic}</span>
             <select
-              value={topic}
+              value={selectedTopic}
               onChange={(event) => setTopic(event.target.value)}
             >
               {topics.map((option) => (

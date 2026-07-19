@@ -1,0 +1,15 @@
+name = "message-unpacked-room"
+main = "room-worker.ts"
+compatibility_date = "2026-07-19"
+
+[durable_objects]
+bindings = [
+  { name = "ROOM", class_name = "ClassroomRoom" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["ClassroomRoom"]
+
+# Set this in the Cloudflare dashboard or an environment-specific config.
+# ALLOWED_ORIGIN = "https://batterycat.github.io"

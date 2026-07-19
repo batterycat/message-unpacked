@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=../case.schema.json
+id: upper-primary-stream-reward.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: upper-primary-stream-reward
+locale: zh-TW
+status: published
+title: 直播抽獎的獎品
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫直播與社群活動以獎品、手續費或帳號驗證為名誘導付款的常見手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response]
+  topic: 社群與交友
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [直播平台, 網路活動]
+  skills: [辨認付款要求, 查找官方活動規則]
+  riskTypes: [假抽獎, 手續費詐騙]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.reward
+    sender: 直播小編
+    body: 你抽到最新耳機！只要先支付 99 元保證金，並拍下付款畫面傳給我們，就能安排寄送，名額只剩三個。
+    timestamp: '21:03'
+    direction: incoming
+  - id: message.follow-up
+    sender: 直播小編
+    body: 不要問主播本人，這是工作人員的秘密流程，現在不付款就會取消資格。
+    timestamp: '21:04'
+    direction: incoming
+clues:
+  - id: clue.deposit
+    label: 得獎前後要求先付款
+    explanation: 真正活動應有公開規則與可查證的主辦方；私下要求保證金是高度可疑的特徵。
+  - id: clue.secret
+    label: 要求不要向主播或大人詢問
+    explanation: 阻止你向其他人確認，會讓你失去獨立判斷的機會。
+choices:
+  - id: choice.trustworthy
+    label: 先付 99 元，反正只是小額
+    classification: trustworthy
+    reasoning: 小額付款仍可能造成後續加碼或暴露付款資料，不能只因金額小就相信。
+    score: 0
+  - id: choice.fraud
+    label: 不付款、不傳畫面，改從官方活動頁確認
+    classification: fraud
+    reasoning: 你辨識出私下收費、催促和要求保密，選擇停止並用獨立管道查證。
+    score: 100
+  - id: choice.verify
+    label: 先把付款畫面遮住一半再傳
+    classification: insufficient-evidence
+    reasoning: 仍然是在未確認對方身分前互動，應直接停止並請大人協助。
+    score: 15
+recommendedActionIds: [tw.anti-fraud.165-call]
+debrief:
+  headline: 小額也可能是入口
+  explanation: 詐騙者常用獎品、剩餘名額和秘密流程製造急迫感。查證活動主辦方時，要自己找到官方入口，不要使用對方提供的付款方式。
+  safeActions:
+    - 不先付款、不傳付款畫面或身分資料。
+    - 把直播帳號、活動規則與對話交給家長或老師查看。
+    - 有疑慮時停止操作，再使用 165 諮詢。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

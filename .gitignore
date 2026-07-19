@@ -4,6 +4,7 @@ node_modules/
 .trellis/
 .pnpm-store/
 dist/
+.wrangler/
 .astro/
 playwright-report/
 test-results/

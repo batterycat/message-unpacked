@@ -27,7 +27,7 @@ revision.
 - [ ] Feedback explains safer behavior without shaming a wrong answer or a
       victim.
 - [ ] Sensitive consequences are necessary, proportionate, and suitable for
-      grades 7–9.
+      every declared learning stage.
 - [ ] A trusted adult is recommended when the situation involves money,
       account compromise, threats, or safety.
 - [ ] Reporting guidance is contextual; 110 is not presented as the default
@@ -44,6 +44,9 @@ revision.
 - [ ] `learning.topic` is one stable teacher-facing category; detailed
       situations remain in `learning.contexts`.
 - [ ] The reading load and vocabulary are suitable for the declared stage.
+- [ ] The scenario does not assume access to a personal account, payment
+      method, or independent legal/financial decision-making when the declared
+      stage is `1-2`, `3-4`, or `5-6`.
 
 ## Technical review
 

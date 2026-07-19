@@ -1,16 +1,18 @@
 # Message, Unpacked.
 
 **訊息拆解所** is an open-source, static-first anti-fraud learning experience
-for teachers and students. The first content release focuses on grades 7–9 in
-Taiwan and uses realistic SMS, chat, and email scenarios to practise checking
-evidence before acting.
+for teachers and students. The first content release covers Taiwan's five
+learning stages, with its most extensive reviewed baseline in grades 7–9, and
+uses realistic SMS, chat, and email scenarios to practise checking evidence
+before acting.
 
 The interface is architected for Traditional Chinese and English. Initial cases
 are Traditional Chinese; English case translation will follow.
 
-The current MVP includes 12 reviewed cases, account-free teacher activity
-links, student and projector modes, locally generated QR codes, qualified
-real-case impact, and contextual Taiwan response guidance. See
+The current MVP includes 20 Traditional Chinese cases, account-free teacher
+activity links, selectable learning stages, student and projector modes,
+locally generated QR codes, qualified real-case impact, and contextual Taiwan
+response guidance. See
 [docs/STATUS.md](./docs/STATUS.md) for the current delivery boundary.
 
 ## Teacher guide

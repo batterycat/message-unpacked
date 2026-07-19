@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=../case.schema.json
+id: senior-marketplace-escrow.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: senior-marketplace-escrow
+locale: zh-TW
+status: published
+title: 二手交易的假保管客服
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 改寫二手交易中冒用平台客服、要求移到私訊或提供驗證資料的常見手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topic: 網路購物
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [二手交易, 社群平台]
+  skills: [確認平台通知, 拒絕私下處理, 保存交易證據]
+  riskTypes: [假客服, 交易轉移]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: false
+messages:
+  - id: message.marketplace
+    sender: 買家
+    body: 我已付款，但平台顯示你的收款尚未驗證。請加這個客服帳號，提供簡訊驗證碼才能解鎖款項。
+    timestamp: '22:14'
+    direction: incoming
+  - id: message.marketplace-follow-up
+    sender: 平台客服（私訊帳號）
+    body: 為了避免訂單取消，請不要回到平台客服中心，直接把驗證碼和銀行帳號傳給我。
+    timestamp: '22:15'
+    direction: incoming
+clues:
+  - id: clue.off-platform
+    label: 要求離開平台處理
+    explanation: 交易紀錄與客服應留在平台既有入口；私訊帳號無法證明是官方人員。
+  - id: clue.secret
+    label: 索取驗證碼與銀行資料
+    explanation: 驗證碼和銀行資料屬於敏感資訊，不能因為對方聲稱已付款就交出。
+choices:
+  - id: choice.trustworthy
+    label: 買家說已付款，就照客服指示提供資料
+    classification: trustworthy
+    reasoning: 對方的說法不是付款證明，離開平台和索取驗證碼都很可疑。
+    score: 0
+  - id: choice.fraud
+    label: 一定是假買家，立刻公開對方個資
+    classification: fraud
+    reasoning: 訊息高度可疑，但公開個資可能傷害無辜者；應先停止互動並保存證據。
+    score: 55
+  - id: choice.verify
+    label: 回到平台官方入口查看訂單，不提供任何秘密資料
+    classification: insufficient-evidence
+    reasoning: 你用獨立入口確認付款狀態，並拒絕私訊帳號的要求，這是較安全的處理方式。
+    score: 100
+recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+debrief:
+  headline: 平台交易不要被帶到私下
+  explanation: 二手交易的買家、客服或付款通知都可能被冒用。保留平台內紀錄、從既有入口查看訂單，不要把驗證碼或銀行資料交給私訊帳號。
+  safeActions:
+    - 不提供驗證碼、網銀資料或身分證件影本。
+    - 留在平台內查詢訂單與客服紀錄，保存對話和帳號資訊。
+    - 若疑似詐騙，先停止交易並使用 165 或官方通報管道諮詢。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

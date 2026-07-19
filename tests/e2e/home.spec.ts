@@ -97,6 +97,12 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
   await expect(teacherGuideLink).toHaveAttribute('rel', 'noreferrer');
 
   const teacherSetup = page.locator('.teacher-page-configurator');
+  const stageSelect = teacherSetup.getByRole('combobox', {
+    name: '學習階段',
+    exact: true,
+  });
+  await expect(stageSelect).toHaveValue('7-9');
+  await expect(stageSelect.locator('option')).toHaveCount(5);
   await page.waitForFunction(
     () =>
       !document

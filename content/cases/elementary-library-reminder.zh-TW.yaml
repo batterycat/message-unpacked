@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../case.schema.json
+id: elementary-library-reminder.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: elementary-library-reminder
+locale: zh-TW
+status: published
+title: 圖書館借閱提醒
+channel: email
+classification: insufficient-evidence
+provenance:
+  kind: fictional
+  note: 為中年級學生建立的教學虛構情境，不使用真實學校與圖書館資料。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention, response]
+  topic: 校園與學習
+  readingLevel: easy
+  difficulty: intermediate
+  contexts: [校園, 電子郵件]
+  skills: [檢查請求, 使用既有入口查證]
+  riskTypes: [假冒通知, 付款要求]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.library
+    sender: 校園圖書館通知
+    body: 你借的書快到期了。請先不要點信中的連結，也不要付款，改用平常使用的校務平台查看借閱紀錄。
+    timestamp: 週三 15:40
+    direction: incoming
+clues:
+  - id: clue.no-link
+    label: 沒有要求直接點擊連結
+    explanation: 使用平常的校務平台查證，比從陌生信件進入網站安全。
+  - id: clue.unknown
+    label: 仍然需要確認寄件者
+    explanation: 只看到文字還不能證明信件是真的，應和家人、老師或圖書館既有窗口確認。
+choices:
+  - id: choice.trustworthy
+    label: 直接相信信件內容，照它的方式處理
+    classification: trustworthy
+    reasoning: 信件提供了安全方向，但仍不能只因為顯示圖書館名稱就完全相信。
+    score: 45
+  - id: choice.fraud
+    label: 一定是詐騙，立刻轉傳給所有同學
+    classification: fraud
+    reasoning: 目前只有資訊不足，轉傳未確認的訊息可能造成更多混亂。
+    score: 35
+  - id: choice.verify
+    label: 從平常的校務平台查借閱紀錄，再問大人
+    classification: insufficient-evidence
+    reasoning: 你沒有點陌生連結，而是使用獨立入口查證並請可信任的大人協助。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 找到自己的查證入口
+  explanation: 有些通知可能是真的，也可能只是冒用名稱。當訊息沒有足夠證據時，使用自己知道的官方入口查證，不要被信件中的連結帶著走。
+  safeActions:
+    - 使用平常的校務平台或詢問老師、家人。
+    - 不付款、不提供密碼，也不要轉傳未確認的訊息。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

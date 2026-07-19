@@ -22,7 +22,7 @@ const zhTW = {
     switchLanguage: 'English',
   },
   hero: {
-    eyebrow: '給國中生的數位素養課',
+    eyebrow: '給不同年齡學生的數位素養課',
     title: '每一則訊息，都值得多看一眼。',
     titleLineOne: '每一則訊息，',
     titleLineTwo: '都值得多看一眼。',
@@ -74,7 +74,13 @@ const zhTW = {
     description:
       '不需帳號或學生名單。選好條件後，產生可直接開啟或分享的靜態活動連結。',
     stage: '學習階段',
-    stageSevenNine: '國中（7–9 年級）',
+    stageOptions: {
+      '1-2': '國小低年級（1–2 年級）',
+      '3-4': '國小中年級（3–4 年級）',
+      '5-6': '國小高年級（5–6 年級）',
+      '7-9': '國中（7–9 年級）',
+      '10-12': '高中職（10–12 年級）',
+    },
     topic: '主題',
     duration: '活動時間',
     durationOption: '{minutes} 分鐘',
@@ -233,7 +239,7 @@ const en: MessageCatalog = {
     switchLanguage: '繁體中文',
   },
   hero: {
-    eyebrow: 'Digital literacy for junior-high learners',
+    eyebrow: 'Digital literacy for learners',
     title: 'Every message deserves a closer look.',
     titleLineOne: 'Every message deserves',
     titleLineTwo: 'a closer look.',
@@ -290,7 +296,13 @@ const en: MessageCatalog = {
     description:
       'No account or class roster required. Create a static activity link that can be opened or shared immediately.',
     stage: 'Learning stage',
-    stageSevenNine: 'Junior high (grades 7–9)',
+    stageOptions: {
+      '1-2': 'Early primary (grades 1–2)',
+      '3-4': 'Middle primary (grades 3–4)',
+      '5-6': 'Upper primary (grades 5–6)',
+      '7-9': 'Junior high (grades 7–9)',
+      '10-12': 'Senior high (grades 10–12)',
+    },
     topic: 'Topic',
     duration: 'Activity length',
     durationOption: '{minutes} minutes',

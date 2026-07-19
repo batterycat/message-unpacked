@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../case.schema.json
+id: primary-game-gift.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: primary-game-gift
+locale: zh-TW
+status: published
+title: 遊戲裡的生日禮物
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫兒童遊戲社群中以免費禮物交換密碼或帳號資料的常見手法。
+sources: []
+learning:
+  stages: [1-2]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [線上遊戲, 同儕聊天]
+  skills: [保護密碼, 找可信任的大人]
+  riskTypes: [免費禮物, 索取密碼]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.gift
+    sender: 遊戲小隊長
+    body: 我有多一份生日造型！把你的登入密碼給我，我幫你把禮物放進帳號，不能告訴大人喔。
+    timestamp: '放學後'
+    direction: incoming
+clues:
+  - id: clue.secret
+    label: 要求把事情瞞著大人
+    explanation: 需要你保守秘密、不能讓可信任的大人知道的要求，應該先停下來求助。
+  - id: clue.password
+    label: 索取登入密碼
+    explanation: 密碼是帳號的秘密，遊戲好友、客服或任何贈品都不應要求你交出密碼。
+choices:
+  - id: choice.trustworthy
+    label: 他說有禮物，就把密碼給他
+    classification: trustworthy
+    reasoning: 免費禮物不能成為交出密碼的理由，而且要求保密是危險訊號。
+    score: 0
+  - id: choice.fraud
+    label: 這是危險的要求，不給密碼並找大人幫忙
+    classification: fraud
+    reasoning: 你辨識出索取密碼與要求保密的線索，先保護帳號並請可信任的大人協助。
+    score: 100
+  - id: choice.verify
+    label: 先把密碼改簡單一點再給他
+    classification: insufficient-evidence
+    reasoning: 改簡單仍然不安全；密碼不應交給別人，應直接停止並求助。
+    score: 15
+recommendedActionIds: []
+debrief:
+  headline: 禮物不值得交換密碼
+  explanation: 年紀較小時，遇到索取密碼、要求保密或讓你害怕的訊息，可以先不回覆，拿給家長、老師或其他可信任的大人看。
+  safeActions:
+    - 不說出密碼、驗證碼或家人的個人資料。
+    - 截圖或保留訊息，交給可信任的大人一起處理。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

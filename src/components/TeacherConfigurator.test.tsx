@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 
-import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
 
 import { getCatalog } from '../i18n/locale';
 import { TeacherConfigurator } from './TeacherConfigurator';
@@ -31,9 +31,19 @@ const candidates = [
       contexts: ['社群平台'],
     },
   },
+  {
+    id: 'case.primary',
+    learning: {
+      stages: ['1-2'] as const,
+      topic: '遊戲與帳號',
+      contexts: ['線上遊戲'],
+    },
+  },
 ];
 
 describe('TeacherConfigurator', () => {
+  afterEach(() => cleanup());
+
   it('creates a locale-preserving projector activity link from teacher choices', () => {
     window.history.replaceState({}, '', '/message-unpacked/zh-TW/');
     render(
@@ -44,6 +54,14 @@ describe('TeacherConfigurator', () => {
       }),
     );
 
+    const stageSelect = screen.getByLabelText('學習階段') as HTMLSelectElement;
+    expect([...stageSelect.options].map((option) => option.value)).toEqual([
+      '1-2',
+      '3-4',
+      '5-6',
+      '7-9',
+      '10-12',
+    ]);
     const topicSelect = screen.getByLabelText('主題') as HTMLSelectElement;
     expect([...topicSelect.options].map((option) => option.value)).toEqual([
       '社群與交友',
@@ -71,5 +89,27 @@ describe('TeacherConfigurator', () => {
       screen.getByRole('img', { name: '活動 QR Code' }),
     ).toBeInTheDocument();
     expect(screen.getByText('掃描 QR Code 開啟')).toBeInTheDocument();
+  });
+
+  it('switches to another learning stage and uses its matching case', () => {
+    window.history.replaceState({}, '', '/zh-TW/');
+    render(
+      createElement(TeacherConfigurator, {
+        catalog: getCatalog('zh-TW'),
+        locale: 'zh-TW',
+        scenarios: candidates,
+      }),
+    );
+
+    fireEvent.change(screen.getByLabelText('學習階段'), {
+      target: { value: '1-2' },
+    });
+    expect(screen.getByLabelText('主題')).toHaveValue('遊戲與帳號');
+    fireEvent.click(screen.getByRole('button', { name: '產生活動連結' }));
+
+    const launchLink = screen.getByRole('link', { name: '開啟活動' });
+    const url = new URL(launchLink.getAttribute('href') ?? '');
+    expect(url.searchParams.get('stage')).toBe('1-2');
+    expect(url.searchParams.get('cases')).toBe('case.primary');
   });
 });
