@@ -62,6 +62,28 @@ test('A completed activity stops and shows a supportive score summary', async ({
   await expect(demo).toContainText('01／03');
 });
 
+test('Mobile next case keeps the activity in view', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(
+    '/zh-TW/activity/?activity=1&lang=zh-TW&stage=7-9&topic=社群與交友&minutes=10&mode=self-paced&cases=friend-vote-request.zh-tw%2Cgroup-project-attachment.zh-tw#demo',
+  );
+
+  const demo = page.locator('#demo');
+  await demo.scrollIntoViewIfNeeded();
+  await demo
+    .getByRole('button', { name: '不給驗證碼，改用其他方式確認本人' })
+    .click();
+  const nextButton = demo.getByRole('button', { name: '下一題' });
+  await nextButton.click();
+
+  const activityTop = await demo.evaluate(
+    (element) => element.getBoundingClientRect().top,
+  );
+  expect(activityTop).toBeLessThan(844);
+  expect(activityTop).toBeGreaterThan(-20);
+  await expect(demo).toContainText('02／02');
+});
+
 test('Documented case debrief preserves qualified impact and review details', async ({
   page,
 }) => {

@@ -1,4 +1,11 @@
-import { useMemo, useReducer, useState, useSyncExternalStore } from 'react';
+import {
+  useLayoutEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 
 import { useMachine } from '@xstate/react';
 import {
@@ -612,6 +619,19 @@ function ScenarioSession({
   ...props
 }: ScenarioDemoProps & { projectorMode: boolean }) {
   const [session, dispatch] = useReducer(sessionReducer, initialSessionState);
+  const previousPosition = useRef(session.position);
+
+  useLayoutEffect(() => {
+    if (previousPosition.current === session.position) return;
+    previousPosition.current = session.position;
+    const demo = document.getElementById('demo');
+    if (!demo) return;
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, demo.getBoundingClientRect().top + window.scrollY);
+    root.style.scrollBehavior = previousScrollBehavior;
+  }, [session.position]);
 
   if (session.completed) {
     return (

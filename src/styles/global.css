@@ -249,6 +249,7 @@ a {
 }
 
 .activity-page-stage {
+  overflow-anchor: none;
   padding: 0 clamp(1rem, 2.5vw, 2.5rem) 2.5rem;
 }
 
