@@ -1,0 +1,63 @@
+id: game-team-reward.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: game-team-reward
+locale: zh-TW
+status: published
+title: 遊戲戰隊的獎勵表單
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以遊戲戰隊獎勵為名索取帳號密碼的常見手法。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [線上遊戲, 戰隊聊天]
+  skills: [保護密碼, 找可信任的大人]
+  riskTypes: [假獎勵, 索取密碼]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.reward
+    sender: 戰隊小隊長
+    body: 恭喜你抽中限定造型！填 https://game-reward.example.com 和遊戲密碼，今天不填就會送給別人。
+    timestamp: '16:20'
+    direction: incoming
+clues:
+  - id: clue.password
+    label: 要求遊戲密碼
+    explanation: 遊戲獎勵不需要知道你的密碼，密碼只應由你自己保管。
+  - id: clue.pressure
+    label: 用限時獎勵催促
+    explanation: 催促會讓人沒時間問大人或檢查官方活動規則。
+choices:
+  - id: choice.trustworthy
+    label: 先填密碼，才能保住限定造型
+    classification: trustworthy
+    reasoning: 交出密碼會讓帳號失去控制，獎勵不能成為例外。
+    score: 0
+  - id: choice.fraud
+    label: 不填密碼，拿給大人看並從遊戲官方入口確認
+    classification: fraud
+    reasoning: 你辨識出索取密碼與限時催促，並選擇安全求助。
+    score: 100
+  - id: choice.verify
+    label: 先把密碼改成生日再填
+    classification: insufficient-evidence
+    reasoning: 改弱密碼仍然危險，正確做法是不提供密碼並查證活動。
+    score: 15
+recommendedActionIds: []
+debrief:
+  headline: 遊戲獎勵不需要密碼
+  explanation: 任何獎勵、造型或點數都不應要求登入密碼。遇到催促時，先停下來找可信任的大人。
+  safeActions:
+    - 不在陌生表單輸入遊戲密碼。
+    - 從遊戲內公告或官方網站查詢活動。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

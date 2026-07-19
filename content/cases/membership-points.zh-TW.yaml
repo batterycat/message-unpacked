@@ -1,0 +1,63 @@
+id: membership-points.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: membership-points
+locale: zh-TW
+status: published
+title: 會員點數即將失效
+channel: email
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以會員點數到期為名要求登入信用卡或銀行資料的釣魚手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, post-incident]
+  topic: 網路購物
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [會員制度, Email, 點數]
+  skills: [辨識到期催促, 從官方 App 查詢, 保護金融資料]
+  riskTypes: [假會員通知, 點數詐騙, 釣魚登入]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: false
+messages:
+  - id: message.points
+    sender: 會員服務中心
+    body: 你的 8,600 點將在今晚失效，請至 https://points.example.com 登入並綁定信用卡才能兌換現金回饋。
+    timestamp: '22:32'
+    direction: incoming
+clues:
+  - id: clue.expiry
+    label: 用大量點數與今晚失效催促
+    explanation: 到期壓力會讓人忽略查證，應從原本的會員 App 查看點數。
+  - id: clue.card
+    label: 兌點卻要求綁定信用卡
+    explanation: 不應在陌生頁面輸入付款資料；兌換規則應能在官方會員中心查到。
+choices:
+  - id: choice.trustworthy
+    label: 趕快綁卡把點數換回來
+    classification: trustworthy
+    reasoning: 陌生連結、限時失效與金融資料要求是高風險組合。
+    score: 0
+  - id: choice.fraud
+    label: 不點連結，從會員 App 查詢點數與通知
+    classification: fraud
+    reasoning: 你避開了假會員頁面的催促與金融資料蒐集。
+    score: 100
+  - id: choice.verify
+    label: 只登入看看點數，不輸入信用卡
+    classification: insufficient-evidence
+    reasoning: 不需要開啟陌生登入頁，應改由官方 App 或自行輸入已知網址查證。
+    score: 45
+recommendedActionIds: []
+debrief:
+  headline: 點數到期要回到會員中心查
+  explanation: 點數、紅利與回饋常被拿來製造損失感。不要從信件連結登入，使用原本的會員 App 或官方客服。
+  safeActions:
+    - 不在陌生頁面輸入密碼或信用卡資料。
+    - 若已輸入資料，立即更換密碼並聯絡發卡機構。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -1,0 +1,63 @@
+id: live-auction-payment.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: live-auction-payment
+locale: zh-TW
+status: published
+title: 直播拍賣的私下匯款
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整直播拍賣以限時得標為名要求離開平台私下匯款的手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 網路購物
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [直播購物, 拍賣, 私訊]
+  skills: [確認平台通知, 拒絕私下付款, 保存交易證據]
+  riskTypes: [假賣家, 私下匯款, 限時催促]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.auction
+    sender: 直播賣家
+    body: 你標到最後一件，平台付款太慢，請在十分鐘內匯到這個帳戶，我就保留商品給你。
+    timestamp: '20:08'
+    direction: incoming
+clues:
+  - id: clue.off-platform
+    label: 要求離開平台付款
+    explanation: 離開平台會失去訂單、退款與申訴紀錄，不能只靠賣家說法。
+  - id: clue.rush
+    label: 十分鐘內匯款
+    explanation: 限時催促會削弱你確認賣家和交易規則的機會。
+choices:
+  - id: choice.trustworthy
+    label: 先匯款，否則商品會被別人買走
+    classification: trustworthy
+    reasoning: 私下匯款沒有平台保障，不能只因稀有商品就跳過安全流程。
+    score: 0
+  - id: choice.fraud
+    label: 一定是騙子，立刻把賣家資料貼到公開社群
+    classification: fraud
+    reasoning: 內容高度可疑，但公開個資與指控前仍應保留證據並使用平台申訴。
+    score: 55
+  - id: choice.verify
+    label: 不私下匯款，回到平台確認訂單與付款期限
+    classification: insufficient-evidence
+    reasoning: 先留在平台並確認交易狀態，比照賣家私訊匯款安全。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 交易保障不能搬到私訊裡
+  explanation: 直播與拍賣的熱度會讓人急著付款。只使用平台訂單與付款流程，無法確認時就先不買。
+  safeActions:
+    - 不私下匯款或提供金融資料。
+    - 保存直播與私訊紀錄，必要時向平台回報。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -1,0 +1,63 @@
+id: skin-trade-confirmation.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: skin-trade-confirmation
+locale: zh-TW
+status: published
+title: 造型交易的確認碼
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整遊戲交易中以確認交易為名索取一次性驗證碼的手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [遊戲交易, 同儕聊天]
+  skills: [辨識驗證碼用途, 跨管道確認身分]
+  riskTypes: [驗證碼竊取, 假交易]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.trade
+    sender: 交易夥伴
+    body: 我已經把造型放進交易頁，請把手機收到的六位數確認碼貼給我，這樣系統才會完成交換。
+    timestamp: '19:36'
+    direction: incoming
+clues:
+  - id: clue.otp
+    label: 要求轉交手機確認碼
+    explanation: 一次性驗證碼是確認帳號操作用的秘密，不應轉交給聊天對象。
+  - id: clue.platform
+    label: 交易不在遊戲正式介面完成
+    explanation: 離開官方交易流程後，對方的說法無法當作系統證明。
+choices:
+  - id: choice.trustworthy
+    label: 把確認碼給對方，交易才不會失敗
+    classification: trustworthy
+    reasoning: 任何人要求驗證碼都不能直接照做，可能導致帳號被接管。
+    score: 0
+  - id: choice.fraud
+    label: 直接公開對方是騙子，叫大家封鎖他
+    classification: fraud
+    reasoning: 請求高度可疑，但在沒有更多證據前，先停止交易並查證比公開指控更妥當。
+    score: 55
+  - id: choice.verify
+    label: 不提供驗證碼，回到遊戲官方交易介面確認
+    classification: insufficient-evidence
+    reasoning: 先保護驗證碼，再使用獨立的官方介面確認交易是否存在。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 交易確認碼不是交易憑證
+  explanation: 驗證碼是帳號安全機制，不是可以交給交易對象的收據。看不到官方交易紀錄時，先停止並找大人協助。
+  safeActions:
+    - 不提供驗證碼或登入連結。
+    - 保留對話，從官方遊戲介面確認交易狀態。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

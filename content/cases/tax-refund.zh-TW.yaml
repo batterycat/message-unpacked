@@ -1,0 +1,63 @@
+id: tax-refund.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: tax-refund
+locale: zh-TW
+status: published
+title: 稅務退費的身分驗證
+channel: email
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫假冒稅務機關，以退費為名索取網銀與信用卡資料的手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topic: 家庭與生活
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [稅務, 家庭財務, Email]
+  skills: [辨識退費話術, 從官方入口查證, 保護金融資料]
+  riskTypes: [假稅務通知, 退費詐騙, 網銀竊取]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: true
+messages:
+  - id: message.tax
+    sender: 國家退稅服務
+    body: 你家今年有 6,480 元退稅，請於今日登入 https://tax-refund.example.com 填寫網銀帳號、密碼與驗證碼。
+    timestamp: '19:58'
+    direction: incoming
+clues:
+  - id: clue.refund
+    label: 退稅通知要求網銀密碼
+    explanation: 機關不會要求透過陌生郵件頁面交出網銀密碼與驗證碼。
+  - id: clue.urgency
+    label: 用今日截止催促
+    explanation: 退費金額與期限會讓人忽略核對官方通知與申請流程。
+choices:
+  - id: choice.trustworthy
+    label: 趕快填資料，退稅不能放棄
+    classification: trustworthy
+    reasoning: 網銀密碼與驗證碼不能交給陌生頁面，退稅也應從官方管道確認。
+    score: 0
+  - id: choice.fraud
+    label: 不點連結，請家人從政府官方入口或承辦窗口確認
+    classification: fraud
+    reasoning: 你辨識出冒用機關、退費誘因、陌生連結與金融資料要求。
+    score: 100
+  - id: choice.verify
+    label: 只填網銀帳號，不填密碼與驗證碼
+    classification: insufficient-evidence
+    reasoning: 不應在可疑頁面輸入任何網銀資料，應先走官方查詢流程。
+    score: 25
+recommendedActionIds: []
+debrief:
+  headline: 退稅要用官方查詢，不用信件登入
+  explanation: 退費是常見的釣魚誘因。請家人從政府官方入口或已知承辦窗口查證，不要使用信件連結。
+  safeActions:
+    - 不提供網銀密碼、驗證碼或信用卡資料。
+    - 若已輸入資料，立即告知家人並聯絡銀行處理。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

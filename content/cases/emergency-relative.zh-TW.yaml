@@ -1,0 +1,63 @@
+id: emergency-relative.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: emergency-relative
+locale: zh-TW
+status: published
+title: 親戚手機壞掉的求助
+channel: sms
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整冒充親友、以手機遺失或急難為名要求轉帳的常見手法。
+sources: []
+learning:
+  stages: [1-2]
+  dimensions: [prevention, response]
+  topic: 家庭與生活
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [家庭, 親友, 緊急求助]
+  skills: [找可信任的大人, 跨管道確認身分]
+  riskTypes: [親友冒用, 緊急匯款]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.relative
+    sender: 舅舅
+    body: 我的手機壞了，現在要付修理費，請你拿家人的手機幫我買 3,000 元點數卡，把卡號拍給我，不能先告訴媽媽。
+    timestamp: '放學後'
+    direction: incoming
+clues:
+  - id: clue.secret
+    label: 要求瞞著家人
+    explanation: 讓孩子不能找家人確認，是需要立刻停下來求助的訊號。
+  - id: clue.card
+    label: 要求購買並傳送點數卡
+    explanation: 點數卡序號等同現金，不應因親戚名字而交出去。
+choices:
+  - id: choice.trustworthy
+    label: 先買點數卡，舅舅真的很急
+    classification: trustworthy
+    reasoning: 不應瞞著家人購買或傳送點數卡，必須先確認本人。
+    score: 0
+  - id: choice.fraud
+    label: 立刻罵舅舅騙人，自己處理這件事
+    classification: fraud
+    reasoning: 情況可疑但孩子不需要自己判定，應先找家人協助確認。
+    score: 45
+  - id: choice.verify
+    label: 不買點數卡，先拿給家人打電話確認
+    classification: insufficient-evidence
+    reasoning: 保護金錢並找可信任的大人透過其他管道確認，是最安全的下一步。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 親戚求助也要讓家人知道
+  explanation: 低年級不需要自己處理金錢或秘密要求。遇到急難訊息，先把手機拿給家人或老師。
+  safeActions:
+    - 不購買、不拍攝、不傳送點數卡序號。
+    - 讓家人用已知電話或當面方式確認親戚是否安全。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -1,0 +1,63 @@
+id: influencer-giveaway.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: influencer-giveaway
+locale: zh-TW
+status: published
+title: 網紅抽獎的私訊通知
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫假冒網紅或品牌帳號，以中獎與手續費誘導私訊付款的手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response]
+  topic: 社群與交友
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [社群平台, 抽獎, 私訊]
+  skills: [辨認付款要求, 從官方帳號確認活動]
+  riskTypes: [假抽獎, 手續費詐騙, 帳號冒用]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.giveaway
+    sender: 粉絲活動小編
+    body: 恭喜你抽中平板！請先匯 200 元運費到指定帳戶，再把收據和身分證照片傳來領獎。
+    timestamp: '20:30'
+    direction: incoming
+clues:
+  - id: clue.fee
+    label: 中獎前先匯運費
+    explanation: 先付款才能領獎是常見的假抽獎手法，應從官方公開活動頁核對。
+  - id: clue.identity
+    label: 要求身分證照片
+    explanation: 抽獎私訊不應在來源未確認時要求完整身分證影像。
+choices:
+  - id: choice.trustworthy
+    label: 先匯款，平板價值比較高
+    classification: trustworthy
+    reasoning: 中獎與付款都未經官方確認，匯款後可能無法追回。
+    score: 0
+  - id: choice.fraud
+    label: 高度疑似假抽獎，不付款也不傳證件
+    classification: fraud
+    reasoning: 你辨識出先付款、索取證件與私訊領獎的高風險組合。
+    score: 100
+  - id: choice.verify
+    label: 先傳證件但不匯款，看看對方會不會回覆
+    classification: insufficient-evidence
+    reasoning: 身分證外流本身就有風險，應改從官方公開帳號確認。
+    score: 20
+recommendedActionIds: []
+debrief:
+  headline: 抽獎不應先收費和收證件
+  explanation: 中獎喜悅會讓人忽略資料與付款風險。請從官方公開活動頁或既有客服確認，避免私訊處理。
+  safeActions:
+    - 不先支付運費或手續費。
+    - 不傳身分證照片，保留私訊供大人協助判斷。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

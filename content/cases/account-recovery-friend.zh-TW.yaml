@@ -1,0 +1,63 @@
+id: account-recovery-friend.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: account-recovery-friend
+locale: zh-TW
+status: published
+title: 朋友要借用你的手機找回帳號
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以熟人名義借用手機、攔截帳號復原碼的手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 社群與交友
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [社群平台, 帳號復原, 同儕互動]
+  skills: [保護驗證碼, 跨管道確認身分]
+  riskTypes: [熟人冒用, 帳號復原碼竊取]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.recovery
+    sender: 阿凱
+    body: 我的帳號登不進去，你手機會收到一組復原碼，截圖傳給我就好，我現在不能接電話。
+    timestamp: '18:55'
+    direction: incoming
+clues:
+  - id: clue.code
+    label: 復原碼會送到你的手機
+    explanation: 收到的碼通常是你自己帳號或電話的安全驗證，不能交給別人。
+  - id: clue.no-call
+    label: 阻止使用其他方式確認
+    explanation: 對方拒絕電話或當面確認，增加冒用身分的可能性。
+choices:
+  - id: choice.trustworthy
+    label: 朋友急著找回帳號，截圖給他
+    classification: trustworthy
+    reasoning: 復原碼是帳號秘密，轉交可能讓對方取得你的帳號。
+    score: 0
+  - id: choice.fraud
+    label: 不提供復原碼，改用電話或當面確認本人
+    classification: fraud
+    reasoning: 你保護了復原碼，也用獨立管道確認對方是否真的是朋友。
+    score: 100
+  - id: choice.verify
+    label: 只傳復原碼最後兩碼試試看
+    classification: insufficient-evidence
+    reasoning: 不應以部分分享測試對方，任何復原碼都不該轉交。
+    score: 25
+recommendedActionIds: []
+debrief:
+  headline: 復原碼只給自己的帳號使用
+  explanation: 朋友的帳號問題不能透過你的手機解決。收到不明驗證碼時，先不要回覆或截圖，改用其他管道確認。
+  safeActions:
+    - 不轉交任何驗證碼、復原碼或登入通知。
+    - 若收到不明驗證碼，檢查自己的帳號安全設定。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

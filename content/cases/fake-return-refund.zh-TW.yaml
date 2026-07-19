@@ -1,0 +1,63 @@
+id: fake-return-refund.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: fake-return-refund
+locale: zh-TW
+status: published
+title: 退款客服的螢幕分享要求
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫冒充購物平台客服、以退款為名要求螢幕分享與網銀操作的手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, post-incident]
+  topic: 網路購物
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [網路購物, 退款, 客服]
+  skills: [辨識遠端控制, 保護金融資料, 保存證據]
+  riskTypes: [假客服, 退款詐騙, 遠端控制]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: true
+messages:
+  - id: message.refund
+    sender: 交易退款專員
+    body: 你的訂單重複扣款，請加入客服視訊並分享螢幕，我們會一步步操作網銀完成退款，逾時無法處理。
+    timestamp: '21:10'
+    direction: incoming
+clues:
+  - id: clue.screen
+    label: 退款要求分享螢幕與網銀
+    explanation: 退款不需要客服看到密碼、簡訊碼或完整網銀畫面。
+  - id: clue.deadline
+    label: 用逾時無法退款催促
+    explanation: 時間壓力會讓人忽略從訂單與官方客服重新核對。
+choices:
+  - id: choice.trustworthy
+    label: 按客服指示分享螢幕，才能拿回錢
+    classification: trustworthy
+    reasoning: 分享網銀畫面會暴露金融資料，不能用退款理由合理化。
+    score: 0
+  - id: choice.fraud
+    label: 停止分享，從購物平台訂單或官方客服確認
+    classification: fraud
+    reasoning: 你辨識出假客服常用的螢幕分享、網銀操作與限時話術。
+    score: 100
+  - id: choice.verify
+    label: 只分享訂單頁，不分享網銀
+    classification: insufficient-evidence
+    reasoning: 仍不應跟著陌生客服的視訊流程，應先從原平台確認退款狀態。
+    score: 45
+recommendedActionIds: []
+debrief:
+  headline: 退款不需要客服接管你的畫面
+  explanation: 真正退款會依平台既有流程處理，不會要求遠端看網銀或提供驗證碼。若已操作金融帳戶，立即告知家人與銀行。
+  safeActions:
+    - 不分享螢幕、不開遠端控制、不提供網銀密碼。
+    - 保留對話與訂單紀錄，從平台客服中心回報。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

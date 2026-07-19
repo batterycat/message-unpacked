@@ -1,0 +1,63 @@
+id: scholarship-investment.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: scholarship-investment
+locale: zh-TW
+status: published
+title: 獎學金名額的投資方案
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以獎學金或學生福利名義要求加入投資群組與先付款的手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response, ethics]
+  topic: 投資與廣告
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [學生福利, 投資群組, 家庭]
+  skills: [辨認名義冒用, 拒絕先付款, 找可信任的大人]
+  riskTypes: [假獎學金, 投資誘導, 預付費用]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.scholarship-invest
+    sender: 學生財富培訓中心
+    body: 獎學金名額有限，先匯 500 元加入投資訓練，完成一週任務就能領回 5,000 元學習補助。
+    timestamp: '17:52'
+    direction: incoming
+clues:
+  - id: clue.deposit
+    label: 獎學金要先匯款
+    explanation: 正常獎助不會用交費才能領取的方式處理。
+  - id: clue.return
+    label: 承諾短期高額補助
+    explanation: 高額回饋與任務常是誘導學生入金的話術。
+choices:
+  - id: choice.trustworthy
+    label: 先請家人匯 500 元，補助很值得
+    classification: trustworthy
+    reasoning: 先付款與不合理回饋是重大警訊，不能因為叫獎學金就相信。
+    score: 0
+  - id: choice.fraud
+    label: 不匯款，從學校或正式公告確認獎學金
+    classification: fraud
+    reasoning: 你辨識出假獎學金冒用學生福利、要求入金與承諾高額回饋。
+    score: 100
+  - id: choice.verify
+    label: 先加入群組看其他同學的心得
+    classification: insufficient-evidence
+    reasoning: 群組心得可能被操弄，不能取代學校或正式主辦方的確認。
+    score: 35
+recommendedActionIds: []
+debrief:
+  headline: 學生福利要從學校與正式公告確認
+  explanation: 使用獎學金、補助等名稱不代表來源可信。看到先付款或高額回饋時，先找家人、老師或學校窗口。
+  safeActions:
+    - 不匯款、不加入要求投資的陌生群組。
+    - 從學校公告與正式承辦窗口確認資格與申請方式。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

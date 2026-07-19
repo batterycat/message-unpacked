@@ -1,0 +1,63 @@
+id: parent-stock-group.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: parent-stock-group
+locale: zh-TW
+status: published
+title: 家人被加入的股票群組
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整假冒投資老師、用群組見證與飆股訊息建立信任的手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response, ethics]
+  topic: 投資與廣告
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [家庭, 股票群組, 聊天訊息]
+  skills: [檢查群組假見證, 找可信任的大人, 拒絕私下投資]
+  riskTypes: [假投資老師, 群組操弄, 名額催促]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.stock
+    sender: 投資研究老師
+    body: 你家長已被選入內部群組，明天這支股票一定上漲。請家長回覆身分證後四碼，才能保留名額。
+    timestamp: '20:05'
+    direction: incoming
+clues:
+  - id: clue.guarantee
+    label: 宣稱明天一定上漲
+    explanation: 沒有投資能保證結果，確定語氣不是證據。
+  - id: clue.identity
+    label: 要求身分證後四碼保留名額
+    explanation: 尚未核對群組來源前，不要替家人提供身分資料。
+choices:
+  - id: choice.trustworthy
+    label: 先把家人的身分證後四碼傳過去
+    classification: trustworthy
+    reasoning: 不應替家人提供個資，也不能用保證上漲取代查證。
+    score: 0
+  - id: choice.fraud
+    label: 一定是騙子，直接把群組名稱公布
+    classification: fraud
+    reasoning: 訊息高度可疑，但仍應先保留證據並請家人確認，不要公開未證實資料。
+    score: 50
+  - id: choice.verify
+    label: 不提供資料，請家人從可信任的投資機構或官方資料查證
+    classification: insufficient-evidence
+    reasoning: 先保護個資，再用獨立且可靠的資訊確認投資建議。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 群組熱鬧不等於投資可靠
+  explanation: 假投資群組會用假帳號、獲利截圖和保證語氣製造信任。涉及家人財務時，先停下來共同查證。
+  safeActions:
+    - 不替家人提供身分資料或匯款。
+    - 使用主管機關與合法金融機構的公開資訊查核。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

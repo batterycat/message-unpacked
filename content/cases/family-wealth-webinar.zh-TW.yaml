@@ -1,0 +1,63 @@
+id: family-wealth-webinar.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: family-wealth-webinar
+locale: zh-TW
+status: published
+title: 家庭理財講座的保證名額
+channel: email
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整免費理財講座以保證收益、限時入金吸引家庭成員的手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, ethics]
+  topic: 投資與廣告
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [家庭理財, Email, 投資講座]
+  skills: [辨認保證收益, 核對主辦方, 找可信任的大人]
+  riskTypes: [假理財講座, 保證收益, 私人入金]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.webinar
+    sender: 家庭財富學院
+    body: 免費線上講座只剩最後十席，參加者可保證年報酬 18%，請先匯 2,000 元取得專屬投資名額。
+    timestamp: '19:35'
+    direction: incoming
+clues:
+  - id: clue.guarantee
+    label: 保證年報酬 18%
+    explanation: 合法投資也有風險，固定報酬承諾不能當作可信證據。
+  - id: clue.deposit
+    label: 免費講座卻要求先匯款
+    explanation: 入金名額與講座資格不合理地綁在一起，應先查主辦方與服務內容。
+choices:
+  - id: choice.trustworthy
+    label: 先匯款搶到名額，保證收益很吸引人
+    classification: trustworthy
+    reasoning: 限量、保證收益與先付款是需要停止查證的組合。
+    score: 0
+  - id: choice.fraud
+    label: 直接轉寄給親友，提醒他們是詐騙
+    classification: fraud
+    reasoning: 內容高度可疑，但應先保留證據與查證，不要散播未確認指控。
+    score: 50
+  - id: choice.verify
+    label: 不匯款，先查主辦方、投資資格與正式公開資料
+    classification: insufficient-evidence
+    reasoning: 先保留金錢與判斷空間，用獨立資料核對講座與投資方案。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 理財講座不會保證收益
+  explanation: 免費講座、最後名額與高報酬會讓人急著付款。把內容拿給家人一起看，先查主辦方與合法資格。
+  safeActions:
+    - 不私下匯款或提供金融資料。
+    - 保留廣告與信件，必要時向 165 諮詢。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

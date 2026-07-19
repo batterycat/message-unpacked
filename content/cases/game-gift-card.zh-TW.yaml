@@ -1,0 +1,63 @@
+id: game-gift-card.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: game-gift-card
+locale: zh-TW
+status: published
+title: 遊戲點數卡的刮刮碼
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以免費點數為名要求拍攝或轉交儲值卡序號的常見手法。
+sources: []
+learning:
+  stages: [1-2]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [線上遊戲, 點數卡, 同儕互動]
+  skills: [保護兌換碼, 找可信任的大人]
+  riskTypes: [免費點數, 儲值卡竊取]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.card
+    sender: 遊戲好友
+    body: 我送你免費寶石！拍下家裡點數卡的刮刮碼傳給我，我幫你換成遊戲幣，不能讓別人知道。
+    timestamp: '放學後'
+    direction: incoming
+clues:
+  - id: clue.code
+    label: 要求拍下點數卡密碼
+    explanation: 儲值卡序號就像現金，不能拍照或傳給聊天對象。
+  - id: clue.secret
+    label: 要求對大人保密
+    explanation: 讓你不能找家人確認，是需要立刻停下來求助的訊號。
+choices:
+  - id: choice.trustworthy
+    label: 拍給他，這樣就能拿到免費遊戲幣
+    classification: trustworthy
+    reasoning: 點數卡序號可以被直接使用，不能因為是朋友就交出去。
+    score: 0
+  - id: choice.fraud
+    label: 不傳序號，立刻拿給家人或老師看
+    classification: fraud
+    reasoning: 你辨識出索取儲值碼與要求保密的危險線索。
+    score: 100
+  - id: choice.verify
+    label: 先只傳點數卡正面，不傳刮刮碼
+    classification: insufficient-evidence
+    reasoning: 不應繼續和對方交換卡片資訊，應停止並請大人協助。
+    score: 30
+recommendedActionIds: []
+debrief:
+  headline: 點數卡序號就是秘密
+  explanation: 不論對方說是好友、客服或贈品活動，都不要交出點數卡刮刮碼。遇到要求保密時，找可信任的大人一起看。
+  safeActions:
+    - 不拍攝或傳送儲值卡序號。
+    - 保留訊息並告訴家人、老師或其他可信任的大人。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

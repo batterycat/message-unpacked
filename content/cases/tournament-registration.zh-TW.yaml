@@ -1,0 +1,63 @@
+id: tournament-registration.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: tournament-registration
+locale: zh-TW
+status: published
+title: 電競賽事報名的登入頁
+channel: email
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以賽事報名或獎金資格引導玩家登入假網站的釣魚手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [電競, Email, 遊戲帳號]
+  skills: [獨立查證網址, 辨識急迫話術]
+  riskTypes: [假賽事, 釣魚登入]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.tournament
+    sender: 全國校園電競聯賽
+    body: 你的隊伍進入決賽，請在 30 分鐘內至 https://esports-final.example.com 登入遊戲帳號完成報到，逾時取消資格。
+    timestamp: '20:40'
+    direction: incoming
+clues:
+  - id: clue.deadline
+    label: 用取消資格製造壓力
+    explanation: 真正賽事通常會有可查詢的公告與多元通知，不會只靠陌生連結限時登入。
+  - id: clue.login
+    label: 賽事報到要求遊戲帳號登入
+    explanation: 報名活動與遊戲帳號應分開核對，不能從信件直接輸入密碼。
+choices:
+  - id: choice.trustworthy
+    label: 先登入，進決賽比帳號安全重要
+    classification: trustworthy
+    reasoning: 任何比賽資格都不能成為交出帳號的理由。
+    score: 0
+  - id: choice.fraud
+    label: 高度疑似釣魚，從賽事官方公告或主辦方確認
+    classification: fraud
+    reasoning: 陌生網址、限時威脅與要求登入形成完整的釣魚警訊。
+    score: 100
+  - id: choice.verify
+    label: 開啟網址但只輸入帳號名稱，不輸入密碼
+    classification: insufficient-evidence
+    reasoning: 沒有必要開啟可疑連結，應改走官方公告或已知聯絡管道。
+    score: 45
+recommendedActionIds: []
+debrief:
+  headline: 賽事資格要從主辦方公告確認
+  explanation: 獎金與資格會讓人急著登入。請自行找到主辦方網站或聯絡窗口，不要使用郵件裡的登入連結。
+  safeActions:
+    - 從官方公告確認隊伍與報到方式。
+    - 若已輸入密碼，立即更換密碼並啟用多重要素驗證。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

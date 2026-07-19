@@ -1,0 +1,63 @@
+id: crypto-course.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: crypto-course
+locale: zh-TW
+status: published
+title: 免費加密貨幣課程的入金禮
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以投資課程、保證獲利與入金禮誘導學生加入私人群組的手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response, ethics]
+  topic: 投資與廣告
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [社群廣告, 投資課程, 數位資產]
+  skills: [辨識保證獲利話術, 拒絕私下投資, 找可信任的大人]
+  riskTypes: [假投資, 入金禮, 群組操弄]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.crypto
+    sender: 財富成長導師
+    body: 學生也能學會投資！加入免費課程並先匯 1,000 元，就送等值代幣，保證一週翻倍。
+    timestamp: '19:20'
+    direction: incoming
+clues:
+  - id: clue.guarantee
+    label: 保證一週翻倍
+    explanation: 投資一定有風險，保證獲利通常是操弄與誘導入金的警訊。
+  - id: clue.deposit
+    label: 免費課程卻要求先匯款
+    explanation: 入金才能加入不是免費，應先和家人或老師討論，不要私下投資。
+choices:
+  - id: choice.trustworthy
+    label: 先匯 1,000 元，小額試試看
+    classification: trustworthy
+    reasoning: 小額與保證獲利不能證明投資安全，可能只是誘導加碼。
+    score: 0
+  - id: choice.fraud
+    label: 不加入、不匯款，和可信任的大人討論
+    classification: fraud
+    reasoning: 你辨識出保證收益與先入金的高風險投資話術。
+    score: 100
+  - id: choice.verify
+    label: 先加入群組看看其他人的獲利截圖
+    classification: insufficient-evidence
+    reasoning: 群組截圖可能被操弄，不能取代對平台與投資風險的查證。
+    score: 35
+recommendedActionIds: []
+debrief:
+  headline: 保證獲利不是投資證據
+  explanation: 詐騙投資常先用課程與小額禮物建立信任，再要求加碼。涉及金錢時先找大人與可信任資訊來源。
+  safeActions:
+    - 不私下匯款或下載陌生投資 App。
+    - 保留廣告與群組資訊，必要時請家人協助查證。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

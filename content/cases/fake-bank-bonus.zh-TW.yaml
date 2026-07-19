@@ -1,0 +1,63 @@
+id: fake-bank-bonus.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: fake-bank-bonus
+locale: zh-TW
+status: published
+title: 銀行紅利投資加碼
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫冒用銀行紅利或加碼活動、要求登入投資頁面的簡訊手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response, post-incident]
+  topic: 投資與廣告
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [銀行, 紅利活動, 投資廣告]
+  skills: [辨識名義冒用, 從官方 App 查詢, 保護金融資料]
+  riskTypes: [假銀行活動, 投資加碼, 釣魚登入]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: true
+messages:
+  - id: message.bonus
+    sender: 銀行紅利中心
+    body: 你的紅利可兌換投資加碼金，登入 https://bank-bonus.example.com 綁定帳戶，今天完成可獲 20% 額外收益。
+    timestamp: '18:22'
+    direction: incoming
+clues:
+  - id: clue.bonus
+    label: 紅利與投資收益混在一起
+    explanation: 紅利兌換不等於投資，應從官方帳戶確認活動規則。
+  - id: clue.login
+    label: 從簡訊連結綁定銀行帳戶
+    explanation: 不應由簡訊連結導向金融登入或帳戶綁定。
+choices:
+  - id: choice.trustworthy
+    label: 綁定帳戶拿 20% 收益，這是銀行活動
+    classification: trustworthy
+    reasoning: 陌生連結與收益承諾不能證明是銀行活動，金融資料應停止提供。
+    score: 0
+  - id: choice.fraud
+    label: 不點連結，從銀行 App 或卡片背面電話確認
+    classification: fraud
+    reasoning: 你辨識出銀行名義冒用、收益誘因與陌生登入入口。
+    score: 100
+  - id: choice.verify
+    label: 只輸入帳號後四碼測試活動
+    classification: insufficient-evidence
+    reasoning: 不應在可疑頁面輸入任何金融資訊，應改走官方入口。
+    score: 25
+recommendedActionIds: []
+debrief:
+  headline: 銀行紅利不會要求陌生投資登入
+  explanation: 假活動常把紅利、投資與加碼混合。請從銀行 App 或卡片背面聯絡方式確認，不使用簡訊連結。
+  safeActions:
+    - 不輸入網銀、卡號或驗證碼。
+    - 若已輸入資料，立即通知家人與銀行處理。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -1,0 +1,63 @@
+id: dm-friend-crisis.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: dm-friend-crisis
+locale: zh-TW
+status: published
+title: 朋友帳號傳來的緊急借款
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整熟人帳號遭冒用、以突發事故要求轉帳的常見手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 社群與交友
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [社群私訊, 同儕互動, 金錢請求]
+  skills: [跨管道確認身分, 拒絕緊急轉帳]
+  riskTypes: [熟人冒用, 緊急借款, 帳號遭盜]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.crisis
+    sender: 小芸
+    body: 我手機壞了現在急著付醫院費，可以先借我 3,000 元嗎？不要打電話，我很趕，轉到這個帳戶就好。
+    timestamp: '22:03'
+    direction: incoming
+clues:
+  - id: clue.no-call
+    label: 特別要求不要用電話確認
+    explanation: 阻止你使用獨立管道，是熟人冒用帳號時常見的手法。
+  - id: clue.emergency
+    label: 用醫院費與急迫性催促
+    explanation: 緊急故事可能是真的，也可能是操弄；安全做法是先確認本人。
+choices:
+  - id: choice.trustworthy
+    label: 朋友有急難，先轉帳再說
+    classification: trustworthy
+    reasoning: 金錢轉帳不可逆，不能只靠私訊與故事確認身分。
+    score: 0
+  - id: choice.fraud
+    label: 一定是帳號被盜，立刻公開提醒所有人
+    classification: fraud
+    reasoning: 情況高度可疑，但仍應先私下用其他方式確認，避免錯誤指控。
+    score: 55
+  - id: choice.verify
+    label: 不轉帳，改用電話或找共同朋友確認本人
+    classification: insufficient-evidence
+    reasoning: 先保護金錢，再透過獨立管道確認請求是否真實。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 熟人私訊也要換管道確認
+  explanation: 帳號名稱與頭像不能證明本人。遇到急借款，先拒絕私訊轉帳，改用電話、當面或共同朋友確認。
+  safeActions:
+    - 不因急迫故事立刻轉帳。
+    - 若涉及可能的人身危險，請找家人或可信任大人協助。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

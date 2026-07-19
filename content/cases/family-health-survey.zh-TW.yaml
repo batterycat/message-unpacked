@@ -1,0 +1,63 @@
+id: family-health-survey.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: family-health-survey
+locale: zh-TW
+status: published
+title: 家人健康問卷的禮物卡
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以健康問卷與小禮物為名索取身分與付款資料的手法。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention, response]
+  topic: 家庭與生活
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [家庭, 健康問卷, 簡訊]
+  skills: [保護家人個資, 找可信任的大人]
+  riskTypes: [假問卷, 個資蒐集, 禮物卡詐騙]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.health
+    sender: 健康調查小組
+    body: 幫家人填三題健康問卷就送 500 元禮物卡，請輸入住址、身分證字號和信用卡號到 https://health-survey.example.com
+    timestamp: '16:44'
+    direction: incoming
+clues:
+  - id: clue.data
+    label: 問卷要求太多敏感資料
+    explanation: 小問卷不應要求完整身分證字號與信用卡號，尤其來源尚未確認。
+  - id: clue.reward
+    label: 用禮物卡換取填答
+    explanation: 禮物與高額回饋會讓人忽略資料用途與機構身分。
+choices:
+  - id: choice.trustworthy
+    label: 先幫家人填，拿到禮物卡再說
+    classification: trustworthy
+    reasoning: 個資與付款資料不能用禮物交換，應先確認調查來源。
+    score: 0
+  - id: choice.fraud
+    label: 不填寫，請家人一起確認並刪除訊息
+    classification: fraud
+    reasoning: 你辨識出高敏感資料、陌生問卷與禮物誘因的風險。
+    score: 100
+  - id: choice.verify
+    label: 只填身分證字號，不填信用卡
+    classification: insufficient-evidence
+    reasoning: 仍不應在陌生問卷輸入個資，應先核對調查單位。
+    score: 20
+recommendedActionIds: []
+debrief:
+  headline: 小禮物不值得交換家人資料
+  explanation: 健康與家庭資訊可能很敏感。遇到陌生問卷，先讓家人知道，不要自己代填或交出資料。
+  safeActions:
+    - 不輸入身分證字號、信用卡號或住址。
+    - 將訊息拿給家人或老師一起判斷。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

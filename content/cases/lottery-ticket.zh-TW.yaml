@@ -1,0 +1,63 @@
+id: lottery-ticket.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: lottery-ticket
+locale: zh-TW
+status: published
+title: 彩券中獎的投資顧問
+channel: email
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以中獎或會員回饋為名收取稅金、保證金的投資型詐騙話術。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention, response]
+  topic: 投資與廣告
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [家庭, 中獎通知, 金錢請求]
+  skills: [辨識先付款要求, 找可信任的大人]
+  riskTypes: [假中獎, 保證金詐騙]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.lottery
+    sender: 國際彩券投資顧問
+    body: 恭喜你家抽中 50,000 元投資回饋，只要先購買 2,000 元點數卡支付稅金就能領取。
+    timestamp: '17:36'
+    direction: incoming
+clues:
+  - id: clue.no-entry
+    label: 沒有參加卻收到中獎通知
+    explanation: 沒有參加活動就不會因訊息被保證中獎，先告訴家人即可。
+  - id: clue.payment
+    label: 領獎前要求點數卡
+    explanation: 正常獎項不會用點數卡支付稅金或保證金。
+choices:
+  - id: choice.trustworthy
+    label: 幫家人買點數卡，這是難得的中獎
+    classification: trustworthy
+    reasoning: 未參加活動又要求先付款，是典型假中獎訊號。
+    score: 0
+  - id: choice.fraud
+    label: 不付款，拿給家人或老師一起看
+    classification: fraud
+    reasoning: 你辨識出未參加卻中獎與點數卡付款的風險。
+    score: 100
+  - id: choice.verify
+    label: 先回信問要不要改用現金付款
+    classification: insufficient-evidence
+    reasoning: 不應繼續和可疑寄件者往來，應停止並請大人協助。
+    score: 20
+recommendedActionIds: []
+debrief:
+  headline: 沒參加就中獎，先停下來找大人
+  explanation: 假中獎會用大獎讓人忽略先付款的風險。孩子遇到金錢要求，不需要自己回覆或處理。
+  safeActions:
+    - 不購買點數卡、不回傳卡號。
+    - 把信件拿給家人、老師或可信任的大人。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

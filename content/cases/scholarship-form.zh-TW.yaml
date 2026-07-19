@@ -1,0 +1,63 @@
+id: scholarship-form.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: scholarship-form
+locale: zh-TW
+status: published
+title: 獎學金申請的補件通知
+channel: email
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整冒用學校或基金會名義要求補件、收取費用的常見手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, ethics]
+  topic: 校園與學習
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [獎學金, Email, 申請文件]
+  skills: [核對申請單位, 辨識先付款要求]
+  riskTypes: [假獎學金, 預付費用]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: true
+messages:
+  - id: message.scholarship
+    sender: 青年學習基金會
+    body: 你的獎學金已通過初審，請在今天 23:00 前繳交 300 元保證金並上傳身分證正反面，才可完成撥款。
+    timestamp: '21:02'
+    direction: incoming
+clues:
+  - id: clue.deposit
+    label: 先繳保證金才能領獎學金
+    explanation: 先付款是高風險要求，應先核對公開的申請規則與聯絡方式。
+  - id: clue.identity
+    label: 要求上傳完整身分證
+    explanation: 在來源與必要性未確認前，不要傳送高敏感個資。
+choices:
+  - id: choice.trustworthy
+    label: 先付 300 元，獎學金比較重要
+    classification: trustworthy
+    reasoning: 付款與身分證要求都應先獨立查證，不能用「已通過」取代核對。
+    score: 0
+  - id: choice.fraud
+    label: 一定是詐騙，立刻把信轉寄給同學警告
+    classification: fraud
+    reasoning: 內容高度可疑，但仍應先確認來源並避免散播未證實的指控。
+    score: 55
+  - id: choice.verify
+    label: 不付款、不上傳證件，從官方公告或學校窗口確認
+    classification: insufficient-evidence
+    reasoning: 先保護個資與金錢，再用獨立管道確認申請單位與補件規則。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 獎學金也不能跳過申請規則
+  explanation: 好消息與期限會降低警覺。遇到補件、保證金或身分證要求，請從官方公告與學校窗口確認，不要沿用郵件回覆。
+  safeActions:
+    - 保留信件與申請紀錄，不先付款或傳證件。
+    - 請學校承辦或家人一起核對申請單位。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

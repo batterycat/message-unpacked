@@ -1,0 +1,63 @@
+id: bank-security-call.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: bank-security-call
+locale: zh-TW
+status: published
+title: 銀行安全中心的電話轉接
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫冒充銀行安全中心、以解除盜刷為名要求轉接或提供驗證碼的手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, post-incident]
+  topic: 家庭與生活
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [銀行, 家庭財務, 簡訊]
+  skills: [辨識假客服, 保護驗證碼, 使用官方電話]
+  riskTypes: [假銀行客服, 盜刷恐嚇, OTP竊取]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: true
+messages:
+  - id: message.bank
+    sender: 銀行安全中心
+    body: 偵測到高額刷卡，請立即撥打 https://bank-alert.example.com 顯示的客服號碼，並依指示提供驗證碼取消交易。
+    timestamp: '23:01'
+    direction: incoming
+clues:
+  - id: clue.callback
+    label: 要你撥打簡訊裡的電話
+    explanation: 可疑通知不能用自己的聯絡方式驗證自己，應從卡片背面或官方 App 找電話。
+  - id: clue.otp
+    label: 要求提供驗證碼取消交易
+    explanation: 銀行不會要求你把一次性驗證碼告訴電話中的陌生人。
+choices:
+  - id: choice.trustworthy
+    label: 立刻照簡訊電話操作，才能阻止盜刷
+    classification: trustworthy
+    reasoning: 盜刷恐嚇與轉交驗證碼是典型假客服流程，不能直接照做。
+    score: 0
+  - id: choice.fraud
+    label: 不撥簡訊電話，從卡片背面或官方 App 聯絡銀行
+    classification: fraud
+    reasoning: 你保留了查證獨立性，也拒絕交出驗證碼。
+    score: 100
+  - id: choice.verify
+    label: 先告訴對方驗證碼前兩碼，確認他是不是銀行
+    classification: insufficient-evidence
+    reasoning: 任何部分驗證碼都不應提供，應改用官方聯絡方式。
+    score: 20
+recommendedActionIds: []
+debrief:
+  headline: 銀行通知要用另一個官方管道回撥
+  explanation: 真正的交易異常可以由銀行系統處理，不會要求你把驗證碼交給簡訊或電話中的人。
+  safeActions:
+    - 不撥打簡訊內的電話、不提供驗證碼。
+    - 從卡片背面、官方 App 或銀行官網找聯絡方式。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

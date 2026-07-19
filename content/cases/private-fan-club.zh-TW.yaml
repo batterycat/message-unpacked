@@ -1,0 +1,63 @@
+id: private-fan-club.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: private-fan-club
+locale: zh-TW
+status: published
+title: 粉絲社團的限量會員資格
+channel: email
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以偶像或創作者粉絲福利引導加入私人群組並付款的手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, ethics]
+  topic: 社群與交友
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [粉絲社群, Email, 會員活動]
+  skills: [核對官方帳號, 拒絕私下付款, 辨認限量話術]
+  riskTypes: [假粉絲社團, 私下付款, 帳號冒用]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: false
+messages:
+  - id: message.fan
+    sender: 官方粉絲福利小組
+    body: 你被選為限量會員，請加入 https://fan-club.example.com 並支付 1,280 元會員保證金，名額只剩三個。
+    timestamp: '19:42'
+    direction: incoming
+clues:
+  - id: clue.limited
+    label: 用只剩三個名額催促
+    explanation: 限量話術會讓人跳過核對官方帳號與活動規則。
+  - id: clue.private-payment
+    label: 要求私人網站與保證金
+    explanation: 粉絲活動應能從創作者既有公開管道查到，不應只靠陌生信件付款。
+choices:
+  - id: choice.trustworthy
+    label: 先付款，限量資格不能錯過
+    classification: trustworthy
+    reasoning: 付款與會員資格尚未從官方公開管道確認，不能只看信件內容。
+    score: 0
+  - id: choice.fraud
+    label: 不付款，從創作者已知的官方帳號確認活動
+    classification: fraud
+    reasoning: 你辨識出私人付款、陌生入口與限量催促的風險。
+    score: 100
+  - id: choice.verify
+    label: 先加入群組看看，不先付款
+    classification: insufficient-evidence
+    reasoning: 加入陌生社群仍可能暴露個資或被持續操弄，應優先查證來源。
+    score: 40
+recommendedActionIds: []
+debrief:
+  headline: 粉絲福利要從公開官方管道確認
+  explanation: 冒用創作者的訊息常用稀缺名額與專屬感催促。不要從私訊連結付款，先對照官方公開公告。
+  safeActions:
+    - 不支付會員保證金或提供金融資料。
+    - 使用已知官方帳號的公開聯絡方式查證。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

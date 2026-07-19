@@ -1,0 +1,63 @@
+id: streaming-renewal.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: streaming-renewal
+locale: zh-TW
+status: published
+title: 影音訂閱即將續費
+channel: email
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整假冒影音服務通知自動續費、引導輸入付款資料的手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response]
+  topic: 家庭與生活
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [家庭訂閱, Email, 影音服務]
+  skills: [從帳號內查訂閱, 不沿用郵件連結]
+  riskTypes: [假續費通知, 釣魚付款頁]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.streaming
+    sender: 影音會員中心
+    body: 你的家庭方案明天將自動續費 399 元，如需取消請登入 https://streaming.example.com 並重新輸入卡號。
+    timestamp: '19:22'
+    direction: incoming
+clues:
+  - id: clue.card
+    label: 取消訂閱卻要求重新輸入卡號
+    explanation: 訂閱狀態應能在原本的 App 或帳戶設定查看，不必從郵件連結輸入卡號。
+  - id: clue.deadline
+    label: 用明天扣款催促
+    explanation: 時間壓力會讓人忽略獨立查證帳戶與付款紀錄。
+choices:
+  - id: choice.trustworthy
+    label: 立刻輸入卡號取消，避免被扣款
+    classification: trustworthy
+    reasoning: 陌生連結與付款資料要求仍需先查證，不能只看扣款金額。
+    score: 0
+  - id: choice.fraud
+    label: 一定是詐騙，叫家人取消所有訂閱
+    classification: fraud
+    reasoning: 訊息可疑但尚未確認，應先查帳戶，不必把所有訂閱都取消。
+    score: 50
+  - id: choice.verify
+    label: 請家人從影音 App 的帳戶設定查詢續費
+    classification: insufficient-evidence
+    reasoning: 先從原本的帳戶入口確認訂閱狀態，不沿用郵件連結。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 訂閱狀態要在帳戶裡查
+  explanation: 續費提醒可能是真的，也可能是釣魚。最安全的查證方式是開啟原本的 App 或自行輸入已知網址。
+  safeActions:
+    - 不從郵件連結輸入信用卡資料。
+    - 請家人一起確認訂閱與付款紀錄。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

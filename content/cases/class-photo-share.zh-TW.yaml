@@ -1,0 +1,63 @@
+id: class-photo-share.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: class-photo-share
+locale: zh-TW
+status: published
+title: 班級照片的分享連結
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: fictional
+  note: 為低年級練習在分享照片前確認對象與隱私而設計。
+sources: []
+learning:
+  stages: [1-2]
+  dimensions: [prevention, ethics]
+  topic: 社群與交友
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [班級活動, 照片分享, 家庭]
+  skills: [確認分享對象, 找可信任的大人]
+  riskTypes: [陌生分享連結, 個人影像外流]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.photo
+    sender: 活動攝影小幫手
+    body: 今天的班級照片都在 https://class-photo.example.com 請輸入你的姓名和家長手機才能下載喔！
+    timestamp: '18:20'
+    direction: incoming
+clues:
+  - id: clue.data
+    label: 下載照片卻要求家長手機
+    explanation: 分享照片不必然需要個資，先讓家人或老師確認分享對象。
+  - id: clue.unknown
+    label: 不確定對方是不是班級成員
+    explanation: 熟悉的活動名稱不代表連結一定安全，不能自行輸入資料。
+choices:
+  - id: choice.trustworthy
+    label: 填寫姓名和手機，才可以看到照片
+    classification: trustworthy
+    reasoning: 尚未確認分享者與資料用途，不應先交出個資。
+    score: 0
+  - id: choice.fraud
+    label: 直接說是壞人，叫同學不要參加活動
+    classification: fraud
+    reasoning: 訊息可疑但證據不足，應先確認而不是公開指責。
+    score: 45
+  - id: choice.verify
+    label: 不輸入資料，請家人或老師確認照片分享方式
+    classification: insufficient-evidence
+    reasoning: 先保護個資，再由可信任的大人確認連結與分享對象。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 照片分享也要先確認誰看得到
+  explanation: 照片可能包含自己的臉、同學或校服。遇到陌生連結和個資要求，先交給家人或老師確認。
+  safeActions:
+    - 不自行輸入姓名與家長電話。
+    - 確認分享對象與保存方式後再下載。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

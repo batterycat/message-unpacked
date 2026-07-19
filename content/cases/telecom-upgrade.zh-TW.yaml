@@ -1,0 +1,63 @@
+id: telecom-upgrade.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: telecom-upgrade
+locale: zh-TW
+status: published
+title: 電信 5G 升級的驗證簡訊
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫冒充電信客服、以升級方案要求信用卡與驗證碼的簡訊手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response, post-incident]
+  topic: 家庭與生活
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [電信, 家庭帳單, 簡訊]
+  skills: [辨識優惠話術, 保護驗證碼, 從官方 App 查詢]
+  riskTypes: [假電信客服, 方案升級, OTP竊取]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: true
+messages:
+  - id: message.telecom
+    sender: 5G 升級服務
+    body: 恭喜獲得免費升級，請至 https://mobile-upgrade.example.com 輸入信用卡並回傳驗證碼，今晚前完成才保留優惠。
+    timestamp: '18:40'
+    direction: incoming
+clues:
+  - id: clue.otp
+    label: 要求回傳簡訊驗證碼
+    explanation: 電信客服不應要求你把一次性驗證碼轉交，驗證碼是帳號秘密。
+  - id: clue.offer
+    label: 免費升級卻要求信用卡
+    explanation: 優惠與付款資料不相稱，應從電信 App 或帳單確認方案。
+choices:
+  - id: choice.trustworthy
+    label: 回傳驗證碼，免費升級很划算
+    classification: trustworthy
+    reasoning: 驗證碼與信用卡資料不能交給陌生簡訊來源。
+    score: 0
+  - id: choice.fraud
+    label: 不點連結，請家人從電信官方 App 或客服確認
+    classification: fraud
+    reasoning: 你辨識出假客服利用優惠、限時與 OTP 要求取得帳號資料。
+    score: 100
+  - id: choice.verify
+    label: 只輸入信用卡前四碼看看
+    classification: insufficient-evidence
+    reasoning: 不應在未確認的頁面輸入任何付款資料，應走官方入口。
+    score: 30
+recommendedActionIds: []
+debrief:
+  headline: 優惠升級也不能交出驗證碼
+  explanation: 電信方案應能在帳戶或官方客服查到。若已回傳驗證碼或輸入卡號，請立即告知家人並聯絡電信與銀行。
+  safeActions:
+    - 不提供 OTP 或信用卡資料。
+    - 從電信官方 App、帳單或已知客服查證。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

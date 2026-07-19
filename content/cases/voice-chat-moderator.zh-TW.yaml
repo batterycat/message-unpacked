@@ -1,0 +1,63 @@
+id: voice-chat-moderator.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: voice-chat-moderator
+locale: zh-TW
+status: published
+title: 語音房管理員的封鎖警告
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以假冒遊戲管理員要求登入或交出驗證碼的常見手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [語音聊天室, 遊戲社群, 帳號安全]
+  skills: [辨識急迫話術, 保護驗證碼, 使用官方申訴管道]
+  riskTypes: [假管理員, 封鎖威脅, 驗證碼竊取]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.moderator
+    sender: 房間管理員
+    body: 你被檢舉違規，五分鐘內把手機收到的驗證碼回傳給我才能解除封鎖，否則帳號永久停權。
+    timestamp: '21:45'
+    direction: incoming
+clues:
+  - id: clue.threat
+    label: 用永久停權威脅
+    explanation: 威脅與極短期限會阻止你從官方規則與客服管道核對。
+  - id: clue.code
+    label: 要求把驗證碼回傳
+    explanation: 官方人員不需要知道你的登入驗證碼，任何人都不應要求你轉交。
+choices:
+  - id: choice.trustworthy
+    label: 把驗證碼傳給管理員，先保住帳號
+    classification: trustworthy
+    reasoning: 驗證碼不能交給任何人，威脅也不是正當的帳號處理流程。
+    score: 0
+  - id: choice.fraud
+    label: 不提供驗證碼，改從遊戲官方支援頁查詢申訴
+    classification: fraud
+    reasoning: 你避開了假管理員常用的威脅與驗證碼要求，改走獨立官方管道。
+    score: 100
+  - id: choice.verify
+    label: 先回覆自己的生日，看看對方是不是官方
+    classification: insufficient-evidence
+    reasoning: 不需要提供任何個資；應直接停止對話並使用官方支援入口。
+    score: 35
+recommendedActionIds: []
+debrief:
+  headline: 管理員也不需要你的驗證碼
+  explanation: 真正的違規處理可以在平台內查看規則與申訴，不會要求你私下交出登入秘密。
+  safeActions:
+    - 不回傳驗證碼或其他個資。
+    - 截圖保存威脅內容，從遊戲官方支援功能申訴。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

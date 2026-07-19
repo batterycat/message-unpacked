@@ -1,0 +1,63 @@
+id: secondhand-payment.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: secondhand-payment
+locale: zh-TW
+status: published
+title: 二手交易的假客服付款頁
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫假買家或假平台客服將交易導向外部付款頁的常見手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 網路購物
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [二手交易, 聊天平台, 平台客服]
+  skills: [留在原平台交易, 辨識假客服, 保護金融資料]
+  riskTypes: [假客服, 交易轉移, 釣魚連結]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.secondhand
+    sender: 買家服務專員
+    body: 買家付款失敗，請賣家到 https://market-help.example.com 重新綁定銀行帳戶，完成後才能收到款項。
+    timestamp: '18:16'
+    direction: incoming
+clues:
+  - id: clue.external
+    label: 平台客服把你帶到外部網站
+    explanation: 正常交易與客服通知應能在原平台查看，不需要從私訊連結重新綁定銀行。
+  - id: clue.seller
+    label: 要求賣家提供銀行資料
+    explanation: 收款不應透過陌生客服頁輸入金融資料或驗證碼。
+choices:
+  - id: choice.trustworthy
+    label: 重新綁定銀行帳戶，才能完成交易
+    classification: trustworthy
+    reasoning: 外部付款頁與金融資料要求會讓帳戶暴露在高風險中。
+    score: 0
+  - id: choice.fraud
+    label: 停止交易，從原平台客服中心確認付款狀態
+    classification: fraud
+    reasoning: 你辨識出假客服將交易移出原平台並索取金融資料。
+    score: 100
+  - id: choice.verify
+    label: 只輸入銀行名稱，不輸入帳號
+    classification: insufficient-evidence
+    reasoning: 不應在未確認的頁面輸入任何金融資訊，應先回到原平台。
+    score: 25
+recommendedActionIds: []
+debrief:
+  headline: 交易問題留在原平台處理
+  explanation: 假買家與假客服常用「收不到款」催促賣家離開平台。真正的交易狀態應能在原平台訂單頁確認。
+  safeActions:
+    - 不從聊天連結輸入銀行資料或驗證碼。
+    - 保留對話與訂單紀錄，使用平台內建客服回報。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

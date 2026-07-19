@@ -1,0 +1,63 @@
+id: family-shopping-order.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: family-shopping-order
+locale: zh-TW
+status: published
+title: 家人買的生日禮物包裹
+channel: sms
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為低年級練習從家人與既有訂單確認正常物流通知而設計。
+sources: []
+learning:
+  stages: [1-2]
+  dimensions: [prevention, response]
+  topic: 網路購物
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [家庭, 包裹, 生日禮物]
+  skills: [向家人確認, 辨認正常通知]
+  riskTypes: [誤判正常物流]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.order
+    sender: 家人
+    body: 我在平常的購物 App 買了你的生日禮物，物流到貨時我會自己收。你不用點任何連結或提供資料。
+    timestamp: '18:00'
+    direction: incoming
+clues:
+  - id: clue.family
+    label: 由家人說明購物內容
+    explanation: 你可以直接向家人確認，而不是自己處理付款或物流資料。
+  - id: clue.no-link
+    label: 沒有陌生連結或付款要求
+    explanation: 正常提醒不會要求你交出密碼或卡片資料。
+choices:
+  - id: choice.trustworthy
+    label: 先跟家人確認，再照平常方式等包裹
+    classification: trustworthy
+    reasoning: 訊息來源是家人，且沒有引導你付款或輸入資料。
+    score: 100
+  - id: choice.fraud
+    label: 包裹訊息都是詐騙，叫家人取消訂單
+    classification: fraud
+    reasoning: 網購本身不是詐騙證據，重點是來源與處理方式。
+    score: 25
+  - id: choice.verify
+    label: 自己點連結查包裹，順便輸入姓名
+    classification: insufficient-evidence
+    reasoning: 不需要額外輸入個資，應直接向家人確認。
+    score: 55
+recommendedActionIds: []
+debrief:
+  headline: 家人知道的訂單可以直接確認
+  explanation: 防詐不是拒絕所有包裹，而是確認來源和安全做法。這則訊息沒有要求你自行付款或交資料。
+  safeActions:
+    - 直接詢問家人訂單與收件安排。
+    - 不點不明連結、不提供個資。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

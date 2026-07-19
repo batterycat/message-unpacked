@@ -1,0 +1,63 @@
+id: part-time-invest.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: part-time-invest
+locale: zh-TW
+status: published
+title: 打工群組的投資任務
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫假打工以代操或刷單名義要求學生入金的手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topic: 投資與廣告
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [打工, 投資群組, 手機任務]
+  skills: [辨認工作與投資界線, 拒絕先付款要求, 保存證據]
+  riskTypes: [假打工, 刷單投資, 預付費用]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.parttime
+    sender: 高薪任務主管
+    body: 每天只要完成三筆投資任務就能領 2,000 元，先匯 5,000 元保證金，完成後連本金一起退還。
+    timestamp: '18:12'
+    direction: incoming
+clues:
+  - id: clue.deposit
+    label: 工作要求先交保證金
+    explanation: 正常工作不會要求求職者先匯款才能領薪水。
+  - id: clue.high-return
+    label: 低門檻高報酬
+    explanation: 以簡單任務承諾高額收入，常是誘導付款或洗錢風險。
+choices:
+  - id: choice.trustworthy
+    label: 先借錢交保證金，完成任務就能賺回來
+    classification: trustworthy
+    reasoning: 先付款與高報酬承諾是高風險訊號，不是正常打工流程。
+    score: 0
+  - id: choice.fraud
+    label: 停止聯絡，不付款並和家人或學校就業窗口確認
+    classification: fraud
+    reasoning: 你辨識出假打工常用的保證金與不合理報酬。
+    score: 100
+  - id: choice.verify
+    label: 先做第一筆小額任務，看看能不能領薪
+    classification: insufficient-evidence
+    reasoning: 小額成功可能是誘導加碼，仍不應交出保證金。
+    score: 30
+recommendedActionIds: []
+debrief:
+  headline: 工作不該先收你的錢
+  explanation: 假打工常把投資、刷單和保證金包裝成任務。找工作要核對公司、工作內容與薪資流程，不要私下交款。
+  safeActions:
+    - 保留職缺、對話與收款要求。
+    - 請家人、學校輔導室或可信任的大人一起確認。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

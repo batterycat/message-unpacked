@@ -4,7 +4,7 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
 
-import { caseSchema } from './schema';
+import { caseSchema, learningStages } from './schema';
 
 async function loadPublishedChineseCases() {
   const directory = path.join(process.cwd(), 'content', 'cases');
@@ -25,12 +25,11 @@ async function loadPublishedChineseCases() {
   );
 }
 
-describe('starter case catalog', () => {
-  it('meets the MVP size, provenance, outcome, and channel mix', async () => {
+describe('published case catalog', () => {
+  it('keeps every current topic supplied with at least ten cases', async () => {
     const scenarios = await loadPublishedChineseCases();
 
-    expect(scenarios.length).toBeGreaterThanOrEqual(12);
-    expect(scenarios.length).toBeLessThanOrEqual(20);
+    expect(scenarios.length).toBeGreaterThanOrEqual(60);
     expect(
       scenarios.filter((scenario) => scenario.provenance.kind === 'documented'),
     ).toHaveLength(4);
@@ -45,5 +44,33 @@ describe('starter case catalog', () => {
     expect(new Set(scenarios.map((scenario) => scenario.channel))).toEqual(
       new Set(['sms', 'chat', 'email']),
     );
+
+    const topicCounts = new Map<string, number>();
+    for (const scenario of scenarios) {
+      topicCounts.set(
+        scenario.learning.topic,
+        (topicCounts.get(scenario.learning.topic) ?? 0) + 1,
+      );
+    }
+    for (const topic of [
+      '家庭與生活',
+      '投資與廣告',
+      '校園與學習',
+      '社群與交友',
+      '網路購物',
+      '遊戲與帳號',
+    ]) {
+      expect(topicCounts.get(topic)).toBeGreaterThanOrEqual(10);
+    }
+
+    const stageCounts = new Map<string, number>();
+    for (const scenario of scenarios) {
+      for (const stage of scenario.learning.stages) {
+        stageCounts.set(stage, (stageCounts.get(stage) ?? 0) + 1);
+      }
+    }
+    for (const stage of learningStages) {
+      expect(stageCounts.get(stage)).toBeGreaterThan(0);
+    }
   });
 });

@@ -1,0 +1,63 @@
+id: family-console-support.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: family-console-support
+locale: zh-TW
+status: published
+title: 家用主機客服的遠端協助
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫冒充遊戲客服要求遠端控制或付款的常見手法。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, ethics]
+  topic: 遊戲與帳號
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [遊戲主機, 家庭, 客服]
+  skills: [核對服務名稱, 拒絕遠端控制, 保護金融資料]
+  riskTypes: [假客服, 遠端控制, 付款要求]
+  sensitiveContent: [金融資料]
+  trustedAdultRecommended: true
+messages:
+  - id: message.console
+    sender: 遊戲主機安全中心
+    body: 偵測到異常登入。請加入客服通話並安裝 https://console-help.example.com 的遠端工具，支付 120 元驗證費即可解鎖帳號。
+    timestamp: '22:14'
+    direction: incoming
+clues:
+  - id: clue.remote
+    label: 要求安裝遠端控制工具
+    explanation: 遠端工具可能讓陌生人看到裝置與帳號操作，不能由簡訊客服要求安裝。
+  - id: clue.fee
+    label: 以解鎖帳號為名收取費用
+    explanation: 帳號安全處理應從官方支援入口開始，不應透過陌生連結付款。
+choices:
+  - id: choice.trustworthy
+    label: 付驗證費並安裝工具，客服才修得好
+    classification: trustworthy
+    reasoning: 遠端控制與付款都未經官方確認，會增加帳號與裝置風險。
+    score: 0
+  - id: choice.fraud
+    label: 停止聯絡，從主機官方支援頁查詢並請家人一起處理
+    classification: fraud
+    reasoning: 你辨識出假客服常見的遠端工具、解鎖費與陌生入口。
+    score: 100
+  - id: choice.verify
+    label: 先安裝工具但不付款，看看客服要做什麼
+    classification: insufficient-evidence
+    reasoning: 安裝本身就可能造成裝置與帳號風險，應改走官方支援管道。
+    score: 35
+recommendedActionIds: []
+debrief:
+  headline: 客服不會用陌生工具接管你的裝置
+  explanation: 帳號異常通知可能是真的，也可能是冒用。安全做法是停止陌生聯絡，從主機或服務商既有入口自行查證。
+  safeActions:
+    - 不安裝陌生遠端控制工具或支付解鎖費。
+    - 若已安裝工具，立即中斷連線、移除工具並請家人協助檢查。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

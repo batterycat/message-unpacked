@@ -1,0 +1,63 @@
+id: influencer-forex.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: influencer-forex
+locale: zh-TW
+status: published
+title: 網紅推薦的外匯機器人
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫名人或網紅推薦外匯機器人、保證收益並導向私人入金的手法。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response, ethics]
+  topic: 投資與廣告
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [社群廣告, 外匯投資, 網紅推薦]
+  skills: [辨識保證獲利, 核對廣告身分, 拒絕私下入金]
+  riskTypes: [名人冒用, 外匯詐騙, 私人入金]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.forex
+    sender: 投資網紅官方團隊
+    body: 老師的外匯機器人每天自動獲利 3%，下載 https://forex-bot.example.com 並匯入 10,000 元就能開始。
+    timestamp: '21:16'
+    direction: incoming
+clues:
+  - id: clue.guarantee
+    label: 宣稱每天固定獲利
+    explanation: 投資不可能沒有風險，固定收益承諾需要高度警覺。
+  - id: clue.deposit
+    label: 導向陌生程式與入金
+    explanation: 私人程式與陌生帳戶缺少正常金融機構保障，不應直接下載與匯款。
+choices:
+  - id: choice.trustworthy
+    label: 先匯一萬元，機器人會自動幫忙賺錢
+    classification: trustworthy
+    reasoning: 軟體與名人推薦不能保證收益，陌生入金更可能造成損失。
+    score: 0
+  - id: choice.fraud
+    label: 不下載、不入金，查核網紅官方聲明與合法機構資訊
+    classification: fraud
+    reasoning: 你辨識出保證收益、陌生程式與私人入金的完整風險鏈。
+    score: 100
+  - id: choice.verify
+    label: 先下載程式看看績效，不先匯款
+    classification: insufficient-evidence
+    reasoning: 陌生程式本身可能有帳號與裝置風險，應先停止並查證。
+    score: 30
+recommendedActionIds: []
+debrief:
+  headline: 網紅背書不能取代投資查證
+  explanation: 冒用名人與獲利截圖常用來建立信任。投資前要確認合法機構、風險與資金流向，不接受保證獲利。
+  safeActions:
+    - 不下載陌生投資程式或私下匯款。
+    - 保留廣告與帳號資訊，和家人或老師討論。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

@@ -1,0 +1,63 @@
+id: coupon-link.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: coupon-link
+locale: zh-TW
+status: published
+title: 生日折價券的連結
+channel: sms
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 改寫以折價券或免運優惠引導輸入付款資料的常見手法。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention, response]
+  topic: 網路購物
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [網路商店, 折價券, 簡訊]
+  skills: [檢查請求, 使用既有入口查證]
+  riskTypes: [假優惠, 釣魚連結]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.coupon
+    sender: 好康折價通知
+    body: 生日免費折價券只到今天！點 https://coupon.example.com 填信用卡資料即可領取，快告訴家人一起用。
+    timestamp: '15:02'
+    direction: incoming
+clues:
+  - id: clue.card
+    label: 領折價券卻要求信用卡資料
+    explanation: 優惠不代表可以索取完整付款資料，先讓大人從官方 App 確認。
+  - id: clue.deadline
+    label: 用今天截止催促
+    explanation: 限時優惠可能讓人跳過確認來源的步驟。
+choices:
+  - id: choice.trustworthy
+    label: 趕快填卡號，免費折價券不能錯過
+    classification: trustworthy
+    reasoning: 尚未確認商店與表單，不能把信用卡資料交給陌生連結。
+    score: 0
+  - id: choice.fraud
+    label: 一定是詐騙，叫家人永遠不要網購
+    classification: fraud
+    reasoning: 內容高度可疑，但不必把所有網購都判定為詐騙，應先查證。
+    score: 50
+  - id: choice.verify
+    label: 不填卡號，請家人從商店官方 App 查折價券
+    classification: insufficient-evidence
+    reasoning: 先保護付款資料，再用獨立的既有入口確認優惠。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 折價券也要從商店入口確認
+  explanation: 優惠與限時會讓人急著點擊。安全做法是開啟原本的購物 App 或網站，不從簡訊連結輸入卡號。
+  safeActions:
+    - 不在陌生折價頁輸入信用卡資料。
+    - 請家人一起從官方商店查詢優惠。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

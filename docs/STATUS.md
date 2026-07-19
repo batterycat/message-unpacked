@@ -6,11 +6,11 @@ Updated: 2026-07-19
 
 - Static Astro application with separate Traditional Chinese and English
   interface routes.
-- Twenty Traditional Chinese starter cases: four documented real-event
-  adaptations, nine classic patterns, and seven teaching-fiction cases. The
-  initial set now has content for all five learning stages (`1-2`, `3-4`,
-  `5-6`, `7-9`, and `10-12`), while the largest reviewed baseline remains
-  grades 7–9.
+- Sixty Traditional Chinese published cases: four documented real-event
+  adaptations, forty-six classic patterns, and ten teaching-fiction cases.
+  Each of the six current topics has ten cases. The set covers all five
+  learning stages (`1-2`, `3-4`, `5-6`, `7-9`, and `10-12`), while the largest
+  reviewed baseline remains grades 7–9.
 - SMS, chat, and email presentation; trustworthy, fraudulent, and
   insufficient-evidence outcomes.
 - Per-question reasoning feedback, scores, final activity results, and replay.
@@ -24,6 +24,8 @@ Updated: 2026-07-19
   tests, responsive checks, and automated accessibility scans.
 - Public GitBook teacher guide with quick setup, facilitation scripts, mode
   guidance, local response resources, and a first-use testing checklist.
+- Topic and learning-stage coverage inventory in
+  `docs/CONTENT_COVERAGE.md`, with a test guard for the current topic minimum.
 - Phase 2 Cloudflare Durable Objects room protocol and Worker deployment
   skeleton, kept optional so the static site remains independently deployable.
 

@@ -1,0 +1,63 @@
+id: fake-school-club.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: fake-school-club
+locale: zh-TW
+status: published
+title: 社團招募的免費制服
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整假冒校園社團、以免費物品索取個資的常見手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, ethics]
+  topic: 社群與交友
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [社團招募, 班級聊天, 個資]
+  skills: [核對已知管道, 保護個人資料]
+  riskTypes: [假社團, 免費贈品, 個資蒐集]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.club
+    sender: 校園創作者社
+    body: 加入我們就送免費制服！請填姓名、住址和家長電話到 https://club-join.example.com 名額只剩五人。
+    timestamp: '17:48'
+    direction: incoming
+clues:
+  - id: clue.data
+    label: 招募卻要求住址與家長電話
+    explanation: 社團報名應說明資料用途與正式承辦窗口，不應先交出過多個資。
+  - id: clue.limited
+    label: 用剩餘名額催促
+    explanation: 限額會讓人忽略應先向學校或老師核對的步驟。
+choices:
+  - id: choice.trustworthy
+    label: 先填資料，免費制服很划算
+    classification: trustworthy
+    reasoning: 來源與資料用途未確認，不能因為免費就交出住址與家長電話。
+    score: 0
+  - id: choice.fraud
+    label: 直接在班群說這個社團是騙人的
+    classification: fraud
+    reasoning: 訊息可疑，但需要先核對來源，不應沒有證據就公開指控。
+    score: 55
+  - id: choice.verify
+    label: 不填資料，從學校公告或老師確認社團是否存在
+    classification: insufficient-evidence
+    reasoning: 先保護個資，再用已知的校園管道確認社團與報名方式。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 免費物品不能取代來源確認
+  explanation: 社團招募應有學校公告、指導老師或正式報名流程。遇到陌生表單和限額催促，先找大人確認。
+  safeActions:
+    - 不填寫住址、家長電話等非必要資料。
+    - 從學校公告或老師取得正式報名方式。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

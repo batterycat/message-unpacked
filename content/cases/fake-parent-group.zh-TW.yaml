@@ -1,0 +1,63 @@
+id: fake-parent-group.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: fake-parent-group
+locale: zh-TW
+status: published
+title: 家長群組的作業通知
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整冒用老師或家長群組身分、要求加入陌生群組的常見手法。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention, response]
+  topic: 校園與學習
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [班級群組, 作業, 家庭]
+  skills: [核對寄件者, 找可信任的大人]
+  riskTypes: [冒用身分, 陌生群組]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.group
+    sender: 四年級家長會通知
+    body: 老師請大家加入新的作業群組，點 https://classroom.example.com 填寫學生姓名和家長手機，今天晚上前完成。
+    timestamp: '18:04'
+    direction: incoming
+clues:
+  - id: clue.unknown
+    label: 寄件者不是平常的班級管道
+    explanation: 看起來像家長會不代表就是學校建立的群組，要先問家人或老師。
+  - id: clue.personal-data
+    label: 要求填寫姓名與手機
+    explanation: 尚未確認來源前，不要把學生或家長資料填進陌生表單。
+choices:
+  - id: choice.trustworthy
+    label: 先填資料，免得錯過作業
+    classification: trustworthy
+    reasoning: 這樣會在來源未確認前交出個資，不能因為有期限就跳過查證。
+    score: 0
+  - id: choice.fraud
+    label: 直接說是詐騙並在群組公開指責
+    classification: fraud
+    reasoning: 訊息可疑，但目前仍要先核對身分，不宜在沒有證據時公開指責。
+    score: 55
+  - id: choice.verify
+    label: 不填資料，請家人從老師原本的管道確認
+    classification: insufficient-evidence
+    reasoning: 在確認群組真實性前先停下來，並請家人或老師用既有管道核對。
+    score: 100
+recommendedActionIds: []
+debrief:
+  headline: 先確認群組，再處理作業通知
+  explanation: 冒用學校身分的訊息常用作業或期限催促。來源不明時，保護個資並請大人從已知的老師或學校管道確認。
+  safeActions:
+    - 不在陌生表單填寫學生與家長資料。
+    - 請家人或老師從原本的班級管道確認。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active

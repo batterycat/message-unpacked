@@ -1,0 +1,63 @@
+id: exam-form-link.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: exam-form-link
+locale: zh-TW
+status: published
+title: 線上考前問卷連結
+channel: email
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以學校表單名義要求登入或提供帳號資料的釣魚手法。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response]
+  topic: 校園與學習
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [校園, Email, 線上表單]
+  skills: [檢查寄件網域, 使用既有入口查證]
+  riskTypes: [假冒學校, 釣魚連結]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.exam
+    sender: 教務處問卷系統
+    body: 明日考試座位需要重新確認，請在一小時內登入 https://exam-form.example.com 填寫校務帳號與密碼，否則無法應試。
+    timestamp: '20:15'
+    direction: incoming
+clues:
+  - id: clue.deadline
+    label: 用無法應試製造恐慌
+    explanation: 真正的校務通知不應只靠陌生信件與極短期限要求登入。
+  - id: clue.password
+    label: 表單要求輸入密碼
+    explanation: 密碼不應交給表單或他人；應自行開啟校務系統確認。
+choices:
+  - id: choice.trustworthy
+    label: 趕快輸入密碼，避免不能考試
+    classification: trustworthy
+    reasoning: 緊急期限與索取密碼是高風險線索，不能直接照做。
+    score: 0
+  - id: choice.fraud
+    label: 高度疑似釣魚，不點連結並從校務系統確認
+    classification: fraud
+    reasoning: 你辨識出陌生入口、恐嚇後果與索取密碼的組合風險。
+    score: 100
+  - id: choice.verify
+    label: 先開連結看看頁面，再決定要不要登入
+    classification: insufficient-evidence
+    reasoning: 不需要開啟可疑連結；應從平常使用的校務入口查詢。
+    score: 50
+recommendedActionIds: []
+debrief:
+  headline: 校務問題要從校務入口確認
+  explanation: 詐騙訊息會利用考試或成績讓人害怕。不要從郵件連結登入，改用平常的校務平台或請老師確認。
+  safeActions:
+    - 不在陌生頁面輸入校務帳號與密碼。
+    - 從書籤或官方 App 開啟校務系統。
+review:
+  lastReviewedAt: 2026-07-19
+  maintenanceStatus: active
