@@ -11,7 +11,7 @@ Thank you for helping students make safer decisions online.
 5. Run the complete quality checks listed in `README.md`.
 
 For classroom-use feedback, consult the public
-[Teacher Guide](https://loomtype.gitbook.io/loomtype-docs/) and report unclear
+[Teacher Guide](https://batterycat.gitbook.io/message-unpacked-docs/) and report unclear
 instructions or teaching-flow issues in GitHub Issues. Keep factual case
 changes and source-backed claims in the repository so they remain reviewable in
 pull requests.

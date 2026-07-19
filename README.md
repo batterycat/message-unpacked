@@ -15,7 +15,7 @@ real-case impact, and contextual Taiwan response guidance. See
 
 ## Teacher guide
 
-The public [Teacher Guide on GitBook](https://loomtype.gitbook.io/loomtype-docs/)
+The public [Teacher Guide on GitBook](https://batterycat.gitbook.io/message-unpacked-docs/)
 covers quick setup, classroom facilitation, projector and self-paced modes,
 case debriefs, Taiwan response resources, and a first-use testing checklist.
 The repository remains the source of truth for code, case data, governance, and
