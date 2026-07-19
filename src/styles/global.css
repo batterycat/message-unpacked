@@ -288,6 +288,14 @@ a {
   margin: 0;
 }
 
+.teacher-page-links {
+  align-items: center;
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
 .teacher-page-exercise-link {
   align-items: center;
   color: var(--brand);
@@ -300,6 +308,22 @@ a {
 }
 
 .teacher-page-exercise-link svg {
+  height: 1.1rem;
+  width: 1.1rem;
+}
+
+.teacher-page-guide-link {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  flex: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
+.teacher-page-guide-link svg {
   height: 1.1rem;
   width: 1.1rem;
 }
@@ -801,6 +825,12 @@ footer a {
     flex-direction: column;
     gap: 0.75rem;
     padding-top: 1.5rem;
+  }
+
+  .teacher-page-links {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .teacher-callout {

@@ -57,6 +57,8 @@ sources, and media must be reviewed in
 [docs/THIRD_PARTY_RESOURCES.md](./docs/THIRD_PARTY_RESOURCES.md).
 Potential vulnerabilities follow [SECURITY.md](./SECURITY.md); never place
 student data or active malicious links in a public report.
+The recurring review and release process is documented in
+[docs/MAINTENANCE.md](./docs/MAINTENANCE.md).
 
 ## Licensing
 

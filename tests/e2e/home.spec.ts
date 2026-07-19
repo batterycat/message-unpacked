@@ -88,6 +88,14 @@ test('Documented case debrief preserves qualified impact and review details', as
 test('Teacher can create and launch a projector activity', async ({ page }) => {
   await page.goto('/zh-TW/teacher/');
 
+  const teacherGuideLink = page.getByRole('link', { name: '開啟教師手冊' });
+  await expect(teacherGuideLink).toHaveAttribute(
+    'href',
+    'https://batterycat.gitbook.io/message-unpacked-docs/',
+  );
+  await expect(teacherGuideLink).toHaveAttribute('target', '_blank');
+  await expect(teacherGuideLink).toHaveAttribute('rel', 'noreferrer');
+
   const teacherSetup = page.locator('.teacher-page-configurator');
   await page.waitForFunction(
     () =>
@@ -135,6 +143,21 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
   await expect(demo.getByText('判斷結果')).toBeVisible();
 });
 
+test('Multiple-message cases keep readable separation between message cards', async ({
+  page,
+}) => {
+  await page.goto(
+    '/zh-TW/activity/?activity=1&lang=zh-TW&stage=7-9&topic=遊戲與帳號&minutes=10&mode=self-paced&cases=free-game-coins-otp.zh-tw#demo',
+  );
+
+  const messages = page.getByTestId('scenario-messages');
+  await expect(messages.getByTestId('scenario-message')).toHaveCount(2);
+  const gap = await messages.evaluate((element) =>
+    Number.parseFloat(getComputedStyle(element).rowGap),
+  );
+  expect(gap).toBeGreaterThan(0);
+});
+
 test('Stale teacher activity link offers a safe recovery path', async ({
   page,
 }) => {
@@ -179,6 +202,7 @@ test('Teacher setup remains visible at the 320px mobile boundary', async ({
   await expect(
     page.getByRole('combobox', { name: '主題', exact: true }),
   ).toBeVisible();
+  await expect(page.getByRole('link', { name: '開啟教師手冊' })).toBeVisible();
   await page.getByRole('button', { name: '產生活動連結' }).click();
   await expect(page.getByRole('img', { name: '活動 QR Code' })).toBeVisible();
   const viewport = await page.evaluate(() => ({

@@ -22,6 +22,12 @@ broad public launch. Until then, non-sensitive hardening suggestions may use a
 regular issue; sensitive reports should wait for the private channel rather
 than being disclosed publicly.
 
+Repository administrators should enable GitHub's **Private vulnerability
+reporting** under `Settings → Security → Code security and analysis`, then
+update this section with the confirmed channel before promoting the public
+demonstration site. The release and maintenance checklist in
+[`docs/MAINTENANCE.md`](./docs/MAINTENANCE.md) records this as a launch gate.
+
 A useful report includes:
 
 - affected route, case, or build configuration;

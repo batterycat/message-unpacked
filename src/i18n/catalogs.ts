@@ -43,6 +43,7 @@ const zhTW = {
     heading: '把一堂課準備好',
     description: '選好主題、時間與帶領方式，產生一個可以直接分享的活動。',
     backHome: '回到首頁',
+    teacherGuide: '開啟教師手冊',
   },
   learningPath: {
     label: '學習路徑',
@@ -255,6 +256,7 @@ const en: MessageCatalog = {
     description:
       'Choose a topic, duration, and teaching mode, then create a link you can share right away.',
     backHome: 'Back to home',
+    teacherGuide: 'Open the teacher guide',
   },
   learningPath: {
     label: 'Learning path',

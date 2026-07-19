@@ -195,9 +195,13 @@ function ScenarioCard({
               </span>
               <span>{scenario.title}</span>
             </div>
-            <div className={styles.messages}>
+            <div className={styles.messages} data-testid="scenario-messages">
               {scenario.messages.map((message) => (
-                <div className={styles.message} key={message.id}>
+                <div
+                  className={styles.message}
+                  data-testid="scenario-message"
+                  key={message.id}
+                >
                   <div className={styles.senderLine}>
                     <strong>
                       {scenario.channel === 'email' &&

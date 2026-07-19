@@ -1,6 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import { ArrowLeftIcon, BookOpenIcon } from '@phosphor-icons/react/ssr';
+import {
+  ArrowLeftIcon,
+  ArrowSquareOutIcon,
+  BookOpenIcon,
+} from '@phosphor-icons/react/ssr';
 
 import {
   localeActivityPath,
@@ -18,6 +22,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const catalog = getCatalog(locale);
+const teacherGuideHref = 'https://batterycat.gitbook.io/message-unpacked-docs/';
 const caseEntries = await getCollection(
   'cases',
   ({ data }) => data.status === 'published' && data.locale === locale,
@@ -58,10 +63,22 @@ const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
         <h1 id="teacher-page-title">{catalog.teacherPage.heading}</h1>
         <p>{catalog.teacherPage.description}</p>
       </div>
-      <a class="teacher-page-exercise-link" href={localeActivityPath(locale)}>
-        <BookOpenIcon aria-hidden="true" weight="bold" />
-        {catalog.activityPage.heading}
-      </a>
+      <div class="teacher-page-links">
+        <a class="teacher-page-exercise-link" href={localeActivityPath(locale)}>
+          <BookOpenIcon aria-hidden="true" weight="bold" />
+          {catalog.activityPage.heading}
+        </a>
+        <a
+          class="teacher-page-guide-link"
+          href={teacherGuideHref}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <BookOpenIcon aria-hidden="true" weight="bold" />
+          {catalog.teacherPage.teacherGuide}
+          <ArrowSquareOutIcon aria-hidden="true" weight="bold" />
+        </a>
+      </div>
     </section>
 
     <section

@@ -9,6 +9,8 @@ Thank you for helping students make safer decisions online.
 4. Record every external dependency, source, quotation, dataset, or media asset
    in `docs/THIRD_PARTY_RESOURCES.md`.
 5. Run the complete quality checks listed in `README.md`.
+6. Follow `docs/MAINTENANCE.md` for case review, release, GitBook sync, and
+   vulnerability-reporting maintenance.
 
 For classroom-use feedback, consult the public
 [Teacher Guide](https://batterycat.gitbook.io/message-unpacked-docs/) and report unclear
