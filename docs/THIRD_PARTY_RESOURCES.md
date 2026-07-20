@@ -53,14 +53,13 @@ be reviewed again for that distribution.
 
 ## Workflow Actions
 
-| Resource                           | Category      | Owner/publisher   | Canonical source                                 | Project use                        | License/permission | Attribution/notices | Reviewed             |
-| ---------------------------------- | ------------- | ----------------- | ------------------------------------------------ | ---------------------------------- | ------------------ | ------------------- | -------------------- |
-| `actions/checkout@v4`              | GitHub Action | GitHub            | https://github.com/actions/checkout              | CI source checkout                 | MIT                | Preserve license    | 2026-07-18, approved |
-| `actions/setup-node@v4`            | GitHub Action | GitHub            | https://github.com/actions/setup-node            | CI Node and pnpm cache setup       | MIT                | Preserve license    | 2026-07-18, approved |
-| `pnpm/action-setup@v4`             | GitHub Action | pnpm contributors | https://github.com/pnpm/action-setup             | CI pnpm installation               | MIT                | Preserve license    | 2026-07-18, approved |
-| `actions/configure-pages@v5`       | GitHub Action | GitHub            | https://github.com/actions/configure-pages       | GitHub Pages build configuration   | MIT                | Preserve license    | 2026-07-19, approved |
-| `actions/upload-pages-artifact@v4` | GitHub Action | GitHub            | https://github.com/actions/upload-pages-artifact | Upload the static `dist/` artifact | MIT                | Preserve license    | 2026-07-19, approved |
-| `actions/deploy-pages@v4`          | GitHub Action | GitHub            | https://github.com/actions/deploy-pages          | Publish the Pages artifact         | MIT                | Preserve license    | 2026-07-19, approved |
+| Resource                           | Category      | Owner/publisher | Canonical source                                 | Project use                        | License/permission | Attribution/notices | Reviewed             |
+| ---------------------------------- | ------------- | --------------- | ------------------------------------------------ | ---------------------------------- | ------------------ | ------------------- | -------------------- |
+| `actions/checkout@v6`              | GitHub Action | GitHub          | https://github.com/actions/checkout              | CI source checkout                 | MIT                | Preserve license    | 2026-07-20, approved |
+| `actions/setup-node@v7`            | GitHub Action | GitHub          | https://github.com/actions/setup-node            | CI Node setup                      | MIT                | Preserve license    | 2026-07-20, approved |
+| `actions/configure-pages@v6`       | GitHub Action | GitHub          | https://github.com/actions/configure-pages       | GitHub Pages build configuration   | MIT                | Preserve license    | 2026-07-20, approved |
+| `actions/upload-pages-artifact@v5` | GitHub Action | GitHub          | https://github.com/actions/upload-pages-artifact | Upload the static `dist/` artifact | MIT                | Preserve license    | 2026-07-20, approved |
+| `actions/deploy-pages@v5`          | GitHub Action | GitHub          | https://github.com/actions/deploy-pages          | Publish the Pages artifact         | MIT                | Preserve license    | 2026-07-20, approved |
 
 ## Hosted Publishing Services
 
