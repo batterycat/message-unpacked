@@ -1,5 +1,4 @@
 import {
-  useEffect,
   useLayoutEffect,
   useMemo,
   useReducer,
@@ -140,18 +139,12 @@ function ScenarioCard({
   );
   const [snapshot, send] = useMachine(scenarioMachine);
   const isDebrief = snapshot.matches('debrief');
-  const supportPanelRef = useRef<HTMLElement>(null);
   const selectedChoice = scenario.choices.find(
     (choice) => choice.id === snapshot.context.selectedChoiceId,
   );
   const relevantResources = resources.filter((resource) =>
     scenario.recommendedActionIds.includes(resource.id),
   );
-  const fallbackResources = resources.filter((resource) =>
-    ['anti-fraud.consult', 'anti-fraud.info'].includes(resource.id),
-  );
-  const displayResources =
-    relevantResources.length > 0 ? relevantResources : fallbackResources;
   const financialLoss = formatFinancialLoss(
     scenario.impact?.financialLoss,
     locale,
@@ -176,15 +169,6 @@ function ScenarioCard({
     : null;
   const questionScore = selectedChoice?.score ?? 0;
   const questionScoreBand = getScoreBand(questionScore);
-
-  useEffect(() => {
-    if (!isDebrief || projectorMode) return;
-    if (!window.matchMedia('(max-width: 760px)').matches) return;
-    supportPanelRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }, [isDebrief, projectorMode]);
 
   return (
     <article className={styles.experience} aria-labelledby="scenario-title">
@@ -394,11 +378,7 @@ function ScenarioCard({
           </section>
         </div>
 
-        <aside
-          className={styles.supportPanel}
-          aria-labelledby="support-title"
-          ref={supportPanelRef}
-        >
+        <aside className={styles.supportPanel} aria-labelledby="support-title">
           {isDebrief && scenario.impact && (
             <section className={styles.impactCard}>
               <p className={styles.realCaseLabel}>
@@ -476,8 +456,8 @@ function ScenarioCard({
           </section>
 
           <div className={styles.helpResources}>
-            {displayResources.length > 0 ? (
-              displayResources.map((resource) => (
+            {relevantResources.length > 0 ? (
+              relevantResources.map((resource) => (
                 <section className={styles.helpResource} key={resource.id}>
                   <strong>{resource.officialName}</strong>
                   <p>{resource.guidance}</p>

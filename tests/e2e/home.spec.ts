@@ -17,25 +17,6 @@ test('Traditional Chinese exercise can be completed', async ({ page }) => {
   await demo.getByRole('button', { name: /^A\./ }).click();
   await expect(demo.getByText('判斷結果')).toBeVisible();
   await expect(demo.getByText(/本題得分/)).toBeVisible();
-  await expect(demo).toContainText('165反詐騙諮詢專線');
-});
-
-test('Mobile answer reveals and scrolls to help resources', async ({
-  page,
-}) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/zh-TW/');
-  const demo = page.locator('#demo');
-  await demo.scrollIntoViewIfNeeded();
-  await demo.getByRole('button', { name: /^A\./ }).click();
-
-  const support = demo.getByRole('complementary', { name: '需要協助嗎？' });
-  await expect(support).toContainText('165反詐騙諮詢專線');
-  const supportTop = await support.evaluate(
-    (element) => element.getBoundingClientRect().top,
-  );
-  expect(supportTop).toBeGreaterThanOrEqual(-8);
-  expect(supportTop).toBeLessThan(844);
 });
 
 test('Homepage exercise presents three classic cases', async ({ page }) => {
