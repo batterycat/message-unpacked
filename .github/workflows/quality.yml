@@ -26,7 +26,8 @@ jobs:
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm schema:check
-      - run: pnpm validate:content
+      - name: Validate case editorial rules and coverage
+        run: pnpm validate:content
       - run: pnpm test
       - run: pnpm license:check
       - run: pnpm build
