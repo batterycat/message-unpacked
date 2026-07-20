@@ -62,7 +62,7 @@ const zhTW = {
   },
   teacherSetup: {
     eyebrow: '教師快速開課',
-    heading: '設定活動',
+    heading: '靜態活動連結',
     stage: '學習階段',
     stageOptions: {
       '1-2': '國小低年級（1–2 年級）',
@@ -87,6 +87,108 @@ const zhTW = {
     qrDescription: 'QR Code 只包含這次的活動連結，不會傳送學生資料。',
     qrLabel: '活動 QR Code',
     unavailable: '這個語言目前還沒有可用的案例。',
+  },
+  classroomEntry: {
+    eyebrow: '另一種開課方式',
+    heading: '即時班級互動',
+    description:
+      '教師投影完整題目，學生用手機當作簡易答題器。截止前只顯示參與與作答人數，揭曉後才顯示全班分布與解析。',
+    projectorHeading: '題目留在投影畫面',
+    projectorDescription: '教師掌握完整訊息、線索、揭曉與課堂解析。',
+    clickerHeading: '手機只顯示作答選項',
+    clickerDescription: '學生免帳號、免姓名，以短期房間碼加入並回應。',
+    revealHeading: '截止後再看班級結果',
+    revealDescription: '作答期間不公開多數選項，避免影響尚未回答的同學。',
+    configuredLabel: '已設定班級服務',
+    configuredDescription:
+      '可前往建立短期教室；服務實際是否可用，會在建立頁由後端確認。',
+    unconfiguredLabel: '尚未設定班級服務',
+    unconfiguredDescription: '這個網站目前沒有連接即時教室後端。',
+    localeUnavailableLabel: '這個語言尚無可用的班級案例',
+    localeUnavailableDescription:
+      '英文介面已就緒，但目前經過審核的案例只提供繁體中文，不會混用未審查翻譯。',
+    startHosting: '建立互動教室',
+    joinRoom: '學生加入教室',
+    switchToChinese: '切換到中文班級',
+    staticFallback: '靜態活動連結仍可正常使用。',
+    privacyNote: '不建立名冊，也不保存個別學生的長期學習紀錄。',
+    demoNotice:
+      '專案維護者提供的公開服務僅供展示，不保證課堂可用性；學校可部署自己的相容後端並自行設定人數與題數限制。',
+  },
+  classroomShell: {
+    backToTeacher: '回到教師專區',
+    hostEyebrow: '教師投影端',
+    hostHeading: '建立互動教室',
+    hostDescription:
+      '挑選案例、取得房間碼，並由投影畫面控制開題、截止、揭曉與解析。',
+    joinEyebrow: '學生答題端',
+    joinHeading: '加入互動教室',
+    joinDescription: '輸入教師提供的房間碼；手機只會顯示題號、選項與作答狀態。',
+    serviceConfigured: '這個部署已設定班級服務；實際可用性仍由後端回應決定。',
+    serviceUnconfigured:
+      '這個部署尚未設定班級服務，請先使用不需後端的靜態活動連結。',
+    localeUnavailable: '這個語言尚無經過審核的案例，請切換到繁體中文班級流程。',
+    switchToChinese: '切換到中文班級',
+    staticActivity: '開啟靜態活動',
+  },
+  classroomLive: {
+    checkingService: '正在確認班級服務…',
+    serviceUnavailable: '目前無法使用班級互動服務',
+    serviceUnavailableDescription:
+      '這不會影響靜態活動。公開展示後端可能因免費額度或維護暫時停止，請稍後再試。',
+    retry: '重新檢查',
+    setupHeading: '挑選本堂課的案例',
+    setupDescription: '依上課時間勾選案例；順序會依下方清單排列。',
+    selectedCount: '已選 {count}／最多 {maximum} 題',
+    createRoom: '建立短期教室',
+    creatingRoom: '正在建立教室…',
+    roomCode: '教室代碼',
+    joinInstructions: '請學生掃描 QR Code，或在加入頁輸入教室代碼。',
+    joinQrLabel: '學生加入教室 QR Code',
+    copyJoinLink: '複製學生加入連結',
+    copied: '已複製',
+    participants: '已加入 {count} 人',
+    answered: '已作答 {answered}／{participants} 人',
+    waitingToStart: '學生加入後，由教師開啟第一題。',
+    openFirstCase: '開啟第一題',
+    revealCurrent: '截止並揭曉',
+    nextCase: '開啟下一題',
+    showSummary: '查看班級總結',
+    endRoom: '結束教室',
+    questionProgress: '第 {current}／{total} 題',
+    projectedCase: '投影題目',
+    classDistribution: '全班作答分布',
+    responses: '{count} 票',
+    noResponses: '本題沒有人作答，因此不計入總平均。',
+    caseMean: '本題班級平均 {score} 分',
+    summaryHeading: '本堂課班級總結',
+    overallMean: '已作答題目的平均',
+    reconnecting: '連線中斷，正在重新連接…',
+    connectionFailed: '教室連線已中斷，請重新整理或改用靜態活動。',
+    errorRoomFull: '這個教室已達人數上限，請告知教師。',
+    errorRoomEnded: '這個教室已結束或已過期，請向教師取得新的教室代碼。',
+    errorCredential: '無法確認這個教室的加入權限，請重新輸入教室代碼。',
+    errorRateLimited: '短時間內嘗試次數過多，請稍候再試。',
+    errorProtocol: '網站與班級服務版本不相容，請改用靜態活動。',
+    actionUnavailable: '目前無法完成這個操作，請確認教室狀態後再試一次。',
+    joinCodeLabel: '教室代碼',
+    joinCodePlaceholder: '例如 ABCDE-12345',
+    joinButton: '加入教室',
+    joining: '正在加入…',
+    waitingForTeacher: '已加入，等待教師開題',
+    studentQuestion: '第 {current}／{total} 題',
+    chooseAnswer: '選擇你的答案',
+    submitting: '正在送出…',
+    deliveryUncertain: '連線在確認前中斷；請重連後確認選項，必要時再送一次。',
+    submitted: '答案已送出；截止前可以更改。',
+    changed: '答案已更新。',
+    waitingForReveal: '本題已截止，請看教師投影的解析。',
+    activityComplete: '本堂互動已完成，請回到教師投影一起回顧。',
+    roomEnded: '這個教室已結束。',
+    invalidCode: '請輸入 10 碼有效教室代碼。',
+    staleActivity: '這題與目前網站的案例版本不同，請告知教師重新建立教室。',
+    privacyReminder: '不需輸入姓名；這台裝置只保存本教室的短期參與代碼。',
+    demoReminder: '公開服務僅供體驗，免費額度用完時不會自動收費。',
   },
   demo: {
     eyebrow: '互動試題',
@@ -277,7 +379,7 @@ const en: MessageCatalog = {
   },
   teacherSetup: {
     eyebrow: 'Quick class setup',
-    heading: 'Set up an activity',
+    heading: 'Static activity link',
     stage: 'Learning stage',
     stageOptions: {
       '1-2': 'Early primary (grades 1–2)',
@@ -303,6 +405,131 @@ const en: MessageCatalog = {
       'This QR Code contains only the activity link and sends no student data.',
     qrLabel: 'Activity QR Code',
     unavailable: 'No cases are currently available in this language.',
+  },
+  classroomEntry: {
+    eyebrow: 'Another way to teach',
+    heading: 'Live classroom interaction',
+    description:
+      'The teacher projects the full case while student phones act as simple clickers. Participation and answer counts appear while voting is open; distribution and explanations appear only after reveal.',
+    projectorHeading: 'Keep the full case on the projector',
+    projectorDescription:
+      'The teacher controls the message, clues, reveal, and class explanation.',
+    clickerHeading: 'Show choices only on student phones',
+    clickerDescription:
+      'Students join a short-lived room without an account or a name.',
+    revealHeading: 'Review class results after closing',
+    revealDescription:
+      'The current majority stays hidden so it does not influence students who have not answered.',
+    configuredLabel: 'Classroom service configured',
+    configuredDescription:
+      'Continue to create a short-lived room. The backend confirms actual availability on the host page.',
+    unconfiguredLabel: 'Classroom service not configured',
+    unconfiguredDescription:
+      'This site is not currently connected to a live classroom backend.',
+    localeUnavailableLabel:
+      'Reviewed classroom cases are not available in English',
+    localeUnavailableDescription:
+      'The English interface is ready, but reviewed cases are currently available only in Traditional Chinese. Unreviewed translations are not mixed into a room.',
+    startHosting: 'Start a live classroom',
+    joinRoom: 'Join as a student',
+    switchToChinese: 'Switch to Chinese classroom',
+    staticFallback: 'Static activity links continue to work.',
+    privacyNote:
+      'No roster is created, and individual long-term learning history is not stored.',
+    demoNotice:
+      "The project maintainer's public service is a best-effort demo, not a classroom availability commitment. Schools can operate a compatible backend with their own participant and case limits.",
+  },
+  classroomShell: {
+    backToTeacher: 'Back to teacher area',
+    hostEyebrow: 'Teacher projector',
+    hostHeading: 'Start a live classroom',
+    hostDescription:
+      'Select cases, receive a room code, and control opening, closing, reveal, and explanations from the projector.',
+    joinEyebrow: 'Student clicker',
+    joinHeading: 'Join a live classroom',
+    joinDescription:
+      'Enter the room code from the teacher. The phone shows only the case number, choices, and submission status.',
+    serviceConfigured:
+      'This deployment has a classroom service configured. Actual availability is still determined by the backend.',
+    serviceUnconfigured:
+      'This deployment does not have a classroom service configured. Use the backend-free static activity link instead.',
+    localeUnavailable:
+      'Reviewed cases are not available in this language. Switch to the Traditional Chinese classroom flow.',
+    switchToChinese: 'Switch to Chinese classroom',
+    staticActivity: 'Open static activity',
+  },
+  classroomLive: {
+    checkingService: 'Checking the classroom service…',
+    serviceUnavailable: 'Live classroom interaction is unavailable',
+    serviceUnavailableDescription:
+      'Static activities still work. The public demo backend may pause when free quotas are exhausted or during maintenance.',
+    retry: 'Check again',
+    setupHeading: 'Choose cases for this class',
+    setupDescription:
+      'Select cases for the available class time. They run in the order shown below.',
+    selectedCount: '{count} selected · maximum {maximum}',
+    createRoom: 'Create short-lived room',
+    creatingRoom: 'Creating room…',
+    roomCode: 'Room code',
+    joinInstructions:
+      'Ask students to scan the QR Code or enter the code on the join page.',
+    joinQrLabel: 'Student classroom join QR Code',
+    copyJoinLink: 'Copy student join link',
+    copied: 'Copied',
+    participants: '{count} joined',
+    answered: '{answered} of {participants} answered',
+    waitingToStart: 'Open the first case after students have joined.',
+    openFirstCase: 'Open first case',
+    revealCurrent: 'Close and reveal',
+    nextCase: 'Open next case',
+    showSummary: 'Show class summary',
+    endRoom: 'End room',
+    questionProgress: 'Case {current} of {total}',
+    projectedCase: 'Projected case',
+    classDistribution: 'Class response distribution',
+    responses: '{count} responses',
+    noResponses:
+      'No responses were submitted, so this case is not included in the mean.',
+    caseMean: 'Class mean for this case: {score}',
+    summaryHeading: 'Classroom summary',
+    overallMean: 'Mean of answered cases',
+    reconnecting: 'Connection lost. Reconnecting…',
+    connectionFailed:
+      'The room connection ended. Refresh or continue with a static activity.',
+    errorRoomFull: 'This room has reached its participant limit.',
+    errorRoomEnded:
+      'This room has ended or expired. Ask the teacher for a new room code.',
+    errorCredential:
+      'The room credential could not be verified. Enter the room code again.',
+    errorRateLimited: 'Too many attempts were made. Wait and try again.',
+    errorProtocol:
+      'The site and classroom service are incompatible. Use a static activity.',
+    actionUnavailable:
+      'This action could not be completed. Check the room state and try again.',
+    joinCodeLabel: 'Room code',
+    joinCodePlaceholder: 'For example, ABCDE-12345',
+    joinButton: 'Join room',
+    joining: 'Joining…',
+    waitingForTeacher: 'Joined. Waiting for the teacher to open a case.',
+    studentQuestion: 'Case {current} of {total}',
+    chooseAnswer: 'Choose your answer',
+    submitting: 'Submitting…',
+    deliveryUncertain:
+      'The connection ended before confirmation. Check the selected answer after reconnecting and submit again if needed.',
+    submitted: 'Answer submitted. You can change it before reveal.',
+    changed: 'Answer updated.',
+    waitingForReveal:
+      'This case is closed. Follow the explanation on the projector.',
+    activityComplete:
+      'The interaction is complete. Review it together on the projector.',
+    roomEnded: 'This room has ended.',
+    invalidCode: 'Enter a valid 10-character room code.',
+    staleActivity:
+      'This case differs from the version on this site. Ask the teacher to create a new room.',
+    privacyReminder:
+      'No name is needed. This device keeps only a short-lived participation token for this room.',
+    demoReminder:
+      'The public service is a demo. Exhausting the free quota never enables automatic billing.',
   },
   demo: {
     eyebrow: 'Interactive exercise',

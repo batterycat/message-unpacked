@@ -7,11 +7,14 @@ import {
 } from '@phosphor-icons/react/ssr';
 
 import {
+  localeClassroomHostPath,
+  localeClassroomJoinPath,
   localeActivityPath,
   localePath,
   localeTeacherPath,
   getCatalog,
 } from '../i18n/locale';
+import { ClassroomEntry } from '../features/classroom/ClassroomEntry';
 import type { Locale } from '../i18n/catalogs';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { TeacherConfigurator } from './TeacherConfigurator';
@@ -32,6 +35,9 @@ const scenarios = caseEntries
   .map((entry) => entry.data)
   .sort((left, right) => left.id.localeCompare(right.id));
 const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
+const roomServiceUrl = import.meta.env.PUBLIC_ROOM_SERVICE_URL;
+const isRoomServiceConfigured =
+  typeof roomServiceUrl === 'string' && roomServiceUrl.trim().length > 0;
 ---
 
 <BaseLayout {catalog} {locale}>
@@ -94,6 +100,20 @@ const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
         activityPath={localeActivityPath(locale)}
       />
     </section>
+
+    <section
+      class="teacher-page-classroom"
+      aria-label={catalog.classroomEntry.heading}
+    >
+      <ClassroomEntry
+        {catalog}
+        hasReviewedCases={scenarios.length > 0}
+        hostPath={localeClassroomHostPath(locale)}
+        isServiceConfigured={isRoomServiceConfigured}
+        joinPath={localeClassroomJoinPath(locale)}
+        switchLocaleHostPath={localeClassroomHostPath('zh-TW')}
+      />
+    </section>
   </main>
 
   <footer class="activity-footer">
@@ -115,3 +135,15 @@ const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
     </div>
   </footer>
 </BaseLayout>
+
+<style>
+  .teacher-page-classroom {
+    padding: 0 clamp(1rem, 3vw, 2.5rem) 3.25rem;
+  }
+
+  @media (max-width: 700px) {
+    .teacher-page-classroom {
+      padding-inline: 0;
+    }
+  }
+</style>

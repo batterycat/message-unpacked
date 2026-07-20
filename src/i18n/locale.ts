@@ -36,6 +36,20 @@ export function localeTeacherPath(
   return `${localePath(locale, basePath)}teacher/`;
 }
 
+export function localeClassroomHostPath(
+  locale: Locale,
+  basePath = import.meta.env.BASE_URL,
+): string {
+  return `${localePath(locale, basePath)}classroom/host/`;
+}
+
+export function localeClassroomJoinPath(
+  locale: Locale,
+  basePath = import.meta.env.BASE_URL,
+): string {
+  return `${localePath(locale, basePath)}classroom/join/`;
+}
+
 export function resolveLocale(value: string | undefined): Locale {
   return value && isLocale(value) ? value : defaultLocale;
 }

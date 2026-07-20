@@ -1,5 +1,13 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+
+async function waitForHydration(page: Page, containerSelector: string) {
+  await page.waitForFunction(
+    (selector) =>
+      !document.querySelector(`${selector} astro-island`)?.hasAttribute('ssr'),
+    containerSelector,
+  );
+}
 
 test('Root entry resolves to the default localized route', async ({ page }) => {
   await page.goto('/');
@@ -14,6 +22,7 @@ test('Traditional Chinese exercise can be completed', async ({ page }) => {
 
   const demo = page.locator('#demo');
   await demo.scrollIntoViewIfNeeded();
+  await waitForHydration(page, '#demo');
   await expect(demo.getByRole('heading', { name: '需要協助嗎？' })).toHaveCount(
     0,
   );
@@ -43,11 +52,14 @@ test('A completed activity stops and shows a supportive score summary', async ({
     '/zh-TW/activity/?activity=2&lang=zh-TW&stage=7-9&topic=gaming-accounts&minutes=20&mode=self-paced&cases=friend-vote-request.zh-tw%2Cgaming-account-expiry.zh-tw%2Cschool-platform-notice.zh-tw&versions=1.1.0%2C1.1.0%2C1.1.0#demo',
   );
   const demo = page.locator('#demo');
+  await waitForHydration(page, '#demo');
   const correctChoiceIds = [
     'choice.fraud',
     'choice.fraud',
     'choice.trustworthy',
   ];
+
+  await expect(demo).toContainText('01／03');
 
   for (const [index, choiceId] of correctChoiceIds.entries()) {
     await demo.locator(`[data-choice-id="${choiceId}"]`).click();
@@ -87,6 +99,7 @@ test('Mobile next case keeps the activity in view', async ({ page }) => {
 
   const demo = page.locator('#demo');
   await demo.scrollIntoViewIfNeeded();
+  await waitForHydration(page, '#demo');
   await demo.locator('[data-choice-id="choice.fraud"]').click();
   const nextButton = demo.getByRole('button', { name: '下一題' });
   await nextButton.click();
@@ -107,6 +120,7 @@ test('Documented case debrief preserves qualified impact and review details', as
     '/zh-TW/activity/?activity=2&lang=zh-TW&stage=7-9&topic=online-shopping&minutes=10&mode=self-paced&cases=ghost-parcel-pickup.zh-tw&versions=1.1.0#demo',
   );
   const demo = page.locator('#demo');
+  await waitForHydration(page, '#demo');
 
   await demo
     .getByRole('button', {
@@ -155,18 +169,27 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
   await expect(teacherGuideLink).toHaveAttribute('rel', 'noreferrer');
 
   const teacherSetup = page.locator('.teacher-page-configurator');
+  const classroomEntry = page.locator('.teacher-page-classroom');
+  await expect(
+    classroomEntry.getByRole('heading', { name: '即時班級互動' }),
+  ).toBeVisible();
+  await expect(
+    classroomEntry.getByRole('button', { name: '建立互動教室' }),
+  ).toBeDisabled();
+  const [staticBox, classroomBox] = await Promise.all([
+    teacherSetup.boundingBox(),
+    classroomEntry.boundingBox(),
+  ]);
+  expect(staticBox).not.toBeNull();
+  expect(classroomBox).not.toBeNull();
+  expect(classroomBox!.y).toBeGreaterThan(staticBox!.y + staticBox!.height - 1);
   const stageSelect = teacherSetup.getByRole('combobox', {
     name: '學習階段',
     exact: true,
   });
   await expect(stageSelect).toHaveValue('7-9');
   await expect(stageSelect.locator('option')).toHaveCount(5);
-  await page.waitForFunction(
-    () =>
-      !document
-        .querySelector('.teacher-page-configurator astro-island')
-        ?.hasAttribute('ssr'),
-  );
+  await waitForHydration(page, '.teacher-page-configurator');
   const topicSelect = teacherSetup.getByRole('combobox', {
     name: '主題',
     exact: true,
@@ -203,6 +226,7 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
   await expect(page.locator('#demo')).toContainText('01／02');
 
   const demo = page.locator('#demo');
+  await waitForHydration(page, '#demo');
   await demo.getByRole('button', { name: /^A\./ }).click();
   await expect(demo.getByText('判斷結果')).toHaveCount(0);
   await demo.getByRole('button', { name: '揭曉解析' }).click();
@@ -258,17 +282,15 @@ test('Teacher setup remains visible at the 320px mobile boundary', async ({
 }) => {
   await page.setViewportSize({ width: 320, height: 700 });
   await page.goto('/zh-TW/teacher/');
-  await page.waitForFunction(
-    () =>
-      !document
-        .querySelector('.teacher-page-configurator astro-island')
-        ?.hasAttribute('ssr'),
-  );
+  await waitForHydration(page, '.teacher-page-configurator');
 
   await expect(
     page.getByRole('combobox', { name: '主題', exact: true }),
   ).toBeVisible();
   await expect(page.getByRole('link', { name: '開啟教師手冊' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: '即時班級互動' }),
+  ).toBeVisible();
   await page.getByRole('button', { name: '產生活動連結' }).click();
   await expect(page.getByRole('img', { name: '活動 QR Code' })).toBeVisible();
   const viewport = await page.evaluate(() => ({
@@ -294,17 +316,13 @@ test('Core student and teacher controls work with the keyboard', async ({
   const firstChoice = page
     .locator('#demo')
     .getByRole('button', { name: /^A\./ });
+  await waitForHydration(page, '#demo');
   await firstChoice.focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('#demo').getByText('判斷結果')).toBeVisible();
 
   await page.goto('/zh-TW/teacher/');
-  await page.waitForFunction(
-    () =>
-      !document
-        .querySelector('.teacher-page-configurator astro-island')
-        ?.hasAttribute('ssr'),
-  );
+  await waitForHydration(page, '.teacher-page-configurator');
   const createButton = page.getByRole('button', { name: '產生活動連結' });
   await createButton.focus();
   await page.keyboard.press('Enter');
@@ -325,9 +343,13 @@ test('@a11y core pages have no detectable serious accessibility violations', asy
     '/zh-TW/',
     '/zh-TW/activity/',
     '/zh-TW/teacher/',
+    '/zh-TW/classroom/host/',
+    '/zh-TW/classroom/join/',
     '/en/',
     '/en/activity/',
     '/en/teacher/',
+    '/en/classroom/host/',
+    '/en/classroom/join/',
   ]) {
     await page.goto(route);
     const results = await new AxeBuilder({ page })

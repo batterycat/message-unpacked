@@ -21,5 +21,15 @@ describe('interface catalogs', () => {
 
   it('does not publish Chinese case copy as an English placeholder', () => {
     expect(catalogs.en.demo.emptyDescription).toContain('Traditional Chinese');
+    expect(catalogs.en.classroomEntry.localeUnavailableDescription).toContain(
+      'Traditional Chinese',
+    );
+  });
+
+  it('distinguishes static links from live classroom interaction', () => {
+    expect(catalogs['zh-TW'].teacherSetup.heading).toContain('靜態');
+    expect(catalogs['zh-TW'].classroomEntry.heading).toContain('班級互動');
+    expect(catalogs.en.teacherSetup.heading).toContain('Static');
+    expect(catalogs.en.classroomEntry.heading).toContain('classroom');
   });
 });
