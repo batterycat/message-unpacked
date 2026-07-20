@@ -23,6 +23,7 @@ interface Props {
 const { locale } = Astro.props;
 const catalog = getCatalog(locale);
 const teacherGuideHref = 'https://batterycat.gitbook.io/message-unpacked-docs/';
+const usagePrivacyHref = `${teacherGuideHref}shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu`;
 const caseEntries = await getCollection(
   'cases',
   ({ data }) => data.status === 'published' && data.locale === locale,
@@ -100,10 +101,14 @@ const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
       <strong>Message, Unpacked.</strong>
       <span>{catalog.footer.statement}</span>
     </div>
-    <a href={localePath(locale)}>
-      <ArrowLeftIcon aria-hidden="true" weight="bold" />
-      {catalog.teacherPage.backHome}
-    </a>
+    <nav aria-label={catalog.nav.about}>
+      <a href={localePath(locale)}>
+        <ArrowLeftIcon aria-hidden="true" weight="bold" />
+        {catalog.teacherPage.backHome}
+      </a>
+      <a href={teacherGuideHref}>{catalog.footer.teacherGuide}</a>
+      <a href={usagePrivacyHref}>{catalog.footer.usagePrivacy}</a>
+    </nav>
     <div class="license-list">
       <span>{catalog.footer.codeLicense}</span>
       <span>{catalog.footer.contentLicense}</span>

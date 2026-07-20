@@ -14,11 +14,19 @@ test('Traditional Chinese exercise can be completed', async ({ page }) => {
 
   const demo = page.locator('#demo');
   await demo.scrollIntoViewIfNeeded();
+  await expect(demo.getByRole('heading', { name: '需要協助嗎？' })).toHaveCount(
+    0,
+  );
   await demo.getByRole('button', { name: /^A\./ }).click();
   await expect(demo.getByText('判斷結果')).toBeVisible();
   await expect(demo.getByText(/本題得分/)).toBeVisible();
   await expect(demo).toContainText('網路詐騙通報查詢網');
   await expect(demo).toContainText('165反詐騙諮詢專線');
+  await expect(
+    demo.getByRole('link', {
+      name: '前往官方網站：網路詐騙通報查詢網',
+    }),
+  ).toBeVisible();
 });
 
 test('Homepage exercise presents three classic cases', async ({ page }) => {
@@ -32,22 +40,22 @@ test('A completed activity stops and shows a supportive score summary', async ({
   page,
 }) => {
   await page.goto(
-    '/zh-TW/activity/?activity=1&lang=zh-TW&stage=7-9&topic=遊戲與帳號&minutes=20&mode=self-paced&cases=friend-vote-request.zh-tw%2Cgaming-account-expiry.zh-tw%2Cschool-platform-notice.zh-tw#demo',
+    '/zh-TW/activity/?activity=2&lang=zh-TW&stage=7-9&topic=gaming-accounts&minutes=20&mode=self-paced&cases=friend-vote-request.zh-tw%2Cgaming-account-expiry.zh-tw%2Cschool-platform-notice.zh-tw&versions=1.1.0%2C1.1.0%2C1.1.0#demo',
   );
   const demo = page.locator('#demo');
-  const correctChoices = [
-    '不給驗證碼，改用其他方式確認本人',
-    '高度疑似詐騙，不點連結',
-    '具備可信特徵，仍從既有入口查看',
+  const correctChoiceIds = [
+    'choice.fraud',
+    'choice.fraud',
+    'choice.trustworthy',
   ];
 
-  for (const [index, choice] of correctChoices.entries()) {
-    await demo.getByRole('button', { name: choice }).click();
+  for (const [index, choiceId] of correctChoiceIds.entries()) {
+    await demo.locator(`[data-choice-id="${choiceId}"]`).click();
     await expect(demo).toContainText('本題得分');
     await expect(demo).toContainText('100／100');
     await demo
       .getByRole('button', {
-        name: index === correctChoices.length - 1 ? '查看學習成果' : '下一題',
+        name: index === correctChoiceIds.length - 1 ? '查看學習成果' : '下一題',
       })
       .click();
   }
@@ -66,7 +74,7 @@ test('A completed activity stops and shows a supportive score summary', async ({
 
   await demo.getByRole('button', { name: '再挑戰一次' }).click();
   await expect(
-    demo.getByRole('button', { name: correctChoices[0] }),
+    demo.locator(`[data-choice-id="${correctChoiceIds[0]}"]`),
   ).toBeVisible();
   await expect(demo).toContainText('01／03');
 });
@@ -74,14 +82,12 @@ test('A completed activity stops and shows a supportive score summary', async ({
 test('Mobile next case keeps the activity in view', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(
-    '/zh-TW/activity/?activity=1&lang=zh-TW&stage=7-9&topic=社群與交友&minutes=10&mode=self-paced&cases=friend-vote-request.zh-tw%2Cgroup-project-attachment.zh-tw#demo',
+    '/zh-TW/activity/?activity=2&lang=zh-TW&stage=7-9&topic=social-relationships&minutes=10&mode=self-paced&cases=friend-vote-request.zh-tw%2Cgroup-project-attachment.zh-tw&versions=1.1.0%2C1.1.0#demo',
   );
 
   const demo = page.locator('#demo');
   await demo.scrollIntoViewIfNeeded();
-  await demo
-    .getByRole('button', { name: '不給驗證碼，改用其他方式確認本人' })
-    .click();
+  await demo.locator('[data-choice-id="choice.fraud"]').click();
   const nextButton = demo.getByRole('button', { name: '下一題' });
   await nextButton.click();
 
@@ -96,8 +102,9 @@ test('Mobile next case keeps the activity in view', async ({ page }) => {
 test('Documented case debrief preserves qualified impact and review details', async ({
   page,
 }) => {
+  await page.setViewportSize({ width: 900, height: 900 });
   await page.goto(
-    '/zh-TW/activity/?activity=1&lang=zh-TW&stage=7-9&topic=網路購物&minutes=10&mode=self-paced&cases=ghost-parcel-pickup.zh-tw#demo',
+    '/zh-TW/activity/?activity=2&lang=zh-TW&stage=7-9&topic=online-shopping&minutes=10&mode=self-paced&cases=ghost-parcel-pickup.zh-tw&versions=1.1.0#demo',
   );
   const demo = page.locator('#demo');
 
@@ -119,6 +126,21 @@ test('Documented case debrief preserves qualified impact and review details', as
   await expect(
     demo.getByRole('link', { name: /內政部警政署刑事警察局/ }),
   ).toBeVisible();
+
+  const impactCard = demo.getByText('真實案例').locator('..');
+  const helpHeading = demo.getByRole('heading', { name: '需要協助嗎？' });
+  const resources = demo.getByText('165反詐騙諮詢專線').locator('..');
+  const [impactBox, helpBox, resourcesBox] = await Promise.all([
+    impactCard.boundingBox(),
+    helpHeading.boundingBox(),
+    resources.boundingBox(),
+  ]);
+
+  expect(impactBox).not.toBeNull();
+  expect(helpBox).not.toBeNull();
+  expect(resourcesBox).not.toBeNull();
+  expect(helpBox!.x).toBeGreaterThan(impactBox!.x + impactBox!.width - 1);
+  expect(resourcesBox!.x).toBeGreaterThan(impactBox!.x + impactBox!.width - 1);
 });
 
 test('Teacher can create and launch a projector activity', async ({ page }) => {
@@ -149,8 +171,8 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
     name: '主題',
     exact: true,
   });
-  await topicSelect.selectOption('家庭與生活');
-  await expect(topicSelect).toHaveValue('家庭與生活');
+  await topicSelect.selectOption('family-life');
+  await expect(topicSelect).toHaveValue('family-life');
   await teacherSetup
     .getByRole('combobox', { name: '活動時間', exact: true })
     .selectOption('10');
@@ -167,7 +189,8 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
   const launchHref = await launchLink.getAttribute('href');
   expect(launchHref).not.toBeNull();
   const launchUrl = new URL(launchHref!, page.url());
-  expect(launchUrl.searchParams.get('topic')).toBe('家庭與生活');
+  expect(launchUrl.searchParams.get('topic')).toBe('family-life');
+  expect(launchUrl.searchParams.get('versions')?.split(',')).toHaveLength(2);
   expect(launchUrl.searchParams.get('cases')?.split(',')).toHaveLength(2);
   await launchLink.click();
 
@@ -190,7 +213,7 @@ test('Multiple-message cases keep readable separation between message cards', as
   page,
 }) => {
   await page.goto(
-    '/zh-TW/activity/?activity=1&lang=zh-TW&stage=7-9&topic=遊戲與帳號&minutes=10&mode=self-paced&cases=free-game-coins-otp.zh-tw#demo',
+    '/zh-TW/activity/?activity=2&lang=zh-TW&stage=7-9&topic=gaming-accounts&minutes=10&mode=self-paced&cases=free-game-coins-otp.zh-tw&versions=1.1.0#demo',
   );
 
   const messages = page.getByTestId('scenario-messages');
@@ -205,7 +228,7 @@ test('Stale teacher activity link offers a safe recovery path', async ({
   page,
 }) => {
   await page.goto(
-    '/zh-TW/activity/?activity=1&lang=zh-TW&stage=7-9&topic=校園&minutes=10&mode=self-paced&cases=case.retired#demo',
+    '/zh-TW/activity/?activity=2&lang=zh-TW&stage=7-9&topic=school-learning&minutes=10&mode=self-paced&cases=case.retired&versions=1.0.0#demo',
   );
 
   await expect(

@@ -28,7 +28,7 @@ type TeacherConfiguratorProps = {
   activityPath?: string;
   catalog: MessageCatalog;
   locale: Locale;
-  scenarios: ActivityCaseCandidate[];
+  scenarios: readonly ActivityCaseCandidate[];
 };
 
 function interpolate(
@@ -56,33 +56,38 @@ export function TeacherConfigurator({
   const topics = useMemo(
     () =>
       [
-        ...new Set(
-          availableScenarios.map((scenario) => scenario.learning.topic),
-        ),
-      ]
-        .filter((topic) => topic.length > 0)
-        .sort((left, right) => left.localeCompare(right, locale)),
+        ...new Map(
+          availableScenarios.map((scenario) => [
+            scenario.learning.topicId,
+            {
+              id: scenario.learning.topicId,
+              label: scenario.learning.topic,
+            },
+          ]),
+        ).values(),
+      ].sort((left, right) => left.label.localeCompare(right.label, locale)),
     [availableScenarios, locale],
   );
-  const [topic, setTopic] = useState(topics[0] ?? '');
+  const [topicId, setTopicId] = useState(topics[0]?.id ?? '');
   const [durationMinutes, setDurationMinutes] = useState<ActivityDuration>(10);
   const [mode, setMode] = useState<ActivityMode>('self-paced');
   const [activityUrl, setActivityUrl] = useState<string | null>(null);
   const [selectedCount, setSelectedCount] = useState(0);
   const [copied, setCopied] = useState(false);
   const unavailable = availableScenarios.length === 0 || topics.length === 0;
-  const selectedTopic = topics.includes(topic) ? topic : (topics[0] ?? '');
+  const selectedTopic =
+    topics.find((topic) => topic.id === topicId) ?? topics[0];
 
   function createLink(event: { preventDefault: () => void }) {
     event.preventDefault();
-    if (unavailable) return;
+    if (unavailable || !selectedTopic) return;
 
     const config = createActivityConfig(availableScenarios, {
       durationMinutes,
       locale,
       mode,
       stage,
-      topic: selectedTopic,
+      topicId: selectedTopic.id,
     });
     const baseUrl = new URL(activityPath, window.location.href);
     setActivityUrl(buildActivityUrl(baseUrl.toString(), config));
@@ -101,20 +106,13 @@ export function TeacherConfigurator({
       className={styles.configurator}
       aria-labelledby="teacher-setup-title"
     >
-      <div className={styles.intro}>
-        <p className={styles.eyebrow}>{catalog.teacherSetup.eyebrow}</p>
-        <h2 id="teacher-setup-title">{catalog.teacherSetup.heading}</h2>
-        <p>{catalog.teacherSetup.description}</p>
-        <div className={styles.privacyNote}>
-          <UsersThreeIcon aria-hidden="true" weight="duotone" />
-          <span>{catalog.hero.note}</span>
-        </div>
-      </div>
-
       {unavailable ? (
         <p className={styles.unavailable}>{catalog.teacherSetup.unavailable}</p>
       ) : (
         <form className={styles.form} onSubmit={createLink}>
+          <h2 id="teacher-setup-title" className={styles.setupTitle}>
+            {catalog.teacherSetup.heading}
+          </h2>
           <label>
             <span>{catalog.teacherSetup.stage}</span>
             <select
@@ -136,12 +134,12 @@ export function TeacherConfigurator({
           <label>
             <span>{catalog.teacherSetup.topic}</span>
             <select
-              value={selectedTopic}
-              onChange={(event) => setTopic(event.target.value)}
+              value={selectedTopic?.id ?? ''}
+              onChange={(event) => setTopicId(event.target.value)}
             >
               {topics.map((option) => (
-                <option value={option} key={option}>
-                  {option}
+                <option value={option.id} key={option.id}>
+                  {option.label}
                 </option>
               ))}
             </select>
@@ -200,8 +198,8 @@ export function TeacherConfigurator({
         </form>
       )}
 
-      <aside className={styles.result} aria-live="polite">
-        {activityUrl ? (
+      {activityUrl && (
+        <aside className={styles.result} aria-live="polite">
           <>
             <CheckCircleIcon aria-hidden="true" weight="fill" />
             <div>
@@ -240,13 +238,8 @@ export function TeacherConfigurator({
               </div>
             </div>
           </>
-        ) : (
-          <>
-            <GraduationCapIcon aria-hidden="true" weight="duotone" />
-            <p>{catalog.modes.teacherDescription}</p>
-          </>
-        )}
-      </aside>
+        </aside>
+      )}
     </section>
   );
 }

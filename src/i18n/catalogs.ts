@@ -14,7 +14,6 @@ const zhTW = {
     primary: '主要導覽',
     learningChallenge: '學習挑戰',
     teacherArea: '教師專區',
-    caseLibrary: '案例資料',
     contribute: '共同維護',
     about: '關於計畫',
     language: '語言',
@@ -33,9 +32,7 @@ const zhTW = {
     note: '免登入・不收集學生資料・可靜態部署',
   },
   activityPage: {
-    eyebrow: '獨立學習活動',
-    heading: '訊息判讀練習',
-    description: '專注完成教師挑選的案例；不需登入，作答資料只留在這個頁面。',
+    heading: '訊息判讀活動',
     backHome: '回到首頁',
   },
   teacherPage: {
@@ -46,33 +43,26 @@ const zhTW = {
     teacherGuide: '開啟教師手冊',
   },
   learningPath: {
-    label: '學習路徑',
     title: '四步驟，建立判斷力',
-    stepOne: '拆解訊息',
-    stepOneDescription: '讀懂訊息內容與請求',
-    stepTwo: '判斷線索',
-    stepTwoDescription: '找出可疑點與證據',
-    stepThree: '查看真實影響',
-    stepThreeDescription: '了解可能造成的損害',
-    stepFour: '學會通報',
-    stepFourDescription: '知道如何求助與查證',
+    summary: '讀懂要求、找出線索、選擇安全行動，再用解析整理查證方法。',
   },
   modes: {
-    studentLabel: '學生體驗',
-    studentTitle: '讀訊息，做判斷',
-    studentDescription: '不是只猜真或假；你還要說明線索，以及下一步怎麼做。',
-    teacherLabel: '教師模式',
     teacherTitle: '兩分鐘內開課',
     teacherDescription: '依年級、主題與時間挑選題目，產生可分享的活動連結。',
-    openLabel: '共同維護',
-    openTitle: '案例和程式分開演進',
-    openDescription: '案例以可審查的資料檔維護，不必修改應用程式就能貢獻。',
+  },
+  homeLinks: {
+    guideLabel: '教師資源',
+    guideTitle: '教師手冊',
+    guideDescription: '快速開課、投影帶領、敏感內容提醒與課堂腳本。',
+    guideAction: '開啟手冊',
+    contributeLabel: '開放協作',
+    contributeTitle: '參與共同維護',
+    contributeDescription: '在 GitHub 提議案例、回報問題或貢獻程式。',
+    contributeAction: '前往 GitHub',
   },
   teacherSetup: {
     eyebrow: '教師快速開課',
-    heading: '挑選主題，兩分鐘內開始',
-    description:
-      '不需帳號或學生名單。選好條件後，產生可直接開啟或分享的靜態活動連結。',
+    heading: '設定活動',
     stage: '學習階段',
     stageOptions: {
       '1-2': '國小低年級（1–2 年級）',
@@ -211,6 +201,9 @@ const zhTW = {
     statement: '開放原始碼的公共教育專案',
     codeLicense: '程式碼 Apache-2.0',
     contentLicense: '原創教材 CC BY-SA 4.0',
+    teacherGuide: '教師手冊',
+    repository: 'GitHub',
+    usagePrivacy: '使用範圍與隱私',
   },
 } as const;
 
@@ -231,7 +224,6 @@ const en: MessageCatalog = {
     primary: 'Primary navigation',
     learningChallenge: 'Learning challenge',
     teacherArea: 'Teacher area',
-    caseLibrary: 'Case library',
     contribute: 'Contribute',
     about: 'About',
     language: 'Language',
@@ -250,10 +242,7 @@ const en: MessageCatalog = {
     note: 'No account · No student data · Static deployment',
   },
   activityPage: {
-    eyebrow: 'Focused learning activity',
-    heading: 'Message assessment practice',
-    description:
-      'Complete the cases selected by your teacher in a focused page. No sign-in; answers stay on this page.',
+    heading: 'Message assessment activity',
     backHome: 'Back to home',
   },
   teacherPage: {
@@ -265,36 +254,30 @@ const en: MessageCatalog = {
     teacherGuide: 'Open the teacher guide',
   },
   learningPath: {
-    label: 'Learning path',
     title: 'Build judgment in four steps',
-    stepOne: 'Unpack the message',
-    stepOneDescription: 'Read the content and request closely',
-    stepTwo: 'Assess the clues',
-    stepTwoDescription: 'Identify suspicious evidence',
-    stepThree: 'See the real impact',
-    stepThreeDescription: 'Understand possible harm',
-    stepFour: 'Know how to report',
-    stepFourDescription: 'Find help and verify safely',
+    summary:
+      'Read the request, find the evidence, choose a safer action, and use the explanation to practise verification.',
   },
   modes: {
-    studentLabel: 'Student experience',
-    studentTitle: 'Read, reason, decide',
-    studentDescription:
-      'Go beyond true or false: explain the clues and choose a safer next step.',
-    teacherLabel: 'Teacher mode',
     teacherTitle: 'Start class in two minutes',
     teacherDescription:
       'Choose a grade band, topic, and duration, then share the activity link.',
-    openLabel: 'Open collaboration',
-    openTitle: 'Content and code evolve separately',
-    openDescription:
-      'Reviewable data files let contributors add cases without changing application code.',
+  },
+  homeLinks: {
+    guideLabel: 'Teacher resource',
+    guideTitle: 'Teacher guide',
+    guideDescription:
+      'Quick setup, projector facilitation, sensitive-content notes, and classroom scripts.',
+    guideAction: 'Open the guide',
+    contributeLabel: 'Open collaboration',
+    contributeTitle: 'Help maintain the project',
+    contributeDescription:
+      'Propose cases, report problems, or contribute code on GitHub.',
+    contributeAction: 'Open GitHub',
   },
   teacherSetup: {
     eyebrow: 'Quick class setup',
-    heading: 'Choose a topic and start in two minutes',
-    description:
-      'No account or class roster required. Create a static activity link that can be opened or shared immediately.',
+    heading: 'Set up an activity',
     stage: 'Learning stage',
     stageOptions: {
       '1-2': 'Early primary (grades 1–2)',
@@ -441,6 +424,9 @@ const en: MessageCatalog = {
     statement: 'An open-source public education project',
     codeLicense: 'Code: Apache-2.0',
     contentLicense: 'Original content: CC BY-SA 4.0',
+    teacherGuide: 'Teacher guide',
+    repository: 'GitHub',
+    usagePrivacy: 'Scope and privacy',
   },
 };
 

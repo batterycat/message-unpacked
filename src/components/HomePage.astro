@@ -1,13 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import {
-  ArrowRightIcon,
+  ArrowSquareOutIcon,
   BookOpenIcon,
-  ChartBarIcon,
   CodeIcon,
-  FolderOpenIcon,
   GraduationCapIcon,
-  LightbulbIcon,
   MagnifyingGlassIcon,
   ShieldCheckIcon,
   UsersThreeIcon,
@@ -45,6 +42,9 @@ const scenarios = homepageScenarioGroups.flatMap((translationGroupId) =>
 const responseRegistry = await loadResponseRegistry(locale);
 const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
 const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`;
+const teacherGuideHref = 'https://batterycat.gitbook.io/message-unpacked-docs/';
+const repositoryHref = 'https://github.com/batterycat/message-unpacked';
+const usagePrivacyHref = `${teacherGuideHref}shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu`;
 ---
 
 <BaseLayout {catalog} {locale}>
@@ -67,12 +67,7 @@ const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`
           catalog.nav.teacherArea
         }</a
       >
-      <a href="#demo"
-        ><FolderOpenIcon aria-hidden="true" weight="bold" />{
-          catalog.nav.caseLibrary
-        }</a
-      >
-      <a href="#about"
+      <a href={repositoryHref}
         ><UsersThreeIcon aria-hidden="true" weight="bold" />{
           catalog.nav.contribute
         }</a
@@ -123,55 +118,11 @@ const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`
     </section>
 
     <section class="learning-path" aria-labelledby="learning-path-title">
-      <div class="learning-heading">
-        <span>{catalog.learningPath.label}</span>
+      <MagnifyingGlassIcon aria-hidden="true" weight="duotone" />
+      <div>
         <strong id="learning-path-title">{catalog.learningPath.title}</strong>
+        <span>{catalog.learningPath.summary}</span>
       </div>
-      <ol>
-        <li>
-          <span class="step-icon"
-            ><MagnifyingGlassIcon aria-hidden="true" weight="duotone" /></span
-          >
-          <span
-            ><b>1. {catalog.learningPath.stepOne}</b><small
-              >{catalog.learningPath.stepOneDescription}</small
-            ></span
-          >
-          <ArrowRightIcon className="step-arrow" aria-hidden="true" />
-        </li>
-        <li>
-          <span class="step-icon"
-            ><LightbulbIcon aria-hidden="true" weight="duotone" /></span
-          >
-          <span
-            ><b>2. {catalog.learningPath.stepTwo}</b><small
-              >{catalog.learningPath.stepTwoDescription}</small
-            ></span
-          >
-          <ArrowRightIcon className="step-arrow" aria-hidden="true" />
-        </li>
-        <li>
-          <span class="step-icon"
-            ><ChartBarIcon aria-hidden="true" weight="duotone" /></span
-          >
-          <span
-            ><b>3. {catalog.learningPath.stepThree}</b><small
-              >{catalog.learningPath.stepThreeDescription}</small
-            ></span
-          >
-          <ArrowRightIcon className="step-arrow" aria-hidden="true" />
-        </li>
-        <li>
-          <span class="step-icon"
-            ><ShieldCheckIcon aria-hidden="true" weight="duotone" /></span
-          >
-          <span
-            ><b>4. {catalog.learningPath.stepFour}</b><small
-              >{catalog.learningPath.stepFourDescription}</small
-            ></span
-          >
-        </li>
-      </ol>
     </section>
 
     <section id="demo" class="demo-section">
@@ -199,25 +150,27 @@ const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`
       </div>
     </section>
 
-    <section class="mode-section" aria-label={catalog.nav.teacherArea}>
-      <article class="mode-card">
-        <p>{catalog.modes.studentLabel}</p>
-        <h2>{catalog.modes.studentTitle}</h2>
-        <span>{catalog.modes.studentDescription}</span>
+    <section class="resource-section" aria-label={catalog.nav.about}>
+      <a class="resource-card" href={teacherGuideHref}>
         <BookOpenIcon aria-hidden="true" weight="duotone" />
-      </article>
-      <article class="mode-card featured">
-        <p>{catalog.modes.teacherLabel}</p>
-        <h2>{catalog.modes.teacherTitle}</h2>
-        <span>{catalog.modes.teacherDescription}</span>
-        <GraduationCapIcon aria-hidden="true" weight="duotone" />
-      </article>
-      <article id="about" class="mode-card">
-        <p>{catalog.modes.openLabel}</p>
-        <h2>{catalog.modes.openTitle}</h2>
-        <span>{catalog.modes.openDescription}</span>
+        <div>
+          <p>{catalog.homeLinks.guideLabel}</p>
+          <h2>{catalog.homeLinks.guideTitle}</h2>
+          <span>{catalog.homeLinks.guideDescription}</span>
+          <strong>{catalog.homeLinks.guideAction}</strong>
+        </div>
+        <ArrowSquareOutIcon aria-hidden="true" weight="bold" />
+      </a>
+      <a class="resource-card" href={repositoryHref}>
         <CodeIcon aria-hidden="true" weight="duotone" />
-      </article>
+        <div>
+          <p>{catalog.homeLinks.contributeLabel}</p>
+          <h2>{catalog.homeLinks.contributeTitle}</h2>
+          <span>{catalog.homeLinks.contributeDescription}</span>
+          <strong>{catalog.homeLinks.contributeAction}</strong>
+        </div>
+        <ArrowSquareOutIcon aria-hidden="true" weight="bold" />
+      </a>
     </section>
   </main>
 
@@ -228,8 +181,9 @@ const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`
     </div>
     <nav aria-label={catalog.nav.about}>
       <a href={localeTeacherPath(locale)}>{catalog.nav.teacherArea}</a>
-      <a href="#demo">{catalog.nav.caseLibrary}</a>
-      <a href="#about">{catalog.nav.about}</a>
+      <a href={teacherGuideHref}>{catalog.footer.teacherGuide}</a>
+      <a href={repositoryHref}>{catalog.footer.repository}</a>
+      <a href={usagePrivacyHref}>{catalog.footer.usagePrivacy}</a>
     </nav>
     <div class="license-list">
       <span>{catalog.footer.codeLicense}</span>

@@ -1,10 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import {
-  ArrowLeftIcon,
-  BookOpenIcon,
-  ShieldCheckIcon,
-} from '@phosphor-icons/react/ssr';
+import { ArrowLeftIcon, BookOpenIcon } from '@phosphor-icons/react/ssr';
 
 import { loadResponseRegistry } from '../domain/resources/load';
 import type { Locale } from '../i18n/catalogs';
@@ -31,6 +27,8 @@ const scenarios = caseEntries
   .map((entry) => entry.data)
   .sort((left, right) => left.id.localeCompare(right.id));
 const responseRegistry = await loadResponseRegistry(locale);
+const teacherGuideHref = 'https://batterycat.gitbook.io/message-unpacked-docs/';
+const usagePrivacyHref = `${teacherGuideHref}shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu`;
 const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
 ---
 
@@ -62,15 +60,7 @@ const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
 
   <main id="main" class="activity-page-main" tabindex="-1">
     <section class="activity-page-intro" aria-labelledby="activity-page-title">
-      <div>
-        <p class="eyebrow">{catalog.activityPage.eyebrow}</p>
-        <h1 id="activity-page-title">{catalog.activityPage.heading}</h1>
-        <p>{catalog.activityPage.description}</p>
-      </div>
-      <p class="activity-privacy-note">
-        <ShieldCheckIcon aria-hidden="true" weight="fill" />
-        {catalog.hero.note}
-      </p>
+      <h1 id="activity-page-title">{catalog.activityPage.heading}</h1>
     </section>
 
     <section id="demo" class="activity-page-stage">
@@ -91,10 +81,14 @@ const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
       <strong>Message, Unpacked.</strong>
       <span>{catalog.footer.statement}</span>
     </div>
-    <a href={localePath(locale)}>
-      <BookOpenIcon aria-hidden="true" weight="bold" />
-      {catalog.activityPage.backHome}
-    </a>
+    <nav aria-label={catalog.nav.about}>
+      <a href={localePath(locale)}>
+        <BookOpenIcon aria-hidden="true" weight="bold" />
+        {catalog.activityPage.backHome}
+      </a>
+      <a href={teacherGuideHref}>{catalog.footer.teacherGuide}</a>
+      <a href={usagePrivacyHref}>{catalog.footer.usagePrivacy}</a>
+    </nav>
     <div class="license-list">
       <span>{catalog.footer.codeLicense}</span>
       <span>{catalog.footer.contentLicense}</span>

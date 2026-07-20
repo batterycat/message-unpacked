@@ -4,42 +4,51 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import { getCatalog } from '../i18n/locale';
+import type { ActivityCaseCandidate } from '../domain/activity/config';
 import { TeacherConfigurator } from './TeacherConfigurator';
 
 const candidates = [
   {
     id: 'case.social-a',
+    contentVersion: '1.1.0',
     learning: {
       stages: ['7-9'] as const,
+      topicId: 'social-relationships',
       topic: '社群與交友',
       contexts: ['社群平台', '同儕互動'],
     },
   },
   {
     id: 'case.gaming',
+    contentVersion: '1.1.0',
     learning: {
       stages: ['7-9'] as const,
+      topicId: 'gaming-accounts',
       topic: '遊戲與帳號',
       contexts: ['線上遊戲'],
     },
   },
   {
     id: 'case.social-b',
+    contentVersion: '1.1.0',
     learning: {
       stages: ['7-9'] as const,
+      topicId: 'social-relationships',
       topic: '社群與交友',
       contexts: ['社群平台'],
     },
   },
   {
     id: 'case.primary',
+    contentVersion: '1.1.0',
     learning: {
       stages: ['1-2'] as const,
+      topicId: 'gaming-accounts',
       topic: '遊戲與帳號',
       contexts: ['線上遊戲'],
     },
   },
-];
+] as const satisfies readonly ActivityCaseCandidate[];
 
 describe('TeacherConfigurator', () => {
   afterEach(() => cleanup());
@@ -64,11 +73,11 @@ describe('TeacherConfigurator', () => {
     ]);
     const topicSelect = screen.getByLabelText('主題') as HTMLSelectElement;
     expect([...topicSelect.options].map((option) => option.value)).toEqual([
-      '社群與交友',
-      '遊戲與帳號',
+      'social-relationships',
+      'gaming-accounts',
     ]);
     fireEvent.change(topicSelect, {
-      target: { value: '遊戲與帳號' },
+      target: { value: 'gaming-accounts' },
     });
     fireEvent.change(screen.getByLabelText('活動時間'), {
       target: { value: '20' },
@@ -80,6 +89,13 @@ describe('TeacherConfigurator', () => {
     const url = new URL(launchLink.getAttribute('href') ?? '');
     expect(url.pathname).toBe('/message-unpacked/zh-TW/activity/');
     expect(url.searchParams.get('mode')).toBe('projector');
+    expect(url.searchParams.get('activity')).toBe('2');
+    expect(url.searchParams.get('topic')).toBe('gaming-accounts');
+    expect(url.searchParams.get('versions')?.split(',')).toEqual([
+      '1.1.0',
+      '1.1.0',
+      '1.1.0',
+    ]);
     expect(url.searchParams.get('cases')?.split(',')).toEqual([
       'case.gaming',
       'case.social-a',
@@ -104,7 +120,7 @@ describe('TeacherConfigurator', () => {
     fireEvent.change(screen.getByLabelText('學習階段'), {
       target: { value: '1-2' },
     });
-    expect(screen.getByLabelText('主題')).toHaveValue('遊戲與帳號');
+    expect(screen.getByLabelText('主題')).toHaveValue('gaming-accounts');
     fireEvent.click(screen.getByRole('button', { name: '產生活動連結' }));
 
     const launchLink = screen.getByRole('link', { name: '開啟活動' });

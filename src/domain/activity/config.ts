@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { learningStages } from '../cases/schema';
+import { topicIds, type TopicId } from '../cases/topics';
 import { supportedLocales } from '../locales';
 
 export const activityDurations = [10, 20, 30] as const;
@@ -16,34 +17,53 @@ const caseIdSchema = z
   .max(96)
   .regex(/^[a-z0-9]+(?:[.-][a-z0-9]+)*$/);
 
-export const activityConfigSchema = z.object({
-  version: z.literal(1),
-  locale: z.enum(supportedLocales),
-  stage: z.enum(learningStages),
-  topic: z.string().min(1).max(80),
-  durationMinutes: z.union([z.literal(10), z.literal(20), z.literal(30)]),
-  mode: z.enum(activityModes),
-  caseIds: z
-    .array(caseIdSchema)
-    .min(1)
-    .max(10)
-    .refine((caseIds) => new Set(caseIds).size === caseIds.length, {
-      message: 'Activity case IDs must be unique.',
-    }),
-});
+export const activityConfigSchema = z
+  .object({
+    version: z.literal(2),
+    locale: z.enum(supportedLocales),
+    stage: z.enum(learningStages),
+    topicId: z.enum(topicIds),
+    durationMinutes: z.union([z.literal(10), z.literal(20), z.literal(30)]),
+    mode: z.enum(activityModes),
+    caseIds: z
+      .array(caseIdSchema)
+      .min(1)
+      .max(10)
+      .refine((caseIds) => new Set(caseIds).size === caseIds.length, {
+        message: 'Activity case IDs must be unique.',
+      }),
+    caseVersions: z
+      .array(z.string().regex(/^\d+\.\d+\.\d+$/))
+      .min(1)
+      .max(10),
+  })
+  .superRefine((config, context) => {
+    if (config.caseIds.length !== config.caseVersions.length) {
+      context.addIssue({
+        code: 'custom',
+        path: ['caseVersions'],
+        message: 'Every activity case must carry one content version.',
+      });
+    }
+  });
 
 export type ActivityConfig = z.infer<typeof activityConfigSchema>;
 
 export type ActivityCaseCandidate = {
   id: string;
+  contentVersion: string;
   learning: {
     stages: readonly LearningStage[];
+    topicId: TopicId;
     topic: string;
     contexts: readonly string[];
   };
 };
 
-export type ActivitySetup = Omit<ActivityConfig, 'caseIds' | 'version'>;
+export type ActivitySetup = Omit<
+  ActivityConfig,
+  'caseIds' | 'caseVersions' | 'version'
+>;
 
 export type ParsedActivityConfig =
   | { status: 'none' }
@@ -64,19 +84,23 @@ export function createActivityConfig(
     .filter((candidate) => candidate.learning.stages.includes(setup.stage))
     .sort((left, right) => left.id.localeCompare(right.id));
   const topicMatches = stageMatches.filter(
-    (candidate) => candidate.learning.topic === setup.topic,
+    (candidate) => candidate.learning.topicId === setup.topicId,
   );
   const remainingMatches = stageMatches.filter(
     (candidate) => !topicMatches.includes(candidate),
   );
   const requestedCount = durationCaseCount[setup.durationMinutes];
 
+  const selectedCases = [...topicMatches, ...remainingMatches].slice(
+    0,
+    requestedCount,
+  );
+
   return activityConfigSchema.parse({
     ...setup,
-    version: 1,
-    caseIds: [...topicMatches, ...remainingMatches]
-      .slice(0, requestedCount)
-      .map((candidate) => candidate.id),
+    version: 2,
+    caseIds: selectedCases.map((candidate) => candidate.id),
+    caseVersions: selectedCases.map((candidate) => candidate.contentVersion),
   });
 }
 
@@ -90,10 +114,11 @@ export function buildActivityUrl(
     activity: String(validConfig.version),
     lang: validConfig.locale,
     stage: validConfig.stage,
-    topic: validConfig.topic,
+    topic: validConfig.topicId,
     minutes: String(validConfig.durationMinutes),
     mode: validConfig.mode,
     cases: validConfig.caseIds.join(','),
+    versions: validConfig.caseVersions.join(','),
   }).toString();
   url.hash = 'demo';
   return url.toString();
@@ -101,7 +126,10 @@ export function buildActivityUrl(
 
 export function parseActivityConfig(
   searchParams: URLSearchParams,
-  availableCaseIds: readonly string[],
+  availableCases: readonly Pick<
+    ActivityCaseCandidate,
+    'id' | 'contentVersion'
+  >[],
 ): ParsedActivityConfig {
   if (!searchParams.has('activity')) return { status: 'none' };
 
@@ -109,18 +137,28 @@ export function parseActivityConfig(
     version: Number(searchParams.get('activity')),
     locale: searchParams.get('lang'),
     stage: searchParams.get('stage'),
-    topic: searchParams.get('topic'),
+    topicId: searchParams.get('topic'),
     durationMinutes: Number(searchParams.get('minutes')),
     mode: searchParams.get('mode'),
     caseIds: (searchParams.get('cases') ?? '')
       .split(',')
       .filter((caseId) => caseId.length > 0),
+    caseVersions: (searchParams.get('versions') ?? '')
+      .split(',')
+      .filter((version) => version.length > 0),
   });
 
   if (!parsed.success) return { status: 'invalid', reason: 'malformed' };
 
-  const available = new Set(availableCaseIds);
-  if (parsed.data.caseIds.some((caseId) => !available.has(caseId))) {
+  const availableVersions = new Map(
+    availableCases.map((candidate) => [candidate.id, candidate.contentVersion]),
+  );
+  if (
+    parsed.data.caseIds.some(
+      (caseId, index) =>
+        availableVersions.get(caseId) !== parsed.data.caseVersions[index],
+    )
+  ) {
     return { status: 'invalid', reason: 'stale' };
   }
 
