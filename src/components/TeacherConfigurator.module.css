@@ -1,7 +1,8 @@
 .configurator {
-  background: var(--brand-deep);
+  background: white;
+  border: 1px solid var(--line);
   border-radius: 0.9rem;
-  color: white;
+  color: var(--ink);
   display: grid;
   gap: clamp(1rem, 2.5vw, 2rem);
   grid-template-columns: minmax(420px, 1.35fr) minmax(230px, 0.7fr);
@@ -34,7 +35,7 @@
 }
 
 .form > label,
-.form fieldset {
+.modeFieldset {
   display: grid;
   gap: 0.4rem;
   margin: 0;
@@ -43,7 +44,7 @@
 
 .form label > span,
 .form legend {
-  color: #d9e8ef;
+  color: var(--muted);
   font-size: 0.74rem;
   font-weight: 750;
 }
@@ -67,7 +68,7 @@
   opacity: 1;
 }
 
-.form fieldset {
+.modeFieldset {
   border: 0;
   grid-column: 1 / -1;
   grid-template-columns: repeat(2, 1fr);
@@ -79,10 +80,10 @@
   margin-bottom: 0.4rem;
 }
 
-.form fieldset label {
+.modeFieldset label {
   align-items: center;
-  background: rgb(255 255 255 / 8%);
-  border: 1px solid rgb(255 255 255 / 28%);
+  background: #f7fafb;
+  border: 1px solid var(--line);
   border-radius: 0.45rem;
   cursor: pointer;
   display: grid;
@@ -92,17 +93,17 @@
   padding: 0.6rem 0.7rem;
 }
 
-.form fieldset label:has(input:checked) {
-  background: white;
-  border-color: white;
+.modeFieldset label:has(input:checked) {
+  background: #e9f6f3;
+  border-color: #67ad9e;
   color: var(--brand-deep);
 }
 
-.form fieldset label:has(input:checked) span {
+.modeFieldset label:has(input:checked) span {
   color: var(--brand-deep);
 }
 
-.form fieldset svg {
+.modeFieldset svg {
   height: 1.2rem;
   width: 1.2rem;
 }
@@ -128,6 +129,11 @@
   background: var(--coral-dark);
 }
 
+.createButton:disabled {
+  background: #aab8bd;
+  cursor: not-allowed;
+}
+
 .createButton svg {
   height: 1.1rem;
   width: 1.1rem;
@@ -135,9 +141,10 @@
 
 .result {
   align-items: start;
-  background: rgb(255 255 255 / 9%);
-  border: 1px solid rgb(255 255 255 / 24%);
+  background: var(--brand-deep);
+  border: 1px solid var(--brand-deep);
   border-radius: 0.65rem;
+  color: white;
   display: grid;
   gap: 0.7rem;
   grid-template-columns: auto 1fr;
@@ -247,7 +254,7 @@
 
 .unavailable {
   align-self: center;
-  color: #d9e8ef;
+  color: var(--muted);
   grid-column: span 2;
   line-height: 1.6;
 }
@@ -274,7 +281,7 @@
     grid-template-columns: 1fr;
   }
 
-  .form fieldset {
+  .modeFieldset {
     grid-template-columns: 1fr;
   }
 

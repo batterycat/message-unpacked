@@ -37,8 +37,9 @@ const zhTW = {
   },
   teacherPage: {
     eyebrow: '教師專區',
-    heading: '把一堂課準備好',
-    description: '選好主題、時間與帶領方式，產生一個可以直接分享的活動。',
+    heading: '選擇這堂課的互動方式',
+    description:
+      '兩種模式都能先挑選年級、主題、時間與案例；依課堂是否需要學生手機即時回傳來選擇。',
     backHome: '回到首頁',
     teacherGuide: '開啟教師手冊',
   },
@@ -62,7 +63,7 @@ const zhTW = {
   },
   teacherSetup: {
     eyebrow: '教師快速開課',
-    heading: '靜態活動連結',
+    heading: '選擇案例與帶領方式',
     stage: '學習階段',
     stageOptions: {
       '1-2': '國小低年級（1–2 年級）',
@@ -88,8 +89,38 @@ const zhTW = {
     qrLabel: '活動 QR Code',
     unavailable: '這個語言目前還沒有可用的案例。',
   },
+  caseSelection: {
+    heading: '確認本堂課案例',
+    description: '已依主題與時間先選好建議題目，也可以自行增減或替換。',
+    selectedCount: '已選 {count}／最多 {maximum} 題',
+    recommendedCount: '依 {minutes} 分鐘建議 {count} 題',
+    recommendedBadge: '建議',
+    empty: '至少選擇一題才能繼續。',
+    limitReached: '已達這個模式的題數上限。',
+  },
+  staticActivityEntry: {
+    eyebrow: '不需後端的開課方式',
+    heading: '靜態活動連結',
+    description:
+      '選好案例後產生一個可分享的連結。學生可各自在裝置上練習，也可以由教師投影帶領；網站不需建立教室或即時連線。',
+    shareHeading: '分享一個活動連結',
+    shareDescription: '題目與帶領方式會放在版本化連結中，可直接傳給學生。',
+    selfPacedHeading: '學生自主練習',
+    selfPacedDescription: '每位學生依自己的進度作答、看解析與完成總結。',
+    projectorHeading: '教師投影帶領',
+    projectorDescription: '全班共看一個畫面，由教師控制何時揭曉答案。',
+    readyLabel: '免設定後端，隨時可用',
+    readyDescription: '適合一般課堂、派發作業，或網路與設備條件不一致的情境。',
+    startSetup: '設定靜態活動',
+    privacyNote: '活動連結包含選定案例，不包含學生身分或作答紀錄。',
+    availabilityNote:
+      '可部署在 GitHub Pages 等純靜態空間，不受即時教室服務影響。',
+    localeUnavailableLabel: '這個語言尚無可用案例',
+    localeUnavailableDescription: '介面已就緒，但目前沒有經過審核的案例內容。',
+    switchToChinese: '切換到中文活動',
+  },
   classroomEntry: {
-    eyebrow: '另一種開課方式',
+    eyebrow: '需要即時回傳的開課方式',
     heading: '即時班級互動',
     description:
       '教師投影完整題目，學生用手機當作簡易答題器。截止前只顯示參與與作答人數，揭曉後才顯示全班分布與解析。',
@@ -349,9 +380,9 @@ const en: MessageCatalog = {
   },
   teacherPage: {
     eyebrow: 'Teacher area',
-    heading: 'Prepare a class in two minutes',
+    heading: 'Choose how this class will interact',
     description:
-      'Choose a topic, duration, and teaching mode, then create a link you can share right away.',
+      'Both paths let you choose the stage, topic, time, and cases first. Choose based on whether student phones need to send live responses.',
     backHome: 'Back to home',
     teacherGuide: 'Open the teacher guide',
   },
@@ -379,7 +410,7 @@ const en: MessageCatalog = {
   },
   teacherSetup: {
     eyebrow: 'Quick class setup',
-    heading: 'Static activity link',
+    heading: 'Choose cases and facilitation',
     stage: 'Learning stage',
     stageOptions: {
       '1-2': 'Early primary (grades 1–2)',
@@ -406,8 +437,45 @@ const en: MessageCatalog = {
     qrLabel: 'Activity QR Code',
     unavailable: 'No cases are currently available in this language.',
   },
+  caseSelection: {
+    heading: 'Review the cases for this class',
+    description:
+      'Recommended cases are preselected from the topic and class length. You can add, remove, or replace them.',
+    selectedCount: '{count} selected · maximum {maximum}',
+    recommendedCount: '{count} recommended for {minutes} minutes',
+    recommendedBadge: 'Recommended',
+    empty: 'Select at least one case to continue.',
+    limitReached: 'You have reached this mode’s case limit.',
+  },
+  staticActivityEntry: {
+    eyebrow: 'Backend-free teaching path',
+    heading: 'Static activity link',
+    description:
+      'Choose cases and create one shareable link. Students can work on their own devices or the teacher can lead from a projector; no room or live connection is required.',
+    shareHeading: 'Share one activity link',
+    shareDescription:
+      'The versioned link carries the chosen cases and facilitation mode.',
+    selfPacedHeading: 'Student self-paced',
+    selfPacedDescription:
+      'Each student answers at their own pace, reviews explanations, and completes a summary.',
+    projectorHeading: 'Teacher projector-led',
+    projectorDescription:
+      'The class shares one screen and the teacher controls when answers are revealed.',
+    readyLabel: 'No backend setup required',
+    readyDescription:
+      'Useful for regular lessons, assigned practice, or classrooms with mixed network and device access.',
+    startSetup: 'Set up a static activity',
+    privacyNote:
+      'The link contains selected case details, not student identities or response history.',
+    availabilityNote:
+      'It works on static hosts such as GitHub Pages and is independent of the live classroom service.',
+    localeUnavailableLabel: 'No cases are available in this language',
+    localeUnavailableDescription:
+      'The interface is ready, but no reviewed case content is available yet.',
+    switchToChinese: 'Switch to Chinese activity',
+  },
   classroomEntry: {
-    eyebrow: 'Another way to teach',
+    eyebrow: 'Teaching path with live responses',
     heading: 'Live classroom interaction',
     description:
       'The teacher projects the full case while student phones act as simple clickers. Participation and answer counts appear while voting is open; distribution and explanations appear only after reveal.',

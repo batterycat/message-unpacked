@@ -27,9 +27,9 @@ describe('interface catalogs', () => {
   });
 
   it('distinguishes static links from live classroom interaction', () => {
-    expect(catalogs['zh-TW'].teacherSetup.heading).toContain('靜態');
+    expect(catalogs['zh-TW'].staticActivityEntry.heading).toContain('靜態');
     expect(catalogs['zh-TW'].classroomEntry.heading).toContain('班級互動');
-    expect(catalogs.en.teacherSetup.heading).toContain('Static');
+    expect(catalogs.en.staticActivityEntry.heading).toContain('Static');
     expect(catalogs.en.classroomEntry.heading).toContain('classroom');
   });
 });

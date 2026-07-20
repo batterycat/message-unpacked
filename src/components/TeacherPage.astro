@@ -9,15 +9,15 @@ import {
 import {
   localeClassroomHostPath,
   localeClassroomJoinPath,
-  localeActivityPath,
   localePath,
+  localeTeacherActivityPath,
   localeTeacherPath,
   getCatalog,
 } from '../i18n/locale';
 import { ClassroomEntry } from '../features/classroom/ClassroomEntry';
+import { StaticActivityEntry } from '../features/classroom/StaticActivityEntry';
 import type { Locale } from '../i18n/catalogs';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { TeacherConfigurator } from './TeacherConfigurator';
 
 interface Props {
   locale: Locale;
@@ -71,10 +71,6 @@ const isRoomServiceConfigured =
         <p>{catalog.teacherPage.description}</p>
       </div>
       <div class="teacher-page-links">
-        <a class="teacher-page-exercise-link" href={localeActivityPath(locale)}>
-          <BookOpenIcon aria-hidden="true" weight="bold" />
-          {catalog.activityPage.heading}
-        </a>
         <a
           class="teacher-page-guide-link"
           href={teacherGuideHref}
@@ -89,20 +85,19 @@ const isRoomServiceConfigured =
     </section>
 
     <section
-      class="teacher-page-configurator"
-      aria-label={catalog.nav.teacherArea}
+      class="teacher-page-mode"
+      aria-label={catalog.staticActivityEntry.heading}
     >
-      <TeacherConfigurator
-        client:load
+      <StaticActivityEntry
         {catalog}
-        {locale}
-        {scenarios}
-        activityPath={localeActivityPath(locale)}
+        hasReviewedCases={scenarios.length > 0}
+        setupPath={localeTeacherActivityPath(locale)}
+        switchLocaleSetupPath={localeTeacherActivityPath('zh-TW')}
       />
     </section>
 
     <section
-      class="teacher-page-classroom"
+      class="teacher-page-mode"
       aria-label={catalog.classroomEntry.heading}
     >
       <ClassroomEntry
@@ -137,12 +132,16 @@ const isRoomServiceConfigured =
 </BaseLayout>
 
 <style>
-  .teacher-page-classroom {
-    padding: 0 clamp(1rem, 3vw, 2.5rem) 3.25rem;
+  .teacher-page-mode {
+    padding: 0 clamp(1rem, 3vw, 2.5rem) 1.25rem;
+  }
+
+  .teacher-page-mode:last-child {
+    padding-bottom: 3.25rem;
   }
 
   @media (max-width: 700px) {
-    .teacher-page-classroom {
+    .teacher-page-mode {
       padding-inline: 0;
     }
   }

@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import { ArrowLeftIcon } from '@phosphor-icons/react/ssr';
+
+import { TeacherConfigurator } from '../../../../components/TeacherConfigurator';
+import type { Locale } from '../../../../i18n/catalogs';
+import { locales } from '../../../../i18n/catalogs';
+import {
+  getCatalog,
+  localeActivityPath,
+  localePath,
+  localeTeacherActivityPath,
+  localeTeacherPath,
+} from '../../../../i18n/locale';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale }, props: { locale } }));
+}
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const catalog = getCatalog(locale);
+const caseEntries = await getCollection(
+  'cases',
+  ({ data }) => data.status === 'published' && data.locale === locale,
+);
+const scenarios = caseEntries
+  .map((entry) => entry.data)
+  .sort((left, right) => left.id.localeCompare(right.id));
+const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
+---
+
+<BaseLayout {catalog} {locale}>
+  <header class="activity-site-header">
+    <a class="brand" href={localePath(locale)} aria-label="Message, Unpacked.">
+      <span class="brand-mark" aria-hidden="true">M.U.</span>
+      <span>
+        <strong>Message, Unpacked.</strong>
+        <small>{catalog.nav.brandDescriptor}</small>
+      </span>
+    </a>
+    <div class="activity-header-actions">
+      <a class="activity-home-link" href={localeTeacherPath(locale)}>
+        <ArrowLeftIcon aria-hidden="true" weight="bold" />
+        {catalog.classroomShell.backToTeacher}
+      </a>
+      <div class="language-switch" aria-label={catalog.nav.language}>
+        <span aria-current="page">{locale === 'zh-TW' ? '中文' : 'EN'}</span>
+        <a
+          href={localeTeacherActivityPath(alternateLocale)}
+          hreflang={alternateLocale}
+        >
+          {locale === 'zh-TW' ? 'EN' : '中文'}
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="activity-page-main" tabindex="-1">
+    <section class="activity-page-intro" aria-labelledby="static-setup-title">
+      <div>
+        <p class="eyebrow">{catalog.teacherSetup.eyebrow}</p>
+        <h1 id="static-setup-title">{catalog.staticActivityEntry.heading}</h1>
+        <p>{catalog.staticActivityEntry.description}</p>
+      </div>
+    </section>
+    <section class="activity-page-stage">
+      {
+        scenarios.length === 0 ? (
+          <div class="static-setup-unavailable">
+            <p>{catalog.teacherSetup.unavailable}</p>
+            {locale !== 'zh-TW' && (
+              <a href={localeTeacherActivityPath('zh-TW')}>
+                {catalog.staticActivityEntry.switchToChinese}
+              </a>
+            )}
+          </div>
+        ) : (
+          <TeacherConfigurator
+            client:load
+            {catalog}
+            {locale}
+            {scenarios}
+            activityPath={localeActivityPath(locale)}
+          />
+        )
+      }
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .static-setup-unavailable {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 0.9rem;
+    display: grid;
+    gap: 1rem;
+    margin: 0 auto;
+    max-width: 1424px;
+    padding: clamp(1.4rem, 3vw, 2.4rem);
+  }
+
+  .static-setup-unavailable p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .static-setup-unavailable a {
+    color: var(--brand);
+    font-weight: 800;
+    width: fit-content;
+  }
+</style>

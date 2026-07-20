@@ -36,6 +36,13 @@ export function localeTeacherPath(
   return `${localePath(locale, basePath)}teacher/`;
 }
 
+export function localeTeacherActivityPath(
+  locale: Locale,
+  basePath = import.meta.env.BASE_URL,
+): string {
+  return `${localeTeacherPath(locale, basePath)}activity/`;
+}
+
 export function localeClassroomHostPath(
   locale: Locale,
   basePath = import.meta.env.BASE_URL,

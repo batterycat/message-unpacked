@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 
 import { getCatalog } from '../../i18n/locale';
 import { ClassroomEntry } from './ClassroomEntry';
+import { StaticActivityEntry } from './StaticActivityEntry';
 
 describe('ClassroomEntry', () => {
   afterEach(() => cleanup());
@@ -71,6 +72,30 @@ describe('ClassroomEntry', () => {
     ).toHaveAttribute('href', '/zh-TW/classroom/host/');
     expect(screen.queryByRole('link', { name: 'Start a live classroom' })).toBe(
       null,
+    );
+  });
+});
+
+describe('StaticActivityEntry', () => {
+  afterEach(() => cleanup());
+
+  it('presents the backend-free setup as a comparable teaching path', () => {
+    render(
+      <StaticActivityEntry
+        catalog={getCatalog('zh-TW')}
+        hasReviewedCases
+        setupPath="/message-unpacked/zh-TW/teacher/activity/"
+        switchLocaleSetupPath="/message-unpacked/zh-TW/teacher/activity/"
+      />,
+    );
+
+    expect(
+      screen.getByRole('heading', { name: '靜態活動連結' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('免設定後端，隨時可用')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /設定靜態活動/ })).toHaveAttribute(
+      'href',
+      '/message-unpacked/zh-TW/teacher/activity/',
     );
   });
 });

@@ -2,11 +2,10 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
 async function waitForHydration(page: Page, containerSelector: string) {
-  await page.waitForFunction(
-    (selector) =>
-      !document.querySelector(`${selector} astro-island`)?.hasAttribute('ssr'),
-    containerSelector,
-  );
+  await page.waitForFunction((selector) => {
+    const island = document.querySelector(`${selector} astro-island`);
+    return island !== null && !island.hasAttribute('ssr');
+  }, containerSelector);
 }
 
 test('Root entry resolves to the default localized route', async ({ page }) => {
@@ -168,8 +167,12 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
   await expect(teacherGuideLink).toHaveAttribute('target', '_blank');
   await expect(teacherGuideLink).toHaveAttribute('rel', 'noreferrer');
 
-  const teacherSetup = page.locator('.teacher-page-configurator');
-  const classroomEntry = page.locator('.teacher-page-classroom');
+  const modeEntries = page.locator('.teacher-page-mode');
+  const staticEntry = modeEntries.nth(0);
+  const classroomEntry = modeEntries.nth(1);
+  await expect(
+    staticEntry.getByRole('heading', { name: '靜態活動連結' }),
+  ).toBeVisible();
   await expect(
     classroomEntry.getByRole('heading', { name: '即時班級互動' }),
   ).toBeVisible();
@@ -177,19 +180,23 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
     classroomEntry.getByRole('button', { name: '建立互動教室' }),
   ).toBeDisabled();
   const [staticBox, classroomBox] = await Promise.all([
-    teacherSetup.boundingBox(),
+    staticEntry.boundingBox(),
     classroomEntry.boundingBox(),
   ]);
   expect(staticBox).not.toBeNull();
   expect(classroomBox).not.toBeNull();
   expect(classroomBox!.y).toBeGreaterThan(staticBox!.y + staticBox!.height - 1);
+  await staticEntry.getByRole('link', { name: /設定靜態活動/ }).click();
+  await expect(page).toHaveURL(/\/zh-TW\/teacher\/activity\/$/);
+
+  const teacherSetup = page.locator('.activity-page-stage');
+  await waitForHydration(page, '.activity-page-stage');
   const stageSelect = teacherSetup.getByRole('combobox', {
     name: '學習階段',
     exact: true,
   });
   await expect(stageSelect).toHaveValue('7-9');
   await expect(stageSelect.locator('option')).toHaveCount(5);
-  await waitForHydration(page, '.teacher-page-configurator');
   const topicSelect = teacherSetup.getByRole('combobox', {
     name: '主題',
     exact: true,
@@ -282,14 +289,18 @@ test('Teacher setup remains visible at the 320px mobile boundary', async ({
 }) => {
   await page.setViewportSize({ width: 320, height: 700 });
   await page.goto('/zh-TW/teacher/');
-  await waitForHydration(page, '.teacher-page-configurator');
 
   await expect(
-    page.getByRole('combobox', { name: '主題', exact: true }),
+    page.getByRole('heading', { name: '靜態活動連結' }),
   ).toBeVisible();
-  await expect(page.getByRole('link', { name: '開啟教師手冊' })).toBeVisible();
   await expect(
     page.getByRole('heading', { name: '即時班級互動' }),
+  ).toBeVisible();
+  await expect(page.getByRole('link', { name: '開啟教師手冊' })).toBeVisible();
+  await page.getByRole('link', { name: /設定靜態活動/ }).click();
+  await waitForHydration(page, '.activity-page-stage');
+  await expect(
+    page.getByRole('combobox', { name: '主題', exact: true }),
   ).toBeVisible();
   await page.getByRole('button', { name: '產生活動連結' }).click();
   await expect(page.getByRole('img', { name: '活動 QR Code' })).toBeVisible();
@@ -322,7 +333,8 @@ test('Core student and teacher controls work with the keyboard', async ({
   await expect(page.locator('#demo').getByText('判斷結果')).toBeVisible();
 
   await page.goto('/zh-TW/teacher/');
-  await waitForHydration(page, '.teacher-page-configurator');
+  await page.getByRole('link', { name: /設定靜態活動/ }).click();
+  await waitForHydration(page, '.activity-page-stage');
   const createButton = page.getByRole('button', { name: '產生活動連結' });
   await createButton.focus();
   await page.keyboard.press('Enter');
@@ -343,11 +355,13 @@ test('@a11y core pages have no detectable serious accessibility violations', asy
     '/zh-TW/',
     '/zh-TW/activity/',
     '/zh-TW/teacher/',
+    '/zh-TW/teacher/activity/',
     '/zh-TW/classroom/host/',
     '/zh-TW/classroom/join/',
     '/en/',
     '/en/activity/',
     '/en/teacher/',
+    '/en/teacher/activity/',
     '/en/classroom/host/',
     '/en/classroom/join/',
   ]) {

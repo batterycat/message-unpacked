@@ -14,13 +14,18 @@ import { QRCodeSVG } from 'qrcode.react';
 import {
   activityDurations,
   buildActivityUrl,
-  createActivityConfig,
-  type ActivityCaseCandidate,
+  createActivityConfigFromCaseIds,
+  maximumStaticActivityCases,
+  recommendActivityCaseIds,
   type ActivityDuration,
   type ActivityMode,
   type LearningStage,
 } from '../domain/activity/config';
-import { learningStages } from '../domain/cases/schema';
+import { learningStages, type ScenarioCase } from '../domain/cases/schema';
+import {
+  CasePicker,
+  type CasePickerScenario,
+} from '../features/classroom/CasePicker';
 import type { Locale, MessageCatalog } from '../i18n/catalogs';
 import styles from './TeacherConfigurator.module.css';
 
@@ -28,7 +33,7 @@ type TeacherConfiguratorProps = {
   activityPath?: string;
   catalog: MessageCatalog;
   locale: Locale;
-  scenarios: readonly ActivityCaseCandidate[];
+  scenarios: readonly CasePickerScenario[];
 };
 
 function interpolate(
@@ -71,27 +76,64 @@ export function TeacherConfigurator({
   const [topicId, setTopicId] = useState(topics[0]?.id ?? '');
   const [durationMinutes, setDurationMinutes] = useState<ActivityDuration>(10);
   const [mode, setMode] = useState<ActivityMode>('self-paced');
+  const effectiveTopicId = topics.some(({ id }) => id === topicId)
+    ? topicId
+    : (topics[0]?.id ?? '');
+  const initialRecommendedIds = effectiveTopicId
+    ? recommendActivityCaseIds(scenarios, {
+        durationMinutes,
+        stage,
+        topicId: effectiveTopicId as ScenarioCase['learning']['topicId'],
+      })
+    : [];
+  const [recommendedIds, setRecommendedIds] = useState<string[]>(
+    initialRecommendedIds,
+  );
+  const [selectedIds, setSelectedIds] = useState<string[]>(
+    initialRecommendedIds,
+  );
   const [activityUrl, setActivityUrl] = useState<string | null>(null);
-  const [selectedCount, setSelectedCount] = useState(0);
   const [copied, setCopied] = useState(false);
   const unavailable = availableScenarios.length === 0 || topics.length === 0;
-  const selectedTopic =
-    topics.find((topic) => topic.id === topicId) ?? topics[0];
+
+  function resetRecommendation(
+    nextStage: LearningStage,
+    nextTopicId: string,
+    nextDuration: ActivityDuration,
+  ) {
+    if (!nextTopicId) {
+      setRecommendedIds([]);
+      setSelectedIds([]);
+      return;
+    }
+    const nextIds = recommendActivityCaseIds(scenarios, {
+      durationMinutes: nextDuration,
+      stage: nextStage,
+      topicId: nextTopicId as ScenarioCase['learning']['topicId'],
+    });
+    setRecommendedIds(nextIds);
+    setSelectedIds(nextIds);
+    setActivityUrl(null);
+    setCopied(false);
+  }
 
   function createLink(event: { preventDefault: () => void }) {
     event.preventDefault();
-    if (unavailable || !selectedTopic) return;
+    if (unavailable || !effectiveTopicId || selectedIds.length === 0) return;
 
-    const config = createActivityConfig(availableScenarios, {
-      durationMinutes,
-      locale,
-      mode,
-      stage,
-      topicId: selectedTopic.id,
-    });
+    const config = createActivityConfigFromCaseIds(
+      scenarios,
+      {
+        durationMinutes,
+        locale,
+        mode,
+        stage,
+        topicId: effectiveTopicId as ScenarioCase['learning']['topicId'],
+      },
+      selectedIds,
+    );
     const baseUrl = new URL(activityPath, window.location.href);
     setActivityUrl(buildActivityUrl(baseUrl.toString(), config));
-    setSelectedCount(config.caseIds.length);
     setCopied(false);
   }
 
@@ -118,9 +160,25 @@ export function TeacherConfigurator({
             <select
               value={stage}
               onChange={(event) => {
-                setStage(event.target.value as LearningStage);
-                setActivityUrl(null);
-                setSelectedCount(0);
+                const nextStage = event.target.value as LearningStage;
+                const nextTopics = [
+                  ...new Map(
+                    scenarios
+                      .filter((scenario) =>
+                        scenario.learning.stages.includes(nextStage),
+                      )
+                      .map((scenario) => [
+                        scenario.learning.topicId,
+                        scenario.learning.topic,
+                      ]),
+                  ).entries(),
+                ].sort((left, right) =>
+                  left[1].localeCompare(right[1], locale),
+                );
+                const nextTopicId = nextTopics[0]?.[0] ?? '';
+                setStage(nextStage);
+                setTopicId(nextTopicId);
+                resetRecommendation(nextStage, nextTopicId, durationMinutes);
               }}
             >
               {learningStages.map((option) => (
@@ -134,8 +192,12 @@ export function TeacherConfigurator({
           <label>
             <span>{catalog.teacherSetup.topic}</span>
             <select
-              value={selectedTopic?.id ?? ''}
-              onChange={(event) => setTopicId(event.target.value)}
+              value={effectiveTopicId}
+              onChange={(event) => {
+                const nextTopicId = event.target.value;
+                setTopicId(nextTopicId);
+                resetRecommendation(stage, nextTopicId, durationMinutes);
+              }}
             >
               {topics.map((option) => (
                 <option value={option.id} key={option.id}>
@@ -149,11 +211,13 @@ export function TeacherConfigurator({
             <span>{catalog.teacherSetup.duration}</span>
             <select
               value={durationMinutes}
-              onChange={(event) =>
-                setDurationMinutes(
-                  Number(event.target.value) as ActivityDuration,
-                )
-              }
+              onChange={(event) => {
+                const nextDuration = Number(
+                  event.target.value,
+                ) as ActivityDuration;
+                setDurationMinutes(nextDuration);
+                resetRecommendation(stage, effectiveTopicId, nextDuration);
+              }}
             >
               {activityDurations.map((minutes) => (
                 <option value={minutes} key={minutes}>
@@ -165,7 +229,7 @@ export function TeacherConfigurator({
             </select>
           </label>
 
-          <fieldset>
+          <fieldset className={styles.modeFieldset}>
             <legend>{catalog.teacherSetup.mode}</legend>
             <label>
               <input
@@ -173,7 +237,11 @@ export function TeacherConfigurator({
                 name="activity-mode"
                 value="self-paced"
                 checked={mode === 'self-paced'}
-                onChange={() => setMode('self-paced')}
+                onChange={() => {
+                  setMode('self-paced');
+                  setActivityUrl(null);
+                  setCopied(false);
+                }}
               />
               <GraduationCapIcon aria-hidden="true" weight="duotone" />
               <span>{catalog.teacherSetup.selfPaced}</span>
@@ -184,14 +252,40 @@ export function TeacherConfigurator({
                 name="activity-mode"
                 value="projector"
                 checked={mode === 'projector'}
-                onChange={() => setMode('projector')}
+                onChange={() => {
+                  setMode('projector');
+                  setActivityUrl(null);
+                  setCopied(false);
+                }}
               />
               <UsersThreeIcon aria-hidden="true" weight="duotone" />
               <span>{catalog.teacherSetup.projector}</span>
             </label>
           </fieldset>
 
-          <button className={styles.createButton} type="submit">
+          <CasePicker
+            catalog={catalog}
+            durationMinutes={durationMinutes}
+            maximumCases={maximumStaticActivityCases}
+            recommendedIds={recommendedIds}
+            scenarios={availableScenarios}
+            selectedIds={selectedIds}
+            onToggle={(caseId) => {
+              setSelectedIds((current) =>
+                current.includes(caseId)
+                  ? current.filter((id) => id !== caseId)
+                  : [...current, caseId],
+              );
+              setActivityUrl(null);
+              setCopied(false);
+            }}
+          />
+
+          <button
+            className={styles.createButton}
+            type="submit"
+            disabled={selectedIds.length === 0}
+          >
             <LinkIcon aria-hidden="true" weight="bold" />
             {catalog.teacherSetup.create}
           </button>
@@ -207,7 +301,7 @@ export function TeacherConfigurator({
               <p>
                 <ClockIcon aria-hidden="true" />
                 {interpolate(catalog.teacherSetup.selectedCount, {
-                  count: selectedCount,
+                  count: selectedIds.length,
                 })}
               </p>
               <div className={styles.qrBlock}>

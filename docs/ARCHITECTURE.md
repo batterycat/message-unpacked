@@ -23,10 +23,13 @@ Astro content adapter
                   +--> in-memory multi-case session reducer
                   +--> message, decision, debrief, impact, help, results views
 
-Teacher configurator
+Teacher mode landing
+        +--> static setup --> shared recommendation + editable case picker
+        |                         |
+        |                         v
+        |     versioned activity URL (topic ID + case IDs + versions) + QR
         |
-        v
-versioned activity URL (topic ID + case IDs + content versions) + local QR
+        +--> live setup ----> same recommendation + backend capability limit
 
 Optional live classroom:
 classroom protocol port ---> Durable Objects reference adapter
@@ -63,6 +66,11 @@ boundary; UI code receives typed cases and resources.
 Teacher links carry case IDs and their content versions. A missing, retired, or
 version-mismatched case produces a recovery screen instead of silently changing
 the activity.
+
+Both setup paths use the same deterministic 10/20/30-minute recommendation
+rule (2/4/6 cases, topic-first) and expose the selected cases for editing. The
+static v2 schema remains capped at ten cases; a live room uses the compatible
+backend's advertised maximum.
 
 ## Interaction state
 

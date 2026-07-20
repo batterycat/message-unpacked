@@ -27,6 +27,8 @@ also complete a teacher-generated activity independently.
 - Student self-paced mode and teacher projector-led reveal mode.
 - Optional live-classroom mode in which the teacher projects the complete case
   and student phones display only question number and choices.
+- A teacher mode landing with separate static/live setup routes; both recommend
+  2/4/6 cases for 10/20/30 minutes and let the teacher edit the selection.
 - Versioned share links and browser-generated QR codes without accounts.
 - Per-question score feedback and a final session summary.
 - Post-debrief provenance, source, impact, and official help information.

@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest';
 import {
   buildActivityUrl,
   createActivityConfig,
+  createActivityConfigFromCaseIds,
+  recommendActivityCaseIds,
   parseActivityConfig,
   type ActivityCaseCandidate,
 } from './config';
@@ -51,6 +53,36 @@ const candidates = [
 ] as const satisfies readonly ActivityCaseCandidate[];
 
 describe('activity configuration', () => {
+  it('recommends 2/4/6 topic-first cases and clips to the mode maximum', () => {
+    expect(
+      recommendActivityCaseIds(
+        candidates,
+        {
+          durationMinutes: 30,
+          stage: '7-9',
+          topicId: 'gaming-accounts',
+        },
+        3,
+      ),
+    ).toEqual(['case.gaming', 'case.social-a', 'case.social-b']);
+  });
+
+  it('builds a static config from the teacher ordered case selection', () => {
+    const config = createActivityConfigFromCaseIds(
+      candidates,
+      {
+        durationMinutes: 20,
+        locale: 'zh-TW',
+        mode: 'projector',
+        stage: '7-9',
+        topicId: 'gaming-accounts',
+      },
+      ['case.social-b', 'case.gaming'],
+    );
+
+    expect(config.caseIds).toEqual(['case.social-b', 'case.gaming']);
+    expect(config.caseVersions).toEqual(['1.2.0', '2.0.0']);
+  });
   it('selects matching cases deterministically and round-trips through a share URL', () => {
     const config = createActivityConfig(candidates, {
       durationMinutes: 10,

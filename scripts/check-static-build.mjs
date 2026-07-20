@@ -112,8 +112,8 @@ if (!clickerPayloadChecked) {
   violations.push('Student clicker hydration payload was not checked.');
 }
 
-if (htmlFiles.length !== 11) {
-  violations.push(`Expected 11 static HTML pages, found ${htmlFiles.length}.`);
+if (htmlFiles.length !== 13) {
+  violations.push(`Expected 13 static HTML pages, found ${htmlFiles.length}.`);
 }
 
 if (violations.length > 0) {

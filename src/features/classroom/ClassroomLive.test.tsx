@@ -82,6 +82,18 @@ const scenario = {
   review: { lastReviewedAt: '2026-07-20', maintenanceStatus: 'active' },
 } as const satisfies ScenarioCase;
 
+const secondScenario = {
+  ...scenario,
+  id: 'case.second.zh-tw',
+  title: '第二個測試案例',
+  translationGroupId: 'case.second',
+  learning: {
+    ...scenario.learning,
+    topicId: 'gaming-accounts',
+    topic: '遊戲與帳號',
+  },
+} as const satisfies ScenarioCase;
+
 afterEach(() => {
   cleanup();
   vi.useRealTimers();
@@ -148,6 +160,46 @@ describe('ClassroomHost', () => {
     );
     expect(screen.getByRole('checkbox', { name: /測試案例/ })).toBeChecked();
     expect(screen.getByRole('button', { name: '建立短期教室' })).toBeEnabled();
+  });
+
+  it('uses duration-based recommendations that remain editable and reset on filter changes', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        Response.json({
+          protocolVersion: ROOM_PROTOCOL_VERSION,
+          maxParticipants: 60,
+          maxCases: 10,
+          maxChoicesPerCase: 6,
+          roomLifetimeSeconds: 7_200,
+          maxMessageBytes: 4_096,
+        }),
+      ),
+    );
+    render(
+      <ClassroomHost
+        catalog={getCatalog('zh-TW')}
+        joinPath="/zh-TW/classroom/join/"
+        locale="zh-TW"
+        roomServiceUrl="https://rooms.example"
+        scenarios={[scenario, secondScenario]}
+      />,
+    );
+
+    await waitFor(() =>
+      expect(screen.getByText('已選 2／最多 10 題')).toBeInTheDocument(),
+    );
+    fireEvent.click(screen.getByRole('checkbox', { name: /第二個測試案例/ }));
+    expect(screen.getByText('已選 1／最多 10 題')).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText('活動時間'), {
+      target: { value: '20' },
+    });
+
+    expect(screen.getByText('已選 2／最多 10 題')).toBeInTheDocument();
+    expect(
+      screen.getByRole('checkbox', { name: /第二個測試案例/ }),
+    ).toBeChecked();
   });
 
   it('restores an unexpired room from the same tab without putting the teacher secret in the URL', async () => {

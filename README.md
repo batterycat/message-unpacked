@@ -19,6 +19,8 @@ account, roster, backend, or student-data collection.
 - SMS, chat, and email presentations with trustworthy, fraud, and
   insufficient-evidence exercises.
 - Student self-paced and teacher projector-led static modes.
+- Separate teacher entry paths with shared 10/20/30-minute recommendations and
+  an editable case list before starting either mode.
 - Optional live-classroom clicker mode with an ephemeral Durable Objects
   reference backend; student phones show only the question number and choices.
 - Versioned activity links and browser-generated QR codes.

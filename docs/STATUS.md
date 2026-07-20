@@ -20,9 +20,10 @@ Updated: 2026-07-20
 - Documented-case provenance, qualified impact, source links, and review dates.
 - A fixed post-debrief verification pair resolved by locale: official online
   reporting/query information and consultation guidance.
-- Account-free teacher configuration, v2 activity URLs with stable topic IDs
-  and per-case content versions, locally generated QR codes, and distinct
-  student/projector behavior.
+- Account-free teacher mode landing with separate static and live setup routes,
+  shared duration-based recommendations, editable case selection, v2 activity
+  URLs with stable topic IDs and per-case content versions, locally generated
+  QR codes, and distinct student/projector behavior.
 - Static-root and project-subpath builds with automated path-integrity checks.
 - Content schema validation, license policy, unit/component tests, end-to-end
   tests, responsive checks, and automated accessibility scans.

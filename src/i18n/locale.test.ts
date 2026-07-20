@@ -4,6 +4,7 @@ import {
   localeActivityPath,
   localeClassroomHostPath,
   localeClassroomJoinPath,
+  localeTeacherActivityPath,
   localePath,
   localeTeacherPath,
 } from './locale';
@@ -28,6 +29,9 @@ describe('localized application paths', () => {
     expect(localeClassroomJoinPath('en', '/message-unpacked/')).toBe(
       '/message-unpacked/en/classroom/join/',
     );
+    expect(localeTeacherActivityPath('zh-TW', '/message-unpacked/')).toBe(
+      '/message-unpacked/zh-TW/teacher/activity/',
+    );
   });
 
   it('normalizes root and unpadded base paths', () => {
@@ -38,5 +42,6 @@ describe('localized application paths', () => {
     expect(localeClassroomJoinPath('zh-TW', 'message-unpacked')).toBe(
       '/message-unpacked/zh-TW/classroom/join/',
     );
+    expect(localeTeacherActivityPath('en', '/')).toBe('/en/teacher/activity/');
   });
 });

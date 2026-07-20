@@ -12,6 +12,11 @@ import {
 } from '@phosphor-icons/react';
 import { QRCodeSVG } from 'qrcode.react';
 
+import {
+  activityDurations,
+  recommendActivityCaseIds,
+  type ActivityDuration,
+} from '../../domain/activity/config';
 import type { ScenarioCase } from '../../domain/cases/schema';
 import { learningStages } from '../../domain/cases/schema';
 import {
@@ -37,6 +42,7 @@ import {
   roomReconnectDelay,
   roomSocketUrl,
 } from './transport';
+import { CasePicker, scenarioChannelLabel } from './CasePicker';
 import styles from './ClassroomLive.module.css';
 
 type ClassroomHostProps = {
@@ -58,19 +64,6 @@ function interpolate(
     (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
     template,
   );
-}
-
-function channelLabel(
-  catalog: MessageCatalog,
-  channel: ScenarioCase['channel'],
-) {
-  return catalog.demo[
-    channel === 'sms'
-      ? 'channelSms'
-      : channel === 'chat'
-        ? 'channelChat'
-        : 'channelEmail'
-  ];
 }
 
 function roomStorageKey(roomCode: string): string {
@@ -171,13 +164,8 @@ export function ClassroomHost({
   const effectiveTopicId = topics.some(({ id }) => id === topicId)
     ? topicId
     : (topics[0]?.id ?? '');
-  const filteredScenarios = useMemo(
-    () =>
-      stageScenarios.filter(
-        (scenario) => scenario.learning.topicId === effectiveTopicId,
-      ),
-    [effectiveTopicId, stageScenarios],
-  );
+  const [durationMinutes, setDurationMinutes] = useState<ActivityDuration>(10);
+  const [recommendedIds, setRecommendedIds] = useState<string[]>([]);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [room, setRoom] = useState<CreateRoomResponse | null>(null);
   const [projection, setProjection] = useState<TeacherRoomProjection | null>(
@@ -201,6 +189,40 @@ export function ClassroomHost({
     [scenarios, selectedIds],
   );
 
+  function recommendationFor(
+    nextStage: typeof stage,
+    nextTopicId: string,
+    nextDuration: ActivityDuration,
+    maximumCases: number,
+  ): string[] {
+    if (!nextTopicId) return [];
+    return recommendActivityCaseIds(
+      scenarios,
+      {
+        durationMinutes: nextDuration,
+        stage: nextStage,
+        topicId: nextTopicId as ScenarioCase['learning']['topicId'],
+      },
+      maximumCases,
+    );
+  }
+
+  function resetRecommendation(
+    nextStage: typeof stage,
+    nextTopicId: string,
+    nextDuration: ActivityDuration,
+    maximumCases: number,
+  ) {
+    const nextIds = recommendationFor(
+      nextStage,
+      nextTopicId,
+      nextDuration,
+      maximumCases,
+    );
+    setRecommendedIds(nextIds);
+    setSelectedIds(nextIds);
+  }
+
   const loadCapabilities = async () => {
     setError(null);
     try {
@@ -212,6 +234,7 @@ export function ClassroomHost({
           (scenario) => scenario.id === stored.caseIds[0],
         );
         setSelectedIds(stored.caseIds);
+        setRecommendedIds(stored.caseIds);
         if (firstScenario) {
           const firstStage = firstScenario.learning.stages[0];
           if (firstStage) setStage(firstStage);
@@ -222,13 +245,14 @@ export function ClassroomHost({
         await connectTeacher(stored.room);
         return;
       }
-      setSelectedIds((current) =>
-        current.length > 0
-          ? current.slice(0, result.maxCases)
-          : filteredScenarios
-              .slice(0, Math.min(3, result.maxCases))
-              .map(({ id }) => id),
+      const nextIds = recommendationFor(
+        stage,
+        effectiveTopicId,
+        durationMinutes,
+        result.maxCases,
       );
+      setRecommendedIds(nextIds);
+      setSelectedIds(nextIds);
     } catch (reason) {
       setCapabilities(null);
       setError(localizeRoomServiceError(reason, copy));
@@ -457,12 +481,6 @@ export function ClassroomHost({
             <h2 id="classroom-setup-title">{copy.setupHeading}</h2>
             <p>{copy.setupDescription}</p>
           </div>
-          <strong>
-            {interpolate(copy.selectedCount, {
-              count: selectedIds.length,
-              maximum: capabilities.maxCases,
-            })}
-          </strong>
         </div>
         <div className={styles.setupFilters}>
           <label>
@@ -476,16 +494,11 @@ export function ClassroomHost({
                 );
                 setStage(nextStage);
                 setTopicId(firstScenario?.learning.topicId ?? '');
-                setSelectedIds(
-                  scenarios
-                    .filter(
-                      (scenario) =>
-                        scenario.learning.stages.includes(nextStage) &&
-                        scenario.learning.topicId ===
-                          firstScenario?.learning.topicId,
-                    )
-                    .slice(0, Math.min(3, capabilities.maxCases))
-                    .map(({ id }) => id),
+                resetRecommendation(
+                  nextStage,
+                  firstScenario?.learning.topicId ?? '',
+                  durationMinutes,
+                  capabilities.maxCases,
                 );
               }}
             >
@@ -503,13 +516,11 @@ export function ClassroomHost({
               onChange={(event) => {
                 const nextTopic = event.target.value;
                 setTopicId(nextTopic);
-                setSelectedIds(
-                  stageScenarios
-                    .filter(
-                      (scenario) => scenario.learning.topicId === nextTopic,
-                    )
-                    .slice(0, Math.min(3, capabilities.maxCases))
-                    .map(({ id }) => id),
+                resetRecommendation(
+                  stage,
+                  nextTopic,
+                  durationMinutes,
+                  capabilities.maxCases,
                 );
               }}
             >
@@ -520,37 +531,48 @@ export function ClassroomHost({
               ))}
             </select>
           </label>
+          <label>
+            <span>{catalog.teacherSetup.duration}</span>
+            <select
+              value={durationMinutes}
+              onChange={(event) => {
+                const nextDuration = Number(
+                  event.target.value,
+                ) as ActivityDuration;
+                setDurationMinutes(nextDuration);
+                resetRecommendation(
+                  stage,
+                  effectiveTopicId,
+                  nextDuration,
+                  capabilities.maxCases,
+                );
+              }}
+            >
+              {activityDurations.map((minutes) => (
+                <option key={minutes} value={minutes}>
+                  {interpolate(catalog.teacherSetup.durationOption, {
+                    minutes,
+                  })}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-        <div className={styles.casePicker}>
-          {filteredScenarios.map((scenario) => {
-            const checked = selectedIds.includes(scenario.id);
-            const limitReached =
-              !checked && selectedIds.length >= capabilities.maxCases;
-            return (
-              <label key={scenario.id}>
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  disabled={limitReached}
-                  onChange={() =>
-                    setSelectedIds((current) =>
-                      checked
-                        ? current.filter((id) => id !== scenario.id)
-                        : [...current, scenario.id],
-                    )
-                  }
-                />
-                <span>
-                  <strong>{scenario.title}</strong>
-                  <small>
-                    {scenario.learning.topic}・
-                    {channelLabel(catalog, scenario.channel)}
-                  </small>
-                </span>
-              </label>
-            );
-          })}
-        </div>
+        <CasePicker
+          catalog={catalog}
+          durationMinutes={durationMinutes}
+          maximumCases={capabilities.maxCases}
+          recommendedIds={recommendedIds}
+          scenarios={stageScenarios}
+          selectedIds={selectedIds}
+          onToggle={(caseId) =>
+            setSelectedIds((current) =>
+              current.includes(caseId)
+                ? current.filter((id) => id !== caseId)
+                : [...current, caseId],
+            )
+          }
+        />
         {error && <p className={styles.inlineError}>{error}</p>}
         <button
           className={styles.primaryButton}
@@ -668,7 +690,9 @@ export function ClassroomHost({
               </header>
               <div className={styles.projectorGrid}>
                 <section className={styles.messagePanel}>
-                  <span>{channelLabel(catalog, currentScenario.channel)}</span>
+                  <span>
+                    {scenarioChannelLabel(catalog, currentScenario.channel)}
+                  </span>
                   {currentScenario.messages.map((message) => (
                     <article key={message.id}>
                       <header>

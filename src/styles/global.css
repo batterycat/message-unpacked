@@ -297,22 +297,6 @@ a {
   gap: 0.75rem 1.25rem;
 }
 
-.teacher-page-exercise-link {
-  align-items: center;
-  color: var(--brand);
-  display: inline-flex;
-  flex: none;
-  font-size: 0.82rem;
-  font-weight: 800;
-  gap: 0.35rem;
-  text-decoration: none;
-}
-
-.teacher-page-exercise-link svg {
-  height: 1.1rem;
-  width: 1.1rem;
-}
-
 .teacher-page-guide-link {
   align-items: center;
   color: var(--muted);
@@ -327,10 +311,6 @@ a {
 .teacher-page-guide-link svg {
   height: 1.1rem;
   width: 1.1rem;
-}
-
-.teacher-page-configurator {
-  padding: 0 clamp(1rem, 3vw, 2.5rem) 2.5rem;
 }
 
 .activity-footer > a {

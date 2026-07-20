@@ -4,12 +4,14 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import { getCatalog } from '../i18n/locale';
-import type { ActivityCaseCandidate } from '../domain/activity/config';
+import type { CasePickerScenario } from '../features/classroom/CasePicker';
 import { TeacherConfigurator } from './TeacherConfigurator';
 
 const candidates = [
   {
     id: 'case.social-a',
+    title: '社群邀請',
+    channel: 'chat',
     contentVersion: '1.1.0',
     learning: {
       stages: ['7-9'] as const,
@@ -20,6 +22,8 @@ const candidates = [
   },
   {
     id: 'case.gaming',
+    title: '遊戲帳號',
+    channel: 'email',
     contentVersion: '1.1.0',
     learning: {
       stages: ['7-9'] as const,
@@ -30,6 +34,8 @@ const candidates = [
   },
   {
     id: 'case.social-b',
+    title: '社群投票',
+    channel: 'sms',
     contentVersion: '1.1.0',
     learning: {
       stages: ['7-9'] as const,
@@ -40,6 +46,8 @@ const candidates = [
   },
   {
     id: 'case.primary',
+    title: '低年級遊戲邀請',
+    channel: 'chat',
     contentVersion: '1.1.0',
     learning: {
       stages: ['1-2'] as const,
@@ -48,7 +56,7 @@ const candidates = [
       contexts: ['線上遊戲'],
     },
   },
-] as const satisfies readonly ActivityCaseCandidate[];
+] as const satisfies readonly CasePickerScenario[];
 
 describe('TeacherConfigurator', () => {
   afterEach(() => cleanup());
@@ -82,6 +90,7 @@ describe('TeacherConfigurator', () => {
     fireEvent.change(screen.getByLabelText('活動時間'), {
       target: { value: '20' },
     });
+    fireEvent.click(screen.getByRole('checkbox', { name: /社群投票/ }));
     fireEvent.click(screen.getByLabelText('教師投影帶領'));
     fireEvent.click(screen.getByRole('button', { name: '產生活動連結' }));
 
@@ -94,17 +103,39 @@ describe('TeacherConfigurator', () => {
     expect(url.searchParams.get('versions')?.split(',')).toEqual([
       '1.1.0',
       '1.1.0',
-      '1.1.0',
     ]);
     expect(url.searchParams.get('cases')?.split(',')).toEqual([
       'case.gaming',
       'case.social-a',
-      'case.social-b',
     ]);
     expect(
       screen.getByRole('img', { name: '活動 QR Code' }),
     ).toBeInTheDocument();
     expect(screen.getByText('掃描 QR Code 開啟')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByLabelText('學生自行練習'));
+    expect(screen.queryByRole('img', { name: '活動 QR Code' })).toBeNull();
+  });
+
+  it('refreshes the editable recommendation when duration changes', () => {
+    render(
+      createElement(TeacherConfigurator, {
+        catalog: getCatalog('zh-TW'),
+        locale: 'zh-TW',
+        scenarios: candidates,
+      }),
+    );
+
+    fireEvent.click(screen.getByRole('checkbox', { name: /社群投票/ }));
+    expect(screen.getByText('已選 1／最多 10 題')).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText('活動時間'), {
+      target: { value: '20' },
+    });
+
+    expect(screen.getByText('已選 3／最多 10 題')).toBeInTheDocument();
+    expect(screen.getByRole('checkbox', { name: /社群投票/ })).toBeChecked();
+    expect(screen.getByRole('checkbox', { name: /遊戲帳號/ })).toBeChecked();
   });
 
   it('switches to another learning stage and uses its matching case', () => {

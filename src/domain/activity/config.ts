@@ -70,16 +70,24 @@ export type ParsedActivityConfig =
   | { status: 'invalid'; reason: 'malformed' | 'stale' }
   | { status: 'valid'; config: ActivityConfig };
 
+export const maximumStaticActivityCases = 10;
+
 const durationCaseCount: Record<ActivityDuration, number> = {
   10: 2,
   20: 4,
   30: 6,
 };
 
-export function createActivityConfig(
+export type ActivityRecommendationSetup = Pick<
+  ActivitySetup,
+  'durationMinutes' | 'stage' | 'topicId'
+>;
+
+export function recommendActivityCaseIds(
   candidates: readonly ActivityCaseCandidate[],
-  setup: ActivitySetup,
-): ActivityConfig {
+  setup: ActivityRecommendationSetup,
+  maximumCases = maximumStaticActivityCases,
+): string[] {
   const stageMatches = candidates
     .filter((candidate) => candidate.learning.stages.includes(setup.stage))
     .sort((left, right) => left.id.localeCompare(right.id));
@@ -87,21 +95,55 @@ export function createActivityConfig(
     (candidate) => candidate.learning.topicId === setup.topicId,
   );
   const remainingMatches = stageMatches.filter(
-    (candidate) => !topicMatches.includes(candidate),
+    (candidate) => candidate.learning.topicId !== setup.topicId,
   );
-  const requestedCount = durationCaseCount[setup.durationMinutes];
 
-  const selectedCases = [...topicMatches, ...remainingMatches].slice(
-    0,
-    requestedCount,
+  return [...topicMatches, ...remainingMatches]
+    .slice(
+      0,
+      Math.min(
+        durationCaseCount[setup.durationMinutes],
+        Math.max(0, maximumCases),
+      ),
+    )
+    .map(({ id }) => id);
+}
+
+export function createActivityConfigFromCaseIds(
+  candidates: readonly ActivityCaseCandidate[],
+  setup: ActivitySetup,
+  caseIds: readonly string[],
+): ActivityConfig {
+  const availableCases = new Map(
+    candidates
+      .filter((candidate) => candidate.learning.stages.includes(setup.stage))
+      .map((candidate) => [candidate.id, candidate]),
   );
+  const selectedCases = caseIds.map((caseId) => availableCases.get(caseId));
+
+  if (selectedCases.some((candidate) => candidate === undefined)) {
+    throw new Error(
+      'Selected activity cases must belong to the learning stage.',
+    );
+  }
 
   return activityConfigSchema.parse({
     ...setup,
     version: 2,
-    caseIds: selectedCases.map((candidate) => candidate.id),
-    caseVersions: selectedCases.map((candidate) => candidate.contentVersion),
+    caseIds,
+    caseVersions: selectedCases.map((candidate) => candidate!.contentVersion),
   });
+}
+
+export function createActivityConfig(
+  candidates: readonly ActivityCaseCandidate[],
+  setup: ActivitySetup,
+): ActivityConfig {
+  return createActivityConfigFromCaseIds(
+    candidates,
+    setup,
+    recommendActivityCaseIds(candidates, setup),
+  );
 }
 
 export function buildActivityUrl(
