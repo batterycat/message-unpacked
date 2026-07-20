@@ -1,7 +1,4 @@
 node_modules/
-.agents/
-.codex/
-.trellis/
 .pnpm-store/
 dist/
 .wrangler/
@@ -9,8 +6,6 @@ dist/
 playwright-report/
 test-results/
 coverage/
-AGENTS.md
-design-qa.md
 .DS_Store
 *.log
 .env
