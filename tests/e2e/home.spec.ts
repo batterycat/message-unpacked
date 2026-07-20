@@ -150,10 +150,11 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
 
   const launchLink = teacherSetup.getByRole('link', { name: '開啟活動' });
   await expect(launchLink).toHaveAttribute('href', /mode=projector/);
-  await expect(launchLink).toHaveAttribute(
-    'href',
-    /utility-bill-phishing\.zh-tw/,
-  );
+  const launchHref = await launchLink.getAttribute('href');
+  expect(launchHref).not.toBeNull();
+  const launchUrl = new URL(launchHref!, page.url());
+  expect(launchUrl.searchParams.get('topic')).toBe('家庭與生活');
+  expect(launchUrl.searchParams.get('cases')?.split(',')).toHaveLength(2);
   await launchLink.click();
 
   await expect(page).toHaveURL(/\/zh-TW\/activity\//);
