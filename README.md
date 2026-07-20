@@ -18,7 +18,9 @@ account, roster, backend, or student-data collection.
 - 72 reviewed Traditional Chinese cases across Taiwan's five learning stages.
 - SMS, chat, and email presentations with trustworthy, fraud, and
   insufficient-evidence exercises.
-- Student self-paced and teacher projector-led modes.
+- Student self-paced and teacher projector-led static modes.
+- Optional live-classroom clicker mode with an ephemeral Durable Objects
+  reference backend; student phones show only the question number and choices.
 - Versioned activity links and browser-generated QR codes.
 - Score explanations, final learning summaries, real-case provenance, and
   qualified impact information.
@@ -44,9 +46,11 @@ Before opening a pull request:
 pnpm format:check
 pnpm lint
 pnpm typecheck
+pnpm worker:typecheck
 pnpm schema:check
 pnpm validate:content
 pnpm test
+pnpm test:worker
 pnpm license:check
 pnpm build
 pnpm test:e2e
@@ -69,9 +73,11 @@ follows [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## Deployment and scope
 
-The first deployment stage is GitHub Pages. Future ephemeral classroom rooms
-and a local Go single-binary server are separate adapters and are not required
-by the static learning core. See [DEPLOYMENT.md](docs/DEPLOYMENT.md) and
+The complete static experience deploys to GitHub Pages. An optional
+Cloudflare Durable Objects reference adapter adds short-lived classroom rooms
+without becoming a dependency of the static learning core. Its public service
+is demonstration-only, and schools may deploy a compatible backend with their
+own limits. See [DEPLOYMENT.md](docs/DEPLOYMENT.md) and
 [USAGE_AND_PRIVACY.md](docs/USAGE_AND_PRIVACY.md).
 
 ## License

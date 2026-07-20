@@ -18,8 +18,19 @@
 真實訊息、可疑網址、密碼、驗證碼、付款資料或其他人的個資貼進 GitHub Issue、
 題目檔案或課堂投影畫面。
 
-作答與活動進度只存在目前的瀏覽器頁面；第一階段沒有由本專案營運的作答資料庫
-或班級分析服務。
+自主練習與純靜態投影的作答與活動進度只存在目前的瀏覽器頁面，沒有由本專案
+營運的作答資料庫或班級分析服務。
+
+## 班級即時互動的資料
+
+網站有設定可選的 room 服務時，學生分頁會取得一個隨機參與憑證。後端只保存
+憑證摘要與目前這一題的答案，不收姓名、座號、Email、名單或學校帳號。作答中
+教師只看到加入與已作答人數；揭曉後只顯示匿名分布，並刪除每位參與者的目前
+答案，不建立跨題個人歷程、排名或成績。
+
+教師結束 room 或達到設定期限後，會刪除作用中的 room 狀態。託管業者仍可能
+依政策處理 IP 位址、瀏覽器資訊、服務紀錄、濫用訊號及備份／復原資料，因此
+這不代表所有供應商備份都會立即完成實體刪除。
 
 ## GitHub Pages 與 GitBook
 
@@ -30,8 +41,18 @@
 - [GitBook Privacy Statement](https://gitbook.com/docs/policies/privacy-and-security/statement)
 - [GitBook Cookie 說明](https://gitbook.com/docs/policies/privacy-and-security/statement/cookies)
 
-本專案不會從上述服務取得學生的逐題作答紀錄。未來若加入即時 room、分析、
-真實訊息判讀或帳號系統，必須先完成新的隱私審查與說明，才能公開使用。
+可選的參考 room 服務使用 Cloudflare Workers 與 Durable Objects：
+
+- [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/)
+- [Cloudflare Durable Objects 說明](https://developers.cloudflare.com/durable-objects/)
+
+參考部署也會以暫時性的網路來源鍵做建房與加入流量限制，降低自動化濫用。
+專案不把這個鍵寫進 room 資料或應用程式紀錄；網路與流量限制中繼資料仍由
+Cloudflare 依其政策處理。
+
+本專案不會從 GitHub Pages 或 GitBook 取得學生的逐題作答紀錄。未來若加入
+分析、真實訊息判讀、帳號、名單、成績或持久作答紀錄，必須先完成新的隱私
+審查與說明，才能公開使用。
 
 ## 外部連結與緊急情況
 

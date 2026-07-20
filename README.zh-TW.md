@@ -16,7 +16,8 @@
 
 - 72 則已審閱繁體中文案例，涵蓋臺灣五個學習階段。
 - 簡訊、聊天與 Email 畫面，以及可信、詐騙、資訊不足三種判斷。
-- 學生自主練習與教師投影帶領兩種模式。
+- 學生自主練習與教師投影帶領兩種純靜態模式。
+- 可選用的即時班級互動模式：教師投影完整題目，學生手機只顯示題號與選項。
 - 帶內容版本的活動連結與瀏覽器端 QR Code。
 - 每題得分說明、最終學習成果、真實案例來源及具限定語的影響資料。
 - 作答解析後顯示各語系的官方查證與諮詢資源。
@@ -40,9 +41,11 @@ pnpm dev
 pnpm format:check
 pnpm lint
 pnpm typecheck
+pnpm worker:typecheck
 pnpm schema:check
 pnpm validate:content
 pnpm test
+pnpm test:worker
 pnpm license:check
 pnpm build
 pnpm test:e2e
@@ -64,8 +67,9 @@ pnpm check:subpath
 
 ## 部署與使用範圍
 
-第一階段部署於 GitHub Pages。未來的即時教室 room 與 Go 地端單一執行檔是
-獨立適配器，不會成為靜態學習核心的必要條件。詳見
+完整的純靜態體驗部署於 GitHub Pages；另提供 Cloudflare Durable Objects
+短期教室 room 的可選參考後端，不會成為靜態學習核心的必要條件。專案公開
+服務只作展示，學校可自行部署相容後端並調整人數、題數與房間時間。詳見
 [部署說明](docs/DEPLOYMENT.md)及[使用範圍與隱私](docs/USAGE_AND_PRIVACY.md)。
 
 ## 授權

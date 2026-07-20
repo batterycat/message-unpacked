@@ -35,6 +35,14 @@ override these rules.
 - Publish a plain-language scope and privacy notice for every hosted service.
   New data flows, analytics, classroom synchronization, accounts, or message
   analysis require a new privacy review before release.
+- Classroom synchronization must remain optional and data-minimizing: no names
+  or rosters, no cross-question individual history, no ranking, and no use as a
+  gradebook. Role-specific payloads must prevent student clients from receiving
+  teacher-only case content or unrevealed aggregates.
+- A hosted classroom adapter must have explicit room expiry and deletion,
+  configurable operator limits, and a documented provider-retention boundary.
+  Static learning modes must continue to work when the adapter is disabled,
+  unavailable, or over quota.
 - Remove personal information from source events and use reserved domains,
   numbers, and fictional identities in exercises.
 - Never create clickable live scam links or actions that contact suspicious

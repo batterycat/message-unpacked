@@ -1,7 +1,7 @@
 # Product specification
 
 This document describes the public, testable product contract for the current
-static release of **Message, Unpacked.** Internal planning notes are not the
+release of **Message, Unpacked.** Internal planning notes are not the
 source of truth for contributors.
 
 ## Purpose and audience
@@ -25,6 +25,8 @@ also complete a teacher-generated activity independently.
 - Five learning stages and six stable topic categories.
 - Three judgments: trustworthy, fraud, and insufficient evidence.
 - Student self-paced mode and teacher projector-led reveal mode.
+- Optional live-classroom mode in which the teacher projects the complete case
+  and student phones display only question number and choices.
 - Versioned share links and browser-generated QR codes without accounts.
 - Per-question score feedback and a final session summary.
 - Post-debrief provenance, source, impact, and official help information.
@@ -64,17 +66,18 @@ See [CONTENT_AUTHORING.md](CONTENT_AUTHORING.md),
 
 ## Privacy and safety boundary
 
-The static release does not require sign-in, names, rosters, analytics, or
-remote answer storage. It does not accept or analyse a learner's real messages.
-Scenario links are inert or use reserved example domains.
+The static modes do not require sign-in, names, rosters, analytics, or remote
+answer storage. The optional live mode uses short-lived pseudonymous tokens and
+current-question answers only; it does not request names or create individual
+histories, rankings, or grades. No mode accepts or analyses a learner's real
+messages. Scenario links are inert or use reserved example domains.
 
 See [USAGE_AND_PRIVACY.md](USAGE_AND_PRIVACY.md) for the complete scope notice.
 
 ## Deferred work
 
-- Live classroom rooms and cross-device answer aggregation.
-- Cloudflare Durable Objects deployment for ephemeral rooms.
-- A local Go single-binary classroom server.
+- Alternate self-hosted room-service implementations.
+- Durable answer history, gradebooks, rosters, or identity-based analytics.
 - Multi-step branching conversations, evidence inventories, or adaptive paths.
 - Accounts, learning histories, cloud analytics, or a public unmoderated CMS.
 - Automatic verdicts for real messages or AI-generated case publication.

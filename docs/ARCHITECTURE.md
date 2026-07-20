@@ -2,7 +2,7 @@
 
 Message, Unpacked. is a static-first application with a data-driven case
 library. The architecture keeps educational content, domain contracts,
-interactive presentation, and future classroom transport separate.
+interactive presentation, and optional classroom transport separate.
 
 ## System shape
 
@@ -28,8 +28,8 @@ Teacher configurator
         v
 versioned activity URL (topic ID + case IDs + content versions) + local QR
 
-Future only:
-classroom protocol port ---> Durable Objects adapter / Go local adapter
+Optional live classroom:
+classroom protocol port ---> Durable Objects reference adapter
 ```
 
 ## Source boundaries
@@ -42,9 +42,11 @@ src/domain/session      Multi-case progress and score summary
 src/domain/resources    Localized official-resource registry contract
 src/i18n                Complete typed interface catalogs
 src/features/scenario   Focused post-debrief impact and help presentation
+src/domain/room         Versioned role projections, scoring, and room lifecycle
+src/features/classroom  Host/clicker UI and reconnecting transport client
 src/components          Astro page composition and broad React islands
 src/pages               Locale route entry points
-workers                 Optional future classroom transport adapter
+workers                 Optional Cloudflare Durable Objects transport adapter
 ```
 
 Domain modules do not import React or Astro. YAML is validated at the content
@@ -86,16 +88,18 @@ do not duplicate official URLs.
 The help panel is revealed after the debrief and does not automatically move
 keyboard focus or scroll position.
 
-## Static and future deployment
+## Static and optional live deployment
 
 1. GitHub Pages serves the complete static experience.
-2. A future public classroom service may add ephemeral room synchronization
-   through Cloudflare Durable Objects.
-3. A future local deployment may implement the same room protocol in a Go
-   single executable without SQLite.
+2. A separately configured public demonstration service may add ephemeral room
+   synchronization through Cloudflare Durable Objects.
+3. Schools may deploy their own compatible backend and choose their own room
+   limits; alternate adapters are outside this task and release.
 
-The static core cannot import either transport. Classroom messages must use the
-versioned protocol in `src/domain/room/`.
+The static learning core does not import the transport. Classroom messages use
+the versioned protocol in `src/domain/room/`; the Worker emits role-specific
+projections so student clients cannot receive teacher-only content or tallies
+before reveal.
 
 ## Quality gates
 

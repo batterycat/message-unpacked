@@ -33,18 +33,26 @@ Updated: 2026-07-20
   guidance, local response resources, and a first-use testing checklist.
 - Topic and learning-stage coverage inventory in
   `docs/CONTENT_COVERAGE.md`, with a test guard for the current topic minimum.
-- Phase 2 Cloudflare Durable Objects room protocol and Worker deployment
-  skeleton, kept optional so the static site remains independently deployable.
+- Optional live-classroom mode with separate teacher and student routes,
+  stage/topic case selection, QR and room-code joining, aggregate reveal,
+  summary scoring, and reconnecting WebSocket transport.
+- Cloudflare Durable Objects reference service with teacher and participant
+  credentials, one-time socket tickets, exact-origin policy, configurable
+  limits, answer erasure on reveal, and room-lifetime cleanup.
+- Local Miniflare integration coverage for credential handling, ticket replay,
+  hidden/revealed answers, WebSocket hibernation, and alarm deletion.
 - Public product, architecture, decision, scope, and privacy documentation.
 
 ## Intentionally deferred
 
 - English case translations. The English interface reports their absence
   honestly and links to the Chinese cases.
-- Accounts, student history, analytics, classroom codes, and cross-device live
-  aggregation.
-- Public classroom synchronization authorization, abuse controls, and durable
-  room history; the current Worker is an unauthenticated ephemeral prototype.
+- Accounts, rosters, individual student history, ranking, gradebooks, and
+  identity-based classroom analytics.
+- Production operations for the public classroom demonstration, including
+  Cloudflare account setup, abuse monitoring, incident response, and capacity
+  monitoring. Remote deployment remains a deliberate operator action.
+- Alternate school-operated room-service adapters.
 - Uploading or automatically judging real messages.
 - Multi-step branching conversations and evidence inventories.
 - A CMS or unmoderated public content submission flow.

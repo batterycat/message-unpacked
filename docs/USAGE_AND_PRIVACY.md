@@ -21,9 +21,29 @@ rosters, or real conversations. Do not paste or upload real messages, suspicious
 URLs, credentials, payment details, or another person's information into an
 issue, case file, classroom screen, or future project form.
 
-Answers and activity progress are held only in the current browser page. The
-current static release has no project-operated answer database or classroom
-analytics service.
+In self-paced and static projector activities, answers and progress are held
+only in the current browser page. These modes have no project-operated answer
+database or classroom analytics service.
+
+## Optional live-classroom mode
+
+When a deployment explicitly enables the classroom service, the teacher can
+open a short-lived room and students can submit choices from their phones. This
+is a separate mode; the static activities continue to work without it.
+
+The application does not request a name, email address, school account, roster,
+or student identifier. A student tab receives a random participant token in
+`sessionStorage`. The backend keeps only its digest and the current question's
+answer. While a question is open, the teacher sees joined and answered counts,
+not individual answers. On reveal, the room calculates an aggregate
+distribution and removes the per-participant answers. It does not create
+cross-question student histories, rankings, or grades.
+
+Closing a room or reaching its configured lifetime deletes the active Durable
+Object storage. Network and hosting providers may still process IP addresses,
+browser metadata, service logs, abuse signals, and backup or recovery data
+under their own policies. Active-state deletion is therefore not a promise of
+immediate physical erasure from every provider backup.
 
 ## Hosting and documentation services
 
@@ -36,9 +56,23 @@ service logs under their own policies:
 - [GitBook Privacy Statement](https://gitbook.com/docs/policies/privacy-and-security/statement)
 - [GitBook cookie information](https://gitbook.com/docs/policies/privacy-and-security/statement/cookies)
 
-The project does not receive a student answer history from these services. A
-future room service, analytics integration, message-analysis feature, or account
-system requires a separate privacy review and a new notice before release.
+The optional reference classroom service runs on Cloudflare Workers and Durable
+Objects. Cloudflare may process basic network and service metadata under its
+own policies:
+
+- [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/)
+- [Cloudflare Durable Objects documentation](https://developers.cloudflare.com/durable-objects/)
+
+The reference deployment also uses Cloudflare's Rate Limiting binding with a
+transient network-source key to reduce automated room creation and join abuse.
+The project does not write that key to room storage or application logs;
+Cloudflare remains the processor of network and rate-limit metadata under its
+policies.
+
+The project does not receive a student answer history from GitHub Pages or
+GitBook. A future analytics integration, real-message analysis feature, account
+system, gradebook, or roster requires a separate privacy review and an updated
+notice before release.
 
 ## External links and urgent situations
 

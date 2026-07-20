@@ -1,17 +1,20 @@
 # Static Deployment
 
 Message, Unpacked. produces static HTML, CSS, JavaScript, and image files in
-`dist/`. The site does not require an application server, database, account
-system, analytics service, or runtime environment variables.
+`dist/`. The core learning experience does not require an application server,
+database, account system, analytics service, or runtime environment variables.
+An optional live-classroom adapter can be enabled at build time without making
+the static routes depend on it.
 
 ## Deployment settings
 
-Two build-time variables control public URLs:
+Three build-time variables control public URLs and optional classroom support:
 
-| Variable    | Example                     | Purpose                                               |
-| ----------- | --------------------------- | ----------------------------------------------------- |
-| `SITE_URL`  | `https://learn.example.org` | Public origin used for canonical metadata             |
-| `SITE_BASE` | `/message-unpacked/`        | Optional path prefix for project-style static hosting |
+| Variable                  | Example                     | Purpose                                               |
+| ------------------------- | --------------------------- | ----------------------------------------------------- |
+| `SITE_URL`                | `https://learn.example.org` | Public origin used for canonical metadata             |
+| `SITE_BASE`               | `/message-unpacked/`        | Optional path prefix for project-style static hosting |
+| `PUBLIC_ROOM_SERVICE_URL` | `https://rooms.example.org` | Optional compatible live-classroom service            |
 
 `SITE_BASE` defaults to `/`. Keep both the leading and trailing slash when a
 subpath is used.
@@ -84,18 +87,75 @@ After deployment, verify:
 5. A documented case shows its source and qualified impact after answering.
 6. The 320 px layout has no horizontal overflow.
 
-## Phase 2: ephemeral classroom rooms
+## Optional live-classroom rooms
 
-The optional second-stage service lives under `workers/` and uses Cloudflare
-Durable Objects. Each room name maps to one `ClassroomRoom` instance; the Worker
-relays teacher phase changes and anonymous answer tallies over WebSockets.
+The reference service under `workers/` uses Cloudflare Workers and SQLite-backed
+Durable Objects. Each room code maps to one short-lived object. Teachers control
+the projected question, students send pseudonymous answers, and only aggregate
+distributions are revealed.
 
 The static site remains the source of the case content and continues to work
-without this service. The room Worker must not be treated as an account system
-or a place to store student history. Before a public classroom launch, add
-short-lived teacher authorization, rate limits, connection expiry, abuse
-monitoring, and a privacy review.
+without this service or when its free allocation is exhausted. The Worker is
+not an account system, gradebook, attendance system, or place to store student
+history.
+
+### Local verification without a Cloudflare account
+
+```bash
+pnpm worker:dev --port 8787 \
+  --var LIVE_ROOMS_ENABLED:true \
+  --var ALLOWED_ORIGINS:http://127.0.0.1:4321
+```
+
+In another terminal:
+
+```bash
+PUBLIC_ROOM_SERVICE_URL=http://127.0.0.1:8787 pnpm dev
+```
+
+This uses Wrangler's local runtime only. It neither deploys remote resources
+nor changes an account plan.
+
+### Operator-controlled limits
+
+The deployment must set `LIVE_ROOMS_ENABLED=true` and an exact
+`ALLOWED_ORIGINS` allowlist. `MAX_PARTICIPANTS`, `MAX_CASES`,
+`ROOM_TTL_MINUTES`, `MAX_CHOICES_PER_CASE`, and `MAX_MESSAGE_BYTES` are
+configurable policy limits. Conservative defaults are documented in the Worker
+README; schools operating their own backend may choose different values.
+
+The Wrangler file also configures soft edge abuse limits for room creation and
+ticket attempts. A school operator can edit these rate-limiting bindings and
+must use namespace IDs that do not collide with other bindings in the same
+Cloudflare account. Durable Object capacity checks remain the authoritative
+hard limits.
+
+Setting `LIVE_ROOMS_ENABLED=false` stops capabilities, room creation, new
+ticket exchange, and new WebSocket upgrades. WebSockets that were already
+accepted continue until their room ends, expires, disconnects, or the Worker
+deployment is restarted; use the two-hour default room lifetime as the maximum
+drain window. The switch does not affect static activities.
+
+### Remote deployment and zero-billing rule
+
+Remote Worker deployment is a separate, explicit operator action. The
+repository has no CI workflow or application code that deploys this Worker,
+enables Workers Paid, upgrades a plan, or creates a payment subscription.
+
+An operator who requires zero billing must keep the selected Cloudflare account
+on the Workers Free plan and confirm current Cloudflare limits before every
+deployment. If free allocation is exhausted, live-classroom operations may fail
+until the applicable reset; the static site continues to work. The application
+must not automatically switch to paid capacity.
+
+Cloudflare's current Durable Objects documentation states that Free-plan
+operations fail after a free-tier limit is exceeded and daily limits reset at
+00:00 UTC. The repository cannot protect an operator who has independently
+placed the account on Workers Paid; that account's own paid-plan billing rules
+would apply. The zero-billing guarantee therefore means: this project never
+enables or upgrades to Workers Paid, and the operator verifies the account stays
+on Workers Free.
 
 See [`workers/README.md`](../workers/README.md) for the Wrangler commands and
-the current protocol boundary. Configure `ALLOWED_ORIGIN` to the exact public
-origin before deployment; leaving it unset is only suitable for local testing.
+the protocol, credentials, privacy boundary, tests, and full configuration
+table.

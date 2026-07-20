@@ -27,7 +27,8 @@
 - 新增依賴、GitHub Action、字型、圖示、圖片、資料集或引用前，先更新
   `docs/THIRD_PARTY_RESOURCES.md` 並完成授權檢查。
 - PR 至少執行 `pnpm format:check`、`pnpm lint`、`pnpm typecheck`、
-  `pnpm test`、`pnpm license:check` 與 `pnpm build`；介面變更再執行
+  `pnpm worker:typecheck`、`pnpm test`、`pnpm test:worker`、
+  `pnpm license:check` 與 `pnpm build`；介面變更再執行
   `pnpm test:e2e` 和 `pnpm test:a11y`。
 - 不把 URL 中的 activity 設定當成秘密或權限；任何未來同步服務都要先
   另做威脅模型與隱私審查。
