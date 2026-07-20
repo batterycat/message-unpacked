@@ -379,7 +379,7 @@ function ScenarioCard({
         </div>
 
         <aside className={styles.supportPanel} aria-labelledby="support-title">
-          {isDebrief && scenario.impact ? (
+          {isDebrief && scenario.impact && (
             <section className={styles.impactCard}>
               <p className={styles.realCaseLabel}>
                 <BookOpenTextIcon aria-hidden="true" weight="fill" />
@@ -445,15 +445,15 @@ function ScenarioCard({
                 </p>
               </div>
             </section>
-          ) : (
-            <section className={styles.helpIntro}>
-              <ShieldCheckIcon aria-hidden="true" weight="duotone" />
-              <div>
-                <h3 id="support-title">{catalog.demo.helpTitle}</h3>
-                <p>{catalog.demo.helpDescription}</p>
-              </div>
-            </section>
           )}
+
+          <section className={styles.helpIntro}>
+            <ShieldCheckIcon aria-hidden="true" weight="duotone" />
+            <div>
+              <h3 id="support-title">{catalog.demo.helpTitle}</h3>
+              <p>{catalog.demo.helpDescription}</p>
+            </div>
+          </section>
 
           <div className={styles.helpResources}>
             {relevantResources.length > 0 ? (
@@ -463,10 +463,10 @@ function ScenarioCard({
                   <p>{resource.guidance}</p>
                   <div className={styles.resourceLinks}>
                     {resource.phone && (
-                      <a href={`tel:${resource.phone}`}>
+                      <span className={styles.resourcePhone}>
                         <PhoneIcon aria-hidden="true" weight="fill" />
                         {resource.phone}
-                      </a>
+                      </span>
                     )}
                     {resource.canonicalUrl && (
                       <a

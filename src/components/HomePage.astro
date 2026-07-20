@@ -29,9 +29,19 @@ const caseEntries = await getCollection(
   'cases',
   ({ data }) => data.status === 'published' && data.locale === locale,
 );
-const scenarios = caseEntries
+const allScenarios = caseEntries
   .map((entry) => entry.data)
   .sort((left, right) => left.id.localeCompare(right.id));
+const homepageScenarioGroups = [
+  'delivery-address',
+  'dm-friend-crisis',
+  'bank-security-call',
+];
+const scenarios = homepageScenarioGroups.flatMap((translationGroupId) =>
+  allScenarios.filter(
+    (scenario) => scenario.translationGroupId === translationGroupId,
+  ),
+);
 const responseRegistry = await loadResponseRegistry(locale);
 const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
 const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`;

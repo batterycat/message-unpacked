@@ -57,7 +57,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 金額變小不會讓要求變合法，仍應停止付款並獨立核對雇主。
     score: 15
-recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
 debrief:
   headline: 求職不該先交錢買資格
   explanation: 高中職學生可能接觸打工與求職訊息，應核對公司、職缺、合約與付款對象。只要要求先匯款又不讓你查證，就先停止。

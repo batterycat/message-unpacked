@@ -19,6 +19,13 @@ test('Traditional Chinese exercise can be completed', async ({ page }) => {
   await expect(demo.getByText(/本題得分/)).toBeVisible();
 });
 
+test('Homepage exercise presents three classic cases', async ({ page }) => {
+  await page.goto('/zh-TW/');
+  const demo = page.locator('#demo');
+  await demo.scrollIntoViewIfNeeded();
+  await expect(demo).toContainText('01／03');
+});
+
 test('A completed activity stops and shows a supportive score summary', async ({
   page,
 }) => {
@@ -102,6 +109,11 @@ test('Documented case debrief preserves qualified impact and review details', as
   await expect(demo.getByText(/至少.*NT\$1,000/)).toBeVisible();
   await expect(demo.getByText('載明 1 人')).toBeVisible();
   await expect(demo.getByText(/資料查核日.*2026-07-19/)).toBeVisible();
+  await expect(
+    demo.getByRole('heading', { name: '需要協助嗎？' }),
+  ).toBeVisible();
+  await expect(demo).toContainText('165反詐騙諮詢專線');
+  await expect(demo.locator('a[href^="tel:"]')).toHaveCount(0);
   await expect(
     demo.getByRole('link', { name: /內政部警政署刑事警察局/ }),
   ).toBeVisible();
@@ -262,6 +274,12 @@ test('Core student and teacher controls work with the keyboard', async ({
   await expect(page.locator('#demo').getByText('判斷結果')).toBeVisible();
 
   await page.goto('/zh-TW/teacher/');
+  await page.waitForFunction(
+    () =>
+      !document
+        .querySelector('.teacher-page-configurator astro-island')
+        ?.hasAttribute('ssr'),
+  );
   const createButton = page.getByRole('button', { name: '產生活動連結' });
   await createButton.focus();
   await page.keyboard.press('Enter');

@@ -1,6 +1,6 @@
 # Third-Party Resources Register
 
-Review date: 2026-07-19
+Review date: 2026-07-20
 
 This register covers external software, workflow Actions, factual sources,
 datasets, fonts, icons, media, quotations, screenshots, and trademarks used by
@@ -84,6 +84,18 @@ These are factual links and service names, not copied educational content.
 | 165全民防騙網／165反詐騙諮詢專線 | Official service reference             | 內政部警政署           | https://165.npa.gov.tw/                            | Localized consultation and verification guidance | Factual reference/link only; no site content copied | Identify official destination and owner | 2026-07-18, approved |
 | 165反詐騙報案／檢舉說明          | Official source                        | 內政部警政署刑事警察局 | https://www.cib.npa.gov.tw/ch/app/folder/2065      | Verify service purpose and terminology           | Facts paraphrased; link to source                   | Identify publisher and review date      | 2026-07-18, approved |
 | 網路詐騙通報查詢網               | Officially supported service reference | 數位發展部數位產業署   | https://moda.gov.tw/ADI/antifraud/af-toolbox/16212 | Online fraud query/reporting guidance            | Factual reference/link only; no site content copied | Identify official destination and owner | 2026-07-18, approved |
+
+## Official U.S. Response Resources (English)
+
+English resource labels point to U.S. government websites. They are kept in the
+same neutral action-ID slots as the localized Taiwan resources so a case can be
+translated without changing its learning data.
+
+| Resource                   | Category                     | Owner/publisher                      | Canonical source                    | Project use                                     | License/permission                                  | Attribution/notices                     | Reviewed             |
+| -------------------------- | ---------------------------- | ------------------------------------ | ----------------------------------- | ----------------------------------------------- | --------------------------------------------------- | --------------------------------------- | -------------------- |
+| ReportFraud.ftc.gov        | Official reporting service   | Federal Trade Commission             | https://reportfraud.ftc.gov/        | English reporting guidance                      | Factual reference/link only; no site content copied | Identify official destination and owner | 2026-07-20, approved |
+| USA.gov Scams and Fraud    | Official information service | U.S. General Services Administration | https://www.usa.gov/scams-and-fraud | Scam signs and agency routing                   | Factual reference/link only; no site content copied | Identify official destination and owner | 2026-07-20, approved |
+| FTC Consumer Advice: Scams | Official consumer advice     | Federal Trade Commission             | https://consumer.ftc.gov/scams      | Plain-language prevention and response guidance | Factual reference/link only; no site content copied | Identify official destination and owner | 2026-07-20, approved |
 
 ## Case Factual Sources
 

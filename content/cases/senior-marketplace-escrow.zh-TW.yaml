@@ -57,7 +57,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 你用獨立入口確認付款狀態，並拒絕私訊帳號的要求，這是較安全的處理方式。
     score: 100
-recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
 debrief:
   headline: 平台交易不要被帶到私下
   explanation: 二手交易的買家、客服或付款通知都可能被冒用。保留平台內紀錄、從既有入口查看訂單，不要把驗證碼或銀行資料交給私訊帳號。

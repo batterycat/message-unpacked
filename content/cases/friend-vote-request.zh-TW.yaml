@@ -51,7 +51,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 你先保護帳號秘密，再透過獨立管道確認身分與請求。
     score: 100
-recommendedActionIds: [tw.anti-fraud.165-call]
+recommendedActionIds: [anti-fraud.consult]
 debrief:
   headline: 身分不確定時，先切換查證管道
   explanation: 真正的同學可能需要幫忙，也可能是帳號被盜。你不需要先猜中真相；拒絕提供驗證碼並換管道確認，就能安全處理資訊不足的狀況。

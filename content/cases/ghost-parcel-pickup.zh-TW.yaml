@@ -75,7 +75,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 你保留兩種可能，並用不先付款的方式完成獨立查證。
     score: 100
-recommendedActionIds: [tw.anti-fraud.165-call]
+recommendedActionIds: [anti-fraud.consult]
 debrief:
   headline: 有包裹不代表有訂單
   explanation: 收到真實的超商通知，也可能是詐騙者寄出的未訂購包裹。先查自己的訂單、詢問家人並核對寄件資訊，無法確認時就拒絕付款取件。

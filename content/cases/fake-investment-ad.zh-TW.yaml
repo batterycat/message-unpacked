@@ -84,7 +84,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 暫不匯款較安全，但加入群組仍會暴露帳號並持續承受操弄與誘導。
     score: 50
-recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
 debrief:
   headline: 群組很熱鬧，也可能只是一場布置
   explanation: 詐騙者不只偽造一則廣告，還會安排群友、獲利截圖與客服共同演出。看到保證獲利、下載陌生程式或私下交付資金時，應直接停止。

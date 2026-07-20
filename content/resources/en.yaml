@@ -1,36 +1,27 @@
 schemaVersion: 1
 locale: en
 resources:
-  - id: tw.anti-fraud.165-call
-    officialName: 165 Anti-Fraud Consultation Hotline
-    purpose: consult
-    owner: National Police Agency, Ministry of the Interior
-    phone: '165'
-    canonicalUrl: https://165.npa.gov.tw/
-    sourceUrl: https://www.cib.npa.gov.tw/ch/app/folder/2065
-    guidance: If a message seems suspicious, stop and call 165 using the official number rather than a number supplied by the message.
-    lastVerifiedAt: 2026-07-18
-  - id: tw.anti-fraud.165-web
-    officialName: 165 Anti-Fraud Information Website and Dashboard
-    purpose: query
-    owner: National Police Agency, Ministry of the Interior
-    canonicalUrl: https://165.npa.gov.tw/
-    sourceUrl: https://165.npa.gov.tw/
-    guidance: Use the official 165 website to review current scam patterns and notices.
-    lastVerifiedAt: 2026-07-18
-  - id: tw.online-fraud-report
-    officialName: Online Fraud Reporting and Query Service
+  - id: anti-fraud.online-report
+    officialName: ReportFraud.ftc.gov
     purpose: report
-    owner: Administration for Digital Industries, Ministry of Digital Affairs
-    canonicalUrl: https://fraudbuster.digiat.org.tw/accessibility/
-    sourceUrl: https://moda.gov.tw/ADI/antifraud/af-toolbox/16212
-    guidance: Use the officially listed service to query or report suspicious online ads, accounts, or URLs.
-    lastVerifiedAt: 2026-07-18
-  - id: tw.police.110
-    officialName: 110 Police Emergency Hotline
-    purpose: emergency
-    owner: National Police Agency, Ministry of the Interior
-    phone: '110'
-    sourceUrl: https://www.npa.gov.tw/
-    guidance: Use when an offence is in progress, someone may be in danger, or immediate police assistance is needed.
-    lastVerifiedAt: 2026-07-18
+    owner: Federal Trade Commission
+    canonicalUrl: https://reportfraud.ftc.gov/
+    sourceUrl: https://www.ftc.gov/media/how-report-fraud-reportfraudftcgov
+    guidance: Report suspected scams, fraud, and bad business practices to the FTC so it can identify patterns and protect more people.
+    lastVerifiedAt: 2026-07-20
+  - id: anti-fraud.info
+    officialName: USA.gov Scams and Fraud
+    purpose: query
+    owner: U.S. General Services Administration
+    canonicalUrl: https://www.usa.gov/scams-and-fraud
+    sourceUrl: https://www.usa.gov/scams-and-fraud
+    guidance: Learn common warning signs and find the right U.S. government agency for reporting a scam.
+    lastVerifiedAt: 2026-07-20
+  - id: anti-fraud.consult
+    officialName: 'FTC Consumer Advice: Scams'
+    purpose: consult
+    owner: Federal Trade Commission
+    canonicalUrl: https://consumer.ftc.gov/scams
+    sourceUrl: https://consumer.ftc.gov/
+    guidance: Read plain-language advice about common scams and what to do if a message asks for money or personal information.
+    lastVerifiedAt: 2026-07-20

@@ -59,7 +59,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 向買家追問仍在對方控制的管道內，無法驗證客服或連結。
     score: 45
-recommendedActionIds: [tw.anti-fraud.165-call, tw.online-fraud-report]
+recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
 debrief:
   headline: 賣東西的人也可能成為詐騙目標
   explanation: 假買家會把問題包裝成賣家設定錯誤，再安排假客服要求金融驗證。交易、客服與收款設定都應留在原平臺內完成。
