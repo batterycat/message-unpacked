@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["./**/*.ts", "./**/*.d.ts", "../src/domain/room/**/*.ts"],
+  "exclude": ["./**/*.test.ts"],
+  "compilerOptions": {
+    "lib": ["ES2024"],
+    "types": ["@cloudflare/workers-types"],
+    "noEmit": true
+  }
+}

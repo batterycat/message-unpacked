@@ -7,9 +7,11 @@ Describe the learner or contributor outcome of this change.
 - [ ] `pnpm format:check`
 - [ ] `pnpm lint`
 - [ ] `pnpm typecheck`
+- [ ] `pnpm worker:typecheck`
 - [ ] `pnpm schema:check`
 - [ ] `pnpm validate:content`
 - [ ] `pnpm test`
+- [ ] `pnpm test:worker`
 - [ ] `pnpm license:check`
 - [ ] `pnpm build`
 

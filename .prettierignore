@@ -2,6 +2,7 @@
 .agents/
 .codex/
 .trellis/
+**/.wrangler/
 AGENTS.md
 dist/
 content/case.schema.json

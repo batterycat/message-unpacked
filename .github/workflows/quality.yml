@@ -22,10 +22,12 @@ jobs:
       - run: pnpm format:check
       - run: pnpm lint
       - run: pnpm typecheck
+      - run: pnpm worker:typecheck
       - run: pnpm schema:check
       - name: Validate case editorial rules and coverage
         run: pnpm validate:content
       - run: pnpm test
+      - run: pnpm test:worker
       - run: pnpm license:check
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium

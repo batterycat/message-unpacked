@@ -1,33 +1,12 @@
-interface DurableObjectStorage {
-  get<T>(key: string): Promise<T | undefined>;
+interface Env {
+  ROOM: DurableObjectNamespace;
+  ROOM_CREATES: RateLimit;
+  TICKET_ATTEMPTS: RateLimit;
+  LIVE_ROOMS_ENABLED?: string;
+  ALLOWED_ORIGINS?: string;
+  MAX_PARTICIPANTS?: string;
+  MAX_CASES?: string;
+  ROOM_TTL_MINUTES?: string;
+  MAX_CHOICES_PER_CASE?: string;
+  MAX_MESSAGE_BYTES?: string;
 }
-
-interface DurableObjectState {
-  storage: DurableObjectStorage;
-}
-
-interface ResponseInit {
-  webSocket?: WebSocket;
-}
-
-interface DurableObjectId {
-  toString(): string;
-}
-
-interface DurableObjectStub {
-  fetch(request: Request): Promise<Response>;
-}
-
-interface DurableObjectNamespace {
-  idFromName(name: string): DurableObjectId;
-  get(id: DurableObjectId): DurableObjectStub;
-}
-
-interface WebSocketPairValue {
-  0: WebSocket;
-  1: WebSocket;
-}
-
-declare const WebSocketPair: {
-  new (): WebSocketPairValue;
-};

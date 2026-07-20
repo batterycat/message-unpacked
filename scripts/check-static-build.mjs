@@ -28,6 +28,34 @@ const htmlFiles = await findHtmlFiles(distDirectory);
 const violations = [];
 const attributePattern = /(?:href|src|component-url|renderer-url)="([^"]+)"/g;
 const refreshPattern = /http-equiv="refresh" content="\d+;url=([^"]+)"/g;
+const clickerAllowedKeys = new Set([
+  'id',
+  'contentVersion',
+  'choices',
+  'label',
+]);
+let clickerPayloadChecked = false;
+
+function decodeHtmlAttribute(value) {
+  return value
+    .replaceAll('&quot;', '"')
+    .replaceAll('&#39;', "'")
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&amp;', '&');
+}
+
+function collectObjectKeys(value, keys = new Set()) {
+  if (Array.isArray(value)) {
+    for (const entry of value) collectObjectKeys(entry, keys);
+  } else if (value && typeof value === 'object') {
+    for (const [key, entry] of Object.entries(value)) {
+      keys.add(key);
+      collectObjectKeys(entry, keys);
+    }
+  }
+  return keys;
+}
 
 for (const file of htmlFiles) {
   const html = await readFile(file, 'utf8');
@@ -56,10 +84,36 @@ for (const file of htmlFiles) {
   if (html.includes('http://localhost')) {
     violations.push(`${displayPath}: contains a localhost public URL`);
   }
+
+  if (displayPath.endsWith('zh-TW/classroom/join/index.html')) {
+    const island = html.match(
+      /<astro-island[^>]*component-export="ClassroomClicker"[^>]*props="([^"]+)"/,
+    );
+    if (!island?.[1]) {
+      violations.push(
+        `${displayPath}: configured build is missing the student clicker island`,
+      );
+    } else {
+      clickerPayloadChecked = true;
+      const props = JSON.parse(decodeHtmlAttribute(island[1]));
+      const caseKeys = collectObjectKeys(props.cases);
+      for (const key of caseKeys) {
+        if (!clickerAllowedKeys.has(key)) {
+          violations.push(
+            `${displayPath}: student case payload exposes disallowed key ${key}`,
+          );
+        }
+      }
+    }
+  }
 }
 
-if (htmlFiles.length !== 7) {
-  violations.push(`Expected 7 static HTML pages, found ${htmlFiles.length}.`);
+if (!clickerPayloadChecked) {
+  violations.push('Student clicker hydration payload was not checked.');
+}
+
+if (htmlFiles.length !== 11) {
+  violations.push(`Expected 11 static HTML pages, found ${htmlFiles.length}.`);
 }
 
 if (violations.length > 0) {

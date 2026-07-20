@@ -4,12 +4,36 @@ compatibility_date = "2026-07-19"
 
 [durable_objects]
 bindings = [
-  { name = "ROOM", class_name = "ClassroomRoom" }
+  { name = "ROOM", class_name = "ClassroomRoomV2" }
 ]
 
+# Preserve the prototype migration in case it was deployed. Durable Object
+# storage backends are immutable, so the production room implementation uses a
+# new SQLite-backed class rather than rewriting v1.
 [[migrations]]
 tag = "v1"
 new_classes = ["ClassroomRoom"]
 
-# Set this in the Cloudflare dashboard or an environment-specific config.
-# ALLOWED_ORIGIN = "https://batterycat.github.io"
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["ClassroomRoomV2"]
+
+[[ratelimits]]
+name = "ROOM_CREATES"
+namespace_id = "21001"
+
+  [ratelimits.simple]
+  limit = 5
+  period = 60
+
+[[ratelimits]]
+name = "TICKET_ATTEMPTS"
+namespace_id = "21002"
+
+  [ratelimits.simple]
+  limit = 120
+  period = 60
+
+# Live rooms default to disabled in code. Set LIVE_ROOMS_ENABLED=true and an
+# exact comma-separated ALLOWED_ORIGINS value in the deployment environment.
+# Optional limit variables are documented in workers/README.md.
