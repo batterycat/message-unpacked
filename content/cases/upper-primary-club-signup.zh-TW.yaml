@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: standard
   difficulty: introductory
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 校徽或頁面外觀都可能被複製，應使用自己知道的學校入口。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 可信也要從自己的入口確認
   explanation: 正常通知不代表任何相似訊息都可信；使用已知的學校首頁與老師既有管道，才能降低被仿冒的風險。

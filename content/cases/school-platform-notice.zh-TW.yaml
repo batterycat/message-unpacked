@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 保持警覺很好，但這封信提供了安全的獨立查證方式，也沒有要求交付秘密資訊。
     score: 60
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 防詐不是把所有訊息都當成假的
   explanation: 可信訊息也要用安全方式確認。這封信沒有內嵌登入連結或索取秘密資訊，並請你使用原本的校務平台入口。要注意的是：能當證據的是訊息「實際上沒有做什麼」與「能不能用另一個既有管道核對」，而不是訊息自己宣稱「我不會要你的密碼」——那句話任何人都寫得出來。

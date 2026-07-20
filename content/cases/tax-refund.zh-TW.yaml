@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, law]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: advanced
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不應在可疑頁面輸入任何網銀資料，應先走官方查詢流程。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 退稅要用官方查詢，不用信件登入
   explanation: 退費是常見的釣魚誘因。請家人從政府官方入口或已知承辦窗口查證，不要使用信件連結。真正的退稅會依既有程序撥入你早已申報的帳戶，不需要你在網頁上重新提供網銀密碼。

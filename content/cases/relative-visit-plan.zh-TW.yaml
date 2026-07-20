@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: standard
   difficulty: introductory
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 這剛好反過來了。真的阿姨本來就知道你家在哪，不需要你告訴她；如果是假的，你等於主動把住址送出去。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 兩個地方都聽到同一件事，是很強的線索
   explanation: 冒充親友的訊息之所以難防，是因為它只出現在一個管道裡，你沒得對照。反過來說，當一件事你從兩個獨立的地方都聽到——媽媽當面講過、訊息也這樣寫——冒充的人就很難同時控制兩邊。再加上這則訊息沒有跟你要任何東西，判斷就更清楚了。要注意的是最後那個選項：即使對方是真的，主動送出住址、電話這類資料也沒有必要，因為真正認識你的人本來就知道。

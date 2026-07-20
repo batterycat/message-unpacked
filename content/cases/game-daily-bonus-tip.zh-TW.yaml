@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: easy
   difficulty: introductory
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 他沒有跟你要密碼，是你自己要給的。密碼給出去，別人就能進你的帳號——不管對方是不是好朋友都一樣。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 他只是跟你說一件事，沒有要你做什麼
   explanation: 朋友分享遊戲活動是很正常的。看訊息的時候先問：他有沒有要我什麼？這則沒有要密碼、沒有要錢、也沒有叫你點奇怪的連結，所以是安全的。而且更好的是，這件事你可以自己打開遊戲確認，不需要問他。要小心的是最後那個選項——就算對方沒有要，你也不可以主動把密碼給別人。

@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention, response, ethics]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 你不需要判斷這支股票好不好——那是家長的事。你要做的是不要替他們回覆，並且讓他們知道有這則訊息。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 群組熱鬧不等於投資可靠
   explanation: 這則訊息要的是家長的資料，卻傳到了你這裡。你不需要自己判斷這支股票會不會漲——那超出你要負責的範圍。你要做的只有兩件事：不要替家長回覆任何號碼，然後把訊息拿給他們看。假投資群組會用假帳號、獲利截圖和肯定的語氣製造信任，「明天一定上漲」這種話本身就是警訊。

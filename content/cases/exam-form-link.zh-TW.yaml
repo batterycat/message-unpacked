@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention, response]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不需要開啟可疑連結；應從平常使用的校務入口查詢。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 校務問題要從校務入口確認
   explanation: 詐騙訊息會利用考試或成績讓人害怕。不要從郵件連結登入，改用平常的校務平台或請老師確認。

@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention, response]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: standard
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不輸入卡號是對的，但登入頁可以做得跟官方一模一樣，開啟它得不到任何判斷資訊。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 取消訂閱不會要你重新輸入卡號
   explanation: 你家可能真的有這個訂閱，但「要取消就重填卡號」這個要求本身是假的——服務商早就有你的付款方式了。判定訊息是詐騙，和回到 App 確認家裡的訂閱狀況，這兩件事可以同時做。

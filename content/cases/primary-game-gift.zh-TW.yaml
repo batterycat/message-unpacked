@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [1-2]
   dimensions: [prevention, response]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: easy
   difficulty: introductory
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 改簡單仍然不安全；密碼不應交給別人，應直接停止並求助。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 禮物不值得交換密碼
   explanation: 年紀較小時，遇到索取密碼、要求保密或讓你害怕的訊息，可以先不回覆，拿給家長、老師或其他可信任的大人看。

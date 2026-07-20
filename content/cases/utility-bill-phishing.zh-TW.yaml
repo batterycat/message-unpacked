@@ -33,6 +33,7 @@ impact:
 learning:
   stages: [7-9, 10-12]
   dimensions: [prevention, response, post-incident]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: easy
   difficulty: introductory
@@ -73,7 +74,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不輸入資料較安全，但開啟可疑連結本身沒有必要，也可能帶來額外風險。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 越怕服務中斷，越要離開簡訊查證
   explanation: 詐騙者利用電費、監理、電信或銀行等重要服務製造焦慮。真正安全的處理方式，是從家中既有帳單、官方 App 或自行找到的客服管道確認。

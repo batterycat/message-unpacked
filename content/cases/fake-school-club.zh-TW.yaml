@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention, ethics]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: standard
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 先保護個資，再用已知的校園管道確認社團與報名方式。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 免費物品不能取代來源確認
   explanation: 社團招募應有學校公告、指導老師或正式報名流程。遇到陌生表單和限額催促，先找大人確認。

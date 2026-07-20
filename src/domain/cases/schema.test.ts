@@ -17,6 +17,7 @@ const validCase = {
   learning: {
     stages: ['7-9'],
     dimensions: ['prevention'],
+    topicId: 'school-learning',
     topic: '測試主題',
     readingLevel: 'easy',
     difficulty: 'introductory',
@@ -58,7 +59,6 @@ const validCase = {
       score: 100,
     },
   ],
-  recommendedActionIds: [],
   debrief: {
     headline: '先查證',
     explanation: '說明',
@@ -69,7 +69,14 @@ const validCase = {
 
 describe('caseSchema', () => {
   it('accepts a valid localized case', () => {
-    expect(caseSchema.safeParse(validCase).success).toBe(true);
+    const result = caseSchema.safeParse(validCase);
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.recommendedActionIds).toEqual([
+        'anti-fraud.online-report',
+        'anti-fraud.consult',
+      ]);
+    }
   });
 
   it('rejects raw HTML and live non-reserved links', () => {

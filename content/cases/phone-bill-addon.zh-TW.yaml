@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: standard
   difficulty: intermediate
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 明細會顯示這筆是哪家業者、什麼時候開通的，家人也可能記得。兩邊對完就知道要取消還是申訴。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 錢被扣了，不代表是詐騙；但一定要查清楚
   explanation: 帳單上出現沒印象的費用，可能是家人開通的、可能是自己不小心點到的，也可能是未經同意的小額付費盜用。這三種情況的處理方式完全不同，所以第一步不是判斷，而是查明細——電信 App 會告訴你這筆是誰收的、什麼時候開始的。查清楚之前不要急著繳，因為繳款會被視為你同意這筆訂閱。

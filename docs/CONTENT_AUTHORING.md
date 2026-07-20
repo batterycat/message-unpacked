@@ -186,10 +186,12 @@ compatible permission.
 
 ## Teacher topic and contexts
 
-`learning.topic` is the single broad label shown in the teacher's quick setup
-and should stay stable and easy to scan. `learning.contexts` contains the more
-specific situations used for cataloguing and future search. Do not add every
-context to the teacher topic list.
+`learning.topicId` is the stable, locale-neutral filter serialized in teacher
+activity links. It must be one of the IDs exported by
+`src/domain/cases/topics.ts`. `learning.topic` is the localized display label
+shown in the teacher setup. `learning.contexts` contains more specific
+situations used for cataloguing and future search. Do not use translated labels
+as identifiers or add every context to the teacher topic list.
 
 The teacher setup supports all five learning stages: `1-2`, `3-4`, `5-6`,
 `7-9`, and `10-12`. Declare the narrowest suitable stage rather than marking
@@ -201,8 +203,8 @@ appropriate for each declared group.
 
 Use reserved destinations such as `example.com` and fictional names. Never place
 a real suspicious URL, account, phone number, or personal identifier in a case.
-Response actions currently use the fixed pair
-`anti-fraud.online-report` and `anti-fraud.consult`, resolved through each
-locale's resource registry instead of repeating official URLs in every case.
-Change that pair only with an accompanying governance and resource-register
-review.
+Response actions default to the fixed pair `anti-fraud.online-report` and
+`anti-fraud.consult`, resolved through each locale's resource registry. Do not
+repeat the pair or official URLs in case YAML. Change the schema-owned default
+only with an accompanying constitution, documentation, validator, and resource-
+register review.

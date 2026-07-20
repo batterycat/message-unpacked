@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不應以部分分享測試對方，任何復原碼都不該轉交。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 復原碼只給自己的帳號使用
   explanation: 朋友的帳號問題不能透過你的手機解決。收到不明驗證碼時，先不要回覆或截圖，改用其他管道確認。

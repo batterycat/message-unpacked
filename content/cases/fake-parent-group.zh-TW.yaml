@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention, response]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 在確認群組真實性前先停下來，並請家人或老師用既有管道核對。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 先確認群組，再處理作業通知
   explanation: 冒用學校身分的訊息常用作業或期限催促。來源不明時，保護個資並請大人從已知的老師或學校管道確認。

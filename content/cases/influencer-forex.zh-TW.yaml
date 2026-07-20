@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response, ethics]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 陌生程式本身可能有帳號與裝置風險，應先停止並查證。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 網紅背書不能取代投資查證
   explanation: 冒用名人與獲利截圖常用來建立信任。投資前要確認合法機構、風險與資金流向，不接受保證獲利。

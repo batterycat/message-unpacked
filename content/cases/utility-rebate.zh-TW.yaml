@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response, post-incident]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 任何網銀資料都不應輸入陌生頁面，應改走官方入口。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 回饋要對照帳單與官方帳戶
   explanation: 假回饋會利用「不領就損失」的感覺。請從紙本帳單、官方 App 或已知客服確認，不使用郵件連結。

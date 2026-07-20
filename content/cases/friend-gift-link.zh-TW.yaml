@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: standard
   difficulty: intermediate
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 遊戲信箱是對方無法控制的地方。禮物在不在那裡，一看就知道，而且你沒有失去這個朋友。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 真的禮物會出現在遊戲裡，不在連結裡
   explanation: 這則訊息大部分都合理——遊戲能送禮、好友會分享、造型包會重複抽到。唯一說不通的是禮物為什麼要用連結領。遇到這種「幾乎全對，只有一處怪怪的」的訊息，最有效的做法不是猜，而是去一個對方控制不了的地方看：打開遊戲，檢查信箱。如果禮物在那裡，那就是真的；如果不在，你也還沒有損失任何東西。

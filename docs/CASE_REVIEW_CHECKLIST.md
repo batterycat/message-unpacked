@@ -30,8 +30,9 @@ revision.
       every declared learning stage.
 - [ ] A trusted adult is recommended when the situation involves money,
       account compromise, threats, or safety.
-- [ ] Reporting guidance is contextual; 110 is not presented as the default
-      response to every suspicious message.
+- [ ] The schema-owned verification pair is not duplicated in case YAML, and
+      the debrief does not present it as proof that every message is fraud or
+      must be reported.
 
 ## Learning quality
 
@@ -41,8 +42,9 @@ revision.
 - [ ] Clues cover both message content and an independent verification action.
 - [ ] The debrief explains persuasion techniques, consequences, and concrete
       next steps.
-- [ ] `learning.topic` is one stable teacher-facing category; detailed
-      situations remain in `learning.contexts`.
+- [ ] `learning.topicId` is a supported stable ID, `learning.topic` is the
+      localized display label, and detailed situations remain in
+      `learning.contexts`.
 - [ ] The reading load and vocabulary are suitable for the declared stage.
 - [ ] The scenario does not assume access to a personal account, payment
       method, or independent legal/financial decision-making when the declared

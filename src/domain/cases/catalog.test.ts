@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { parse } from 'yaml';
 
 import { caseSchema, learningStages } from './schema';
+import { topicIds, type TopicId } from './topics';
 
 async function loadPublishedChineseCases() {
   const directory = path.join(process.cwd(), 'content', 'cases');
@@ -45,22 +46,15 @@ describe('published case catalog', () => {
       new Set(['sms', 'chat', 'email']),
     );
 
-    const topicCounts = new Map<string, number>();
+    const topicCounts = new Map<TopicId, number>();
     for (const scenario of scenarios) {
       topicCounts.set(
-        scenario.learning.topic,
-        (topicCounts.get(scenario.learning.topic) ?? 0) + 1,
+        scenario.learning.topicId,
+        (topicCounts.get(scenario.learning.topicId) ?? 0) + 1,
       );
     }
-    for (const topic of [
-      '家庭與生活',
-      '投資與廣告',
-      '校園與學習',
-      '社群與交友',
-      '網路購物',
-      '遊戲與帳號',
-    ]) {
-      expect(topicCounts.get(topic)).toBeGreaterThanOrEqual(10);
+    for (const topicId of topicIds) {
+      expect(topicCounts.get(topicId)).toBeGreaterThanOrEqual(10);
     }
 
     const stageCounts = new Map<string, number>();

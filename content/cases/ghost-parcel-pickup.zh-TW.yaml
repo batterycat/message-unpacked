@@ -38,6 +38,7 @@ impact:
 learning:
   stages: [7-9]
   dimensions: [prevention, response, post-incident]
+  topicId: online-shopping
   topic: 網路購物
   readingLevel: easy
   difficulty: intermediate
@@ -75,7 +76,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 你保留兩種可能，並用不先付款的方式完成獨立查證。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 有包裹不代表有訂單
   explanation: 收到真實的超商通知，也可能是詐騙者寄出的未訂購包裹。先查自己的訂單、詢問家人並核對寄件資訊，無法確認時就拒絕付款取件。

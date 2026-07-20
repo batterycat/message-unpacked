@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, post-incident]
+  topicId: online-shopping
   topic: 網路購物
   readingLevel: advanced
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 「只登入」就是把帳號密碼交給這個頁面了——沒填卡號並不會讓損失變小，對方拿到密碼一樣能接管帳號。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 點數到期要回到會員中心查
   explanation: 點數、紅利與回饋常被拿來製造損失感。不要從信件連結登入，使用原本的會員 App 或官方客服。

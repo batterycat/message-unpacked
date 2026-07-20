@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: online-shopping
   topic: 網路購物
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不應在未確認的頁面輸入任何金融資訊，應先回到原平台。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 交易問題留在原平台處理
   explanation: 假買家與假客服常用「收不到款」催促賣家離開平台。真正的交易狀態應能在原平台訂單頁確認。

@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, ethics]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: advanced
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 安裝本身就可能造成裝置與帳號風險，應改走官方支援管道。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 客服不會用陌生工具接管你的裝置
   explanation: 帳號異常通知可能是真的，也可能是冒用。安全做法是停止陌生聯絡，從主機或服務商既有入口自行查證。

@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention, response]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不應繼續和可疑寄件者往來，應停止並請大人協助。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 沒參加就中獎，先停下來找大人
   explanation: 假中獎會用大獎讓人忽略先付款的風險。孩子遇到金錢要求，不需要自己回覆或處理。

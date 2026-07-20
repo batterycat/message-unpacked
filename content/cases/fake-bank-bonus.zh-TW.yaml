@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response, post-incident]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不應在可疑頁面輸入任何金融資訊，應改走官方入口。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 銀行紅利不會要求陌生投資登入
   explanation: 假活動常把紅利、投資與加碼混合。請從銀行 App 或卡片背面聯絡方式確認，不使用簡訊連結。

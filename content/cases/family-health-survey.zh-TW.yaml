@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention, response]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 仍不應在陌生問卷輸入個資，應先核對調查單位。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 小禮物不值得交換家人資料
   explanation: 健康與家庭資訊可能很敏感。遇到陌生問卷，先讓家人知道，不要自己代填或交出資料。

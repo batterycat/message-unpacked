@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, ethics]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: advanced
   difficulty: advanced
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 你沒有預設對方是騙子，也沒有無條件相信。這三個問題正好對應詐騙一定會出現的轉折點，之後若有人開始談真錢或保證獲利，你會立刻察覺。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 不是每個提到投資的人都是騙子
   explanation: 這則訊息沒有保證獲利、沒有要你入金、沒有催促、也沒有索取任何資料——判定它是詐騙其實沒有根據。防詐學到後來有個副作用：看到「投資」兩個字就自動選詐騙。那會讓你錯過真正該學的理財知識，也會誤傷身邊的人。真正的能力是知道**哪些轉折點該警覺**：開始談真錢、出現保證獲利、要求私下匯款、催你今天決定。在那之前，正常地問問題就好。

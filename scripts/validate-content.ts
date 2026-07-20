@@ -4,7 +4,12 @@ import path from 'node:path';
 import { parse } from 'yaml';
 import type { ZodError } from 'zod';
 
-import { caseSchema, type ScenarioCase } from '../src/domain/cases/schema';
+import {
+  caseSchema,
+  defaultRecommendedActionIds,
+  type ScenarioCase,
+} from '../src/domain/cases/schema';
+import type { TopicId } from '../src/domain/cases/topics';
 import {
   responseResourceSchema,
   type ResponseResourceRegistry,
@@ -60,11 +65,6 @@ const SENSITIVE_CONTENT_VOCABULARY = new Set([
 const TRUSTED_ADULT_PATTERN =
   /可信任的大人|找大人|問大人|告訴大人|拿給家[人長]|請家[人長]|交給家[人長]|告知家[人長]|家長協助/;
 
-const FIXED_RECOMMENDED_ACTION_IDS = [
-  'anti-fraud.online-report',
-  'anti-fraud.consult',
-] as const;
-
 const TARGET_CLASSIFICATION_RATIOS = {
   fraud: 0.6,
   'insufficient-evidence': 0.2,
@@ -114,10 +114,10 @@ function redFlagsForScenario(scenario: ScenarioCase): string[] {
 function checkEditorialRules(scenario: ScenarioCase, errors: string[]): void {
   if (
     JSON.stringify(scenario.recommendedActionIds) !==
-    JSON.stringify(FIXED_RECOMMENDED_ACTION_IDS)
+    JSON.stringify(defaultRecommendedActionIds)
   ) {
     errors.push(
-      `${scenario.id}: recommendedActionIds must remain [${FIXED_RECOMMENDED_ACTION_IDS.join(', ')}]`,
+      `${scenario.id}: recommendedActionIds must remain [${defaultRecommendedActionIds.join(', ')}]`,
     );
   }
 
@@ -216,18 +216,18 @@ function checkPublishedCoverage(cases: ScenarioCase[], errors: string[]): void {
     }
   }
 
-  const topics = new Map<string, ScenarioCase[]>();
+  const topics = new Map<TopicId, ScenarioCase[]>();
   for (const scenario of published) {
-    const current = topics.get(scenario.learning.topic) ?? [];
+    const current = topics.get(scenario.learning.topicId) ?? [];
     current.push(scenario);
-    topics.set(scenario.learning.topic, current);
+    topics.set(scenario.learning.topicId, current);
   }
-  for (const [topic, topicCases] of topics) {
+  for (const [topicId, topicCases] of topics) {
     if (
       !topicCases.some((scenario) => scenario.classification === 'trustworthy')
     ) {
       errors.push(
-        `zh-TW topic ${topic} must include at least one trustworthy case`,
+        `zh-TW topic ${topicId} must include at least one trustworthy case`,
       );
     }
   }

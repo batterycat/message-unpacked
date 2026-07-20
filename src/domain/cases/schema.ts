@@ -1,6 +1,12 @@
 import { z } from 'zod';
 
 import { supportedLocales } from '../locales';
+import { topicIds } from './topics';
+
+export const defaultRecommendedActionIds = [
+  'anti-fraud.online-report',
+  'anti-fraud.consult',
+] as const;
 
 const idSchema = z
   .string()
@@ -114,6 +120,7 @@ export const caseSchema = z
           z.enum(['prevention', 'response', 'post-incident', 'law', 'ethics']),
         )
         .min(1),
+      topicId: z.enum(topicIds),
       topic: caseTextSchema.pipe(z.string().max(40)),
       readingLevel: z.enum(['easy', 'standard', 'advanced']),
       difficulty: z.enum(['introductory', 'intermediate', 'advanced']),
@@ -154,7 +161,9 @@ export const caseSchema = z
         }),
       )
       .min(3),
-    recommendedActionIds: z.array(idSchema).default([]),
+    recommendedActionIds: z
+      .array(idSchema)
+      .default([...defaultRecommendedActionIds]),
     debrief: z.object({
       headline: caseTextSchema,
       explanation: caseTextSchema,

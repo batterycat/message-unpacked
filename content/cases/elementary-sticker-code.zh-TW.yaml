@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention, response]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: easy
   difficulty: introductory
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 驗證碼不能分段試用；任何一部分都不應交給陌生人。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 驗證碼不是領獎券
   explanation: 免費贈品、抽獎或貼圖活動若要求你提供驗證碼，應立即停止。國小學生可以把訊息交給家人或老師一起確認。

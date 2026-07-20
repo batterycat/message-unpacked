@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不傳驗證碼是對的，但那個網站正是用來觸發驗證碼的入口，沒有必要進去。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 索取驗證碼的訊息，不論是誰傳的都是詐騙
   explanation: 幫忙投票不需要你的驗證碼，這個矛盾本身就足以判定。你不必先弄清楚是阿哲本人還是他的帳號被盜——把訊息判定為詐騙不等於指控同學，最可能的情況正是他的帳號出了問題，需要你用另一個管道提醒他。

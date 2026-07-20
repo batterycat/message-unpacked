@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, ethics]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: advanced
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不匯款較安全，但報名會留下聯絡方式，講座本身就是持續說服你入金的場合。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 理財講座不會保證收益
   explanation: 「保證年報酬 18%」在合法投資裡不可能存在，再加上要先匯 2,000 元才有名額，這兩點合起來就足以判定為詐騙，不需要再去查主辦方是誰。免費講座與最後名額只是用來加快你的決定。

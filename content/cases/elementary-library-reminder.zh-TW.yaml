@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention, response]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: easy
   difficulty: intermediate
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 你沒有點陌生連結，而是使用獨立入口查證並請可信任的大人協助。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 找到自己的查證入口
   explanation: 有些通知可能是真的，也可能只是冒用名稱。當訊息沒有足夠證據時，使用自己知道的官方入口查證，不要被信件中的連結帶著走。

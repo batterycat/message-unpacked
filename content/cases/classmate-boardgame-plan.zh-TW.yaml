@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: easy
   difficulty: introductory
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 小心是好的，但這則訊息沒有任何奇怪的地方。不帶的話，明天你們就玩不到了。
     score: 60
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 內容和你知道的事對得上，就比較安全
   explanation: 判斷訊息不是看它從哪裡來，而是看兩件事：它說的事情你本來就知道嗎？它有沒有跟你要東西？這則訊息兩個答案都很清楚，所以可以放心。但要記得：就算是很好的朋友，如果他突然改成要你的密碼、要你的錢，或叫你不要告訴大人，那就要停下來，先去找家長或老師。

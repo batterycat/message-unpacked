@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response, ethics]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: standard
   difficulty: intermediate
@@ -54,7 +55,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 你保護裝置，也使用寄件者無法控制的既有管道確認檔案來源。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 熟悉的名字，不等於可信的附件
   explanation: 安全判斷要同時看寄件位址、是否預期收到檔案，以及能否換管道確認。先不開檔不會妨礙合作，反而能避免帳號冒用擴散。

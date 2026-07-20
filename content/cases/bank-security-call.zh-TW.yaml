@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, post-incident]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: advanced
   difficulty: advanced
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 任何部分驗證碼都不應提供，應改用官方聯絡方式。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 銀行通知要用另一個官方管道回撥
   explanation: 真正的交易異常可以由銀行系統處理，不會要求你把驗證碼交給簡訊或電話中的人。

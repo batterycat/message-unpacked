@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, ethics]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: advanced
   difficulty: advanced
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 查專案是好習慣，但即使專案真的存在，「不走平台才有優惠」仍然是要你放棄退款與申訴保障。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 募資回饋不是保證獲利
   explanation: 群眾募資的回饋是商品或服務，不是投資報酬；「投入 3,000 元下月回饋 6,000 元」本身就不是募資的運作方式。再加上要求繞過平台匯款，就不必再花時間查團隊資料——這兩點已經構成判定。

@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response, ethics]
+  topicId: online-shopping
   topic: 網路購物
   readingLevel: standard
   difficulty: intermediate
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 當面確認幾秒就能問完，既保住了錢，也沒有冤枉同學。金額明細對得上，才轉帳。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 熟悉的群組，不等於確認過的身分
   explanation: 冒名收款之所以有效，是因為它模仿的行為本身完全正常——班級團購真的就是這樣運作的。你不需要懷疑團購這件事，只需要在錢出去之前，確認「發訊息的是不是本人」和「金額怎麼算的」。這兩個問題當面問只要幾秒鐘，而轉錯的帳幾乎要不回來。同樣重要的是：確認之前不要公開指控，因為錯的話傷害的是同學之間的信任。

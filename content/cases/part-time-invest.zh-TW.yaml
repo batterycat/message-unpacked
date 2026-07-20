@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, law]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: advanced
   difficulty: advanced
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 小額成功可能是誘導加碼，仍不應交出保證金。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 工作不該先收你的錢
   explanation: 假打工常把投資、刷單和保證金包裝成任務。找工作要核對公司、工作內容與薪資流程，不要私下交款。這類任務還有一個比賠錢更嚴重的後果：對方常在下一步要求你提供銀行帳戶「走帳」，或請你代為提領、轉交現金。一旦照做，即使你自己也是被騙的，仍可能被認定為幫助詐欺或洗錢而遭偵辦；未滿 18 歲會依少年事件處理法處理，不會因為年紀而免責。帳戶被列為警示帳戶後，你名下其他帳戶也會連帶受影響，可能持續數年，打工、獎助學金入帳與日常轉帳都會受阻。

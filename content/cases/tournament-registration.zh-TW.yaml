@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 沒有必要開啟可疑連結，應改走官方公告或已知聯絡管道。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 賽事資格要從主辦方公告確認
   explanation: 獎金與資格會讓人急著登入。請自行找到主辦方網站或聯絡窗口，不要使用郵件裡的登入連結。

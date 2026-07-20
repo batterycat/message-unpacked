@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [1-2]
   dimensions: [prevention, response]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不要再跟他傳卡片的照片了。停下來，請大人幫忙。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 點數卡序號就是秘密
   explanation: 不論對方說是好友、客服或贈品活動，都不要交出點數卡刮刮碼。遇到要求保密時，找可信任的大人一起看。

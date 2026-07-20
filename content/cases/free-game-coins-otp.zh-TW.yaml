@@ -33,6 +33,7 @@ impact:
 learning:
   stages: [7-9]
   dimensions: [prevention, response, post-incident]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: standard
   difficulty: introductory
@@ -78,7 +79,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不交付驗證碼是對的，但不應繼續沿用對方提供的管道查證。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 驗證碼是在授權，不是領獎序號
   explanation: 對方刻意淡化驗證碼上的服務名稱，讓學生以為只是遊戲流程。只要用途與你正在做的事不一致，就應停止並找可信任的大人協助檢查門號與帳號。

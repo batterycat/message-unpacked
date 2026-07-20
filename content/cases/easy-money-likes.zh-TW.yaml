@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention, response, ethics]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: standard
   difficulty: intermediate
@@ -60,7 +61,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 群組裡說領到點數的人，可能都是同一夥人假裝的。進去之後你會一直被催促，很難退出。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 賺錢的工作不會先跟你收錢
   explanation: 網路上說「很輕鬆就能賺很多」的任務，幾乎都不是真的在請你工作。這種按讚、衝評價的任務叫做刷單，是詐騙集團用來製造假買氣的手法；他們找學生做，是因為學生比較不會問問題。看到報酬高得不合理、要先付錢、又叫你別跟家長說，就可以直接判斷這是詐騙。

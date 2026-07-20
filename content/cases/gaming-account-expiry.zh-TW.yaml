@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 沒有登入是對的，但仿冒登入頁可以做得和官方一模一樣，點進去看不出真假，只是多暴露一次自己。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 真正重要的是不要沿著對方設計的路走
   explanation: 詐騙者把停權與倒數期限放在一起，目的是讓你忽略網址與登入流程。即使帳號真的有異常，也應從自己保存的官方 App 或書籤進入。

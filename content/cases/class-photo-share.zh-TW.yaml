@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [1-2]
   dimensions: [prevention, ethics]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 先把自己的資料收好，再請大人幫你看這個連結，還有誰看得到照片。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 照片分享也要先確認誰看得到
   explanation: 照片裡可能有你的臉、同學，還有制服。看到不認識的連結在跟你要資料，先拿給家長或老師看。

@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: advanced
   difficulty: intermediate
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 你把一個公開的校內活動，主動變成一對一的私下往來，還把話題帶到開戶——這正是投資詐騙希望你踏出的那一步。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 看它要求什麼，不是看它談什麼
   explanation: 題庫裡有很多投資詐騙，很容易讓人養成「看到投資就是詐騙」的直覺。但這場講座和那些案例談的是同一個主題，差別全在請求：詐騙要你入金、保證獲利、限量催促、拉你進私人群組；這場講座什麼都沒要。理財知識本身是你需要的，尤其在你快要開始工作和管理自己的錢的時候。要練的是分辨請求，不是迴避主題。

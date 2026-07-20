@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [3-4]
   dimensions: [prevention, ethics]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: easy
   difficulty: introductory
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 即使只轉給一人仍會擴散未查證內容，應先停止轉發。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 害怕不是轉發的理由
   explanation: 鏈式訊息常用倒楣、孤單或內疚讓人轉傳。沒有可靠來源時，停止轉發就是保護自己與朋友。

@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [5-6]
   dimensions: [prevention, response]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: standard
   difficulty: intermediate
@@ -57,7 +58,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 仍然是在未確認對方身分前互動，應直接停止並請大人協助。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 小額也可能是入口
   explanation: 詐騙者常用獎品、剩餘名額和秘密流程製造急迫感。查證活動主辦方時，要自己找到官方入口，不要使用對方提供的付款方式。

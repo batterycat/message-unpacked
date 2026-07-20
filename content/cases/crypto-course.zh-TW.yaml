@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response, ethics]
+  topicId: investment-advertising
   topic: 投資與廣告
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 群組截圖可能被操弄，不能取代對平台與投資風險的查證。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 保證獲利不是投資證據
   explanation: 詐騙投資常先用課程與小額禮物建立信任，再要求加碼。涉及金錢時先找大人與可信任資訊來源。

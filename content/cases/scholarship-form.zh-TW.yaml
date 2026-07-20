@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, ethics]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: advanced
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 身分證正反面外流本身就是損失，可能被用來申辦帳戶或貸款，不能當作測試手段。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 要你先繳錢的獎學金，一定是假的
   explanation: 獎助學金的性質是撥款給你，任何以保證金、手續費、稅金為名要求先付款的通知都是詐騙。好消息與期限會降低警覺，但這裡不需要猶豫——先收費這一點就足以判定，身分證正反面更不該在這種情況下上傳。

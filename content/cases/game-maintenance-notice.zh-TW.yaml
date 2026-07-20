@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: standard
   difficulty: intermediate
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 這一步反而製造了風險。補償是自動發放的，而搜尋結果裡的第三方「領取教學」網站，正是常見的假登入頁來源。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 先看它要你做什麼
   explanation: 判斷一則訊息，最快的方法是問：它要我做什麼？詐騙訊息一定需要你採取某個行動——點連結、登入、付款、回傳號碼、在期限前完成。因為沒有你的動作，詐騙就無法完成。這則公告要你做的事是「什麼都不用做」，補償會自己進來。當一則訊息對你毫無所求時，它能造成的傷害也接近於零。

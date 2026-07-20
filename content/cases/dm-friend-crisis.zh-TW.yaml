@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: social-relationships
   topic: 社群與交友
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 先保護金錢，再透過獨立管道確認請求是否真實。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 熟人私訊也要換管道確認
   explanation: 帳號名稱與頭像不能證明本人。遇到急借款，先拒絕私訊轉帳，改用電話、當面或共同朋友確認。

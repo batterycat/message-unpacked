@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [1-2]
   dimensions: [prevention]
+  topicId: school-learning
   topic: 校園與學習
   readingLevel: easy
   difficulty: introductory
@@ -52,7 +53,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 保持小心很好，但正常的班級提醒可以透過老師或家長安全確認。
     score: 60
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 正常提醒也可以安全確認
   explanation: 看訊息的時候，不是看它是不是簡訊就好。要想三件事：這件事我本來就知道嗎？它有沒有跟我要秘密？我可以用平常的方法問到答案嗎？

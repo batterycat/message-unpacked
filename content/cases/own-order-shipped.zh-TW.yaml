@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention]
+  topicId: online-shopping
   topic: 網路購物
   readingLevel: standard
   difficulty: introductory
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 想查證的方向是對的，但訂單編號屬於你的交易資訊，公開貼出來可能讓別人查到你的收件資料。App 裡就能對照，不需要問陌生人。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 真物流和假物流的差別，在於有沒有對應的訂單
   explanation: 假物流簡訊幾乎都有同一個弱點：它必須猜你有包裹。所以判斷方法很簡單——回到你自己的購物 App，看訂單編號對不對得上。對得上就是真的，對不上就是假的，不需要點簡訊裡的任何東西。另外注意到這則訊息「要你做什麼」：它只叫你去自己的 App 查，沒有要補地址、沒有驗證費、沒有倒數計時。假物流一定會有其中至少一項。

@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response, post-incident]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不應在未確認的頁面輸入任何付款資料，應走官方入口。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 優惠升級也不能交出驗證碼
   explanation: 電信方案應能在帳戶或官方客服查到。若已回傳驗證碼或輸入卡號，請立即告知家人並聯絡電信與銀行。

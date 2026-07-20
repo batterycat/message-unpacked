@@ -298,6 +298,17 @@
             ]
           }
         },
+        "topicId": {
+          "type": "string",
+          "enum": [
+            "family-life",
+            "investment-advertising",
+            "school-learning",
+            "social-relationships",
+            "online-shopping",
+            "gaming-accounts"
+          ]
+        },
         "topic": {
           "type": "string",
           "maxLength": 40
@@ -357,6 +368,7 @@
       "required": [
         "stages",
         "dimensions",
+        "topicId",
         "topic",
         "readingLevel",
         "difficulty",
@@ -484,7 +496,10 @@
       }
     },
     "recommendedActionIds": {
-      "default": [],
+      "default": [
+        "anti-fraud.online-report",
+        "anti-fraud.consult"
+      ],
       "type": "array",
       "items": {
         "type": "string",

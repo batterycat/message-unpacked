@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: school-learning
   topic: 範例主題
   readingLevel: standard
   difficulty: introductory
@@ -48,7 +49,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 說明安全的查證方式。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 先查證，再行動
   explanation: 補充案例的核心教學重點。

@@ -14,6 +14,7 @@ sources: []
 learning:
   stages: [7-9]
   dimensions: [prevention, response]
+  topicId: gaming-accounts
   topic: 遊戲與帳號
   readingLevel: standard
   difficulty: intermediate
@@ -51,7 +52,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不需要提供任何個資；應直接停止對話並使用官方支援入口。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 管理員也不需要你的驗證碼
   explanation: 真正的違規處理可以在平台內查看規則與申訴，不會要求你私下交出登入秘密。

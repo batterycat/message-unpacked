@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response, law]
+  topicId: online-shopping
   topic: 網路購物
   readingLevel: advanced
   difficulty: advanced
@@ -57,7 +58,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 不提供資料是對的，但沒有必要加入對方控制的帳號；訂單狀態在平台內就查得到。
     score: 40
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 平台交易不要被帶到私下
   explanation: 二手交易的買家、客服或付款通知都可能被冒用。這則案例有一個決定性的判準：對方明確要你「不要回到平台客服中心」。正當的服務永遠不會阻止你使用官方管道，看到這句話就可以停止，不需要再查證。

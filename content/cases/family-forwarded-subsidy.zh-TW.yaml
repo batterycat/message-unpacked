@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, response]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: advanced
   difficulty: intermediate
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 你把「政策是不是真的」和「這個連結是不是真的」分開處理，兩個問題都得到答案。
     score: 100
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 政策是真的，不代表連結是真的
   explanation: 詐騙最有效的做法之一，就是拿一個真實存在的補助或政策去包裝假網站——因為你一查會發現「真的有這個補貼」，反而更容易相信那個連結。正確的拆法是把問題分成兩半：這個政策存在嗎？（搜尋官方網站）這個連結是官方的嗎？（不要用轉傳來的那個）。兩個答案都要自己拿到。

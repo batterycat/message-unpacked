@@ -15,6 +15,7 @@ sources: []
 learning:
   stages: [10-12]
   dimensions: [prevention, law]
+  topicId: family-life
   topic: 家庭與生活
   readingLevel: advanced
   difficulty: intermediate
@@ -55,7 +56,6 @@ choices:
     classification: insufficient-evidence
     reasoning: 這是把一個安全的流程主動變危險。當面出示證件和把影本傳出去，風險差很多；而且薪轉只需要帳號，任何雇主都不需要你的網銀密碼。
     score: 15
-recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 正當的工作長這樣，記住它
   explanation: 學防詐容易只記得假的樣子，結果真的機會來了也不敢接。正當僱用有幾個清楚的特徵：它接續你親身經歷過的事、程序當面完成、有書面契約、只跟你要帳號不要密碼，而且錢是往你這邊流。反過來說，只要出現「先繳一筆錢」「把存摺提款卡寄來」「不用見面直接線上辦」，不管職缺看起來多好都要停。把帳戶交給別人使用，即使你以為是為了領薪水，也可能被認定為幫助詐欺或洗錢。
