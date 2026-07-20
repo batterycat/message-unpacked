@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=../case.schema.json
+id: parttime-onboarding.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: parttime-onboarding
+locale: zh-TW
+status: published
+title: 面試通過的報到通知
+channel: chat
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為高中職學生練習辨認正當僱用流程而建立的教學虛構情境，作為假求職案例的正面對照。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, law]
+  topic: 家庭與生活
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [求職, 打工, 勞動契約]
+  skills: [辨認正當僱用流程, 分辨帳號與密碼, 保留書面依據]
+  riskTypes: [誤判正常求職]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.onboard
+    sender: 店長 陳先生
+    body: 上週面試的結果出來了，你錄取了。下週一 15:00 到店裡報到，我們會當場簽勞動契約、填薪轉帳號，記得帶身分證。有事打店裡電話。
+    timestamp: '週四 18:20'
+    direction: incoming
+clues:
+  - id: clue.prior-contact
+    label: 接續一件你親身經歷過的事
+    explanation: 你真的去那家店面試過，見過這個人，也知道店在哪裡。這是冒名者無法憑空製造的背景。
+  - id: clue.in-person
+    label: 所有程序都在現場完成
+    explanation: 簽約、填帳號、看證件都是當面進行。詐騙需要你在看不到對方的情況下交出東西，當面反而是它最怕的形式。
+  - id: clue.no-prepayment
+    label: 沒有任何名目要你先付錢
+    explanation: 沒有保證金、沒有設備費、沒有開通費。正當僱用的金流方向只有一個：雇主付錢給你。
+choices:
+  - id: choice.trustworthy
+    label: 依約前往報到，當場簽約並確認工作條件
+    classification: trustworthy
+    reasoning: 你辨認出正當僱用的樣子：接續真實面試、當面完成程序、沒有預付費用。
+    score: 100
+  - id: choice.fraud
+    label: 求職訊息都是詐騙，不去了
+    classification: fraud
+    reasoning: 假求職確實很多，但用「凡是求職就是詐騙」來判斷，代價是你放棄了一份真的工作。要看的是有沒有那些具體警訊，而這則一個都沒有。
+    score: 20
+  - id: choice.verify
+    label: 先把身分證正反面拍給他、把網銀帳號密碼傳過去，省得當天麻煩
+    classification: insufficient-evidence
+    reasoning: 這是把一個安全的流程主動變危險。當面出示證件和把影本傳出去，風險差很多；而且薪轉只需要帳號，任何雇主都不需要你的網銀密碼。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 正當的工作長這樣，記住它
+  explanation: 學防詐容易只記得假的樣子，結果真的機會來了也不敢接。正當僱用有幾個清楚的特徵：它接續你親身經歷過的事、程序當面完成、有書面契約、只跟你要帳號不要密碼，而且錢是往你這邊流。反過來說，只要出現「先繳一筆錢」「把存摺提款卡寄來」「不用見面直接線上辦」，不管職缺看起來多好都要停。把帳戶交給別人使用，即使你以為是為了領薪水，也可能被認定為幫助詐欺或洗錢。
+  safeActions:
+    - 當面出示證件即可，不要傳送身分證影本。
+    - 薪轉只需要提供帳號；沒有任何雇主需要你的提款卡、密碼或驗證碼。
+    - 簽約時看清楚時薪、工時與加班規定，並留一份契約。
+    - 告知家長你的打工地點與時間。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

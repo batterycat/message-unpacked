@@ -1,6 +1,6 @@
 id: family-health-survey.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: family-health-survey
 locale: zh-TW
 status: published
@@ -34,7 +34,7 @@ clues:
     explanation: 小問卷不應要求完整身分證字號與信用卡號，尤其來源尚未確認。
   - id: clue.reward
     label: 用禮物卡換取填答
-    explanation: 禮物與高額回饋會讓人忽略資料用途與機構身分。
+    explanation: 禮物和高額回饋會讓人忘記問兩件事：這是哪個單位？我的資料要拿去做什麼？
 choices:
   - id: choice.trustworthy
     label: 先幫家人填，拿到禮物卡再說
@@ -50,8 +50,8 @@ choices:
     label: 只填身分證字號，不填信用卡
     classification: insufficient-evidence
     reasoning: 仍不應在陌生問卷輸入個資，應先核對調查單位。
-    score: 20
-recommendedActionIds: []
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 小禮物不值得交換家人資料
   explanation: 健康與家庭資訊可能很敏感。遇到陌生問卷，先讓家人知道，不要自己代填或交出資料。
@@ -59,5 +59,5 @@ debrief:
     - 不輸入身分證字號、信用卡號或住址。
     - 將訊息拿給家人或老師一起判斷。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

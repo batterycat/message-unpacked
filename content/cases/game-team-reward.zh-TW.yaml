@@ -51,7 +51,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 改弱密碼仍然危險，正確做法是不提供密碼並查證活動。
     score: 15
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 遊戲獎勵不需要密碼
   explanation: 任何獎勵、造型或點數都不應要求登入密碼。遇到催促時，先停下來找可信任的大人。

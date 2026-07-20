@@ -1,12 +1,12 @@
 id: friend-vote-request.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: friend-vote-request
 locale: zh-TW
 status: published
 title: 同學傳來的投票邀請
 channel: chat
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 綜整社群帳號遭盜後冒用熟人身分、要求投票或提供驗證碼的常見手法。
@@ -34,31 +34,31 @@ clues:
     explanation: 驗證碼通常用來證明帳號操作是本人進行，不應交給任何人，包括認識的人。
   - id: clue.identity
     label: 熟悉的帳號不等於本人
-    explanation: 帳號可能遭盜用；可以改用電話、當面或其他既有管道確認。
+    explanation: 帳號可能遭盜用。判定訊息是詐騙，不等於指控你的同學——很可能傳訊息的根本不是他。
 choices:
   - id: choice.trustworthy
     label: 是認識的人，可以幫忙
     classification: trustworthy
-    reasoning: 熟人帳號也可能遭盜用，而且驗證碼不應轉交。
+    reasoning: 熟人帳號也可能遭盜用，而且驗證碼不應轉交給任何人。
     score: 0
   - id: choice.fraud
-    label: 一定是本人在詐騙，立刻公開指責
+    label: 索取驗證碼就是詐騙訊息，不提供，並改用其他管道確認阿哲本人
     classification: fraud
-    reasoning: 訊息高度可疑，但目前無法確認是本人、帳號遭盜或其他狀況；公開指責也可能傷害無辜者。
-    score: 55
-  - id: choice.verify
-    label: 不給驗證碼，改用其他方式確認本人
-    classification: insufficient-evidence
-    reasoning: 你先保護帳號秘密，再透過獨立管道確認身分與請求。
+    reasoning: 你辨識出「投票卻要驗證碼」的矛盾，也用獨立管道處理同學可能被盜帳號的狀況。
     score: 100
-recommendedActionIds: [anti-fraud.consult]
+  - id: choice.verify
+    label: 先進網站幫他投票，但不傳驗證碼
+    classification: insufficient-evidence
+    reasoning: 不傳驗證碼是對的，但那個網站正是用來觸發驗證碼的入口，沒有必要進去。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
-  headline: 身分不確定時，先切換查證管道
-  explanation: 真正的同學可能需要幫忙，也可能是帳號被盜。你不需要先猜中真相；拒絕提供驗證碼並換管道確認，就能安全處理資訊不足的狀況。
+  headline: 索取驗證碼的訊息，不論是誰傳的都是詐騙
+  explanation: 幫忙投票不需要你的驗證碼，這個矛盾本身就足以判定。你不必先弄清楚是阿哲本人還是他的帳號被盜——把訊息判定為詐騙不等於指控同學，最可能的情況正是他的帳號出了問題，需要你用另一個管道提醒他。
   safeActions:
     - 不提供密碼、驗證碼或帳號復原連結。
     - 打電話、當面或從另一個已知帳號確認本人。
     - 若確認帳號遭盜，提醒同學進行帳號復原並通知其他聯絡人。
 review:
-  lastReviewedAt: 2026-07-18
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -1,6 +1,6 @@
 id: marketplace-buyer-verification.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: marketplace-buyer-verification
 locale: zh-TW
 status: published
@@ -18,7 +18,7 @@ learning:
   readingLevel: standard
   difficulty: intermediate
   contexts: [網路購物, 二手交易, 社群平台]
-  skills: [留在原平臺交易, 辨識假客服, 保護金融資料]
+  skills: [留在原平台交易, 辨識假客服, 保護金融資料]
   riskTypes: [假買家, 釣魚連結, 金融資料竊取]
   sensitiveContent: []
   trustedAdultRecommended: true
@@ -35,14 +35,14 @@ messages:
     direction: incoming
 clues:
   - id: clue.external-link
-    label: 買家傳來平臺外客服連結
-    explanation: 正常交易功能應從原本使用的平臺內操作，不需使用買家提供的陌生入口。
+    label: 買家傳來平台外客服連結
+    explanation: 正常交易功能應從原本使用的平台內操作，不需使用買家提供的陌生入口。
   - id: clue.bank-login
     label: 要求登入網銀完成收款
     explanation: 收款不需要依買家指示輸入網銀、卡片或 OTP 等秘密資料。
   - id: clue.countdown
     label: 用訂單倒數催促
-    explanation: 短期限會讓賣家跳過平臺客服與家長確認。
+    explanation: 短期限會讓賣家跳過平台客服與家長確認。
 choices:
   - id: choice.trustworthy
     label: 買家已付款，照客服指示完成收款
@@ -50,23 +50,23 @@ choices:
     reasoning: 買家說已付款並不能證明外部連結或客服是真的。
     score: 0
   - id: choice.fraud
-    label: 這是假買家釣魚，不點連結並留在原平臺處理
+    label: 這是假買家釣魚，不點連結並留在原平台處理
     classification: fraud
-    reasoning: 你辨識出平臺外連結、假客服與網銀驗證要求，並選擇安全的原入口。
+    reasoning: 你辨識出平台外連結、假客服與網銀驗證要求，並選擇安全的原入口。
     score: 100
   - id: choice.verify
     label: 先問買家客服叫什麼名字，再決定是否登入
     classification: insufficient-evidence
     reasoning: 向買家追問仍在對方控制的管道內，無法驗證客服或連結。
-    score: 45
-recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 賣東西的人也可能成為詐騙目標
-  explanation: 假買家會把問題包裝成賣家設定錯誤，再安排假客服要求金融驗證。交易、客服與收款設定都應留在原平臺內完成。
+  explanation: 假買家會把問題包裝成賣家設定錯誤，再安排假客服要求金融驗證。交易、客服與收款設定都應留在原平台內完成。
   safeActions:
     - 不點買家傳送的客服、物流或收款連結。
-    - 從原平臺的說明中心或 App 內客服核對訂單。
+    - 從原平台的說明中心或 App 內客服核對訂單。
     - 未成年進行交易時，請家長協助處理付款與退款問題。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

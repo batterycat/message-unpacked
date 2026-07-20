@@ -1,12 +1,12 @@
 id: crowdfunding-return.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: crowdfunding-return
 locale: zh-TW
 status: published
 title: 群眾募資的高額回饋
 channel: email
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 綜整假募資專案以高額回饋和限量名額誘導轉帳的手法。
@@ -42,22 +42,23 @@ choices:
     reasoning: 限量與翻倍回饋不能合理化私下付款與缺乏平台保障。
     score: 0
   - id: choice.fraud
-    label: 一定是假的，立刻把專案貼出來警告大家
+    label: 承諾翻倍又要求繞過平台匯款，這是詐騙，不參加
     classification: fraud
-    reasoning: 內容高度可疑但仍應先查證，公開指控前要避免散播未證實資訊。
-    score: 50
-  - id: choice.verify
-    label: 不私下匯款，先查募資平台頁面、團隊資料與退款規則
-    classification: insufficient-evidence
-    reasoning: 先保留資金與判斷空間，用獨立資料確認專案是否可信。
+    reasoning: 「一個月翻倍」不是募資回饋而是投資承諾，加上刻意繞過平台保障，兩者合起來已足以判定。
     score: 100
-recommendedActionIds: []
+  - id: choice.verify
+    label: 先去募資平台找找這個專案，找得到就照他說的匯款
+    classification: insufficient-evidence
+    reasoning: 查專案是好習慣，但即使專案真的存在，「不走平台才有優惠」仍然是要你放棄退款與申訴保障。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 募資回饋不是保證獲利
-  explanation: 群眾募資有專案失敗與延期風險。只透過正式平台查看資料與付款，不接受私訊的限量催促。
+  explanation: 群眾募資的回饋是商品或服務，不是投資報酬；「投入 3,000 元下月回饋 6,000 元」本身就不是募資的運作方式。再加上要求繞過平台匯款，就不必再花時間查團隊資料——這兩點已經構成判定。
   safeActions:
     - 不私下匯款或提供金融資料。
-    - 先查團隊、專案進度、退款與風險說明。
+    - 所有付款都留在募資平台內，保留退款與申訴紀錄。
+    - 分辨清楚「回饋」與「投資報酬」：前者是拿到東西，後者受法律嚴格規範。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

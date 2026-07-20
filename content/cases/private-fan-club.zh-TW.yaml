@@ -51,7 +51,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 加入陌生社群仍可能暴露個資或被持續操弄，應優先查證來源。
     score: 40
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 粉絲福利要從公開官方管道確認
   explanation: 冒用創作者的訊息常用稀缺名額與專屬感催促。不要從私訊連結付款，先對照官方公開公告。

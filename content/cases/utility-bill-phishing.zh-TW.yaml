@@ -1,6 +1,6 @@
 id: utility-bill-phishing.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: utility-bill-phishing
 locale: zh-TW
 status: published
@@ -12,11 +12,11 @@ provenance:
   note: 改編自刑事警察局偵破的釣魚簡訊盜刷集團案件；網址、帳單資訊與訊息內容均為教學重寫。
 sources:
   - id: source.cib.sms-phishing
-    title: 簡訊有詐，刑事局偵破釣魚簡訊盜刷集團案
+    title: 簡訊有詐 刑事局偵破釣魚簡訊盜刷集團案
     publisher: 內政部警政署刑事警察局
     canonicalUrl: https://www.cib.npa.gov.tw/ch/app/news/view?id=1885&module=news&serno=fec7d7af-30c3-429d-86a1-de452f9049a5
     publishedAt: 2025-10-02
-    accessedAt: 2026-07-19
+    accessedAt: 2026-07-20
     kind: official
     usage: facts-paraphrased
     licenseNote: 僅改寫偵辦結果與釣魚手法，未使用原始釣魚網址、個資、原文或圖片。
@@ -39,7 +39,7 @@ learning:
   contexts: [家庭, 簡訊, 帳單]
   skills: [辨識停用威脅, 檢查網址, 從帳單或官方入口查證]
   riskTypes: [釣魚簡訊, 信用卡盜刷, OTP竊取]
-  sensitiveContent: [財物損失]
+  sensitiveContent: [金錢損失]
   trustedAdultRecommended: true
 messages:
   - id: message.overdue
@@ -72,8 +72,8 @@ choices:
     label: 先點開看看網址像不像真的，但不輸入資料
     classification: insufficient-evidence
     reasoning: 不輸入資料較安全，但開啟可疑連結本身沒有必要，也可能帶來額外風險。
-    score: 55
-recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 越怕服務中斷，越要離開簡訊查證
   explanation: 詐騙者利用電費、監理、電信或銀行等重要服務製造焦慮。真正安全的處理方式，是從家中既有帳單、官方 App 或自行找到的客服管道確認。
@@ -82,5 +82,5 @@ debrief:
     - 請家人從紙本帳單、官方 App 或已知客服查證。
     - 若已輸入信用卡或 OTP，立即告知家長並聯繫發卡銀行處理。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

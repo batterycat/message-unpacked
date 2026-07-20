@@ -1,6 +1,6 @@
 id: lottery-ticket.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: lottery-ticket
 locale: zh-TW
 status: published
@@ -31,7 +31,7 @@ messages:
 clues:
   - id: clue.no-entry
     label: 沒有參加卻收到中獎通知
-    explanation: 沒有參加活動就不會因訊息被保證中獎，先告訴家人即可。
+    explanation: 你根本沒有參加抽獎，不可能中獎。收到這種訊息，告訴家人就好。
   - id: clue.payment
     label: 領獎前要求點數卡
     explanation: 正常獎項不會用點數卡支付稅金或保證金。
@@ -50,8 +50,8 @@ choices:
     label: 先回信問要不要改用現金付款
     classification: insufficient-evidence
     reasoning: 不應繼續和可疑寄件者往來，應停止並請大人協助。
-    score: 20
-recommendedActionIds: []
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 沒參加就中獎，先停下來找大人
   explanation: 假中獎會用大獎讓人忽略先付款的風險。孩子遇到金錢要求，不需要自己回覆或處理。
@@ -59,5 +59,5 @@ debrief:
     - 不購買點數卡、不回傳卡號。
     - 把信件拿給家人、老師或可信任的大人。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

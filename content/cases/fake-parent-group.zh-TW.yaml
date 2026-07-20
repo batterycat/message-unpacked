@@ -1,6 +1,6 @@
 id: fake-parent-group.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: fake-parent-group
 locale: zh-TW
 status: published
@@ -42,16 +42,16 @@ choices:
     reasoning: 這樣會在來源未確認前交出個資，不能因為有期限就跳過查證。
     score: 0
   - id: choice.fraud
-    label: 直接說是詐騙並在群組公開指責
+    label: 一定是詐騙，不理這則訊息
     classification: fraud
-    reasoning: 訊息可疑，但目前仍要先核對身分，不宜在沒有證據時公開指責。
-    score: 55
+    reasoning: 不填資料是對的。但新的作業群組可能真的存在，請家人問老師一句就能確認，才不會漏掉作業。
+    score: 60
   - id: choice.verify
     label: 不填資料，請家人從老師原本的管道確認
     classification: insufficient-evidence
     reasoning: 在確認群組真實性前先停下來，並請家人或老師用既有管道核對。
     score: 100
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 先確認群組，再處理作業通知
   explanation: 冒用學校身分的訊息常用作業或期限催促。來源不明時，保護個資並請大人從已知的老師或學校管道確認。
@@ -59,5 +59,5 @@ debrief:
     - 不在陌生表單填寫學生與家長資料。
     - 請家人或老師從原本的班級管道確認。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

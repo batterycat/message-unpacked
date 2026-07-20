@@ -1,6 +1,6 @@
 id: free-game-coins-otp.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: free-game-coins-otp
 locale: zh-TW
 status: published
@@ -9,19 +9,19 @@ channel: chat
 classification: fraud
 provenance:
   kind: documented
-  note: 改編自刑事警察局公布的國中生遭免費遊戲幣話術誘導、交付非遊戲平臺 OTP 的案件；人物與對話均已重新設計。
+  note: 改編自刑事警察局公布的國中生遭免費遊戲幣話術誘導、交付非遊戲平台 OTP 的案件；人物與對話均已重新設計。
 sources:
   - id: source.cib.game-otp
-    title: 免費遊戲幣竟是陷阱！刑事局示警國中生傳驗證碼遭盜開服務
+    title: 免費遊戲幣竟是陷阱！刑事局示警：國中生傳驗證碼「One Number」遭盜開 家長手機門號慘遭停話
     publisher: 內政部警政署刑事警察局
     canonicalUrl: https://www.cib.npa.gov.tw/ch/app/news/view?id=1887&module=news&serno=b6055f8b-ee3d-42ec-a808-e59b1548f25f
     publishedAt: 2026-06-29
-    accessedAt: 2026-07-19
+    accessedAt: 2026-07-20
     kind: official
     usage: facts-paraphrased
     licenseNote: 僅改寫案件事實與防詐重點，未複製原文、圖片或個人資料。
 impact:
-  eventSummary: 刑事警察局公布一宗國中八年級學生被免費遊戲幣話術引導交出非遊戲平臺 OTP 的案件；其後家長門號遭異常開通一號多機服務並停話。
+  eventSummary: 刑事警察局公布一宗國中八年級學生被免費遊戲幣話術引導交出非遊戲平台 OTP 的案件；其後家長門號遭異常開通一號多機服務並停話。
   period: 2026年3月至5月
   location: 彰化縣
   victimCount:
@@ -49,7 +49,7 @@ messages:
     direction: incoming
   - id: message.followup
     sender: 遊戲福利客服
-    body: 驗證碼顯示別的平臺是正常的合作流程，兩分鐘內回傳才有效。
+    body: 驗證碼顯示別的平台是正常的合作流程，兩分鐘內回傳才有效。
     timestamp: '21:18'
     direction: incoming
 clues:
@@ -77,8 +77,8 @@ choices:
     label: 先把驗證碼留著，再問對方這是哪個活動
     classification: insufficient-evidence
     reasoning: 不交付驗證碼是對的，但不應繼續沿用對方提供的管道查證。
-    score: 65
-recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 驗證碼是在授權，不是領獎序號
   explanation: 對方刻意淡化驗證碼上的服務名稱，讓學生以為只是遊戲流程。只要用途與你正在做的事不一致，就應停止並找可信任的大人協助檢查門號與帳號。
@@ -87,5 +87,5 @@ debrief:
     - 若已交付，立即告知家長並聯繫電信業者檢查門號附加服務。
     - 保存對話與帳號資料，透過官方管道通報可疑帳號。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

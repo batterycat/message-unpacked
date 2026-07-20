@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../case.schema.json
 id: upper-primary-club-signup.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: upper-primary-club-signup
 locale: zh-TW
 status: published
@@ -26,7 +26,7 @@ learning:
 messages:
   - id: message.club
     sender: 六年級導師
-    body: 科學社報名今天截止。請從學校首頁的社團報名入口查看名額；老師不會用簡訊索取密碼或轉帳。
+    body: 科學社報名今天截止，請從學校首頁的社團報名入口查看名額。
     timestamp: '12:10'
     direction: incoming
 clues:
@@ -35,7 +35,7 @@ clues:
     explanation: 從自己知道的學校首頁進入，比點擊陌生訊息中的連結更容易確認真偽。
   - id: clue.no-secret
     label: 沒有索取密碼或款項
-    explanation: 正常通知清楚說明不會要求交付秘密或轉帳，降低被冒用的風險。
+    explanation: 這則通知只說明報名方式，實際上沒有要求交付秘密或轉帳。重點是它「要求了什麼」，不是它「說自己不會要求什麼」。
 choices:
   - id: choice.trustworthy
     label: 從學校首頁查看報名資訊
@@ -51,8 +51,8 @@ choices:
     label: 點擊任何報名連結，只要看到校徽就相信
     classification: insufficient-evidence
     reasoning: 校徽或頁面外觀都可能被複製，應使用自己知道的學校入口。
-    score: 55
-recommendedActionIds: []
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 可信也要從自己的入口確認
   explanation: 正常通知不代表任何相似訊息都可信；使用已知的學校首頁與老師既有管道，才能降低被仿冒的風險。
@@ -60,5 +60,5 @@ debrief:
     - 從書籤或學校首頁進入報名系統。
     - 對寄件者或內容有疑問時，直接問老師，不回覆陌生號碼。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=../case.schema.json
 id: senior-marketplace-escrow.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: senior-marketplace-escrow
 locale: zh-TW
 status: published
 title: 二手交易的假保管客服
 channel: chat
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 改寫二手交易中冒用平台客服、要求移到私訊或提供驗證資料的常見手法。
@@ -36,8 +36,8 @@ messages:
     direction: incoming
 clues:
   - id: clue.off-platform
-    label: 要求離開平台處理
-    explanation: 交易紀錄與客服應留在平台既有入口；私訊帳號無法證明是官方人員。
+    label: 明確叫你不要回到平台客服中心
+    explanation: 真正的客服不會阻止你使用官方管道。這句話本身就足以判定是詐騙，因為它的唯一目的是切斷你查證的能力。
   - id: clue.secret
     label: 索取驗證碼與銀行資料
     explanation: 驗證碼和銀行資料屬於敏感資訊，不能因為對方聲稱已付款就交出。
@@ -48,23 +48,25 @@ choices:
     reasoning: 對方的說法不是付款證明，離開平台和索取驗證碼都很可疑。
     score: 0
   - id: choice.fraud
-    label: 一定是假買家，立刻公開對方個資
+    label: 這是假客服，停止互動並回到平台官方入口查看訂單
     classification: fraud
-    reasoning: 訊息高度可疑，但公開個資可能傷害無辜者；應先停止互動並保存證據。
-    score: 55
-  - id: choice.verify
-    label: 回到平台官方入口查看訂單，不提供任何秘密資料
-    classification: insufficient-evidence
-    reasoning: 你用獨立入口確認付款狀態，並拒絕私訊帳號的要求，這是較安全的處理方式。
+    reasoning: 「不要回到平台客服中心」加上索取驗證碼，已足以判定；你也用獨立入口確認了真實付款狀態。
     score: 100
-recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
+  - id: choice.verify
+    label: 先加那個客服帳號問清楚，但不提供任何資料
+    classification: insufficient-evidence
+    reasoning: 不提供資料是對的，但沒有必要加入對方控制的帳號；訂單狀態在平台內就查得到。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 平台交易不要被帶到私下
-  explanation: 二手交易的買家、客服或付款通知都可能被冒用。保留平台內紀錄、從既有入口查看訂單，不要把驗證碼或銀行資料交給私訊帳號。
+  explanation: 二手交易的買家、客服或付款通知都可能被冒用。這則案例有一個決定性的判準：對方明確要你「不要回到平台客服中心」。正當的服務永遠不會阻止你使用官方管道，看到這句話就可以停止，不需要再查證。
   safeActions:
     - 不提供驗證碼、網銀資料或身分證件影本。
     - 留在平台內查詢訂單與客服紀錄，保存對話和帳號資訊。
     - 若疑似詐騙，先停止交易並使用 165 或官方通報管道諮詢。
+    - 已受害時到警察機關報案，並索取受理案件證明單；這份文件是後續向平台或銀行申請處理的依據。
+    - 截圖保存對話、訂單編號與對方帳號。事後才回頭找，紀錄可能已被刪除。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -1,6 +1,6 @@
 id: gaming-account-expiry.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: gaming-account-expiry
 locale: zh-TW
 status: published
@@ -47,11 +47,11 @@ choices:
     reasoning: 你辨識出急迫威脅與可疑登入連結，並避免從訊息進入帳號頁面。
     score: 100
   - id: choice.verify
-    label: 資訊不足，先從官方 App 查證
+    label: 先點連結看看是不是官方網站，再決定要不要登入
     classification: insufficient-evidence
-    reasoning: 獨立打開官方 App 查證是安全行動；這則訊息本身也具備典型釣魚特徵。
-    score: 80
-recommendedActionIds: [anti-fraud.consult, anti-fraud.info]
+    reasoning: 沒有登入是對的，但仿冒登入頁可以做得和官方一模一樣，點進去看不出真假，只是多暴露一次自己。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 真正重要的是不要沿著對方設計的路走
   explanation: 詐騙者把停權與倒數期限放在一起，目的是讓你忽略網址與登入流程。即使帳號真的有異常，也應從自己保存的官方 App 或書籤進入。
@@ -60,5 +60,5 @@ debrief:
     - 自行開啟官方 App，檢查安全通知與登入紀錄。
     - 若已輸入密碼，立刻從可信裝置更改密碼並登出其他工作階段。
 review:
-  lastReviewedAt: 2026-07-18
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -17,6 +17,8 @@ test('Traditional Chinese exercise can be completed', async ({ page }) => {
   await demo.getByRole('button', { name: /^A\./ }).click();
   await expect(demo.getByText('判斷結果')).toBeVisible();
   await expect(demo.getByText(/本題得分/)).toBeVisible();
+  await expect(demo).toContainText('網路詐騙通報查詢網');
+  await expect(demo).toContainText('165反詐騙諮詢專線');
 });
 
 test('Homepage exercise presents three classic cases', async ({ page }) => {
@@ -108,7 +110,7 @@ test('Documented case debrief preserves qualified impact and review details', as
   await expect(demo.getByText('真實案例')).toBeVisible();
   await expect(demo.getByText(/至少.*NT\$1,000/)).toBeVisible();
   await expect(demo.getByText('載明 1 人')).toBeVisible();
-  await expect(demo.getByText(/資料查核日.*2026-07-19/)).toBeVisible();
+  await expect(demo.getByText(/資料查核日.*2026-07-20/)).toBeVisible();
   await expect(
     demo.getByRole('heading', { name: '需要協助嗎？' }),
   ).toBeVisible();

@@ -1,6 +1,6 @@
 id: live-auction-payment.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: live-auction-payment
 locale: zh-TW
 status: published
@@ -42,22 +42,23 @@ choices:
     reasoning: 私下匯款沒有平台保障，不能只因稀有商品就跳過安全流程。
     score: 0
   - id: choice.fraud
-    label: 一定是騙子，立刻把賣家資料貼到公開社群
+    label: 一定是騙子，直接封鎖賣家
     classification: fraud
-    reasoning: 內容高度可疑，但公開個資與指控前仍應保留證據並使用平台申訴。
-    score: 55
+    reasoning: 不私下匯款是對的。但也可能只是賣家想省平台手續費；回到平台看訂單狀態，才知道該繼續交易還是申訴。
+    score: 60
   - id: choice.verify
     label: 不私下匯款，回到平台確認訂單與付款期限
     classification: insufficient-evidence
     reasoning: 先留在平台並確認交易狀態，比照賣家私訊匯款安全。
     score: 100
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 交易保障不能搬到私訊裡
   explanation: 直播與拍賣的熱度會讓人急著付款。只使用平台訂單與付款流程，無法確認時就先不買。
   safeActions:
     - 不私下匯款或提供金融資料。
     - 保存直播與私訊紀錄，必要時向平台回報。
+    - 不把賣家個資貼到公開社群，改用平台的檢舉與申訴管道。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

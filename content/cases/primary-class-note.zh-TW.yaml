@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../case.schema.json
 id: primary-class-note.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: primary-class-note
 locale: zh-TW
 status: published
@@ -26,21 +26,21 @@ learning:
 messages:
   - id: message.bottle
     sender: 二年一班老師
-    body: 明天要到戶外觀察植物，請帶水壺和帽子。這則提醒不會要求你提供密碼或匯款。
+    body: 明天要到戶外觀察植物，請帶水壺和帽子。
     timestamp: '今天 17:00'
     direction: incoming
 clues:
   - id: clue.context
     label: 內容和班級活動有關
-    explanation: 訊息提到你已知道的課堂活動，內容可以向老師或家人再次確認。
+    explanation: 訊息說的是你已經知道的課堂活動，聯絡簿上也抄了一樣的事情，可以自己對照看看。
   - id: clue.no-secret
     label: 沒有索取秘密資料
-    explanation: 沒有要求密碼、驗證碼、付款或點擊陌生連結，是較安全的特徵。
+    explanation: 這則訊息沒有要密碼、沒有要錢，也沒有陌生連結。要看它「實際上有沒有要」，不是看它「說自己不會要」。
 choices:
   - id: choice.trustworthy
-    label: 先跟家人確認，再準備需要的用品
+    label: 先跟家長確認，再準備需要的用品
     classification: trustworthy
-    reasoning: 這是符合課堂情境的提醒，也可以透過家人或老師確認內容。
+    reasoning: 這是符合課堂情境的提醒，也可以透過家長或老師確認內容。
     score: 100
   - id: choice.fraud
     label: 只要是簡訊就一定是詐騙
@@ -50,15 +50,15 @@ choices:
   - id: choice.verify
     label: 完全不理會，也不需要告訴大人
     classification: insufficient-evidence
-    reasoning: 保持小心很好，但正常的班級提醒可以透過老師或家人安全確認。
+    reasoning: 保持小心很好，但正常的班級提醒可以透過老師或家長安全確認。
     score: 60
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 正常提醒也可以安全確認
-  explanation: 判斷訊息時，不只看它是不是簡訊，也要看是否符合你知道的情境、是否索取秘密，以及能不能用既有管道確認。
+  explanation: 看訊息的時候，不是看它是不是簡訊就好。要想三件事：這件事我本來就知道嗎？它有沒有跟我要秘密？我可以用平常的方法問到答案嗎？
   safeActions:
-    - 從平常知道的方式向老師或家人確認。
+    - 從平常知道的方式向老師或家長確認。
     - 不因為訊息看起來正常，就提供密碼或個人資料。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=../case.schema.json
+id: game-daily-bonus-tip.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: game-daily-bonus-tip
+locale: zh-TW
+status: published
+title: 同學說今天登入有送東西
+channel: chat
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為中年級練習辨認「只是分享消息、沒有要求」的正常同儕訊息而建立的教學虛構情境。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention]
+  topic: 遊戲與帳號
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [線上遊戲, 同儕聊天]
+  skills: [檢視訊息的請求, 自己進遊戲確認]
+  riskTypes: [誤判正常訊息]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.tip
+    sender: 阿宏
+    body: 欸今天遊戲有活動，登入就送十顆寶石，記得去領！我剛剛領到了。
+    timestamp: '17:25'
+    direction: incoming
+clues:
+  - id: clue.nothing-asked
+    label: 他沒有跟你要任何東西
+    explanation: 他只是告訴你有活動。沒有要密碼、沒有要你點連結、也沒有叫你給他什麼。
+  - id: clue.check-yourself
+    label: 你可以自己打開遊戲看
+    explanation: 有沒有這個活動，你自己進遊戲就知道了，不需要靠他。
+choices:
+  - id: choice.trustworthy
+    label: 自己打開遊戲看看有沒有這個活動
+    classification: trustworthy
+    reasoning: 他只是分享消息，沒有跟你要東西。你也可以自己進遊戲確認，不用相信他說的就好。
+    score: 100
+  - id: choice.fraud
+    label: 講遊戲好康的訊息都是騙人的，不要理他
+    classification: fraud
+    reasoning: 同學分享活動消息是很正常的事。如果每次都當成騙人的，你會漏掉真的活動，也會讓朋友覺得奇怪。
+    score: 20
+  - id: choice.verify
+    label: 乾脆把帳號密碼給他，請他幫我領
+    classification: insufficient-evidence
+    reasoning: 他沒有跟你要密碼，是你自己要給的。密碼給出去，別人就能進你的帳號——不管對方是不是好朋友都一樣。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 他只是跟你說一件事，沒有要你做什麼
+  explanation: 朋友分享遊戲活動是很正常的。看訊息的時候先問：他有沒有要我什麼？這則沒有要密碼、沒有要錢、也沒有叫你點奇怪的連結，所以是安全的。而且更好的是，這件事你可以自己打開遊戲確認，不需要問他。要小心的是最後那個選項——就算對方沒有要，你也不可以主動把密碼給別人。
+  safeActions:
+    - 自己打開遊戲看活動公告，不用別人幫你領。
+    - 就算是好朋友，也不把帳號密碼給出去。
+    - 如果有人開始要密碼、要錢或叫你保密，就去告訴家長或老師。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

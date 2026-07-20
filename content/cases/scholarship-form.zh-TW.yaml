@@ -1,12 +1,12 @@
 id: scholarship-form.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: scholarship-form
 locale: zh-TW
 status: published
 title: 獎學金申請的補件通知
 channel: email
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 綜整冒用學校或基金會名義要求補件、收取費用的常見手法。
@@ -42,22 +42,23 @@ choices:
     reasoning: 付款與身分證要求都應先獨立查證，不能用「已通過」取代核對。
     score: 0
   - id: choice.fraud
-    label: 一定是詐騙，立刻把信轉寄給同學警告
+    label: 要先繳保證金才能領獎學金就是詐騙，不付款也不上傳證件
     classification: fraud
-    reasoning: 內容高度可疑，但仍應先確認來源並避免散播未證實的指控。
-    score: 55
-  - id: choice.verify
-    label: 不付款、不上傳證件，從官方公告或學校窗口確認
-    classification: insufficient-evidence
-    reasoning: 先保護個資與金錢，再用獨立管道確認申請單位與補件規則。
+    reasoning: 獎助學金是給你錢，不會反過來先跟你收錢；這一點就足以判定，不必等查完主辦單位。
     score: 100
-recommendedActionIds: []
+  - id: choice.verify
+    label: 先上傳身分證但不付款，看看對方後續怎麼說
+    classification: insufficient-evidence
+    reasoning: 身分證正反面外流本身就是損失，可能被用來申辦帳戶或貸款，不能當作測試手段。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
-  headline: 獎學金也不能跳過申請規則
-  explanation: 好消息與期限會降低警覺。遇到補件、保證金或身分證要求，請從官方公告與學校窗口確認，不要沿用郵件回覆。
+  headline: 要你先繳錢的獎學金，一定是假的
+  explanation: 獎助學金的性質是撥款給你，任何以保證金、手續費、稅金為名要求先付款的通知都是詐騙。好消息與期限會降低警覺，但這裡不需要猶豫——先收費這一點就足以判定，身分證正反面更不該在這種情況下上傳。
   safeActions:
     - 保留信件與申請紀錄，不先付款或傳證件。
     - 請學校承辦或家人一起核對申請單位。
+    - 若已上傳證件，儘快告知家長並留意帳戶與信用異常。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

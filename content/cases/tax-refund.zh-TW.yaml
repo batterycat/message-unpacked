@@ -1,6 +1,6 @@
 id: tax-refund.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: tax-refund
 locale: zh-TW
 status: published
@@ -50,14 +50,16 @@ choices:
     label: 只填網銀帳號，不填密碼與驗證碼
     classification: insufficient-evidence
     reasoning: 不應在可疑頁面輸入任何網銀資料，應先走官方查詢流程。
-    score: 25
-recommendedActionIds: []
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 退稅要用官方查詢，不用信件登入
-  explanation: 退費是常見的釣魚誘因。請家人從政府官方入口或已知承辦窗口查證，不要使用信件連結。
+  explanation: 退費是常見的釣魚誘因。請家人從政府官方入口或已知承辦窗口查證，不要使用信件連結。真正的退稅會依既有程序撥入你早已申報的帳戶，不需要你在網頁上重新提供網銀密碼。
   safeActions:
     - 不提供網銀密碼、驗證碼或信用卡資料。
     - 若已輸入資料，立即告知家人並聯絡銀行處理。
+    - 信用卡若遭盜刷，儘快向發卡銀行提出爭議款申請——這有時間限制，越晚提出越難處理。
+    - 到警察機關報案並索取受理案件證明單，銀行與機關後續處理多半會要求這份文件。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

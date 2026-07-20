@@ -1,12 +1,12 @@
 id: streaming-renewal.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: streaming-renewal
 locale: zh-TW
 status: published
 title: 影音訂閱即將續費
 channel: email
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 綜整假冒影音服務通知自動續費、引導輸入付款資料的手法。
@@ -31,7 +31,7 @@ messages:
 clues:
   - id: clue.card
     label: 取消訂閱卻要求重新輸入卡號
-    explanation: 訂閱狀態應能在原本的 App 或帳戶設定查看，不必從郵件連結輸入卡號。
+    explanation: 取消是停止收費，服務商手上已經有你的付款方式，不可能需要你再輸入一次完整卡號。這個矛盾足以判定。
   - id: clue.deadline
     label: 用明天扣款催促
     explanation: 時間壓力會讓人忽略獨立查證帳戶與付款紀錄。
@@ -42,22 +42,22 @@ choices:
     reasoning: 陌生連結與付款資料要求仍需先查證，不能只看扣款金額。
     score: 0
   - id: choice.fraud
-    label: 一定是詐騙，叫家人取消所有訂閱
+    label: 取消訂閱不需要重填卡號，這是釣魚信，改請家人從 App 查
     classification: fraud
-    reasoning: 訊息可疑但尚未確認，應先查帳戶，不必把所有訂閱都取消。
-    score: 50
-  - id: choice.verify
-    label: 請家人從影音 App 的帳戶設定查詢續費
-    classification: insufficient-evidence
-    reasoning: 先從原本的帳戶入口確認訂閱狀態，不沿用郵件連結。
+    reasoning: 你辨識出「取消卻要卡號」的矛盾，也用原本的帳戶入口處理可能存在的真實訂閱。
     score: 100
-recommendedActionIds: []
+  - id: choice.verify
+    label: 先點開連結看看頁面長怎樣，不輸入卡號
+    classification: insufficient-evidence
+    reasoning: 不輸入卡號是對的，但登入頁可以做得跟官方一模一樣，開啟它得不到任何判斷資訊。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
-  headline: 訂閱狀態要在帳戶裡查
-  explanation: 續費提醒可能是真的，也可能是釣魚。最安全的查證方式是開啟原本的 App 或自行輸入已知網址。
+  headline: 取消訂閱不會要你重新輸入卡號
+  explanation: 你家可能真的有這個訂閱，但「要取消就重填卡號」這個要求本身是假的——服務商早就有你的付款方式了。判定訊息是詐騙，和回到 App 確認家裡的訂閱狀況，這兩件事可以同時做。
   safeActions:
     - 不從郵件連結輸入信用卡資料。
     - 請家人一起確認訂閱與付款紀錄。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

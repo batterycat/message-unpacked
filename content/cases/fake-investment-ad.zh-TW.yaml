@@ -1,6 +1,6 @@
 id: fake-investment-ad.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: fake-investment-ad
 locale: zh-TW
 status: published
@@ -12,11 +12,11 @@ provenance:
   note: 改編自刑事警察局偵辦的偽冒投顧名人廣告引流假投資案件；群組名稱與對話均為虛構。
 sources:
   - id: source.cib.fake-investment-ads
-    title: 廣告行銷公司利用社群平臺發送涉詐投資廣告偵辦案
+    title: 中央打詐平臺展現成效 數發部吹哨通報檢警查辦 廣告行銷公司利用臉書大量發送涉詐投資廣告 負責人及員工遭收押
     publisher: 內政部警政署刑事警察局
     canonicalUrl: https://www.cib.npa.gov.tw/ch/app/news/view?id=1885&module=news&serno=cf19696e-0fde-41fb-877a-76d18fe79930
     publishedAt: 2026-06-22
-    accessedAt: 2026-07-19
+    accessedAt: 2026-07-20
     kind: official
     usage: facts-paraphrased
     licenseNote: 僅改寫偵辦結果、被害規模與手法，未複製原文、照片或涉案名稱。
@@ -45,7 +45,7 @@ learning:
   contexts: [社群平台, 網路廣告, 金融素養]
   skills: [辨識保證獲利話術, 檢查群組假見證, 拒絕私下投資]
   riskTypes: [假投資, 名人冒用, 群組操弄]
-  sensitiveContent: [重大財物損失]
+  sensitiveContent: [金錢損失]
   trustedAdultRecommended: true
 messages:
   - id: message.invitation
@@ -72,7 +72,7 @@ choices:
   - id: choice.trustworthy
     label: 很多人都獲利，可以先用少量零用錢試試
     classification: trustworthy
-    reasoning: 小額也可能被持續誘導加碼，群友與截圖不能證明投資平臺真實。
+    reasoning: 小額也可能被持續誘導加碼，群友與截圖不能證明投資平台真實。
     score: 0
   - id: choice.fraud
     label: 這是假投資高風險訊息，不加入群組也不下載程式
@@ -83,15 +83,16 @@ choices:
     label: 先加入群組觀察，只要不匯款就沒風險
     classification: insufficient-evidence
     reasoning: 暫不匯款較安全，但加入群組仍會暴露帳號並持續承受操弄與誘導。
-    score: 50
-recommendedActionIds: [anti-fraud.consult, anti-fraud.online-report]
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 群組很熱鬧，也可能只是一場布置
-  explanation: 詐騙者不只偽造一則廣告，還會安排群友、獲利截圖與客服共同演出。看到保證獲利、下載陌生程式或私下交付資金時，應直接停止。
+  explanation: 詐騙者不只偽造一則廣告，還會安排群友、獲利截圖與客服共同演出。看到保證獲利、下載陌生程式或私下交付資金時，應直接停止。這類群組還有一個常見的後續：當你的錢卡住時，對方會提議「幫忙代收一筆款項就能解鎖」，或請你提供帳戶協助其他群友入金。答應這一步，你的身分就從被害人變成刑事被告——提供帳戶或代收代轉款項可能被認定為幫助詐欺或洗錢，未成年也一樣要面對少年法庭。
   safeActions:
     - 不加入來路不明的投資群組、不下載指定程式。
     - 不因名人照片、影片或群友見證就相信投資邀請。
+    - 不論對方用什麼理由，都不提供自己的帳戶收款，也不代為轉帳或提領。
     - 把可疑廣告交給可信任的大人，並透過官方管道查詢或通報。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

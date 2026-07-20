@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=../case.schema.json
+id: classmate-boardgame-plan.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: classmate-boardgame-plan
+locale: zh-TW
+status: published
+title: 同學提醒帶桌遊
+channel: chat
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為中年級練習辨認「內容和你已經知道的事情吻合」的正常同儕訊息而建立的教學虛構情境。
+sources: []
+learning:
+  stages: [3-4]
+  dimensions: [prevention]
+  topic: 社群與交友
+  readingLevel: easy
+  difficulty: introductory
+  contexts: [同儕互動, 聊天軟體, 校園生活]
+  skills: [對照已知的事, 辨認正常請求]
+  riskTypes: [誤判正常訊息]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.plan
+    sender: 小葳
+    body: 明天記得帶我們今天講好的那個桌遊喔！我會帶餅乾，下課再一起玩。
+    timestamp: '19:40'
+    direction: incoming
+clues:
+  - id: clue.known
+    label: 說的是你今天已經知道的事
+    explanation: 你們放學前才當面講好這件事。訊息裡的內容你本來就知道，這是別人不容易假裝的。
+  - id: clue.no-request
+    label: 沒有跟你要任何東西
+    explanation: 沒有要密碼、沒有要錢、沒有叫你點連結，也沒有叫你保密。
+choices:
+  - id: choice.trustworthy
+    label: 記得把桌遊放進書包，明天帶去
+    classification: trustworthy
+    reasoning: 訊息說的事你本來就知道，而且沒有跟你要任何東西。這樣的訊息是安全的。
+    score: 100
+  - id: choice.fraud
+    label: 網路上的訊息都不能相信，不要理她
+    classification: fraud
+    reasoning: 如果把每一則訊息都當成假的，你會沒辦法跟朋友約事情。要看的是內容，不是「它是不是網路訊息」。
+    score: 20
+  - id: choice.verify
+    label: 不太確定，乾脆不要帶，明天到學校再說
+    classification: insufficient-evidence
+    reasoning: 小心是好的，但這則訊息沒有任何奇怪的地方。不帶的話，明天你們就玩不到了。
+    score: 60
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 內容和你知道的事對得上，就比較安全
+  explanation: 判斷訊息不是看它從哪裡來，而是看兩件事：它說的事情你本來就知道嗎？它有沒有跟你要東西？這則訊息兩個答案都很清楚，所以可以放心。但要記得：就算是很好的朋友，如果他突然改成要你的密碼、要你的錢，或叫你不要告訴大人，那就要停下來，先去找家長或老師。
+  safeActions:
+    - 一般約好的事情可以正常回覆。
+    - 如果朋友突然要密碼、要錢或叫你保密，先停下來告訴家長或老師。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

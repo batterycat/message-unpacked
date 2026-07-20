@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=../case.schema.json
+id: game-maintenance-notice.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: game-maintenance-notice
+locale: zh-TW
+status: published
+title: 遊戲伺服器維護公告
+channel: email
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為練習辨認「不要求你做任何事」的正常服務通知而建立的教學虛構情境。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topic: 遊戲與帳號
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [線上遊戲, 電子郵件, 服務公告]
+  skills: [檢視訊息的請求, 辨認低風險通知]
+  riskTypes: [誤判正常通知]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.maintenance
+    sender: 遊戲營運團隊
+    body: 7 月 25 日 02:00 至 06:00 進行伺服器維護，期間無法登入。維護完成後全體玩家將獲得補償道具，於下次登入時自動發放。
+    timestamp: 週二 11:05
+    direction: incoming
+clues:
+  - id: clue.no-action
+    label: 沒有要你做任何事
+    explanation: 這則通知只是告知。補償是自動發放的，你不需要點連結、不需要登入、不需要填表、也不需要在期限前完成什麼。
+  - id: clue.no-link
+    label: 沒有連結、沒有索取資料
+    explanation: 整封信沒有任何入口可以把你帶去別的地方，也沒有要帳號、密碼或付款資訊。
+  - id: clue.cross-checkable
+    label: 同一則公告可以在遊戲裡看到
+    explanation: 維護時間這種資訊一定會同時出現在遊戲內公告與官方網站，你可以自己去對照。
+choices:
+  - id: choice.trustworthy
+    label: 這是一般公告，什麼都不用做，維護後再登入
+    classification: trustworthy
+    reasoning: 你注意到這則訊息沒有對你提出任何要求，這是風險最低的訊息型態。
+    score: 100
+  - id: choice.fraud
+    label: 遊戲寄來的信都可能是釣魚，直接刪掉並馬上改密碼
+    classification: fraud
+    reasoning: 保持警覺不是壞事，但用「誰寄來的」來判斷，會讓你漏掉真正的官方通知。這封信沒有任何可疑的請求，改密碼也解決不了它。
+    score: 20
+  - id: choice.verify
+    label: 上網搜尋「補償道具 領取教學」，照找到的網站操作
+    classification: insufficient-evidence
+    reasoning: 這一步反而製造了風險。補償是自動發放的，而搜尋結果裡的第三方「領取教學」網站，正是常見的假登入頁來源。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 先看它要你做什麼
+  explanation: 判斷一則訊息，最快的方法是問：它要我做什麼？詐騙訊息一定需要你採取某個行動——點連結、登入、付款、回傳號碼、在期限前完成。因為沒有你的動作，詐騙就無法完成。這則公告要你做的事是「什麼都不用做」，補償會自己進來。當一則訊息對你毫無所求時，它能造成的傷害也接近於零。
+  safeActions:
+    - 不需要為了領取自動發放的獎勵去點任何連結。
+    - 想確認就自己打開遊戲或官方網站看公告，不要用搜尋結果裡的第三方教學站。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../case.schema.json
+id: friend-gift-link.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: friend-gift-link
+locale: zh-TW
+status: published
+title: 遊戲好友送的禮物連結
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整遊戲社群中真實送禮功能與冒名禮物連結難以分辨的情境。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 遊戲與帳號
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [線上遊戲, 同儕互動, 帳號安全]
+  skills: [使用遊戲內建功能查證, 跨管道確認身分]
+  riskTypes: [冒名禮物, 釣魚連結]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.gift
+    sender: 小魚（遊戲好友）
+    body: 我這次活動多抽到一組造型包，用不到，送你啦！這是禮物連結，快去領。
+    timestamp: '21:30'
+    direction: incoming
+clues:
+  - id: clue.real-feature
+    label: 遊戲真的有送禮功能
+    explanation: 多數遊戲都能把重複的道具送給好友，所以這件事本身完全合理。
+  - id: clue.link-vs-inbox
+    label: 禮物用連結送，而不是出現在遊戲信箱
+    explanation: 真正的遊戲禮物通常會直接進到你的遊戲信箱，不需要外部連結。這是唯一說不通的地方，但也可能只是對方順手貼了官方活動頁。
+  - id: clue.account-unverified
+    label: 帳號名稱不能證明是本人
+    explanation: 遊戲帳號可能被盜。如果小魚的帳號出事，這則訊息就不是他傳的。
+choices:
+  - id: choice.trustworthy
+    label: 是好友送的，直接點連結領獎
+    classification: trustworthy
+    reasoning: 好友的心意可能是真的，但帳號可能不是他在用。點進去之前你無法分辨這兩種情況。
+    score: 40
+  - id: choice.fraud
+    label: 一定是帳號被盜，直接封鎖小魚
+    classification: fraud
+    reasoning: 不點連結是對的。但如果他真的只是想送你東西，你封鎖了一個朋友，也沒有提醒到可能真的出事的帳號。
+    score: 60
+  - id: choice.verify
+    label: 不點連結，先開遊戲看信箱有沒有禮物，再用其他方式問小魚
+    classification: insufficient-evidence
+    reasoning: 遊戲信箱是對方無法控制的地方。禮物在不在那裡，一看就知道，而且你沒有失去這個朋友。
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 真的禮物會出現在遊戲裡，不在連結裡
+  explanation: 這則訊息大部分都合理——遊戲能送禮、好友會分享、造型包會重複抽到。唯一說不通的是禮物為什麼要用連結領。遇到這種「幾乎全對，只有一處怪怪的」的訊息，最有效的做法不是猜，而是去一個對方控制不了的地方看：打開遊戲，檢查信箱。如果禮物在那裡，那就是真的；如果不在，你也還沒有損失任何東西。
+  safeActions:
+    - 不從聊天連結進入登入或領獎頁面。
+    - 打開遊戲，直接看信箱、好友禮物或活動頁。
+    - 若確認帳號遭盜，用其他管道提醒本人更改密碼並通知其他好友。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

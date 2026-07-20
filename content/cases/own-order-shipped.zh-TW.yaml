@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../case.schema.json
+id: own-order-shipped.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: own-order-shipped
+locale: zh-TW
+status: published
+title: 自己下單的出貨通知
+channel: sms
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為練習辨認正常物流通知而建立的教學虛構情境，作為假物流與幽靈包裹案例的正面對照。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention]
+  topic: 網路購物
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [網路購物, 物流, 簡訊]
+  skills: [核對訂單編號, 檢視訊息的請求, 保護交易資訊]
+  riskTypes: [誤判正常物流]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.shipped
+    sender: 購物平台
+    body: 您的訂單 A2938471 已出貨，預計 7 月 22 日送達。物流進度可於 App 訂單頁查詢。
+    timestamp: '14:08'
+    direction: incoming
+clues:
+  - id: clue.your-order
+    label: 你自己下過這張單
+    explanation: 你記得買了什麼，而且訂單編號可以在 App 裡對照。假物流訊息的共同點就是你根本沒有對應的訂單。
+  - id: clue.nothing-to-do
+    label: 沒有要你補資料或付錢
+    explanation: 沒有要你補地址、沒有驗證費、沒有短時間期限。整則訊息只是在告知進度。
+  - id: clue.no-link
+    label: 沒有附連結，要你回自己的 App 查
+    explanation: 它指向你原本就在用的 App，而不是提供一個新的入口。
+choices:
+  - id: choice.trustworthy
+    label: 對照 App 訂單頁確認編號一致，然後等收件
+    classification: trustworthy
+    reasoning: 你用自己的訂單紀錄核對了編號，而這則訊息本來就沒有要求你做任何有風險的事。
+    score: 100
+  - id: choice.fraud
+    label: 物流簡訊都是詐騙，一律不理
+    classification: fraud
+    reasoning: 假物流簡訊確實很多，但這則沒有連結、沒有要錢、也沒有要你補資料。一律不理的話，真的包裹出問題時你也不會知道。
+    score: 20
+  - id: choice.verify
+    label: 不確定，把訂單編號貼到社群問大家這是不是詐騙
+    classification: insufficient-evidence
+    reasoning: 想查證的方向是對的，但訂單編號屬於你的交易資訊，公開貼出來可能讓別人查到你的收件資料。App 裡就能對照，不需要問陌生人。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 真物流和假物流的差別，在於有沒有對應的訂單
+  explanation: 假物流簡訊幾乎都有同一個弱點：它必須猜你有包裹。所以判斷方法很簡單——回到你自己的購物 App，看訂單編號對不對得上。對得上就是真的，對不上就是假的，不需要點簡訊裡的任何東西。另外注意到這則訊息「要你做什麼」：它只叫你去自己的 App 查，沒有要補地址、沒有驗證費、沒有倒數計時。假物流一定會有其中至少一項。
+  safeActions:
+    - 用購物 App 的訂單頁核對編號與品項，不從簡訊連結進入。
+    - 不在公開社群貼出訂單編號、物流單號或收件資訊。
+    - 若訊息要求補地址或支付任何費用，那就不是正常的物流通知。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=../case.schema.json
+id: school-finance-talk.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: school-finance-talk
+locale: zh-TW
+status: published
+title: 學校公告的理財教育講座
+channel: email
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為練習分辨「談投資的正當活動」與「投資詐騙」而建立的教學虛構情境。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topic: 投資與廣告
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [校園, 理財教育, 講座活動]
+  skills: [比較請求而非主題, 使用既有入口交叉核對]
+  riskTypes: [誤判正常活動]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.talk
+    sender: 學務處活動組
+    body: 本校與市府合辦青年理財教育講座，5 月 20 日第七節於視聽教室，全校自由參加，不需事先報名。活動資訊同步公告於學校網站活動專區。
+    timestamp: 週一 08:30
+    direction: incoming
+clues:
+  - id: clue.same-topic
+    label: 主題和詐騙案例一樣，請求卻完全不同
+    explanation: 這則訊息也在談投資，但它沒有要你入金、沒有保證獲利、沒有限量名額、也沒有把你導向私人群組。
+  - id: clue.cross-check
+    label: 可以在學校網站對照
+    explanation: 活動同時公告在校內既有的入口，你可以自己去看，不必依賴這封信。
+  - id: clue.public-open
+    label: 公開場地、自由參加
+    explanation: 在校內視聽教室、全校都能去、不需報名。詐騙需要篩選出單獨的對象，公開活動剛好相反。
+choices:
+  - id: choice.trustworthy
+    label: 有興趣就去聽，資訊可以在學校網站對照
+    classification: trustworthy
+    reasoning: 你用「它要求什麼」而不是「它談什麼」來判斷，也知道可以從既有入口交叉核對。
+    score: 100
+  - id: choice.fraud
+    label: 只要跟投資有關就是詐騙，不去
+    classification: fraud
+    reasoning: 用主題來判斷會同時擋掉詐騙和教育。這場講座沒有任何一個投資詐騙必備的特徵，卻正好能教你認出那些特徵。
+    score: 20
+  - id: choice.verify
+    label: 私訊信裡提到的講師，問能不能先幫我開個帳戶練習
+    classification: insufficient-evidence
+    reasoning: 你把一個公開的校內活動，主動變成一對一的私下往來，還把話題帶到開戶——這正是投資詐騙希望你踏出的那一步。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 看它要求什麼，不是看它談什麼
+  explanation: 題庫裡有很多投資詐騙，很容易讓人養成「看到投資就是詐騙」的直覺。但這場講座和那些案例談的是同一個主題，差別全在請求：詐騙要你入金、保證獲利、限量催促、拉你進私人群組；這場講座什麼都沒要。理財知識本身是你需要的，尤其在你快要開始工作和管理自己的錢的時候。要練的是分辨請求，不是迴避主題。
+  safeActions:
+    - 從學校網站的活動專區對照公告內容。
+    - 參加公開講座沒有風險；把警覺留給要求入金、保證獲利或私下聯繫的邀請。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

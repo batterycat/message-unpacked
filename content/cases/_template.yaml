@@ -48,7 +48,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 說明安全的查證方式。
     score: 100
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 先查證，再行動
   explanation: 補充案例的核心教學重點。

@@ -1,6 +1,6 @@
 id: tournament-registration.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: tournament-registration
 locale: zh-TW
 status: published
@@ -50,8 +50,8 @@ choices:
     label: 開啟網址但只輸入帳號名稱，不輸入密碼
     classification: insufficient-evidence
     reasoning: 沒有必要開啟可疑連結，應改走官方公告或已知聯絡管道。
-    score: 45
-recommendedActionIds: []
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 賽事資格要從主辦方公告確認
   explanation: 獎金與資格會讓人急著登入。請自行找到主辦方網站或聯絡窗口，不要使用郵件裡的登入連結。
@@ -59,5 +59,5 @@ debrief:
     - 從官方公告確認隊伍與報到方式。
     - 若已輸入密碼，立即更換密碼並啟用多重要素驗證。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

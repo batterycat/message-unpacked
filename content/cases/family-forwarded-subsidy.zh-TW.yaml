@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../case.schema.json
+id: family-forwarded-subsidy.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: family-forwarded-subsidy
+locale: zh-TW
+status: published
+title: 家人轉傳的租金補貼申請
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: fictional
+  note: 為練習分辨「政策是真的」與「這個連結是真的」而建立的教學虛構情境；補貼名稱與網址均為虛構。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topic: 家庭與生活
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [家庭群組, 政府補助, 轉傳訊息]
+  skills: [區分政策與連結, 自行找到官方入口, 向家人說明查證方式]
+  riskTypes: [轉傳未查證連結, 假冒官方網站]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.forward
+    sender: 媽媽（家庭群組）
+    body: 青年租金補貼開始受理了，你剛好符合資格吧？快看這個 https://rent-help.example.com 記得在月底前申請。
+    timestamp: '週六 10:12'
+    direction: incoming
+clues:
+  - id: clue.real-policy
+    label: 政策本身可能是真的
+    explanation: 政府確實有各種租金與就學補助。政策存在，不代表這個連結就是官方的。
+  - id: clue.forwarded
+    label: 訊息是輾轉轉傳的
+    explanation: 媽媽多半也是別人傳給她的。轉傳鏈上每一個人都可能沒查證，訊息看起來越熱門越不代表可信。
+  - id: clue.no-request
+    label: 目前沒有索取任何東西
+    explanation: 這則訊息沒有要密碼、沒有要錢，所以還不能判定它是詐騙——但也還沒有任何證據顯示它是官方的。
+choices:
+  - id: choice.trustworthy
+    label: 媽媽傳的應該沒問題，點進去填申請
+    classification: trustworthy
+    reasoning: 家人是好意，但她也是收到別人轉傳的。信任傳訊息的人，不等於驗證了那個連結。
+    score: 40
+  - id: choice.fraud
+    label: 一定是詐騙，叫媽媽以後不要亂轉這種東西
+    classification: fraud
+    reasoning: 不點連結是對的。但補貼可能真的存在，你如果符合資格卻因此錯過申請期限，損失是實在的；而且這樣說也可能讓家人以後不敢跟你分享訊息。
+    score: 60
+  - id: choice.verify
+    label: 不點那個連結，自己搜尋主管機關官網查同一個補貼
+    classification: insufficient-evidence
+    reasoning: 你把「政策是不是真的」和「這個連結是不是真的」分開處理，兩個問題都得到答案。
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 政策是真的，不代表連結是真的
+  explanation: 詐騙最有效的做法之一，就是拿一個真實存在的補助或政策去包裝假網站——因為你一查會發現「真的有這個補貼」，反而更容易相信那個連結。正確的拆法是把問題分成兩半：這個政策存在嗎？（搜尋官方網站）這個連結是官方的嗎？（不要用轉傳來的那個）。兩個答案都要自己拿到。
+  safeActions:
+    - 不從轉傳訊息的連結進入任何申請或登入頁面。
+    - 自行搜尋主管機關官網，或從已知的政府服務入口進入。
+    - 把查到的官方網址回傳家庭群組，比只說「這是詐騙」更有幫助。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

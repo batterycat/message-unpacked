@@ -1,6 +1,6 @@
 id: fake-school-club.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: fake-school-club
 locale: zh-TW
 status: published
@@ -42,22 +42,23 @@ choices:
     reasoning: 來源與資料用途未確認，不能因為免費就交出住址與家長電話。
     score: 0
   - id: choice.fraud
-    label: 直接在班群說這個社團是騙人的
+    label: 一定是詐騙，不理它
     classification: fraud
-    reasoning: 訊息可疑，但需要先核對來源，不應沒有證據就公開指控。
-    score: 55
+    reasoning: 不交出個資是對的。但學校可能真的有這個社團，從公告或老師確認一下，才不會錯過想參加的活動。
+    score: 60
   - id: choice.verify
     label: 不填資料，從學校公告或老師確認社團是否存在
     classification: insufficient-evidence
     reasoning: 先保護個資，再用已知的校園管道確認社團與報名方式。
     score: 100
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 免費物品不能取代來源確認
   explanation: 社團招募應有學校公告、指導老師或正式報名流程。遇到陌生表單和限額催促，先找大人確認。
   safeActions:
     - 不填寫住址、家長電話等非必要資料。
     - 從學校公告或老師取得正式報名方式。
+    - 查證完成前不要在班群公開指控社團或個人，以免傷害無辜的人。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

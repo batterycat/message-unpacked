@@ -21,7 +21,7 @@ learning:
   contexts: [線上遊戲, 同儕聊天]
   skills: [保護密碼, 找可信任的大人]
   riskTypes: [免費禮物, 索取密碼]
-  sensitiveContent: []
+  sensitiveContent: [要求對大人保密]
   trustedAdultRecommended: true
 messages:
   - id: message.gift
@@ -32,7 +32,7 @@ messages:
 clues:
   - id: clue.secret
     label: 要求把事情瞞著大人
-    explanation: 需要你保守秘密、不能讓可信任的大人知道的要求，應該先停下來求助。
+    explanation: 有人叫你保密、不能讓大人知道，就要馬上停下來，去找大人。
   - id: clue.password
     label: 索取登入密碼
     explanation: 密碼是帳號的秘密，遊戲好友、客服或任何贈品都不應要求你交出密碼。
@@ -52,13 +52,13 @@ choices:
     classification: insufficient-evidence
     reasoning: 改簡單仍然不安全；密碼不應交給別人，應直接停止並求助。
     score: 15
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 禮物不值得交換密碼
   explanation: 年紀較小時，遇到索取密碼、要求保密或讓你害怕的訊息，可以先不回覆，拿給家長、老師或其他可信任的大人看。
   safeActions:
-    - 不說出密碼、驗證碼或家人的個人資料。
+    - 不說出密碼、驗證碼或家長的個人資料。
     - 截圖或保留訊息，交給可信任的大人一起處理。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

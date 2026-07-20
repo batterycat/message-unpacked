@@ -1,12 +1,12 @@
 id: family-wealth-webinar.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: family-wealth-webinar
 locale: zh-TW
 status: published
 title: 家庭理財講座的保證名額
 channel: email
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 綜整免費理財講座以保證收益、限時入金吸引家庭成員的手法。
@@ -42,22 +42,23 @@ choices:
     reasoning: 限量、保證收益與先付款是需要停止查證的組合。
     score: 0
   - id: choice.fraud
-    label: 直接轉寄給親友，提醒他們是詐騙
+    label: 保證收益加上先匯款就是詐騙，不參加也不付款
     classification: fraud
-    reasoning: 內容高度可疑，但應先保留證據與查證，不要散播未確認指控。
-    score: 50
-  - id: choice.verify
-    label: 不匯款，先查主辦方、投資資格與正式公開資料
-    classification: insufficient-evidence
-    reasoning: 先保留金錢與判斷空間，用獨立資料核對講座與投資方案。
+    reasoning: 沒有任何合法投資能保證年報酬，再加上要先匯款取得名額，已足以判定。
     score: 100
-recommendedActionIds: []
+  - id: choice.verify
+    label: 先報名講座聽聽看，只要不匯款就沒差
+    classification: insufficient-evidence
+    reasoning: 不匯款較安全，但報名會留下聯絡方式，講座本身就是持續說服你入金的場合。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 理財講座不會保證收益
-  explanation: 免費講座、最後名額與高報酬會讓人急著付款。把內容拿給家人一起看，先查主辦方與合法資格。
+  explanation: 「保證年報酬 18%」在合法投資裡不可能存在，再加上要先匯 2,000 元才有名額，這兩點合起來就足以判定為詐騙，不需要再去查主辦方是誰。免費講座與最後名額只是用來加快你的決定。
   safeActions:
     - 不私下匯款或提供金融資料。
     - 保留廣告與信件，必要時向 165 諮詢。
+    - 把內容拿給家人一起看，避免家中其他成員也收到同一封信而受騙。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -1,12 +1,12 @@
 id: coupon-link.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: coupon-link
 locale: zh-TW
 status: published
 title: 生日折價券的連結
 channel: sms
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 改寫以折價券或免運優惠引導輸入付款資料的常見手法。
@@ -31,7 +31,7 @@ messages:
 clues:
   - id: clue.card
     label: 領折價券卻要求信用卡資料
-    explanation: 優惠不代表可以索取完整付款資料，先讓大人從官方 App 確認。
+    explanation: 領折價券是店家給你錢，不需要你的卡號。這個矛盾就足以判定訊息是假的。
   - id: clue.deadline
     label: 用今天截止催促
     explanation: 限時優惠可能讓人跳過確認來源的步驟。
@@ -42,22 +42,22 @@ choices:
     reasoning: 尚未確認商店與表單，不能把信用卡資料交給陌生連結。
     score: 0
   - id: choice.fraud
-    label: 一定是詐騙，叫家人永遠不要網購
+    label: 領折價券不需要卡號，這是詐騙，不點連結並告訴家人
     classification: fraud
-    reasoning: 內容高度可疑，但不必把所有網購都判定為詐騙，應先查證。
-    score: 50
-  - id: choice.verify
-    label: 不填卡號，請家人從商店官方 App 查折價券
-    classification: insufficient-evidence
-    reasoning: 先保護付款資料，再用獨立的既有入口確認優惠。
+    reasoning: 你看出「免費」和「要卡號」互相矛盾，也把訊息交給大人，不用自己承擔判斷。
     score: 100
-recommendedActionIds: []
+  - id: choice.verify
+    label: 先點進去看看是不是真的商店，但不填卡號
+    classification: insufficient-evidence
+    reasoning: 不填卡號是對的，但頁面外觀可以完全複製，點進去看不出真假，沒有必要開啟。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
-  headline: 折價券也要從商店入口確認
-  explanation: 優惠與限時會讓人急著點擊。安全做法是開啟原本的購物 App 或網站，不從簡訊連結輸入卡號。
+  headline: 免費的東西不會跟你要卡號
+  explanation: 領折價券是店家送你優惠，不需要你的信用卡資料。看到「免費」和「要卡號」同時出現，就可以判斷這是假的。真的想確認有沒有生日優惠，請家人打開原本的購物 App 看。
   safeActions:
     - 不在陌生折價頁輸入信用卡資料。
     - 請家人一起從官方商店查詢優惠。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

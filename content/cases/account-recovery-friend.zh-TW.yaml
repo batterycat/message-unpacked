@@ -1,6 +1,6 @@
 id: account-recovery-friend.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: account-recovery-friend
 locale: zh-TW
 status: published
@@ -50,8 +50,8 @@ choices:
     label: 只傳復原碼最後兩碼試試看
     classification: insufficient-evidence
     reasoning: 不應以部分分享測試對方，任何復原碼都不該轉交。
-    score: 25
-recommendedActionIds: []
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 復原碼只給自己的帳號使用
   explanation: 朋友的帳號問題不能透過你的手機解決。收到不明驗證碼時，先不要回覆或截圖，改用其他管道確認。
@@ -59,5 +59,5 @@ debrief:
     - 不轉交任何驗證碼、復原碼或登入通知。
     - 若收到不明驗證碼，檢查自己的帳號安全設定。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

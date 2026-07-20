@@ -1,6 +1,6 @@
 id: parent-stock-group.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: parent-stock-group
 locale: zh-TW
 status: published
@@ -34,7 +34,7 @@ clues:
     explanation: 沒有投資能保證結果，確定語氣不是證據。
   - id: clue.identity
     label: 要求身分證後四碼保留名額
-    explanation: 尚未核對群組來源前，不要替家人提供身分資料。
+    explanation: 還沒確認這個群組是誰開的，就不可以替家長回覆他的身分證號碼。
 choices:
   - id: choice.trustworthy
     label: 先把家人的身分證後四碼傳過去
@@ -42,22 +42,23 @@ choices:
     reasoning: 不應替家人提供個資，也不能用保證上漲取代查證。
     score: 0
   - id: choice.fraud
-    label: 一定是騙子，直接把群組名稱公布
+    label: 一定是騙子，直接把家人退出群組就好
     classification: fraud
-    reasoning: 訊息高度可疑，但仍應先保留證據並請家人確認，不要公開未證實資料。
-    score: 50
+    reasoning: 警覺是對的。但擅自處理家人的帳號容易起爭執，也會失去對話紀錄；和家人一起看訊息、保留證據再查證更有效。
+    score: 60
   - id: choice.verify
-    label: 不提供資料，請家人從可信任的投資機構或官方資料查證
+    label: 不回覆任何號碼，把訊息拿給家長看，讓他們自己決定
     classification: insufficient-evidence
-    reasoning: 先保護個資，再用獨立且可靠的資訊確認投資建議。
+    reasoning: 你不需要判斷這支股票好不好——那是家長的事。你要做的是不要替他們回覆，並且讓他們知道有這則訊息。
     score: 100
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 群組熱鬧不等於投資可靠
-  explanation: 假投資群組會用假帳號、獲利截圖和保證語氣製造信任。涉及家人財務時，先停下來共同查證。
+  explanation: 這則訊息要的是家長的資料，卻傳到了你這裡。你不需要自己判斷這支股票會不會漲——那超出你要負責的範圍。你要做的只有兩件事：不要替家長回覆任何號碼，然後把訊息拿給他們看。假投資群組會用假帳號、獲利截圖和肯定的語氣製造信任，「明天一定上漲」這種話本身就是警訊。
   safeActions:
-    - 不替家人提供身分資料或匯款。
-    - 使用主管機關與合法金融機構的公開資訊查核。
+    - 不替家長回覆身分證號碼，也不代為匯款。
+    - 把訊息拿給家長看，提醒他們投資的事要從銀行或政府的官方網站查。
+    - 不公開轉貼未經證實的群組名稱或他人個資，先保留截圖當證據。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -1,6 +1,6 @@
 id: school-platform-notice.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: school-platform-notice
 locale: zh-TW
 status: published
@@ -25,7 +25,7 @@ learning:
 messages:
   - id: message.assignment
     sender: 校務學習平台（notice@school.example.org）
-    body: 七年二班自然科作業已更新。請從你平常使用的校務平台登入查看，本信不會要求你回覆密碼。
+    body: 七年二班自然科作業已更新。請從你平常使用的校務平台登入查看。
     timestamp: 週二 16:10
     direction: incoming
 clues:
@@ -33,8 +33,8 @@ clues:
     label: 沒有要求從信中登入
     explanation: 訊息引導你使用原本就知道的校務平台入口，降低被帶往仿冒網站的風險。
   - id: clue.no-secret
-    label: 明確不索取密碼
-    explanation: 正常通知不應要求以回信、表單或聊天傳送密碼與驗證碼。
+    label: 整封信沒有索取秘密資料
+    explanation: 這封信實際上沒有要你回覆密碼或驗證碼。判斷依據是訊息「實際提出了什麼要求」，不是它「宣稱自己不會做什麼」——詐騙訊息同樣會寫「本單位絕不會向您索取密碼」。
 choices:
   - id: choice.trustworthy
     label: 具備可信特徵，仍從既有入口查看
@@ -51,13 +51,13 @@ choices:
     classification: insufficient-evidence
     reasoning: 保持警覺很好，但這封信提供了安全的獨立查證方式，也沒有要求交付秘密資訊。
     score: 60
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 防詐不是把所有訊息都當成假的
-  explanation: 可信訊息也要用安全方式確認。這封信沒有內嵌登入連結或索取秘密資訊，並請你使用原本的校務平台入口。
+  explanation: 可信訊息也要用安全方式確認。這封信沒有內嵌登入連結或索取秘密資訊，並請你使用原本的校務平台入口。要注意的是：能當證據的是訊息「實際上沒有做什麼」與「能不能用另一個既有管道核對」，而不是訊息自己宣稱「我不會要你的密碼」——那句話任何人都寫得出來。
   safeActions:
     - 從既有書籤或學校首頁進入平台。
     - 對寄件網域有疑問時，向老師或學校資訊窗口確認。
 review:
-  lastReviewedAt: 2026-07-18
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

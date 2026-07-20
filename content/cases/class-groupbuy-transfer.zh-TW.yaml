@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../case.schema.json
+id: class-groupbuy-transfer.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: class-groupbuy-transfer
+locale: zh-TW
+status: published
+title: 班級團購的收款訊息
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整班級或社團群組中，冒用發起人身分收取團購款項的常見情境。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response, ethics]
+  topic: 網路購物
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [班級群組, 團購, 同儕金錢往來]
+  skills: [跨管道確認身分, 核對金額與帳號, 避免公開指控]
+  riskTypes: [冒名收款, 熟人冒用]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: false
+messages:
+  - id: message.collect
+    sender: 班級群組
+    body: 這次飲料團購總共 850 元，我先幫大家墊了，麻煩今天轉到這個帳戶：009-2233-XXXXXX，謝謝！
+    timestamp: '12:35'
+    direction: incoming
+clues:
+  - id: clue.normal-practice
+    label: 班級團購本來就會這樣收錢
+    explanation: 有人先墊錢、再請大家轉帳，是很常見的做法，這件事本身不奇怪。
+  - id: clue.who-sent
+    label: 分不出來是誰發的
+    explanation: 群組裡的暱稱和頭像都能改。訊息說「我先墊了」，但沒有說「我」是誰。
+  - id: clue.amount
+    label: 金額無法核對
+    explanation: 850 元是怎麼算出來的？幾個人、每杯多少？沒有可以對照的明細。
+choices:
+  - id: choice.trustworthy
+    label: 團購本來就要付錢，先轉過去再說
+    classification: trustworthy
+    reasoning: 轉帳出去就要不回來了。而且如果不是本人發的，真正墊錢的同學還是沒收到錢。
+    score: 15
+  - id: choice.fraud
+    label: 一定有人冒充，在群組公開說這是詐騙
+    classification: fraud
+    reasoning: 先不轉帳是對的。但如果真的是同學墊了錢，你在全班面前說他是詐騙，會很難收拾——而且真正該做的確認還是沒有做。
+    score: 60
+  - id: choice.verify
+    label: 先不轉帳，當面或私訊問本人金額怎麼算、帳戶是不是他的
+    classification: insufficient-evidence
+    reasoning: 當面確認幾秒就能問完，既保住了錢，也沒有冤枉同學。金額明細對得上，才轉帳。
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 熟悉的群組，不等於確認過的身分
+  explanation: 冒名收款之所以有效，是因為它模仿的行為本身完全正常——班級團購真的就是這樣運作的。你不需要懷疑團購這件事，只需要在錢出去之前，確認「發訊息的是不是本人」和「金額怎麼算的」。這兩個問題當面問只要幾秒鐘，而轉錯的帳幾乎要不回來。同樣重要的是：確認之前不要公開指控，因為錯的話傷害的是同學之間的信任。
+  safeActions:
+    - 轉帳前當面或用其他管道向本人確認帳戶與金額。
+    - 請發起人提供明細：幾個人、每份多少、總共多少。
+    - 確認前不要在群組公開說某人是詐騙；有疑慮就私下問。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

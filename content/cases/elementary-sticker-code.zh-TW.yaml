@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=../case.schema.json
 id: elementary-sticker-code.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: elementary-sticker-code
 locale: zh-TW
 status: published
@@ -51,8 +51,8 @@ choices:
     label: 先回傳一半驗證碼，看看對方是不是可靠
     classification: insufficient-evidence
     reasoning: 驗證碼不能分段試用；任何一部分都不應交給陌生人。
-    score: 10
-recommendedActionIds: []
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 驗證碼不是領獎券
   explanation: 免費贈品、抽獎或貼圖活動若要求你提供驗證碼，應立即停止。國小學生可以把訊息交給家人或老師一起確認。
@@ -60,5 +60,5 @@ debrief:
     - 不回傳驗證碼、密碼或簡訊內容。
     - 保留訊息並請可信任的大人協助檢查帳號是否安全。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

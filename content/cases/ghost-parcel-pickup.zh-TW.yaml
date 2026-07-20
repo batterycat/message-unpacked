@@ -1,6 +1,6 @@
 id: ghost-parcel-pickup.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: ghost-parcel-pickup
 locale: zh-TW
 status: published
@@ -12,11 +12,11 @@ provenance:
   note: 改編自刑事警察局公布的幽靈包裹報案案例；寄件者、金額與訊息內容均為教學重寫。
 sources:
   - id: source.cib.ghost-parcel
-    title: 收貨可以，受騙不行，刑事局呼籲警覺超商包裹詐騙陷阱
+    title: 收貨可以，受騙不行 刑事局呼籲警覺「超商包裹詐騙」陷阱
     publisher: 內政部警政署刑事警察局
     canonicalUrl: https://www.cib.npa.gov.tw/ch/app/news/view?id=1887&module=news&serno=c5b90907-6e6b-4396-9168-8e23c5f9b404
     publishedAt: 2025-10-18
-    accessedAt: 2026-07-19
+    accessedAt: 2026-07-20
     kind: official
     usage: facts-paraphrased
     licenseNote: 僅改寫官方公布的案件事實與處理原則，未複製原文或圖片。
@@ -66,16 +66,16 @@ choices:
     reasoning: 超商通知只能證明有包裹，不能證明自己或家人真的下過訂單。
     score: 15
   - id: choice.fraud
-    label: 一定是詐騙，立刻刪除所有購物帳號
+    label: 一定是詐騙，不去領也不查了
     classification: fraud
-    reasoning: 這則訊息有風險，但仍可能是家人代訂；刪帳號也無法處理眼前包裹。
-    score: 45
+    reasoning: 不付款取件是對的。但包裹也可能真的是家人代訂的，放著不查會被退回；查訂單、問家人都不用花錢。
+    score: 60
   - id: choice.verify
     label: 先核對訂單並問家人，無法確認就不付款取件
     classification: insufficient-evidence
     reasoning: 你保留兩種可能，並用不先付款的方式完成獨立查證。
     score: 100
-recommendedActionIds: [anti-fraud.consult]
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 有包裹不代表有訂單
   explanation: 收到真實的超商通知，也可能是詐騙者寄出的未訂購包裹。先查自己的訂單、詢問家人並核對寄件資訊，無法確認時就拒絕付款取件。
@@ -84,5 +84,5 @@ debrief:
     - 未訂購或無法確認的包裹直接拒收。
     - 若已付款，保留完整外箱、繳費憑證與包裹單據，儘快聯繫超商申訴。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

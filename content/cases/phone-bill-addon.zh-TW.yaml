@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../case.schema.json
+id: phone-bill-addon.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: phone-bill-addon
+locale: zh-TW
+status: published
+title: 帳單多出來的加值服務
+channel: sms
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: 綜整電信帳單出現未預期加值服務時，難以立即分辨為家人訂閱或未經同意扣款的情境。
+sources: []
+learning:
+  stages: [7-9]
+  dimensions: [prevention, response]
+  topic: 家庭與生活
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [家庭帳單, 電信服務, 簡訊]
+  skills: [查閱帳單明細, 向家人確認, 分辨扣款來源]
+  riskTypes: [未經同意扣款, 小額付費盜用]
+  sensitiveContent: [金錢損失]
+  trustedAdultRecommended: true
+messages:
+  - id: message.bill
+    sender: 電信帳務通知
+    body: 您本期帳單新增「生活資訊服務」月租費 199 元，已併入本期帳單。如有疑問請洽客服。
+    timestamp: '10:14'
+    direction: incoming
+clues:
+  - id: clue.could-be-real
+    label: 可能真的有人訂了
+    explanation: 家中有人點過某個活動頁、或在遊戲裡開通過小額付費，都可能產生這種月租。這件事本身不一定是詐騙。
+  - id: clue.no-detail
+    label: 服務名稱含糊，看不出是什麼
+    explanation: 「生活資訊服務」沒有說明是哪家業者、提供什麼。名稱越模糊，越難確認是誰開通的。
+  - id: clue.recurring
+    label: 是月租，不是單次
+    explanation: 月租會每個月重複扣。放著不查，金額會一直累積。
+choices:
+  - id: choice.trustworthy
+    label: 才 199 元，直接繳掉比較省事
+    classification: trustworthy
+    reasoning: 繳了等於承認這筆訂閱，下個月還會再扣。而且一旦付款，之後要爭取退費會更困難。
+    score: 15
+  - id: choice.fraud
+    label: 一定是被盜刷，馬上要求停話
+    classification: fraud
+    reasoning: 想阻止扣款的方向是對的。但如果這是家人自己開通的服務，停話會影響全家人的門號，而問題其實只要查明細就能解決。
+    score: 60
+  - id: choice.verify
+    label: 先打開電信官方 App 查帳單明細與訂閱紀錄，再問家人有沒有開通過
+    classification: insufficient-evidence
+    reasoning: 明細會顯示這筆是哪家業者、什麼時候開通的，家人也可能記得。兩邊對完就知道要取消還是申訴。
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 錢被扣了，不代表是詐騙；但一定要查清楚
+  explanation: 帳單上出現沒印象的費用，可能是家人開通的、可能是自己不小心點到的，也可能是未經同意的小額付費盜用。這三種情況的處理方式完全不同，所以第一步不是判斷，而是查明細——電信 App 會告訴你這筆是誰收的、什麼時候開始的。查清楚之前不要急著繳，因為繳款會被視為你同意這筆訂閱。
+  safeActions:
+    - 從電信官方 App 或帳單查詢明細，確認業者名稱與開通日期。
+    - 問家人是否有人開通過，包含在遊戲或網頁上點過的服務。
+    - 確認是未經同意的扣款時，向電信業者申請取消與退費，並可要求關閉小額付費功能。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=../case.schema.json
+id: easy-money-likes.zh-tw
+schemaVersion: 1
+contentVersion: 2.0.0
+translationGroupId: easy-money-likes
+locale: zh-TW
+status: published
+title: 按讚就能賺遊戲點數
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: 改寫以輕鬆任務、高額點數招募未成年參與刷單的常見手法；本案例取代原本以獎學金投資為題、年齡不符的版本。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention, response, ethics]
+  topic: 投資與廣告
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [社群廣告, 網路賺錢, 同儕互動]
+  skills: [辨認低門檻高報酬, 拒絕先付款, 找可信任的大人]
+  riskTypes: [假兼職, 刷單, 預付費用]
+  sensitiveContent: [金錢損失, 要求對大人保密]
+  trustedAdultRecommended: true
+messages:
+  - id: message.offer
+    sender: 點數任務小幫手
+    body: 小學生也能賺！每天幫商品按讚 10 次就送 500 點遊戲點數，名額只到今天。
+    timestamp: '17:52'
+    direction: incoming
+  - id: message.fee
+    sender: 點數任務小幫手
+    body: 先付 100 元開通任務帳號，第一次領點數時會一起退給你。不用告訴爸媽，這是學生專屬的。
+    timestamp: '17:55'
+    direction: incoming
+clues:
+  - id: clue.easy-money
+    label: 很輕鬆卻給很多
+    explanation: 按讚 10 次就值 500 點，跟真正打工能賺的差太多了。報酬和付出對不上，通常表示真正的目的不是讓你賺錢。
+  - id: clue.prepay
+    label: 要先付錢才能開始
+    explanation: 真正的工作是別人付錢給你，不會反過來先跟你收錢。「之後會退給你」是拿不回來的。
+  - id: clue.secret
+    label: 叫你不要告訴爸媽
+    explanation: 正當的工作不需要瞞著家長。這句話的目的是讓你沒有人可以商量。
+choices:
+  - id: choice.trustworthy
+    label: 先付 100 元試試看，反正之後會退
+    classification: trustworthy
+    reasoning: 這 100 元拿不回來。而且付了錢之後，對方通常會說要再付更多才能領點數。
+    score: 0
+  - id: choice.fraud
+    label: 這是詐騙，不付錢也不接任務，拿給家長看
+    classification: fraud
+    reasoning: 你看出「很輕鬆卻給很多」「要先付錢」「不能告訴爸媽」三個警訊同時出現。
+    score: 100
+  - id: choice.verify
+    label: 先加入群組看看別人有沒有真的領到
+    classification: insufficient-evidence
+    reasoning: 群組裡說領到點數的人，可能都是同一夥人假裝的。進去之後你會一直被催促，很難退出。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 賺錢的工作不會先跟你收錢
+  explanation: 網路上說「很輕鬆就能賺很多」的任務，幾乎都不是真的在請你工作。這種按讚、衝評價的任務叫做刷單，是詐騙集團用來製造假買氣的手法；他們找學生做，是因為學生比較不會問問題。看到報酬高得不合理、要先付錢、又叫你別跟家長說，就可以直接判斷這是詐騙。
+  safeActions:
+    - 不付任何「開通費」「保證金」或「手續費」。
+    - 不提供自己或家長的帳戶、電話與個人資料。
+    - 把訊息拿給家長或老師看。想賺零用錢，和家長一起找正當的方式。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

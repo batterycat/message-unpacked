@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=../case.schema.json
+id: investment-study-group.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: investment-study-group
+locale: zh-TW
+status: published
+title: 學長邀請的投資讀書會
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: fictional
+  note: 為練習分辨正當理財學習與投資詐騙前期而建立的教學虛構情境。刻意設計為沒有決定性警訊，以避免學生養成「看到投資就是詐騙」的反射。
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, ethics]
+  topic: 投資與廣告
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [同儕互動, 理財學習, 校園社團]
+  skills: [分辨學習與招募, 問出關鍵問題, 向家人說明]
+  riskTypes: [投資誘導前期]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.invite
+    sender: 學長 阿哲
+    body: 我們幾個在弄投資讀書會，這學期讀《漫步華爾街》，每兩週線上討論一次。有人會開模擬帳戶練習看看，不用真的錢。你有興趣嗎？
+    timestamp: '20:41'
+    direction: incoming
+clues:
+  - id: clue.no-money
+    label: 沒有要求任何金錢或資料
+    explanation: 沒有入金、沒有保證獲利、沒有索取個資、也沒有催你。缺少這些警訊，就不能判定它是詐騙。
+  - id: clue.legitimate-form
+    label: 讀書會與模擬帳戶是真實存在的學習方式
+    explanation: 用書本與模擬交易學理財是正當的，很多學校社團就是這樣運作。合理的活動不該被當成詐騙。
+  - id: clue.unknown-direction
+    label: 但還不知道之後會走向哪裡
+    explanation: 有些假投資會從免費讀書會開始，等信任建立後才引導入金。現在無法判斷，正是因為它還沒走到那一步。
+choices:
+  - id: choice.trustworthy
+    label: 是認識的學長，直接加入就好
+    classification: trustworthy
+    reasoning: 這個邀請目前看起來沒問題，但「認識的人」本身不是保證——先問清楚幾件事，之後若出現轉折你才有比較的基準。
+    score: 40
+  - id: choice.fraud
+    label: 投資都是詐騙，直接拒絕並封鎖學長
+    classification: fraud
+    reasoning: 這則訊息沒有任何警訊。把所有跟投資有關的事都當成詐騙，你會錯過正當的理財學習，也把一個可能只是熱心的同學當成騙子。
+    score: 60
+  - id: choice.verify
+    label: 表示有興趣，先問清楚誰主辦、會不會收費、是不是全程用模擬帳戶，並告訴家人
+    classification: insufficient-evidence
+    reasoning: 你沒有預設對方是騙子，也沒有無條件相信。這三個問題正好對應詐騙一定會出現的轉折點，之後若有人開始談真錢或保證獲利，你會立刻察覺。
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 不是每個提到投資的人都是騙子
+  explanation: 這則訊息沒有保證獲利、沒有要你入金、沒有催促、也沒有索取任何資料——判定它是詐騙其實沒有根據。防詐學到後來有個副作用：看到「投資」兩個字就自動選詐騙。那會讓你錯過真正該學的理財知識，也會誤傷身邊的人。真正的能力是知道**哪些轉折點該警覺**：開始談真錢、出現保證獲利、要求私下匯款、催你今天決定。在那之前，正常地問問題就好。
+  safeActions:
+    - 問清楚主辦者、是否收費、是模擬還是真實交易。
+    - 讓家人知道你參加了什麼，之後有變化比較容易討論。
+    - 一旦出現保證獲利、要求入金或私下轉帳，立刻退出並保留紀錄。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

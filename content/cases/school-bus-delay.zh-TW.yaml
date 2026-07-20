@@ -1,6 +1,6 @@
 id: school-bus-delay.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: school-bus-delay
 locale: zh-TW
 status: published
@@ -25,19 +25,19 @@ learning:
 messages:
   - id: message.bus
     sender: 班導師
-    body: 明天校車會因道路施工改在大門口停車。請把這則通知拿給家人看，老師不會在訊息裡要求密碼或費用。
+    body: 明天校車會因道路施工改在大門口停車。請把這則通知拿給家長看，學校的接送公告也會一起更新。
     timestamp: '17:10'
     direction: incoming
 clues:
   - id: clue.adult
-    label: 鼓勵交給家人確認
-    explanation: 低年級遇到接送變動，可以請家人或老師一起確認，不必自己處理。
+    label: 鼓勵交給家長確認
+    explanation: 低年級遇到接送變動，可以請家長或老師一起確認，不必自己處理。
   - id: clue.no-secret
     label: 沒有索取秘密資料
-    explanation: 正常通知只說明安排，不會要求密碼、驗證碼或付款。
+    explanation: 這則通知只說明明天的安排，實際上沒有要密碼、驗證碼或錢。
 choices:
   - id: choice.trustworthy
-    label: 先拿給家人看，再從學校熟悉的管道確認
+    label: 先拿給家長看，再從學校熟悉的管道確認
     classification: trustworthy
     reasoning: 通知內容單純、沒有秘密要求，也提醒找可信任的大人確認。
     score: 100
@@ -47,17 +47,17 @@ choices:
     reasoning: 沒有足夠證據判定是詐騙，直接封鎖可能錯過重要校園通知。
     score: 20
   - id: choice.verify
-    label: 不告訴家人，自己回覆個人資料確認
+    label: 不告訴家長，自己回覆個人資料確認
     classification: insufficient-evidence
-    reasoning: 不應私下提供個資；應改由家人或學校既有管道協助確認。
-    score: 45
-recommendedActionIds: []
+    reasoning: 不可以自己把個人資料傳出去。這件事要讓家長知道，或用平常跟學校聯絡的方法確認。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 接送通知要和可信任的大人一起確認
-  explanation: 看到校園安排變動時，先讓家人或老師知道，並使用原本熟悉的管道確認，不需要提供秘密資料。
+  explanation: 學校的安排有變動時，先讓家長或老師知道，再用平常的方法確認。你不需要給出任何秘密資料。
   safeActions:
-    - 把訊息拿給家人或老師看。
+    - 把訊息拿給家長或老師看。
     - 不提供密碼、驗證碼或住家詳細資料。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

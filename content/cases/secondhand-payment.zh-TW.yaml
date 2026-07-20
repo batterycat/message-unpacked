@@ -1,6 +1,6 @@
 id: secondhand-payment.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: secondhand-payment
 locale: zh-TW
 status: published
@@ -50,8 +50,8 @@ choices:
     label: 只輸入銀行名稱，不輸入帳號
     classification: insufficient-evidence
     reasoning: 不應在未確認的頁面輸入任何金融資訊，應先回到原平台。
-    score: 25
-recommendedActionIds: []
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 交易問題留在原平台處理
   explanation: 假買家與假客服常用「收不到款」催促賣家離開平台。真正的交易狀態應能在原平台訂單頁確認。
@@ -59,5 +59,5 @@ debrief:
     - 不從聊天連結輸入銀行資料或驗證碼。
     - 保留對話與訂單紀錄，使用平台內建客服回報。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

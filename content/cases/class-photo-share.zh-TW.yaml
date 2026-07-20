@@ -1,6 +1,6 @@
 id: class-photo-share.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: class-photo-share
 locale: zh-TW
 status: published
@@ -31,33 +31,34 @@ messages:
 clues:
   - id: clue.data
     label: 下載照片卻要求家長手機
-    explanation: 分享照片不必然需要個資，先讓家人或老師確認分享對象。
+    explanation: 看照片不用給名字和電話。先讓家長或老師看看，到底是誰要收這些資料。
   - id: clue.unknown
     label: 不確定對方是不是班級成員
-    explanation: 熟悉的活動名稱不代表連結一定安全，不能自行輸入資料。
+    explanation: 就算活動的名字很熟悉，也不代表這個連結是安全的，不可以自己填。
 choices:
   - id: choice.trustworthy
     label: 填寫姓名和手機，才可以看到照片
     classification: trustworthy
-    reasoning: 尚未確認分享者與資料用途，不應先交出個資。
+    reasoning: 還不知道是誰要這些資料、要拿去做什麼，不可以先填。
     score: 0
   - id: choice.fraud
-    label: 直接說是壞人，叫同學不要參加活動
+    label: 這一定是壞人傳的，不理它
     classification: fraud
-    reasoning: 訊息可疑但證據不足，應先確認而不是公開指責。
-    score: 45
+    reasoning: 不填資料是對的。但照片可能真的是班上活動拍的，問一下老師或家長就知道，不會白白錯過。
+    score: 60
   - id: choice.verify
-    label: 不輸入資料，請家人或老師確認照片分享方式
+    label: 不輸入資料，請家長或老師確認照片分享方式
     classification: insufficient-evidence
-    reasoning: 先保護個資，再由可信任的大人確認連結與分享對象。
+    reasoning: 先把自己的資料收好，再請大人幫你看這個連結，還有誰看得到照片。
     score: 100
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 照片分享也要先確認誰看得到
-  explanation: 照片可能包含自己的臉、同學或校服。遇到陌生連結和個資要求，先交給家人或老師確認。
+  explanation: 照片裡可能有你的臉、同學，還有制服。看到不認識的連結在跟你要資料，先拿給家長或老師看。
   safeActions:
-    - 不自行輸入姓名與家長電話。
-    - 確認分享對象與保存方式後再下載。
+    - 不要自己填姓名和家長的電話。
+    - 先問清楚誰看得到、照片會存在哪裡，再下載。
+    - 還不確定的時候，不要在群組說某個人是壞人，先問大人。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

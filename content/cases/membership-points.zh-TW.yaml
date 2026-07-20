@@ -1,6 +1,6 @@
 id: membership-points.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: membership-points
 locale: zh-TW
 status: published
@@ -49,9 +49,9 @@ choices:
   - id: choice.verify
     label: 只登入看看點數，不輸入信用卡
     classification: insufficient-evidence
-    reasoning: 不需要開啟陌生登入頁，應改由官方 App 或自行輸入已知網址查證。
-    score: 45
-recommendedActionIds: []
+    reasoning: 「只登入」就是把帳號密碼交給這個頁面了——沒填卡號並不會讓損失變小，對方拿到密碼一樣能接管帳號。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 點數到期要回到會員中心查
   explanation: 點數、紅利與回饋常被拿來製造損失感。不要從信件連結登入，使用原本的會員 App 或官方客服。
@@ -59,5 +59,5 @@ debrief:
     - 不在陌生頁面輸入密碼或信用卡資料。
     - 若已輸入資料，立即更換密碼並聯絡發卡機構。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

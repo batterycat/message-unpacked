@@ -21,7 +21,7 @@ learning:
   contexts: [直播平台, 網路活動]
   skills: [辨認付款要求, 查找官方活動規則]
   riskTypes: [假抽獎, 手續費詐騙]
-  sensitiveContent: []
+  sensitiveContent: [要求對大人保密]
   trustedAdultRecommended: true
 messages:
   - id: message.reward
@@ -57,7 +57,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 仍然是在未確認對方身分前互動，應直接停止並請大人協助。
     score: 15
-recommendedActionIds: [anti-fraud.consult]
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 小額也可能是入口
   explanation: 詐騙者常用獎品、剩餘名額和秘密流程製造急迫感。查證活動主辦方時，要自己找到官方入口，不要使用對方提供的付款方式。

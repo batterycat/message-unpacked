@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=../case.schema.json
+id: relative-visit-plan.zh-tw
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: relative-visit-plan
+locale: zh-TW
+status: published
+title: 阿姨問你想吃什麼
+channel: chat
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: 為高年級練習辨認「兩個管道都提到同一件事」的正常親友訊息而建立的教學虛構情境，作為冒充親友案例的正面對照。
+sources: []
+learning:
+  stages: [5-6]
+  dimensions: [prevention]
+  topic: 家庭與生活
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [家庭, 親友, 聊天軟體]
+  skills: [對照兩個管道, 辨認沒有請求的訊息]
+  riskTypes: [誤判正常親友訊息]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.visit
+    sender: 阿姨
+    body: 這週六我要去你們家坐坐，順便帶點東西過去。你想吃什麼？跟我說，我買過去。
+    timestamp: '19:15'
+    direction: incoming
+clues:
+  - id: clue.two-channels
+    label: 這件事媽媽昨天也提過
+    explanation: 你從兩個不同的地方聽到同一件事：媽媽當面說的，還有這則訊息。冒充的人沒辦法讓你媽媽也配合演出。
+  - id: clue.no-request
+    label: 沒有跟你要任何東西
+    explanation: 她要的是「你想吃什麼」。沒有要錢、沒有要密碼、沒有要地址、也沒有叫你保密。
+choices:
+  - id: choice.trustworthy
+    label: 跟媽媽說一聲，然後回答想吃的東西
+    classification: trustworthy
+    reasoning: 兩個管道都提到同一件事，訊息又沒有跟你要任何東西。跟媽媽說一聲，家裡的人也都知道週六的安排。
+    score: 100
+  - id: choice.fraud
+    label: 現在很多人假冒親戚，直接不要回
+    classification: fraud
+    reasoning: 警覺是對的，但這則訊息沒有任何冒充的特徵。真的是阿姨的話，不回覆會讓她以為你不想見面。
+    score: 20
+  - id: choice.verify
+    label: 先把家裡地址傳過去，確認她知不知道
+    classification: insufficient-evidence
+    reasoning: 這剛好反過來了。真的阿姨本來就知道你家在哪，不需要你告訴她；如果是假的，你等於主動把住址送出去。
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: 兩個地方都聽到同一件事，是很強的線索
+  explanation: 冒充親友的訊息之所以難防，是因為它只出現在一個管道裡，你沒得對照。反過來說，當一件事你從兩個獨立的地方都聽到——媽媽當面講過、訊息也這樣寫——冒充的人就很難同時控制兩邊。再加上這則訊息沒有跟你要任何東西，判斷就更清楚了。要注意的是最後那個選項：即使對方是真的，主動送出住址、電話這類資料也沒有必要，因為真正認識你的人本來就知道。
+  safeActions:
+    - 家裡有客人要來，跟家長說一聲，讓大家都知道。
+    - 不主動提供住址、電話或家裡的其他資訊，即使覺得對方應該是認識的人。
+    - 如果對方突然改成要錢、要點數卡或叫你保密，就停下來告訴家長。
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

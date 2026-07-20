@@ -1,6 +1,6 @@
 id: crypto-course.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: crypto-course
 locale: zh-TW
 status: published
@@ -50,8 +50,8 @@ choices:
     label: 先加入群組看看其他人的獲利截圖
     classification: insufficient-evidence
     reasoning: 群組截圖可能被操弄，不能取代對平台與投資風險的查證。
-    score: 35
-recommendedActionIds: []
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 保證獲利不是投資證據
   explanation: 詐騙投資常先用課程與小額禮物建立信任，再要求加碼。涉及金錢時先找大人與可信任資訊來源。
@@ -59,5 +59,5 @@ debrief:
     - 不私下匯款或下載陌生投資 App。
     - 保留廣告與群組資訊，必要時請家人協助查證。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

@@ -1,12 +1,12 @@
 id: skin-trade-confirmation.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: skin-trade-confirmation
 locale: zh-TW
 status: published
 title: 造型交易的確認碼
 channel: chat
-classification: insufficient-evidence
+classification: fraud
 provenance:
   kind: classic-pattern
   note: 綜整遊戲交易中以確認交易為名索取一次性驗證碼的手法。
@@ -42,22 +42,23 @@ choices:
     reasoning: 任何人要求驗證碼都不能直接照做，可能導致帳號被接管。
     score: 0
   - id: choice.fraud
-    label: 直接公開對方是騙子，叫大家封鎖他
+    label: 索取確認碼就是詐騙，不提供並停止這筆交易
     classification: fraud
-    reasoning: 請求高度可疑，但在沒有更多證據前，先停止交易並查證比公開指控更妥當。
-    score: 55
-  - id: choice.verify
-    label: 不提供驗證碼，回到遊戲官方交易介面確認
-    classification: insufficient-evidence
-    reasoning: 先保護驗證碼，再使用獨立的官方介面確認交易是否存在。
+    reasoning: 官方交易流程不需要你把確認碼貼給對方，看到這個要求就足以判定。
     score: 100
-recommendedActionIds: []
+  - id: choice.verify
+    label: 先問對方是哪一筆交易編號，再決定要不要給
+    classification: insufficient-evidence
+    reasoning: 繼續在對方的聊天視窗裡追問，得到的答案仍由對方編造，無法驗證交易是否存在。
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 交易確認碼不是交易憑證
-  explanation: 驗證碼是帳號安全機制，不是可以交給交易對象的收據。看不到官方交易紀錄時，先停止並找大人協助。
+  explanation: 驗證碼是帳號安全機制，不是可以交給交易對象的收據。即使對方是你認識的玩家，只要開口要驗證碼，這則訊息就是詐騙——也有可能是他的帳號被盜了，傳訊息的並不是他本人。
   safeActions:
     - 不提供驗證碼或登入連結。
     - 保留對話，從官方遊戲介面確認交易狀態。
+    - 若對方是認識的玩家，改用其他管道提醒他檢查帳號是否遭盜用。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

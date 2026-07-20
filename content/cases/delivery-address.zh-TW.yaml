@@ -51,7 +51,7 @@ choices:
     classification: insufficient-evidence
     reasoning: 可疑連結不需要開啟，應從購物平台或物流官方入口查詢。
     score: 40
-recommendedActionIds: []
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 包裹要對照訂單，不要對照簡訊
   explanation: 物流詐騙利用大家怕包裹退回的心理。從購物平台訂單或官方 App 確認，不要沿用簡訊連結。

@@ -1,6 +1,6 @@
 id: influencer-giveaway.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: influencer-giveaway
 locale: zh-TW
 status: published
@@ -50,8 +50,8 @@ choices:
     label: 先傳證件但不匯款，看看對方會不會回覆
     classification: insufficient-evidence
     reasoning: 身分證外流本身就有風險，應改從官方公開帳號確認。
-    score: 20
-recommendedActionIds: []
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 抽獎不應先收費和收證件
   explanation: 中獎喜悅會讓人忽略資料與付款風險。請從官方公開活動頁或既有客服確認，避免私訊處理。
@@ -59,5 +59,5 @@ debrief:
     - 不先支付運費或手續費。
     - 不傳身分證照片，保留私訊供大人協助判斷。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

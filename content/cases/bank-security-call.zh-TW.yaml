@@ -1,6 +1,6 @@
 id: bank-security-call.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: bank-security-call
 locale: zh-TW
 status: published
@@ -50,8 +50,8 @@ choices:
     label: 先告訴對方驗證碼前兩碼，確認他是不是銀行
     classification: insufficient-evidence
     reasoning: 任何部分驗證碼都不應提供，應改用官方聯絡方式。
-    score: 20
-recommendedActionIds: []
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 銀行通知要用另一個官方管道回撥
   explanation: 真正的交易異常可以由銀行系統處理，不會要求你把驗證碼交給簡訊或電話中的人。
@@ -59,5 +59,5 @@ debrief:
     - 不撥打簡訊內的電話、不提供驗證碼。
     - 從卡片背面、官方 App 或銀行官網找聯絡方式。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active

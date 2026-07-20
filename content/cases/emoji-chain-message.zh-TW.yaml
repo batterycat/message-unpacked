@@ -1,6 +1,6 @@
 id: emoji-chain-message.zh-tw
 schemaVersion: 1
-contentVersion: 1.0.0
+contentVersion: 1.1.0
 translationGroupId: emoji-chain-message
 locale: zh-TW
 status: published
@@ -20,8 +20,8 @@ learning:
   contexts: [社群聊天, 同儕互動]
   skills: [辨識情緒操弄, 不轉傳未證實訊息]
   riskTypes: [厄運恐嚇, 鏈式轉發]
-  sensitiveContent: []
-  trustedAdultRecommended: false
+  sensitiveContent: [恐懼訴求]
+  trustedAdultRecommended: true
 messages:
   - id: message.chain
     sender: 同學群組
@@ -31,10 +31,10 @@ messages:
 clues:
   - id: clue.threat
     label: 用害怕倒楣催你轉發
-    explanation: 讓人害怕或內疚是情緒操弄，不是可靠的消息證據。
+    explanation: 用害怕或內疚來逼你做事，這叫操弄情緒。它不能證明訊息是真的。
   - id: clue.mass
     label: 要求轉給很多人
-    explanation: 大量轉傳只會放大未經查證的內容，不能證明訊息是真的。
+    explanation: 很多人轉傳，只是讓沒查證過的內容傳得更廣，不會讓它變成真的。
 choices:
   - id: choice.trustworthy
     label: 趕快轉發，寧可信其有
@@ -50,8 +50,8 @@ choices:
     label: 先轉給一位最好的朋友問問看
     classification: insufficient-evidence
     reasoning: 即使只轉給一人仍會擴散未查證內容，應先停止轉發。
-    score: 25
-recommendedActionIds: []
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
 debrief:
   headline: 害怕不是轉發的理由
   explanation: 鏈式訊息常用倒楣、孤單或內疚讓人轉傳。沒有可靠來源時，停止轉發就是保護自己與朋友。
@@ -59,5 +59,5 @@ debrief:
     - 不轉傳沒有來源的恐嚇訊息。
     - 如果內容讓你害怕，請找可信任的大人討論。
 review:
-  lastReviewedAt: 2026-07-19
+  lastReviewedAt: 2026-07-20
   maintenanceStatus: active
