@@ -59,9 +59,10 @@ localized route, or hydrated component escapes the configured base path.
 
 ## GitHub Pages
 
-The repository includes `.github/workflows/deploy-pages.yml`. Every push to
-`main` (and a manual workflow dispatch) builds and publishes `dist/` as a
-GitHub Pages project site. For this repository the initial URL is:
+The repository includes `.github/workflows/deploy-pages.yml`. A `main` revision
+is built and published only after the `Quality` workflow succeeds; an explicit
+manual dispatch remains available for recovery. The deployment checks out the
+exact revision that passed Quality. For this repository the initial URL is:
 
 `https://batterycat.github.io/message-unpacked/`
 

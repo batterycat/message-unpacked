@@ -18,10 +18,11 @@ Updated: 2026-07-20
   insufficient-evidence outcomes.
 - Per-question reasoning feedback, scores, final activity results, and replay.
 - Documented-case provenance, qualified impact, source links, and review dates.
-- Contextual Taiwan response guidance, including 165 consultation and official
-  query/reporting destinations.
-- Account-free teacher configuration, shareable activity URLs, locally
-  generated QR codes, and distinct student/projector behavior.
+- A fixed post-debrief verification pair resolved by locale: official online
+  reporting/query information and consultation guidance.
+- Account-free teacher configuration, v2 activity URLs with stable topic IDs
+  and per-case content versions, locally generated QR codes, and distinct
+  student/projector behavior.
 - Static-root and project-subpath builds with automated path-integrity checks.
 - Content schema validation, license policy, unit/component tests, end-to-end
   tests, responsive checks, and automated accessibility scans.
@@ -34,6 +35,7 @@ Updated: 2026-07-20
   `docs/CONTENT_COVERAGE.md`, with a test guard for the current topic minimum.
 - Phase 2 Cloudflare Durable Objects room protocol and Worker deployment
   skeleton, kept optional so the static site remains independently deployable.
+- Public product, architecture, decision, scope, and privacy documentation.
 
 ## Intentionally deferred
 
@@ -44,12 +46,17 @@ Updated: 2026-07-20
 - Public classroom synchronization authorization, abuse controls, and durable
   room history; the current Worker is an unauthenticated ephemeral prototype.
 - Uploading or automatically judging real messages.
+- Multi-step branching conversations and evidence inventories.
 - A CMS or unmoderated public content submission flow.
 
 ## External decisions or review still needed
 
-- Enable GitHub private vulnerability reporting or publish another private
-  security contact before broad promotion.
+- Enable GitHub private vulnerability reporting; the current CLI token and
+  available browser session do not have repository-settings access.
+- Add the public demo, description, and topics to GitHub About and disable the
+  unused Wiki from an administrator session.
+- Protect `main` with the `verify` status check while allowing the sole
+  maintainer an emergency bypass.
 - Keep a second educator review pass scheduled when the age-level balance or
   sensitive-content vocabulary changes, especially for `1-2`, `3-4`, and `5-6`
   cases.
@@ -57,3 +64,5 @@ Updated: 2026-07-20
 - Decide when English case translation should begin and who will review it.
 - Optionally choose a branded GitBook custom domain; the first guide is
   published at the connected workspace URL.
+- Configure the GitBook privacy-policy URL and decide whether its AI assistant
+  and page-rating features should remain enabled.

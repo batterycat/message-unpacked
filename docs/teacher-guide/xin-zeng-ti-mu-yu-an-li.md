@@ -16,7 +16,7 @@
 - `7-9`：目前第一版的主要對象，可加入多個線索與兩步驟查證。
 - `10-12`：可處理較長訊息、跨平台驗證與更細的風險比較。
 
-`learning.topic` 是教師端篩選用的單一大分類；細節放在 `contexts`。同時補上 `dimensions`、`readingLevel`、`difficulty`、`skills`、`riskTypes`、`sensitiveContent` 與 `trustedAdultRecommended`，讓未來的分級與搜尋有可靠資料。
+`learning.topicId` 是活動連結使用、不隨翻譯改變的分類 ID；`learning.topic` 是教師端看到的本地化名稱，細節放在 `contexts`。同時補上 `dimensions`、`readingLevel`、`difficulty`、`skills`、`riskTypes`、`sensitiveContent` 與 `trustedAdultRecommended`，讓未來的分級與搜尋有可靠資料。
 
 ## 3. 編寫安全的情境
 
@@ -24,7 +24,7 @@
 - `documented` 與 `composite` 必須有 `sources` 和有來源支持的 `impact`；數字加上限定語，查不到的損失或人數保留未知。
 - 只改寫事實，不複製新聞原文、截圖、照片或品牌素材；來源與授權請同步登錄 [第三方資源清冊](../THIRD_PARTY_RESOURCES.md)。
 - 訊息中的姓名、帳號、電話與網址都要虛構或移除；網址請使用 `example.com` 等保留網域，避免把學生帶到可疑網站。
-- 目前題目統一使用 `recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]`，不要在題目內重複貼官方網址。中英文使用相同 ID，由各語系資源檔提供在地化網站；未來若要增加其他資源，請先更新憲法與資源清冊。
+- 目前 schema 會自動套用 `anti-fraud.online-report` 與 `anti-fraud.consult`，題目 YAML 不必也不應重複這個欄位或官方網址。中英文使用相同 ID，由各語系資源檔提供在地化網站；未來若要增加其他資源，請先更新憲法、規格、驗證與資源清冊。
 
 訊息、線索、選項與解析要讓學生練習「怎麼查證」：安全選項不只是說「這是詐騙」，也要說明停止操作、從既有入口確認、詢問可信任的大人，以及必要時如何求助或通報。
 

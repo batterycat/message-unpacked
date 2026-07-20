@@ -12,21 +12,15 @@ reviewed main-branch revision.
 
 ## Reporting a vulnerability
 
-Use the repository's private vulnerability-reporting or Security Advisory
-channel when it becomes available. Do not open a public issue containing an
-active exploit, malicious URL, student information, credentials, or other
-sensitive data.
+Private vulnerability reporting is a launch requirement but is not yet enabled
+for this repository. Do not open a public issue containing an active exploit,
+malicious URL, student information, credentials, threats, or other sensitive
+data.
 
-The repository owner must configure and document a private contact before a
-broad public launch. Until then, non-sensitive hardening suggestions may use a
-regular issue; sensitive reports should wait for the private channel rather
-than being disclosed publicly.
-
-Repository administrators should enable GitHub's **Private vulnerability
-reporting** under `Settings → Security → Code security and analysis`, then
-update this section with the confirmed channel before promoting the public
-demonstration site. The release and maintenance checklist in
-[`docs/MAINTENANCE.md`](./docs/MAINTENANCE.md) records this as a launch gate.
+Non-sensitive hardening suggestions may use a regular issue. For a sensitive
+report, open only a brief issue asking the maintainer to confirm a private
+contact; do not include the vulnerability itself. This section will link the
+GitHub private-report form after an administrator enables it.
 
 A useful report includes:
 
@@ -44,6 +38,8 @@ A useful report includes:
 - Official external links and phone actions require an explicit learner action.
 - Activity configuration is stored in the URL and is not a secret or an
   authorization mechanism.
+- GitHub Pages and GitBook are external hosting services with their own privacy
+  policies; see [`docs/USAGE_AND_PRIVACY.md`](./docs/USAGE_AND_PRIVACY.md).
 - A future classroom synchronization service, account system, message-analysis
   feature, or analytics integration requires a new threat model and privacy
   review; it is outside the current security boundary.

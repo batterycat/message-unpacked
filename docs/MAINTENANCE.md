@@ -43,10 +43,10 @@
 
 ## 漏洞回報與公開前檢查
 
-- Repository administrator 必須在 GitHub 啟用 Private vulnerability
-  reporting，並在 `SECURITY.md` 寫入已確認的私下通道。
-- 私密通道啟用前，不接受公開 Issue 中的敏感漏洞、有效惡意網址、學生
-  資料、憑證或可利用步驟。
+- Repository administrator 必須啟用 GitHub Private vulnerability reporting；
+  啟用後把正式私人表單連結寫入 `SECURITY.md`，每次發布前再確認仍可使用。
+- 不接受公開 Issue 中的敏感漏洞、有效惡意網址、學生資料、憑證或可利用
+  步驟；一律改用私人通報管道。
 - 公開前再次檢查 `SECURITY.md`、`CONSTITUTION.md`、授權檔案與第三方登錄簿，
   並確認 Pages 與 GitBook 都是從已審查的 `main` revision 發布。
 

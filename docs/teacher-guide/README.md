@@ -4,7 +4,7 @@
 
 這份手冊提供教師使用「Message, Unpacked.｜訊息拆解所」的課前準備、課堂帶領與課後討論建議。
 
-如果第一次使用，建議先閱讀「[功能設計與課堂用法](gong-neng-she-ji-yu-ke-tang-yong-fa.md)」，了解學習階段、主題、兩種活動模式、得分與解析畫面各自適合怎麼用。
+如果第一次使用，請先閱讀「[課前快速開始](ke-qian-kuai-su-kai-shi.md)」；需要完整帶領流程時，再看「[課堂帶領腳本](ke-tang-dai-ling-jiao-ben.md)」。
 
 想一起維護題庫時，請先讀「[新增題目與案例](xin-zeng-ti-mu-yu-an-li.md)」，從模板新增 YAML 題目，不需要修改程式碼。
 
@@ -28,5 +28,6 @@
 - 不需要登入，也不會要求學生輸入姓名。
 - 題目中的連結是安全的示意內容，不會把學生帶到可疑網站。
 - 真實案例的損失數字會標示資料來源與限定語；沒有公開資料時會明確標示未知。
+- 網站不會替真實訊息做個案判斷，完整界線請見「[使用範圍、隱私與外部服務](shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu.md)」。
 
 程式碼與案例資料請見 [GitHub repository](https://github.com/batterycat/message-unpacked)。教師手冊與原創教學內容採 CC BY-SA 4.0。

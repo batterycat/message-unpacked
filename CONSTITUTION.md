@@ -32,6 +32,9 @@ override these rules.
 
 - Do not collect student names, contact details, real messages, identifiers, or
   behavioural analytics in the static MVP.
+- Publish a plain-language scope and privacy notice for every hosted service.
+  New data flows, analytics, classroom synchronization, accounts, or message
+  analysis require a new privacy review before release.
 - Remove personal information from source events and use reserved domains,
   numbers, and fictional identities in exercises.
 - Never create clickable live scam links or actions that contact suspicious
@@ -48,8 +51,11 @@ override these rules.
   reflexive “everything is fraud” behaviour.
 - Explain persuasion techniques, evidence, consequences, and practical next
   steps. Avoid presenting technical confidence as a substitute for verification.
-- Taiwan reporting guidance must use verified official names and be recommended
-  only when relevant to the scenario.
+- Published cases use the reviewed locale registry's fixed online-verification
+  and consultation resource IDs. They appear after debrief as optional help,
+  never as proof that every message is fraud or must be reported.
+- Official names, destinations, owners, and verification dates live in the
+  locale resource registry rather than individual case files.
 
 ## 5. Accessibility and Inclusion
 
