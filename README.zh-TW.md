@@ -10,12 +10,16 @@
 [開啟教師手冊](https://batterycat.gitbook.io/message-unpacked-docs/) ·
 [教師快速開課](https://batterycat.github.io/message-unpacked/zh-TW/teacher/)
 
+> 本專案使用 OpenAI Codex 與 GPT-5.6 sol/terra 完成架構、實作、測試、在地化與審查。
+> [了解本專案如何負責任地使用 AI](#codex-與-gpt-56-的使用方式)。
+
 ![Message, Unpacked. 學習體驗](public/assets/hero-message-check.png)
 
 ## 現有內容
 
 - 72 則已審閱繁體中文案例，涵蓋臺灣五個學習階段。
-- 供 10–12 年級展示使用的已審閱英文案例，搭配美國在地官方查證與求助資源。
+- 25 則供 10–12 年級展示使用的英文案例，搭配美國在地官方查證與求助資源；
+  擴大使用前仍需由當地教育工作者審閱。
 - 簡訊、聊天與 Email 畫面，以及可信、詐騙、資訊不足三種判斷。
 - 學生自主練習與教師投影帶領兩種純靜態模式。
 - 教師頁分開呈現靜態與即時模式；兩邊都會依 10／20／30 分鐘建議 2／4／6 題，
@@ -38,6 +42,21 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
+靜態學習體驗不需要後端即可完整使用。若要在本機測試選用的即時班級互動，請先在
+一個終端機啟動 room service：
+
+```bash
+pnpm worker:dev --port 8787 \
+  --var LIVE_ROOMS_ENABLED:true \
+  --var ALLOWED_ORIGINS:http://127.0.0.1:4321
+```
+
+再於另一個終端機啟動網站：
+
+```bash
+PUBLIC_ROOM_SERVICE_URL=http://127.0.0.1:8787 pnpm dev
+```
+
 送出 Pull Request 前請執行：
 
 ```bash
@@ -58,12 +77,12 @@ pnpm check:subpath
 
 ## Codex 與 GPT-5.6 的使用方式
 
-本專案以 OpenAI Codex 作為開發環境，並依角色分工使用 GPT-5.6：
+本專案以 OpenAI Codex 作為開發環境，並讓 GPT-5.6 的不同模型依角色分工：
 
-- **GPT-5.6 sol**——構想與架構設計。界定教學問題、決定「離線學習核心」與
-  「選用即時課堂服務」的 static-first 切分方式，以及題目 schema 的形狀。
-- **GPT-5.6 terra** 與 **GPT-5.6 luna**——依上述決策進行開發。元件、schema、
-  測試、文件、在地化檢查與反覆的程式碼審查。
+- **GPT-5.6 sol**——構想與架構設計。界定教學問題、決定「不依賴後端的學習核心」
+  與「選用即時課堂服務」的 static-first 切分方式，以及題目 schema 的形狀。
+- **GPT-5.6 terra**——依上述決策進行開發：元件、schema、測試、文件、在地化
+  檢查與反覆的程式碼審查。
 
 這樣分工是刻意的。教學原則、安全邊界、內容政策、年齡適切性，以及每一則已發布
 題目，都由人來決定與審閱。模型加快了實作速度，也幫忙找出不一致之處；但它們

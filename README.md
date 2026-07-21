@@ -11,13 +11,17 @@ account, roster, backend, or student-data collection.
 [Open the English teacher guide](https://batterycat.gitbook.io/message-unpacked-docs/en/) ·
 [Set up a class](https://batterycat.github.io/message-unpacked/en/teacher/)
 
+> Built with OpenAI Codex and GPT-5.6 sol/terra for architecture,
+> implementation, testing, localization, and review.
+> [See how AI was used responsibly](#how-codex-and-gpt-56-were-used).
+
 ![Message, Unpacked. learning experience](public/assets/hero-message-check.png)
 
 ## What is included
 
 - 72 reviewed Traditional Chinese cases across Taiwan's five learning stages.
-- A reviewed English demo for grades 10–12 with US-localized official
-  references.
+- A 25-case English demo for grades 10–12 with US-localized official
+  references; broader use still needs review by local educators.
 - SMS, chat, and email presentations with trustworthy, fraud, and
   insufficient-evidence exercises.
 - Student self-paced and teacher projector-led static modes.
@@ -29,8 +33,8 @@ account, roster, backend, or student-data collection.
 - Score explanations, final learning summaries, real-case provenance, and
   qualified impact information.
 - Localized official verification resources after each debrief.
-- Complete Traditional Chinese and English interface catalogs; the reviewed
-  grades 10–12 English demo is available and can expand independently.
+- Complete Traditional Chinese and English interface catalogs; the grades
+  10–12 English demo is available and can expand independently.
 
 The current product contract is in [PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md). The
 code and data boundaries are in [ARCHITECTURE.md](docs/ARCHITECTURE.md).
@@ -42,6 +46,21 @@ Requirements: Node.js 22.12 or newer and pnpm 11.
 ```bash
 pnpm install --frozen-lockfile
 pnpm dev
+```
+
+The static learning experience is complete without a backend. To test the
+optional live-classroom mode locally, start the room service in one terminal:
+
+```bash
+pnpm worker:dev --port 8787 \
+  --var LIVE_ROOMS_ENABLED:true \
+  --var ALLOWED_ORIGINS:http://127.0.0.1:4321
+```
+
+Then start the site in another terminal:
+
+```bash
+PUBLIC_ROOM_SERVICE_URL=http://127.0.0.1:8787 pnpm dev
 ```
 
 Before opening a pull request:
@@ -64,15 +83,14 @@ pnpm check:subpath
 
 ## How Codex and GPT-5.6 were used
 
-This project was built with OpenAI Codex as the development harness, using
-GPT-5.6 in three roles:
+This project was built with OpenAI Codex as the development environment, using
+GPT-5.6 model variants in complementary roles:
 
 - **GPT-5.6 sol** — ideation and architecture. Framing the teaching problem,
-  deciding the static-first split between the offline learning core and the
-  optional live classroom service, and shaping the case schema.
-- **GPT-5.6 terra** and **GPT-5.6 luna** — implementation against those
-  decisions. Components, schemas, tests, documentation, localization checks,
-  and repeated code review.
+  deciding the static-first split between the backend-free learning core and
+  the optional live classroom service, and shaping the case schema.
+- **GPT-5.6 terra** — implementation against those decisions: components,
+  schemas, tests, documentation, localization checks, and repeated code review.
 
 The division was deliberate. Educational principles, security boundaries,
 content policy, age-appropriateness, and every published case were decided and
