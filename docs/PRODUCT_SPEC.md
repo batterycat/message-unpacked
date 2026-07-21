@@ -13,15 +13,16 @@ trusted channel.
 
 The Traditional Chinese case library supports Taiwan's five learning stages:
 grades 1–2, 3–4, 5–6, 7–9, and 10–12. The grades 7–9 collection remains the
-deepest baseline. An initial English pilot provides separately reviewed,
-US-localized cases and response resources. Teachers are the primary facilitator
-audience; students may also complete a teacher-generated activity independently.
+deepest baseline. The English demo is intentionally fixed to grades 10–12 and
+provides separately reviewed, US-localized cases and response resources.
+Teachers are the primary facilitator audience; students may also complete a
+teacher-generated activity independently.
 
 ## Current release
 
 - Static Astro site deployable to GitHub Pages or another static host.
 - Traditional Chinese and English interface catalogs, with a complete
-  Traditional Chinese library and an initial reviewed English pilot set.
+  Traditional Chinese library and a reviewed grades 10–12 English demo set.
 - At least 70 reviewed cases across SMS, chat, and email.
 - Five learning stages and six stable topic categories.
 - Three judgments: trustworthy, fraud, and insufficient evidence.
@@ -60,8 +61,10 @@ student's intelligence, character, or worth.
   impact claims. Missing public data remains unknown, never zero.
 - Published cases use the locale registry's fixed verification pair:
   `anti-fraud.online-report` and `anti-fraud.consult`.
-- Sensitive-content and trusted-adult metadata are mandatory parts of editorial
-  review.
+- Trusted-adult metadata is a mandatory part of editorial review. The reviewed
+  Traditional Chinese library also requires controlled sensitive-content
+  warnings; the grades 10–12 English demo currently leaves those warnings empty
+  and must not present them as reviewed guidance for teachers.
 
 See [CONTENT_AUTHORING.md](CONTENT_AUTHORING.md),
 [CASE_REVIEW_CHECKLIST.md](CASE_REVIEW_CHECKLIST.md), and the project

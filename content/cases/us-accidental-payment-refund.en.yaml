@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-accidental-payment-refund.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-accidental-payment-refund
+locale: en
+status: published
+title: Someone Sent You $200 by Mistake
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: Rewrites the misdirected payment scenario, which can be a genuine mistake or the setup for a reversed-funds scheme.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, ethics]
+  topicId: online-shopping
+  topic: Online Shopping
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [payment apps, peer-to-peer transfers, strangers]
+  skills:
+    [
+      using the app's own dispute process,
+      avoiding manual reversals,
+      keeping records,
+    ]
+  riskTypes: [reversed payment, stolen funds, misdirected transfer]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.oops
+    sender: unknown sender
+    body: OMG I am so sorry — I just sent $200 to the wrong person. I think it went to you? I meant to pay my roommate and picked the wrong name. Can you please send it back? That was my rent money.
+    timestamp: '8:44 PM'
+    direction: incoming
+clues:
+  - id: clue.genuinely-happens
+    label: Misdirected payments are real
+    explanation: Usernames are similar, contact lists are messy, and people do send money to the wrong person. The story is not implausible on its own.
+  - id: clue.reversal-risk
+    label: The original payment might be reversed later
+    explanation: If the funds came from a stolen card or account, the platform will claw them back. If you have already sent your own money out, you lose twice.
+  - id: clue.manual-return
+    label: Returning it by hand bypasses the record
+    explanation: Payment apps have a process for this. Sending a fresh payment creates a second unrelated transaction rather than undoing the first.
+choices:
+  - id: choice.trustworthy
+    label: Send the $200 straight back — it would be wrong to keep someone's rent money
+    classification: trustworthy
+    reasoning: The instinct is decent, but a manual return is a new payment from your own balance. If the original is reversed as fraudulent, you are out $200 with no recourse.
+    score: 40
+  - id: choice.fraud
+    label: Assume it is a scam, keep the money, and block them
+    classification: fraud
+    reasoning: Not sending your own money is right, but keeping funds that are not yours is a separate problem, and if this was a genuine mistake you have taken $200 from someone.
+    score: 60
+  - id: choice.verify
+    label: Do not send anything manually — report the payment in the app and let the platform reverse it
+    classification: insufficient-evidence
+    reasoning: The app's dispute process handles both possibilities correctly. A real mistake gets undone, a fraudulent payment gets reversed without your money in the middle.
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Let the platform undo it instead of undoing it yourself
+  explanation: What makes this genuinely hard is that both readings are ordinary. People really do send money to the wrong username, and the polite response really is to return it. But there is a version where the incoming payment was funded by a stolen account, and it will be reversed days later, after you have sent a clean $200 of your own to a stranger. You do not have to work out which one this is, and that is the useful part. Reporting it in the app resolves both cases correctly, because the platform can reverse the original transaction rather than layering a second one on top of it.
+  safeActions:
+    - Use the payment app's own "report a problem" or dispute flow instead of sending money back manually.
+    - Do not spend funds you did not expect until the platform confirms they are settled.
+    - Keep the message and the transaction record.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

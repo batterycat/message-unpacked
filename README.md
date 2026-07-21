@@ -16,7 +16,8 @@ account, roster, backend, or student-data collection.
 ## What is included
 
 - 72 reviewed Traditional Chinese cases across Taiwan's five learning stages.
-- An initial reviewed English case set with US-localized official references.
+- A reviewed English demo for grades 10–12 with US-localized official
+  references.
 - SMS, chat, and email presentations with trustworthy, fraud, and
   insufficient-evidence exercises.
 - Student self-paced and teacher projector-led static modes.
@@ -29,7 +30,7 @@ account, roster, backend, or student-data collection.
   qualified impact information.
 - Localized official verification resources after each debrief.
 - Complete Traditional Chinese and English interface catalogs; the reviewed
-  English pilot set is available and can expand independently.
+  grades 10–12 English demo is available and can expand independently.
 
 The current product contract is in [PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md). The
 code and data boundaries are in [ARCHITECTURE.md](docs/ARCHITECTURE.md).

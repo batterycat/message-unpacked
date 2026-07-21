@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-shared-card-charge.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-shared-card-charge
+locale: en
+status: published
+title: A Charge You Don't Recognize, From Someone You Do
+channel: chat
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: Teaching scenario written as the positive counterpart to bank impersonation cases, where the unfamiliar charge has an ordinary household explanation.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topicId: family-life
+  topic: Family & Everyday Life
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [family finances, shared accounts, text messages]
+  skills:
+    [checking with the household first, confirming through a second channel]
+  riskTypes: [misjudging a normal family message]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.parent
+    sender: Mom
+    body: Heads up, I switched your phone line to the family plan and set up autopay on the shared card. You'll see $38 from Northline Wireless around the 5th each month. Nothing for you to do.
+    timestamp: 'Sat 10:26 AM'
+    direction: incoming
+clues:
+  - id: clue.known-sender
+    label: It comes from a person you can walk into the next room and ask
+    explanation: This is not an account you have to verify at a distance. Confirmation is available in person, which is the strongest check there is.
+  - id: clue.explains-future
+    label: It explains a charge before you see it
+    explanation: The message exists to prevent confusion later. Fraud works the other way around, by reacting to alarm rather than preventing it.
+  - id: clue.no-ask
+    label: Nothing is requested
+    explanation: No link, no login, no confirmation code, no payment. It closes with the fact that there is nothing for you to do.
+choices:
+  - id: choice.trustworthy
+    label: Note the amount, mention it at dinner, and expect the charge
+    classification: trustworthy
+    reasoning: The sender is someone you can confirm with directly, and the message asks nothing of you.
+    score: 100
+  - id: choice.fraud
+    label: Any message about a card charge is a scam, so ignore it and say nothing
+    classification: fraud
+    reasoning: Judging by subject rather than by request means you will also dismiss real household messages. Here that means being confused by the charge next month for no reason.
+    score: 20
+  - id: choice.verify
+    label: Reply with the card's full number so she can double-check she set it up right
+    classification: insufficient-evidence
+    reasoning: Nobody asked for that. Putting full card details into a chat thread creates a lasting record that can be exposed if either phone is lost or an account is compromised.
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Not every unfamiliar charge is fraud, and the household usually knows
+  explanation: On a shared card, most charges you do not recognize turn out to belong to someone else in the family. That is worth remembering, because the alternative habit — treating every unexpected line item as theft — leads to a lot of alarm and eventually to ignoring the alerts that matter. The order that works is simple. Ask the people who use the card, then check the statement in the bank's app, and only then treat it as fraud. Notice also that the risky option here was not something the message asked for. Volunteering a full card number into a chat is a step you would have taken entirely on your own.
+  safeActions:
+    - Ask family members about unfamiliar charges on a shared card before assuming fraud.
+    - Confirm the charge itself in the bank's own app when it appears.
+    - Never send full card numbers over chat, even to family.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

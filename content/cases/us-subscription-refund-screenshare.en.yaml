@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-subscription-refund-screenshare.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-subscription-refund-screenshare
+locale: en
+status: published
+title: We Refunded You Too Much by Mistake
+channel: email
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the antivirus renewal refund scheme that uses remote access and a staged "overpayment" to move money out of the victim's account.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, post-incident]
+  topicId: family-life
+  topic: Family & Everyday Life
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [subscriptions, home computer, family finances]
+  skills:
+    [
+      refusing remote access,
+      verifying charges independently,
+      spotting staged screens,
+    ]
+  riskTypes: [refund scam, remote access, bank account theft]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.invoice
+    sender: billing@secure-renewals.example.net
+    body: Thank you for renewing SecureGuard Total Protection. Your card ending 4417 has been charged $429.99 for 3 years. If you did not authorize this, call our cancellation desk at 1-888-555-0177.
+    timestamp: 'Wed 8:02 AM'
+    direction: incoming
+  - id: message.overpay
+    sender: SecureGuard Refunds (on call)
+    body: I've issued your refund — please log into your bank while we're connected so you can confirm it arrived. I entered $4,290 instead of $429. My manager will fire me over this. Please send back the extra $3,861 right away.
+    timestamp: 'Wed 8:31 AM'
+    direction: incoming
+clues:
+  - id: clue.remote
+    label: They need to see your banking session
+    explanation: Refunds are issued to the card that was charged and require nothing from you. Remote access exists so they can control what appears on your screen.
+  - id: clue.fake-numbers
+    label: The balance you are looking at is not real
+    explanation: With remote access, the number displayed in a browser can be edited. The "overpayment" is a picture, but the money you send back would be genuine.
+  - id: clue.guilt
+    label: The story is built to make you feel responsible
+    explanation: A junior employee about to be fired for a typo is a script. It converts a demand for money into a favor you would feel unkind refusing.
+choices:
+  - id: choice.trustworthy
+    label: Send the extra money back so the employee does not lose their job
+    classification: trustworthy
+    reasoning: There was no refund and no overpayment. The only real transfer in this entire sequence is the one going out of the account.
+    score: 0
+  - id: choice.fraud
+    label: Refuse remote access entirely, hang up, and check the card statement directly for any charge
+    classification: fraud
+    reasoning: You cut off the tool the scheme depends on and verified the original charge through a channel they cannot alter.
+    score: 100
+  - id: choice.verify
+    label: Let them connect but watch carefully so they cannot do anything unnoticed
+    classification: insufficient-evidence
+    reasoning: Watching does not help — the whole point of remote access is that they choose what you see. Once connected they can also read files and install software while you follow the cursor.
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: The refund was never real, but your transfer would be
+  explanation: This one runs on a clean piece of misdirection. Everything you observe — the invoice, the refund confirmation, the inflated balance — sits on screens the other person controls, while the only thing that actually moves is the money you send back. That asymmetry is the whole design. The entry point is worth noticing too. The invoice email is deliberately alarming and gives you a phone number, so you make the call yourself, which makes the conversation feel like your idea. A real unrecognized charge is handled by looking at the card statement and calling the bank on the number on the card.
+  safeActions:
+    - Never install remote access software or share your screen with someone who contacted you.
+    - Check unfamiliar charges on your actual card statement, not through a number in an email.
+    - If access was already granted, disconnect, run a security scan, change passwords from a different device, and call the bank.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

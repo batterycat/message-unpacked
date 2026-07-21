@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-loan-forgiveness-fee.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-loan-forgiveness-fee
+locale: en
+status: published
+title: Lock In Your Loan Forgiveness Before Midnight
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the student debt relief scheme that charges an advance fee for enrollment in federal programs that are free to apply for.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topicId: school-learning
+  topic: School & Learning
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [student loans, college costs, text messages]
+  skills:
+    [
+      recognizing advance fees,
+      protecting your FSA ID,
+      using official federal channels,
+    ]
+  riskTypes: [advance fee, student debt relief scam, credential theft]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.deadline
+    sender: Student Aid Relief Dept
+    body: FINAL NOTICE - Your student loans qualify for forgiveness under the new federal program, but enrollment closes at midnight. Secure your spot now.
+    timestamp: '7:41 PM'
+    direction: incoming
+  - id: message.fee
+    sender: Student Aid Relief Dept
+    body: One-time processing fee of $299 to file your application, plus your FSA ID login so our specialists can submit it for you. Reply YES to begin.
+    timestamp: '7:44 PM'
+    direction: incoming
+clues:
+  - id: clue.free
+    label: Federal aid programs never charge to apply
+    explanation: Applying for federal loan programs is free through the official Department of Education site. Any fee to access a free process is the entire scam.
+  - id: clue.fsa-id
+    label: They want your FSA ID
+    explanation: That login controls your federal aid records and can be used to redirect refunds or change your contact details. It is the equivalent of handing over your account.
+  - id: clue.fake-deadline
+    label: The midnight deadline is invented
+    explanation: Federal programs have published rules and real timelines that you can read yourself. Deadlines delivered by text exist to prevent you from checking.
+choices:
+  - id: choice.trustworthy
+    label: Pay the $299 — forgiveness would save far more than that
+    classification: trustworthy
+    reasoning: The comparison is designed to make the fee feel rational, but there is nothing being bought. The money goes, and the FSA ID goes with it.
+    score: 0
+  - id: choice.fraud
+    label: Recognize the advance fee, send nothing, and go to the official federal aid site yourself
+    classification: fraud
+    reasoning: You knew that federal programs are free to apply for, so a fee alone settles it without needing to evaluate anything else.
+    score: 100
+  - id: choice.verify
+    label: Reply asking which program it is and who they work for
+    classification: insufficient-evidence
+    reasoning: Sending nothing is right, but replying confirms your number is active and every answer comes from them. The official site tells you what you actually qualify for.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: You never pay to apply for federal aid
+  explanation: This scheme resurfaces every time student debt is in the news, because the news does the persuading and the text only has to arrive at the right moment. Two rules cover almost all of it. Applying for federal student aid and federal repayment programs is free, so a processing fee means someone is charging you for a form you can file yourself. And your FSA ID is a federal credential — anyone holding it can change where your money goes. If a real program change happens, it will be on the official site and your loan servicer will contact you through your account, not with a countdown by text.
+  safeActions:
+    - Never pay a fee to apply for federal loan forgiveness or repayment programs.
+    - Do not share your FSA ID with anyone, including people claiming to be advisors.
+    - Start at the official federal student aid website you type in yourself, or call your loan servicer using the number on your account.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

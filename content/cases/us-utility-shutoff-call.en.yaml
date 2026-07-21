@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-utility-shutoff-call.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-utility-shutoff-call
+locale: en
+status: published
+title: The Power Gets Cut Off in Forty-Five Minutes
+channel: sms
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the utility disconnection scheme that demands immediate payment by prepaid card to stop a fabricated shutoff.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: family-life
+  topic: Family & Everyday Life
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [household bills, utilities, text messages]
+  skills:
+    [
+      recognizing irreversible payment methods,
+      using the number on your bill,
+      slowing down under pressure,
+    ]
+  riskTypes: [utility impersonation, prepaid card payment, manufactured urgency]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.shutoff
+    sender: Utility Billing
+    body: URGENT - Your account is past due. A technician is scheduled to disconnect service in 45 minutes. Call 1-800-555-0143 immediately to stop disconnection.
+    timestamp: '3:18 PM'
+    direction: incoming
+  - id: message.payment
+    sender: Utility Billing
+    body: To halt the order right now, purchase a prepaid card at any store and read us the number. Do not hang up or the technician will proceed.
+    timestamp: '3:26 PM'
+    direction: incoming
+clues:
+  - id: clue.prepaid
+    label: The payment method cannot be reversed
+    explanation: No utility company accepts prepaid card numbers read aloud. That method is chosen because the money is untraceable and gone the moment you read the digits.
+  - id: clue.stay-on-line
+    label: You are told not to hang up
+    explanation: Keeping you on the phone stops you from calling the utility, checking the bill, or asking anyone in the house. Isolation is the point.
+  - id: clue.no-notice
+    label: Real disconnections do not arrive as a surprise
+    explanation: Utilities are required to give written notice well in advance, and there are usually several letters. A first warning that gives you 45 minutes is not how it works.
+choices:
+  - id: choice.trustworthy
+    label: Buy the card — losing power for the whole house is not worth the risk
+    classification: trustworthy
+    reasoning: Once the card number is read aloud the money is unrecoverable, and the shutoff was never scheduled. The stakes were invented to remove your hesitation.
+    score: 0
+  - id: choice.fraud
+    label: Hang up, and call the number printed on the actual bill to check the account
+    classification: fraud
+    reasoning: You recognized the prepaid card demand as decisive and went back to a contact channel the caller does not control.
+    score: 100
+  - id: choice.verify
+    label: Stay on the line and ask them to confirm the account number first
+    classification: insufficient-evidence
+    reasoning: Not paying yet is right, but staying on the call is exactly what they asked for, and account numbers appear in data breaches. Being told a correct number would prove nothing.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: The payment method tells you more than the story does
+  explanation: You can skip the entire question of whether the bill is really overdue by looking at how they want to be paid. Gift cards, prepaid cards, wire transfers, crypto, and payment apps to a stranger all share one property, which is that the money cannot be pulled back. Legitimate organizations do not need that property, and scammers cannot work without it. This case also shows why urgency and isolation travel together. Forty-five minutes and "do not hang up" are the same instruction, which is that you must not have time to ask anyone.
+  safeActions:
+    - Hang up and dial the number on your paper bill or the utility's official app.
+    - Never pay any bill with gift cards or prepaid cards.
+    - Tell a parent before making any payment, even if you are told not to.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

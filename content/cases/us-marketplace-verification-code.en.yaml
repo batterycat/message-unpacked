@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-marketplace-verification-code.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-marketplace-verification-code
+locale: en
+status: published
+title: The Buyer Who Wants to Check You're Real
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the widespread scheme in which a fake marketplace buyer uses the seller's phone number to create a voice-service account, using the seller's own code.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: online-shopping
+  topic: Online Shopping
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [online marketplace, selling secondhand, phone verification]
+  skills:
+    [
+      protecting verification codes,
+      understanding what a code authorizes,
+      staying on the platform,
+    ]
+  riskTypes:
+    [verification code theft, fake buyer, account creation in your name]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.buyer
+    sender: Marketplace buyer
+    body: Hi, still have the desk? I really want it. There are so many scammers on here — I just need to confirm you're a real seller first.
+    timestamp: '2:20 PM'
+    direction: incoming
+  - id: message.code
+    sender: Marketplace buyer
+    body: I'm sending a 6-digit code to your number right now. Text it back and I'll know you're legit, then I'll come pick it up tonight with cash.
+    timestamp: '2:22 PM'
+    direction: incoming
+clues:
+  - id: clue.backwards
+    label: The verification runs the wrong way
+    explanation: A code sent to your phone verifies your phone to whoever requested it. It tells the buyer nothing about you, because they already know your number — they typed it in.
+  - id: clue.what-it-authorizes
+    label: The code is doing something, and it is not this
+    explanation: A code exists because a service is being set up or accessed. If it is not something you started, then someone else is completing a signup using your number.
+  - id: clue.scam-framing
+    label: They raised the topic of scammers first
+    explanation: Naming the risk out loud makes the request feel like caution rather than an ask. It is a way of borrowing your guard instead of triggering it.
+choices:
+  - id: choice.trustworthy
+    label: Send the code — it is a reasonable thing for a cautious buyer to ask
+    classification: trustworthy
+    reasoning: The code lets them finish creating an account tied to your phone number, which can then be used to contact other victims while it traces back to you.
+    score: 0
+  - id: choice.fraud
+    label: Refuse the code, keep the conversation in the app, and report the buyer
+    classification: fraud
+    reasoning: You recognized that a code sent to you cannot verify anything to them, and that only they benefit from receiving it.
+    score: 100
+  - id: choice.verify
+    label: Send only the first three digits to show good faith
+    classification: insufficient-evidence
+    reasoning: Codes are not partially safe. Splitting one does not create a test — it just starts the disclosure, and a real buyer would not need any of it.
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: A code sent to your phone can only verify you to whoever asked for it
+  explanation: This one is worth understanding structurally rather than memorizing, because the cover story changes constantly. A verification code proves that whoever holds the phone approved something. When the buyer asks you to read it back, they are asking you to approve something they started — usually a free voice-calling number registered against your phone. That number then gets used to run other scams, and it points at you. Notice too how the request was framed. They brought up scammers first, so that the ask arrived sounding like safety. Real buyers ask about the desk.
+  safeActions:
+    - Never send a verification code to anyone, regardless of who they say they are or why.
+    - Keep marketplace conversations and payment inside the platform.
+    - If you already sent one, check whether a voice service has been registered to your number and reclaim it.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

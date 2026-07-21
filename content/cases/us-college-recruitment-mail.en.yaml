@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-college-recruitment-mail.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-college-recruitment-mail
+locale: en
+status: published
+title: You've Been Selected for a National Scholars Program
+channel: email
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: Rewrites the ambiguity created because legitimate college recruitment mail and scholarship scams both arrive unsolicited after standardized testing.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: school-learning
+  topic: School & Learning
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [college admissions, scholarships, unsolicited email]
+  skills:
+    [
+      distinguishing marketing from recognition,
+      checking with the counseling office,
+      spotting where a fee would appear,
+    ]
+  riskTypes: [scholarship scam, unsolicited recruitment, data collection]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.selected
+    sender: National Scholars Recognition Program
+    body: Based on your academic profile, you have been identified for our National Scholars Program. Fewer than 3% of students receive this invitation. Complete your candidate profile by August 15 to be considered for awards up to $40,000.
+    timestamp: 'Thu 4:03 PM'
+    direction: incoming
+clues:
+  - id: clue.real-practice
+    label: Colleges use opt-in student search services
+    explanation: Students who opt in can be matched with eligible colleges and scholarship programs using score ranges and profile information. Participating organizations may pay for licensed access, so unsolicited recruitment can be genuine without being an award.
+  - id: clue.not-selection
+    label: Being "identified" is not the same as being chosen
+    explanation: The 3% figure describes a mailing list, not an achievement. That framing appears in both honest marketing and outright scams.
+  - id: clue.no-fee-yet
+    label: Nothing has been asked for yet
+    explanation: There is no fee and no sensitive data requested in this message. The decisive question is what the profile form asks for, which you cannot see from here.
+choices:
+  - id: choice.trustworthy
+    label: Fill out the profile — an award that size is worth the twenty minutes
+    classification: trustworthy
+    reasoning: It may be harmless marketing, but you would be handing personal and academic details to an organization you have not identified, and some of these forms lead to a fee request at the end.
+    score: 40
+  - id: choice.fraud
+    label: Unsolicited scholarship email is always a scam, so delete it
+    classification: fraud
+    reasoning: Deleting costs nothing here, but this reflex applied consistently means discarding legitimate college recruitment too, and some of that mail leads to real aid and fee waivers.
+    score: 60
+  - id: choice.verify
+    label: Do not fill anything in yet — look up the organization and ask the counseling office whether they know it
+    classification: insufficient-evidence
+    reasoning: Counselors see the same mailings every year and can tell you in a sentence which programs are real. That resolves both possibilities before you give up any information.
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Flattering mail is normal, and that is exactly what makes it hard
+  explanation: Junior year brings a flood of mail that says you were selected, identified, or nominated. Much of it is real institutions marketing to a purchased list, some is a legitimate program, and some is a scam that ends with a processing fee or an application charge. None of them can be told apart from the opening paragraph, because they all use the same language of recognition. The reliable move is to notice that the email costs you nothing until you fill something in, so there is no hurry. Your counseling office already knows most of these names. As a rule that holds across all of them, legitimate scholarships do not charge you to apply, and money should always flow toward the student.
+  safeActions:
+    - Look up the organization independently before entering any personal information.
+    - Ask a school counselor whether they recognize the program.
+    - Never pay an application, processing, or matching fee for a scholarship.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

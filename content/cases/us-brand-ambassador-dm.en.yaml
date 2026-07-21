@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-brand-ambassador-dm.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-brand-ambassador-dm
+locale: en
+status: published
+title: We Picked You as a Brand Ambassador
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the fake brand ambassador scheme that flatters a teen into paying shipping or discount fees for merchandise that never arrives.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, ethics]
+  topicId: social-relationships
+  topic: Social & Friendships
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [social media, influencer marketing, direct messages]
+  skills:
+    [
+      understanding how sponsorships actually work,
+      recognizing flattery as a tool,
+      refusing upfront costs,
+    ]
+  riskTypes: [fake sponsorship, advance fee, brand impersonation]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.selected
+    sender: '@luxewear.ambassadors'
+    body: Hey! Our team loves your content and we're selecting you for our ambassador program. You'd get a full outfit set (retail $180) plus 20% commission on your code!
+    timestamp: '4:55 PM'
+    direction: incoming
+  - id: message.shipping
+    sender: '@luxewear.ambassadors'
+    body: Since the items are free you just cover shipping and handling, $24.99. Spots close tonight — we only take 5 ambassadors per state.
+    timestamp: '5:02 PM'
+    direction: incoming
+clues:
+  - id: clue.pay-to-be-sponsored
+    label: Being sponsored should not cost you anything
+    explanation: A brand paying you to promote them does not ask you to pay first. The direction of the money is reversed here, which is the whole arrangement.
+  - id: clue.flattery
+    label: The compliment arrives before the ask
+    explanation: Being chosen feels like recognition, which makes the fee feel like a formality rather than a purchase. That sequence is deliberate.
+  - id: clue.scarcity
+    label: Five spots per state, closing tonight
+    explanation: Invented scarcity gives you a reason not to research the brand or ask anyone. Real partnerships involve contracts and no countdown.
+choices:
+  - id: choice.trustworthy
+    label: Pay the $25 — free clothes and commission are worth it
+    classification: trustworthy
+    reasoning: The $180 outfit does not exist. The shipping fee is the product, collected from a large number of people who each lose a small enough amount not to pursue it.
+    score: 0
+  - id: choice.fraud
+    label: Recognize that real sponsors do not charge you, ignore the offer, and report the account
+    classification: fraud
+    reasoning: You spotted that money flowing toward the "brand" settles it, without needing to research whether the company is real.
+    score: 100
+  - id: choice.verify
+    label: Ask them to send the items first and you will pay shipping on arrival
+    classification: insufficient-evidence
+    reasoning: Not paying now is right, but negotiating keeps you engaged with an account that will simply invent a new reason. There is no version of this where paying makes sense.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Real sponsors pay you, not the other way around
+  explanation: This scheme works on teenagers specifically because it offers something more valuable than the merchandise, which is the feeling of having been noticed. That makes the small fee feel like a technicality standing between you and recognition you already believe you earned. Two things are worth knowing about how sponsorships actually work. Brands with ambassador programs approach people through public applications and written agreements, and they absorb shipping as a cost of marketing. If any amount of your own money is required to begin, the arrangement is not what it says it is, no matter how professional the account looks.
+  safeActions:
+    - Never pay a fee to receive a sponsorship, free product, or ambassador spot.
+    - Check whether the brand's verified account or website lists the program at all.
+    - Report and block the account, and warn friends who may have received the same message.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-package-reshipping-friend.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-package-reshipping-friend
+locale: en
+status: published
+title: Can I Ship a Couple Packages to Your House?
+channel: chat
+classification: fraud
+provenance:
+  kind: composite
+  note: Based on an FBI-documented purchase-order and reshipping scheme that used unsuspecting at-home recipients. The online friend and messages are written for teaching.
+sources:
+  - id: source.fbi.purchase-order-reshipping
+    title: Purchase Order Scam Leaves a Trail of Victims
+    publisher: Federal Bureau of Investigation
+    canonicalUrl: https://www.fbi.gov/news/stories/purchase-order-scam-leaves-a-trail-of-victims
+    publishedAt: 2014-10-27
+    accessedAt: 2026-07-21
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: Only the documented method, aggregate loss, and victim roles are paraphrased. No original text, images, or victim details are reproduced.
+impact:
+  eventSummary: The FBI documented criminals impersonating businesses and universities to acquire goods, then directing unsuspecting people working from home to receive and reship the packages.
+  period: Scheme investigated from 2012; FBI account published October 2014
+  location: United States
+  financialLoss:
+    amount: 5000000
+    currency: USD
+    qualifier: up-to
+    sourceIds: [source.fbi.purchase-order-reshipping]
+    note: The FBI reported nearly $5 million in losses across the scheme.
+  nonFinancialImpact: Some people whose homes were used as delivery points became secondary victims and appeared in the shipment trail despite not understanding the larger scheme.
+  sourceIds: [source.fbi.purchase-order-reshipping]
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topicId: social-relationships
+  topic: Social & Friendships
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [online friendships, direct messages, package delivery]
+  skills:
+    [
+      recognizing mule recruitment,
+      understanding criminal exposure,
+      refusing to use your address or account,
+    ]
+  riskTypes: [reshipping fraud, money mule, criminal liability]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.favor
+    sender: Marcus (online friend, 4 months)
+    body: Random favor — my building keeps having packages stolen. Could I ship a few things to your place? You'd just drop them at UPS with labels I send you. I'll Venmo you $50 each time.
+    timestamp: '10:33 PM'
+    direction: incoming
+  - id: message.quiet
+    sender: Marcus (online friend, 4 months)
+    body: Probably easier not to mention it to your parents, they'll overthink it. It's literally just packages.
+    timestamp: '10:36 PM'
+    direction: incoming
+clues:
+  - id: clue.address
+    label: What is being borrowed is your address
+    explanation: The packages are almost certainly bought with stolen card numbers. Your address breaks the trail between the theft and the goods, which is the only reason it is worth $50.
+  - id: clue.secrecy
+    label: You are asked to keep it from your parents
+    explanation: A genuine favor between friends survives a parent knowing about it. This request does not, and the sender knows that.
+  - id: clue.payment-for-nothing
+    label: The pay is far too high for the work
+    explanation: Fifty dollars to walk to a shipping store is not generosity. It is the price of the risk being transferred from him to you.
+choices:
+  - id: choice.trustworthy
+    label: Help him out — it is just receiving boxes and he is a friend
+    classification: trustworthy
+    reasoning: Receiving and reshipping goods bought with stolen cards puts your address in the shipment trail and can expose you to financial loss, account restrictions, and investigation.
+    score: 0
+  - id: choice.fraud
+    label: Refuse, tell a parent despite being asked not to, and stop the conversation
+    classification: fraud
+    reasoning: You recognized that a stranger paying for the use of your address and asking for secrecy is recruitment, not friendship.
+    score: 100
+  - id: choice.verify
+    label: Agree to do one and see what actually arrives before deciding
+    classification: insufficient-evidence
+    reasoning: The first package is the one that puts your address in the chain. Whatever is inside, the delivery has already happened by the time you look.
+    score: 0
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: When someone pays to use your address or your account, you are the product
+  explanation: This shape shows up in several forms — receiving packages, accepting a transfer and sending most of it on, letting someone use your bank account for a few days. The details vary but the structure does not, which is that a stranger needs something to pass through a real person with no record, and you are that person. The delivery address will be one of the first facts investigators can see. A person who was deceived may also be treated as a secondary victim, but the messages, secrecy, payment, and what they did after warning signs will matter. Notice too how the second message did the real work. Being told not to tell your parents is the clearest signal in the whole exchange, and it is precisely the instruction to disobey.
+  safeActions:
+    - Never receive, forward, or reship packages for an online contact or an employer you have not independently verified.
+    - Never let anyone route money through your bank account or payment apps.
+    - Tell a parent when someone asks you to keep an arrangement from them.
+    - Save the messages and shipping labels, and refuse or return any unexpected package.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

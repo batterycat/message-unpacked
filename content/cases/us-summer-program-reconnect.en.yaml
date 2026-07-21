@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-summer-program-reconnect.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-summer-program-reconnect
+locale: en
+status: published
+title: Someone From Summer Program Messages You
+channel: chat
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: Teaching scenario written as the positive counterpart to impersonation cases, where shared private history and an absent request make the message safe.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topicId: social-relationships
+  topic: Social & Friendships
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [online friendships, direct messages, shared activities]
+  skills: [using shared history as evidence, checking what is being asked]
+  riskTypes: [misjudging a normal reconnection]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.reconnect
+    sender: Priya R.
+    body: Hey! Priya from the robotics camp at State — I was on the team whose drivetrain fell apart 10 minutes before finals. Applications for next summer just opened, thought of you. Are you going again?
+    timestamp: '5:52 PM'
+    direction: incoming
+clues:
+  - id: clue.private-detail
+    label: She references something only someone there would know
+    explanation: The drivetrain failure was not posted anywhere. Shared private history is difficult to fake and is stronger evidence than a matching name or photo.
+  - id: clue.no-request
+    label: She is not asking you for anything
+    explanation: No money, no codes, no links, no personal details. The message ends with a question about your summer plans.
+  - id: clue.verifiable
+    label: The thing she mentions can be checked independently
+    explanation: You can look at the program's own site to see whether applications actually opened, without replying to her at all.
+choices:
+  - id: choice.trustworthy
+    label: Reply normally, and check the program site yourself for the application dates
+    classification: trustworthy
+    reasoning: The shared detail is good evidence of who she is, and nothing in the message asks you for anything.
+    score: 100
+  - id: choice.fraud
+    label: Unexpected messages from people you barely know are always fake, so block her
+    classification: fraud
+    reasoning: Blocking costs nothing in isolation, but applied as a rule it cuts you off from every reconnection, including the ones that lead to programs, references, and friendships.
+    score: 20
+  - id: choice.verify
+    label: Reply asking her to confirm it's really her by sending a photo of her student ID
+    classification: insufficient-evidence
+    reasoning: This asks for sensitive identification that would not prove much and could be edited anyway. It also teaches the habit of exchanging ID documents in chat, which is a bad one to build.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Shared history you never posted is real evidence
+  explanation: Impersonation is hard to detect from names and photos, since both are trivially copied. What is much harder to fake is a specific thing that happened when you were both there and that nobody wrote down afterward. That is why this message is in a different category from the ones where a familiar name asks for a code or a transfer. It is also worth seeing what a safe message looks like structurally, because most of the library is scams and it is easy to lose the baseline. Nothing is requested, the claim can be checked at its source, and the detail offered is one only a participant would have. If any of that changes later — a sudden request for money, a link, an urgent deadline — the earlier verification does not carry over.
+  safeActions:
+    - Treat specific shared experiences as better evidence of identity than names or profile photos.
+    - Check any claim about a program on the program's own website.
+    - Stay alert if a conversation later turns to money, codes, or urgency, even after a genuine start.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

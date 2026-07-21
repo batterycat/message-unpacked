@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-package-redelivery-text.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-package-redelivery-text
+locale: en
+status: published
+title: A Small Fee to Redeliver Your Package
+channel: sms
+classification: fraud
+provenance:
+  kind: composite
+  note: Based on the US Postal Inspection Service warning about unsolicited package-tracking texts and payment links. The message and fee are written for teaching.
+sources:
+  - id: source.uspis.package-smishing
+    title: 'Smishing: Package Tracking Text Scams'
+    publisher: United States Postal Inspection Service
+    canonicalUrl: https://www.uspis.gov/news/scam-article/smishing-package-tracking-text-scams
+    publishedAt: 2025-05-19
+    accessedAt: 2026-07-21
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: Only the scam method and official safety guidance are paraphrased. No original text or images are reproduced.
+impact:
+  eventSummary: The US Postal Inspection Service warns that unsolicited delivery texts with unfamiliar links try to collect personal or payment information.
+  period: Advisory updated May 2025
+  location: United States
+  nonFinancialImpact: Stolen credentials and payment details can be used for identity theft and financial fraud.
+  sourceIds: [source.uspis.package-smishing]
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: online-shopping
+  topic: Online Shopping
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [package delivery, text messages, online orders]
+  skills:
+    [
+      checking your own orders,
+      recognizing small-fee bait,
+      avoiding links in texts,
+    ]
+  riskTypes: [smishing, card theft, fake delivery notice]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.failed
+    sender: USPS Delivery
+    body: USPS - Your package could not be delivered due to an incomplete address. Update your details and pay the $0.35 redelivery fee at usps-redelivery.example.com within 24 hours or the item returns to sender.
+    timestamp: '1:06 PM'
+    direction: incoming
+clues:
+  - id: clue.tiny-fee
+    label: The fee is small on purpose
+    explanation: Thirty-five cents is not the goal. It is small enough that you stop weighing it and just enter the card, which is the actual target.
+  - id: clue.no-tracking
+    label: There is no tracking number to check
+    explanation: A real notice references a specific shipment. This one has to stay vague because the sender does not know whether you are expecting anything.
+  - id: clue.carrier-doesnt-text
+    label: USPS does not collect this fee by text
+    explanation: USPS does not charge for text tracking, and the tracking messages you request from USPS do not contain links. Check USPS or the retailer independently instead.
+choices:
+  - id: choice.trustworthy
+    label: Pay the 35 cents so the package is not sent back
+    classification: trustworthy
+    reasoning: The charge is trivial but the card number, expiry, and security code are not. Those get used or sold, and the amounts that follow are not small.
+    score: 0
+  - id: choice.fraud
+    label: Recognize it as a phishing text, do not tap the link, and check orders in the retailer's app
+    classification: fraud
+    reasoning: You spotted the small-fee bait and went to a place the sender does not control to find out whether a package exists at all.
+    score: 100
+  - id: choice.verify
+    label: Open the link to see whether the site looks official, but do not enter anything
+    classification: insufficient-evidence
+    reasoning: Entering nothing is right, but the page will look convincing because copying a carrier's design is trivial. Opening it cannot answer the question and confirms your number is live.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: The fee is the bait, not the theft
+  explanation: These texts arrive by the million because they cost nothing to send and only need a small fraction of people to be expecting a delivery that week. The tiny fee is doing careful psychological work — it is too small to argue with, so you skip the step where you ask whether the message is real, and the card details go in almost automatically. The reliable move is the same for every delivery notification you did not go looking for. Open the app you actually ordered from and look at your orders. If there is a problem with a real package, it will be there.
+  safeActions:
+    - Check order status in the retailer's own app, never through a link in a text.
+    - Do not enter card details on a page you reached from a message.
+    - Forward suspicious texts to 7726 (SPAM) to help carriers block the sender.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

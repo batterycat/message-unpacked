@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-bank-fraud-alert-text.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-bank-fraud-alert-text
+locale: en
+status: published
+title: Did You Authorize This Charge? Reply Y or N
+channel: sms
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: Rewrites the ambiguity created because real banks and impersonators send nearly identical fraud-alert texts.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: family-life
+  topic: Family & Everyday Life
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [banking, text alerts, card security]
+  skills:
+    [
+      using the number on the card,
+      recognizing callback bait,
+      checking transactions independently,
+    ]
+  riskTypes: [bank impersonation, callback scam, card fraud]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.alert
+    sender: '32287'
+    body: FreeMsg - Did you authorize a $487.22 purchase at ELECTRONICS OUTLET on card ending 8823? Reply Y to approve or N to decline.
+    timestamp: '11:52 AM'
+    direction: incoming
+clues:
+  - id: clue.banks-do-this
+    label: Banks really do send these
+    explanation: Automated fraud alerts by text are a normal service and often use short codes and Y/N replies. The format alone does not tell you anything.
+  - id: clue.what-follows-n
+    label: The risk is in what happens after you reply
+    explanation: In the fraudulent version, replying N triggers a call from someone posing as the fraud department who then asks for codes, PINs, or a transfer to a "safe account."
+  - id: clue.digits
+    label: Knowing the last four digits proves little
+    explanation: Partial card numbers appear in breach data and on receipts. A correct-looking detail is not confirmation.
+choices:
+  - id: choice.trustworthy
+    label: Reply N right away — the charge is not yours and it needs to be stopped fast
+    classification: trustworthy
+    reasoning: Replying confirms your number is live and, if this is the fraudulent version, invites the follow-up call the whole scheme depends on. Stopping the charge does not require replying to the text.
+    score: 40
+  - id: choice.fraud
+    label: Assume it is phishing and ignore it entirely
+    classification: fraud
+    reasoning: Not replying is safe, but if the alert is genuine there is an unauthorized $487 charge sitting on the account. Ignoring it means the real problem goes unaddressed.
+    score: 60
+  - id: choice.verify
+    label: Do not reply — open the banking app or call the number on the back of the card to check the transaction
+    classification: insufficient-evidence
+    reasoning: The account itself shows whether the charge exists, which answers both possibilities at once without using any channel the sender supplied.
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Both versions look identical, so go somewhere neither one controls
+  explanation: This is one of the hardest messages to judge on sight, because legitimate fraud alerts and fraudulent ones are built the same way on purpose. Trying to spot the difference in the text is the wrong effort. What separates them is what happens next, and you can decline to find out. Your banking app shows the actual transaction list, and the phone number printed on your card reaches the real fraud department. One thing worth remembering for the follow-up call, whichever version this turns out to be — a genuine bank will never ask you to move money to a "safe account," and no real fraud investigator needs your one-time code.
+  safeActions:
+    - Do not reply to the text, even to decline.
+    - Check the transaction in the bank's own app, or call the number printed on your card.
+    - Never move money to a "safe account" or read out a one-time code, however the caller identifies themselves.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

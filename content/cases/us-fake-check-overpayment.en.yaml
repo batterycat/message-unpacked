@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-fake-check-overpayment.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-fake-check-overpayment
+locale: en
+status: published
+title: The Check Cleared, So Send the Rest Back
+channel: email
+classification: fraud
+provenance:
+  kind: composite
+  note: Based on FTC reports of personal-assistant fake-check scams targeting college students. The employer, messages, and amounts are written for teaching.
+sources:
+  - id: source.ftc.college-fake-check
+    title: 'Hey college students: have you seen this scam?'
+    publisher: Federal Trade Commission
+    canonicalUrl: https://consumer.ftc.gov/consumer-alerts/2020/12/hey-college-students-have-you-seen-scam
+    publishedAt: 2020-12-02
+    accessedAt: 2026-07-21
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: Only the reported method and aggregate statistics are paraphrased. No original text, images, or victim details are reproduced.
+impact:
+  eventSummary: The FTC described scammers posing as professors or employers, sending students fake checks, and instructing them to forward part of the money before the bank later reversed the deposit.
+  period: Reports analyzed for 2019; consumer alert published December 2020
+  location: United States
+  financialLoss:
+    amount: 1988
+    currency: USD
+    qualifier: reported
+    sourceIds: [source.ftc.college-fake-check]
+    note: FTC-reported median loss for fake-check reports in 2019.
+  nonFinancialImpact: The FTC reported that people in their twenties were more than twice as likely as people over 30 to report losing money to fake-check scams.
+  sourceIds: [source.ftc.college-fake-check]
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topicId: school-learning
+  topic: School & Learning
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [job hunting, banking, campus life]
+  skills:
+    [
+      understanding check availability,
+      refusing to forward funds,
+      verifying an employer,
+    ]
+  riskTypes: [fake check, overpayment, money mule]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.hire
+    sender: campus.assistant.hiring@mail.example.net
+    body: Congratulations — you're hired as my remote personal assistant, $450/week. First task is buying supplies for an event. I'm mailing you a check for $2,850.
+    timestamp: 'Mon 9:04 AM'
+    direction: incoming
+  - id: message.forward
+    sender: campus.assistant.hiring@mail.example.net
+    body: Deposit it and check your balance — you'll see the funds. The vendor only takes Zelle, so send them $2,400 today and keep $450 as your first week's pay. Time sensitive.
+    timestamp: 'Thu 8:12 AM'
+    direction: incoming
+clues:
+  - id: clue.availability
+    label: Money showing in your balance does not mean the check is good
+    explanation: Banks must make funds available within days, but a forged check can bounce weeks later. Availability and clearing are two different things, and this scam lives in the gap between them.
+  - id: clue.forward
+    label: You are being asked to pass money onward
+    explanation: The job is not the assistant work. The job is moving money out of your account to someone else, which is the only part they actually need from you.
+  - id: clue.overpay
+    label: The amount is deliberately too much
+    explanation: Nobody accidentally sends a stranger $2,400 extra. The overpayment exists to create a reason for you to send real money back.
+choices:
+  - id: choice.trustworthy
+    label: The money is in the account, so send the vendor their $2,400
+    classification: trustworthy
+    reasoning: When the check is found to be forged, the bank reverses the full amount and you owe every dollar you sent — the Zelle transfer is real and gone.
+    score: 0
+  - id: choice.fraud
+    label: Recognize the overpayment pattern, send nothing, and take the check to your bank
+    classification: fraud
+    reasoning: You separated "funds available" from "check cleared," and refused the part that actually costs you — forwarding real money.
+    score: 100
+  - id: choice.verify
+    label: Wait a few days for it to clear, then send the money
+    classification: insufficient-evidence
+    reasoning: Waiting is better than sending immediately, but a few days is not enough. Forged checks are often discovered two to four weeks later, and the pressure to hurry exists precisely because of that window.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Available is not cleared
+  explanation: This scheme has survived for decades because it exploits a banking rule most people have never had reason to learn. Your bank must let you access deposited funds quickly, but it can claw the money back whenever the check turns out to be forged — sometimes a month later. So the balance you see is real, the check is not, and the payment you send is very real. The tell is simple and does not require any of that knowledge, though. Any arrangement where money arrives and you are asked to pass most of it along is the same scheme wearing different clothes. Moving money for someone else can also expose you to account restrictions, investigation, and possible legal consequences. What a person knew and did matters, so the safe response is to stop before forwarding anything and ask a trusted adult or the bank for help.
+  safeActions:
+    - Never use money from a check sent by someone you do not know to pay or forward money to anyone else.
+    - Do not accept a job that involves receiving and forwarding payments, however it is described.
+    - Verify any employer through the school career office or a phone number you looked up yourself.
+    - Tell your bank immediately if you already deposited the check or sent funds.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

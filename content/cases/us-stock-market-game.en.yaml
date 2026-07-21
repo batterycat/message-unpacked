@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-stock-market-game.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-stock-market-game
+locale: en
+status: published
+title: Econ Class Is Running a Trading Competition
+channel: email
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: Teaching scenario written as the positive counterpart to investment fraud, so that simulated investing appears without any of the decisive red flags.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topicId: investment-advertising
+  topic: Investing & Ads
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [school, economics class, simulated investing]
+  skills:
+    [telling simulated money from real money, recognizing an absent request]
+  riskTypes: [misjudging a legitimate learning activity]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.competition
+    sender: Mr. Alvarez - Economics
+    body: Starting Monday our class joins the statewide stock market simulation. Each team manages a $100,000 virtual portfolio for ten weeks. No real money is involved and there is nothing to buy. Team logins come from me in class.
+    timestamp: 'Fri 3:14 PM'
+    direction: incoming
+clues:
+  - id: clue.simulated
+    label: The money is not real
+    explanation: A virtual portfolio cannot be stolen, because there is nothing in it. Fraud requires real value to move somewhere, and here none exists.
+  - id: clue.no-signup
+    label: You are not asked to create anything
+    explanation: Logins are handed out in person by the teacher. There is no link, no account creation, and no personal information collected.
+  - id: clue.same-subject
+    label: Same subject as investment scams, opposite structure
+    explanation: Scams promise returns and require deposits. This promises nothing and requires nothing, which is the actual difference between the two.
+choices:
+  - id: choice.trustworthy
+    label: Join the competition and use it to learn how markets behave
+    classification: trustworthy
+    reasoning: You recognized that simulated money with no signup and no deposit carries no financial risk at all.
+    score: 100
+  - id: choice.fraud
+    label: Anything involving the stock market is a scam, so opt out
+    classification: fraud
+    reasoning: This is the cost of avoiding a subject rather than evaluating a request. Simulations are where you can safely learn the patterns that make real fraud recognizable later.
+    score: 20
+  - id: choice.verify
+    label: Look for an outside app to link the portfolio to so the practice feels more real
+    classification: insufficient-evidence
+    reasoning: This adds risk to a situation that had none. Third-party apps offering to connect to school competitions are a known route to credential collection, and the simulation does not need one.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Simulated investing is how you learn to recognize the real thing
+  explanation: Because so much fraud is dressed as investing, it is easy to end up avoiding the topic entirely. That is the wrong lesson, and this case exists to make the difference concrete. Compare what is being asked here with what a scam asks. There is no deposit, no promised return, no deadline, no private group, and no account for you to create. What remains is the part worth having, which is practice reading how markets move without any money at stake. Ten weeks of watching a virtual portfolio go up and down also teaches something no warning can — that real returns are uncertain, which is exactly why a guarantee is always a lie.
+  safeActions:
+    - Use school and library programs to learn investing basics with simulated money.
+    - Do not connect school activities to outside apps that ask for logins.
+    - Remember that real investing involves uncertainty, so any guarantee is a warning sign.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

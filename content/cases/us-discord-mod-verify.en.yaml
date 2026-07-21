@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-discord-mod-verify.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-discord-mod-verify
+locale: en
+status: published
+title: The Mod Says You're About to Be Banned
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the impersonated-moderator scheme that uses a ban threat and a short deadline to extract a login code.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: gaming-accounts
+  topic: Gaming & Accounts
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [chat servers, gaming communities, account security]
+  skills:
+    [
+      protecting login codes,
+      checking official channels,
+      resisting deadline pressure,
+    ]
+  riskTypes: [account takeover, impersonated staff, verification code theft]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.ban
+    sender: Server Mod (DM)
+    body: You've been reported for breaking server rules. Your account is flagged for permanent ban in 10 minutes unless you complete appeal verification.
+    timestamp: '9:52 PM'
+    direction: incoming
+  - id: message.code
+    sender: Server Mod (DM)
+    body: I'm sending the appeal code to your email now. Paste it here and I'll clear the flag. If the timer runs out I can't undo it.
+    timestamp: '9:53 PM'
+    direction: incoming
+clues:
+  - id: clue.dm
+    label: Real moderation does not happen in your DMs
+    explanation: Bans, appeals, and warnings are handled by the platform through official channels you can open yourself. A private message is where anyone can claim to be staff.
+  - id: clue.code
+    label: Staff never need your login code
+    explanation: A code emailed to you exists to prove someone holds your account. Anyone who genuinely worked for the platform would already have access to whatever they needed.
+  - id: clue.timer
+    label: The countdown does the work
+    explanation: Ten minutes is short enough to stop you checking anything and long enough to feel real. The urgency is the technique.
+choices:
+  - id: choice.trustworthy
+    label: Paste the code so the ban gets cleared in time
+    classification: trustworthy
+    reasoning: That code completes a login or password reset on your account. Handing it over is what makes the account actually get taken.
+    score: 0
+  - id: choice.fraud
+    label: Do not send the code, exit the DM, and check for real notices in the app or your account settings
+    classification: fraud
+    reasoning: You identified an impersonated moderator by the combination of a private message, a code request, and a countdown.
+    score: 100
+  - id: choice.verify
+    label: Ask them to prove they're a mod first, then decide about the code
+    classification: insufficient-evidence
+    reasoning: Asking for proof sounds careful, but any screenshot or role badge they send can be faked, and you are still inside a conversation they control. Nothing they say can settle it.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Nobody who works for a platform needs a code from you
+  explanation: This is worth locking in as a flat rule, because the story around it changes every time — a ban appeal, a prize, a friend who is locked out, a payment that failed. Codes sent to your email or phone exist for exactly one purpose, which is proving that you are you. The moment someone asks you to pass one along, they are asking you to prove you are you to them. It does not matter how urgent, how official, or how angry they sound. Real account problems are visible in the app when you open it yourself, and they wait for you.
+  safeActions:
+    - Never paste a verification or appeal code to anyone in a chat.
+    - Look for real moderation notices in the app or on the official support site you navigate to yourself.
+    - Report the impersonating account and block it.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

@@ -132,9 +132,10 @@ whether a second existing channel confirms it.
 
 ## Sensitive content and trusted adults
 
-`sensitiveContent` warns the teacher _before_ they put a case in front of a
-class. Use this controlled vocabulary so the values stay filterable; extend it
-deliberately rather than inventing a synonym:
+For the reviewed Traditional Chinese library, `sensitiveContent` warns the
+teacher _before_ they put a case in front of a class. Use this controlled
+vocabulary so the values stay filterable; extend it deliberately rather than
+inventing a synonym:
 
 - `金錢損失` — the scenario involves losing money. (Do not also write
   `財物損失` or `重大財物損失`; documented cases already carry the real figure in
@@ -153,19 +154,24 @@ should be introduced with the teacher already knowing it is there.
 If `debrief` tells the reader to involve a parent or teacher, then
 `trustedAdultRecommended` must be `true`. The two drifted apart once already.
 
+The grades 10–12 English demo currently leaves `sensitiveContent` empty. It is
+display-only pilot content and does not claim to provide reviewed
+teacher-facing sensitive-content warnings. Do not add an English warning tag
+until its wording and classroom use have received a separate editorial review.
+
 ## The `law` dimension
 
 Declaring `law` obliges the debrief to carry actual legal content. It covers two
 distinct things, and a case should be explicit about which one applies:
 
-- **The reader's own criminal exposure.** Fake job, fake part-time work, and
-  investment-group cases routinely escalate to asking for the student's bank
-  account, or asking them to collect and pass on cash. Doing so can be treated as
-  aiding fraud or money laundering _even when the student was deceived too_, and
-  being under 18 does not remove liability — it routes the case to the juvenile
-  court. A frozen "warning account" also affects every other account in their
-  name, for years. This is the single highest-stakes lesson for the 10-12 band
-  and must not be left implicit.
+- **The reader's own criminal exposure.** In the reviewed Traditional Chinese
+  library, fake job, fake part-time work, and investment-group cases routinely
+  escalate to asking for the student's bank account, or asking them to collect
+  and pass on cash. The explanation may cover the resulting investigation,
+  account restrictions, and possible legal consequences without declaring the
+  learner guilty. The grades 10–12 English demo must likewise avoid categorical
+  statements such as "this is a crime" or "being tricked is not a defense";
+  describe observable risk and note that what a person knew and did matters.
 - **Remedies and procedure.** Where the reader is purely a victim, `law` means
   the steps that actually preserve their claim: reporting to the police and
   obtaining the case acknowledgement slip, filing a card chargeback before the
@@ -173,7 +179,8 @@ distinct things, and a case should be explicit about which one applies:
 
 Describe consequences in terms of risk categories and procedure. Do not cite
 statute numbers in case content — they change, and a stale citation in teaching
-material is worse than none. Point readers to 165 or a qualified adult instead.
+material is worse than none. Point readers to the locale's registered official
+response resources or a qualified adult instead.
 
 ## Provenance
 
@@ -196,11 +203,47 @@ shown in the teacher setup. `learning.contexts` contains more specific
 situations used for cataloguing and future search. Do not use translated labels
 as identifiers or add every context to the teacher topic list.
 
-The teacher setup supports all five learning stages: `1-2`, `3-4`, `5-6`,
-`7-9`, and `10-12`. Declare the narrowest suitable stage rather than marking
-every case for every age group. A case may support more than one adjacent stage
-when the reading load, decision complexity, and trusted-adult guidance remain
+The Traditional Chinese teacher setup supports all five learning stages:
+`1-2`, `3-4`, `5-6`, `7-9`, and `10-12`. The English demo is intentionally fixed
+to `10-12`. Declare the narrowest suitable stage rather than marking every case
+for every age group. A case may support more than one adjacent stage when the
+reading load, decision complexity, and trusted-adult guidance remain
 appropriate for each declared group.
+
+## Coverage target
+
+The unit of coverage is one **topic × stage** cell, because that is what the
+teacher setup draws from. A 30-minute activity pulls about six cases out of a
+single cell, so a thin cell repeats itself the second time a class uses it.
+
+Aim for **four cases per cell**, in a fixed shape:
+
+| Per cell                | Count | Why                                                                                          |
+| ----------------------- | ----- | -------------------------------------------------------------------------------------------- |
+| `fraud`                 | 2     | One obvious, one that takes thought. A single example does not show that a technique varies. |
+| `insufficient-evidence` | 1     | The only category where verifying is the winning move.                                       |
+| `trustworthy`           | 1     | The counterweight. Without it students learn that everything is a scam and stop reading.     |
+
+Four is deliberate. Three (1/1/1) leaves `fraud` unable to show variation; six
+doubles the writing and review cost for little teaching gain, because what
+matters is that all three verdicts are present, not that any one of them is
+numerous.
+
+Fill cells completely rather than spreading thinly. A finished stage that a
+teacher can rely on is more useful than every stage half-covered, and it is
+easier for a contributor to extend — the shape of the gap is obvious.
+
+Two failure modes are worth watching for, both of which this library has had:
+
+- A topic with no `trustworthy` case at all. Students then learn that the whole
+  subject — gaming, investing, shopping — contains nothing genuine.
+- `trustworthy` cases clustering in one topic. When five of six sat under school
+  notices, the lesson on offer was "school messages can be real, nothing else
+  is."
+
+The zh-TW set targets all five stages. The `en` set currently covers `10-12`
+completely and does not claim the others; say so in the README rather than
+publishing partial stages.
 
 ## Safe Examples
 

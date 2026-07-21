@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-fafsa-night-notice.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-fafsa-night-notice
+locale: en
+status: published
+title: Financial Aid Night in the Library
+channel: email
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: Teaching scenario written as the positive counterpart to student aid scams, so the same subject appears without any of the decisive red flags.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topicId: school-learning
+  topic: School & Learning
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [school announcements, college applications, financial aid]
+  skills:
+    [
+      comparing the request rather than the subject,
+      cross-checking on the school site,
+    ]
+  riskTypes: [misjudging a legitimate school event]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.event
+    sender: Central High Counseling Office
+    body: Seniors and families - FAFSA Night is Thursday at 6:30 PM in the library. Bring a laptop if you have one. Counselors will walk through the federal application with you. No sign-up needed, no cost. Details are posted on the school website under Counseling.
+    timestamp: 'Mon 7:55 AM'
+    direction: incoming
+clues:
+  - id: clue.same-subject
+    label: Same topic as the scams, completely different request
+    explanation: Student aid is a favorite subject for fraud, but this message asks for no fee, no login, and no personal information. The subject is not what makes something a scam.
+  - id: clue.cross-check
+    label: It can be confirmed on the school website
+    explanation: The event is posted somewhere you can reach independently, so you are not relying on the email itself.
+  - id: clue.public-event
+    label: A public event in a public place
+    explanation: Everyone is invited, it happens in the school library, and nothing is individualized. Fraud needs to isolate a specific person; this does the opposite.
+choices:
+  - id: choice.trustworthy
+    label: Check the counseling page on the school site, then go if you need the help
+    classification: trustworthy
+    reasoning: You judged by what the message asks for rather than what it is about, and confirmed it through a channel that exists independently of the email.
+    score: 100
+  - id: choice.fraud
+    label: Anything about financial aid is a scam, so ignore it
+    classification: fraud
+    reasoning: This is the cost of judging by topic. Skipping real help with the FAFSA can mean missing aid you qualify for, which is a larger loss than most scams would cause.
+    score: 20
+  - id: choice.verify
+    label: Email back your Social Security number so they can pre-fill your application
+    classification: insufficient-evidence
+    reasoning: Nobody asked for this. Volunteering identifying information that was not requested turns a safe situation into a risky one, and the FAFSA is something you complete yourself.
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Judge the request, not the subject
+  explanation: Financial aid attracts a lot of fraud, so it would be easy to build a reflex that treats the whole subject as dangerous. That reflex has a real cost, because the FAFSA is how most students get money for college and skipping it is expensive. Look instead at what separates this from the scam versions. There is no fee, no login requested, no deadline pressure, no private link, and no individual selection — plus you can confirm the whole thing on the school site without replying. The last option is worth sitting with too, because safe situations can still be made unsafe by what you volunteer.
+  safeActions:
+    - Confirm school events on the school website or by asking in the counseling office.
+    - Complete the FAFSA yourself on the official federal site; it is always free.
+    - Never send a Social Security number or FSA ID by email, even to someone you trust.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-guaranteed-picks-group.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-guaranteed-picks-group
+locale: en
+status: published
+title: The Group Chat That Never Loses
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the guaranteed-picks scheme, including the split-prediction technique that manufactures an apparent winning streak.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, ethics, law]
+  topicId: investment-advertising
+  topic: Investing & Ads
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [group chats, sports betting, paid tips]
+  skills:
+    [
+      recognizing survivorship illusions,
+      questioning displayed track records,
+      refusing paid guarantees,
+    ]
+  riskTypes: [guaranteed returns, fake track record, subscription fraud]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.streak
+    sender: Apex Picks (group chat)
+    body: That's 9 for 9 this week. Screenshots below from members who followed every play. Free channel members saw all of them called in advance.
+    timestamp: '10:15 PM'
+    direction: incoming
+  - id: message.upsell
+    sender: Apex Picks (group chat)
+    body: VIP tier opens 20 spots tonight — $89/month for the locks we don't post publicly. Guaranteed profit or your money back, no questions.
+    timestamp: '10:17 PM'
+    direction: incoming
+clues:
+  - id: clue.split-testing
+    label: A perfect record can be manufactured
+    explanation: Send half a large group one prediction and half the opposite. Drop everyone who got the losing call and repeat. The survivors have genuinely seen an unbroken streak, and it means nothing.
+  - id: clue.guarantee
+    label: Guaranteed profit on uncertain outcomes is not possible
+    explanation: If the outcome were knowable, selling access for $89 would be a strange business decision compared to simply acting on it.
+  - id: clue.screenshots
+    label: The evidence is all supplied by them
+    explanation: Screenshots, member testimonials, and the visible chat are produced inside a space they control, often by accounts they operate.
+choices:
+  - id: choice.trustworthy
+    label: Join VIP — the track record speaks for itself and there is a money-back guarantee
+    classification: trustworthy
+    reasoning: The track record is a selection effect you cannot see from inside, and the guarantee is a sentence, not a mechanism. Refund promises from an anonymous chat are unenforceable.
+    score: 0
+  - id: choice.fraud
+    label: Recognize the guaranteed-return claim as decisive, do not pay, and leave the chat
+    classification: fraud
+    reasoning: You treated the impossibility of guaranteed profit as sufficient on its own, rather than trying to assess evidence the seller produced.
+    score: 100
+  - id: choice.verify
+    label: Stay in the free channel and track the picks yourself for a month before paying
+    classification: insufficient-evidence
+    reasoning: Tracking is more rigorous than most people manage, but you would only be measuring what they choose to post, and remaining in the chat means continued pressure and exposure to the next offer.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: A winning streak you were shown proves nothing about the streaks you were not
+  explanation: The split-prediction technique is the part worth carrying away, because it explains how sincere people end up recommending these groups. If a thousand people receive opposite calls and the losers are quietly dropped, a handful of members will experience ten correct predictions in a row and describe that honestly. Their experience is real; the inference is wrong. This is also why "guaranteed" is the most useful word in the message. It is not an exaggeration to be discounted — it describes something that cannot exist, which means whatever is being sold is something other than what it claims. Note also that sports wagering is illegal for minors in every US state.
+  safeActions:
+    - Treat any guarantee of profit as disqualifying rather than as a selling point.
+    - Do not pay for access to predictions, picks, or signals.
+    - Talk to a parent or another adult before sending money to anyone you met in a group chat.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

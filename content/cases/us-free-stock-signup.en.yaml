@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-free-stock-signup.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-free-stock-signup
+locale: en
+status: published
+title: Sign Up and Get a Free Share
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: Rewrites the ambiguity created because regulated brokerages and fraudulent platforms both advertise free-share signup bonuses through referral links.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: investment-advertising
+  topic: Investing & Ads
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [investing apps, referral links, social media ads]
+  skills:
+    [
+      checking registration independently,
+      telling a referral from an endorsement,
+      verifying withdrawal terms,
+    ]
+  riskTypes: [unregistered platform, referral bait, investment app fraud]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.referral
+    sender: Devon (classmate)
+    body: I've been using this trading app for a few months, it's actually pretty good. If you sign up with my link we both get a free share. I got one worth $16.
+    timestamp: '8:07 PM'
+    direction: incoming
+clues:
+  - id: clue.real-promo
+    label: Legitimate brokerages really do this
+    explanation: Referral bonuses and free-share promotions are standard marketing at registered US brokerages, so the offer itself is not unusual.
+  - id: clue.friend-benefits
+    label: Your friend gets paid if you join
+    explanation: This does not make him dishonest, but it means his recommendation is not neutral. He may also never have tried to withdraw anything.
+  - id: clue.unknown-registration
+    label: You do not yet know whether the platform is registered
+    explanation: The difference between a regulated brokerage and a fraudulent app is invisible from the marketing. It is visible in public regulator databases.
+choices:
+  - id: choice.trustworthy
+    label: Sign up through his link — he has used it for months without problems
+    classification: trustworthy
+    reasoning: Months of use without withdrawing proves very little, since fraudulent platforms show healthy balances and only fail at the withdrawal step. You would also be opening an account before knowing who holds your money.
+    score: 40
+  - id: choice.fraud
+    label: All trading apps are scams, so refuse and tell him he has been conned
+    classification: fraud
+    reasoning: Not signing up costs nothing, but the conclusion is unsupported. Registered brokerages are legitimate, custodial investing is a normal thing to learn, and you may have just told a friend he is a fool for no reason.
+    score: 60
+  - id: choice.verify
+    label: Don't sign up yet — look the firm up in the public regulator database and read how withdrawals work, with a parent
+    classification: insufficient-evidence
+    reasoning: Registration status is a public fact you can check in minutes, and it separates the two possibilities cleanly. A parent is involved anyway, since minors need a custodial account.
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: The question is not whether investing is real, but whether this firm is registered
+  explanation: This one is genuinely undecidable from the message, because everything in it matches both a normal brokerage promotion and a fraudulent platform. Notice what would actually settle it. Registered firms appear in public databases maintained by regulators, and you can search a name in a couple of minutes. Unregistered platforms do not, and that single check does more than any amount of studying the app's design. Two further things are worth knowing. Your friend's experience is weak evidence, because fake platforms look perfectly healthy right up until someone tries to take money out. And in the US, anyone under 18 cannot open a brokerage account alone, so a parent is part of this either way.
+  safeActions:
+    - Check the firm in a public regulator database before creating an account.
+    - Read the withdrawal terms specifically, not just the signup offer.
+    - Involve a parent, since a custodial account is required for minors anyway.
+    - Treat a friend's referral as marketing rather than as verification.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

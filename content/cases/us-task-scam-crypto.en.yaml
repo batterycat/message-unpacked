@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-task-scam-crypto.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-task-scam-crypto
+locale: en
+status: published
+title: The App That Wants You to Deposit First
+channel: chat
+classification: fraud
+provenance:
+  kind: documented
+  note: Adapted from an FBI IC3 public service announcement on work-from-home task scams. The persona, wording, and amounts are rewritten for teaching.
+sources:
+  - id: source.ic3.work-from-home
+    title: Scammers Defraud Individuals via Work-From-Home Scams
+    publisher: FBI Internet Crime Complaint Center (IC3)
+    canonicalUrl: https://www.ic3.gov/PSA/2024/PSA240604
+    publishedAt: 2024-06-04
+    accessedAt: 2026-07-20
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: Only the described scheme and warning signs are paraphrased. No original text, images, or case identifiers are reproduced.
+impact:
+  eventSummary: The FBI warned that scammers impersonating staffing agencies recruit people for simple repetitive online tasks, then require cryptocurrency deposits to "unlock" higher earnings that can never be withdrawn.
+  period: Alert I-060424-PSA, issued June 2024
+  location: United States
+  nonFinancialImpact: Victims see a fake dashboard showing balances that grow with each deposit, which makes stopping feel like abandoning money they believe they have already earned.
+  sourceIds: [source.ic3.work-from-home]
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, law]
+  topicId: investment-advertising
+  topic: Investing & Ads
+  readingLevel: advanced
+  difficulty: intermediate
+  contexts: [side income, messaging apps, cryptocurrency]
+  skills:
+    [
+      spotting pay-to-work demands,
+      recognizing fake dashboards,
+      refusing crypto payments,
+    ]
+  riskTypes: [task scam, advance fee, cryptocurrency payment]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.offer
+    sender: Talent Team (unknown number)
+    body: Hi! We saw your profile and have flexible remote work — just rate listings in our app, about 30 min a day, $200-$400 weekly. Interested?
+    timestamp: '4:12 PM'
+    direction: incoming
+  - id: message.unlock
+    sender: Talent Team (unknown number)
+    body: You finished set one, nice! Your balance is $86. Set two pays triple but it's a premium tier — deposit $100 in USDT to unlock it. You get the deposit back with your first withdrawal.
+    timestamp: '5:38 PM'
+    direction: incoming
+clues:
+  - id: clue.pay-to-work
+    label: You have to pay before you can earn
+    explanation: Money in a real job moves one direction — toward you. Any arrangement where you must send funds before you can be paid has inverted that, whatever it is called.
+  - id: clue.crypto
+    label: The deposit has to be in cryptocurrency
+    explanation: Crypto transfers cannot be reversed or charged back the way a card payment can. Requiring it is a choice about what happens after you send.
+  - id: clue.fake-balance
+    label: The balance exists only inside their app
+    explanation: The $86 is a number the scammer controls. It is designed to make quitting feel like walking away from your own money.
+choices:
+  - id: choice.trustworthy
+    label: Deposit the $100 — you already earned $86, so you would be leaving money behind
+    classification: trustworthy
+    reasoning: That is exactly the feeling the fake balance was built to create. The $86 is not real money and the $100 will not come back; the next tier will cost more.
+    score: 0
+  - id: choice.fraud
+    label: Recognize the pay-to-work demand, stop responding, and report it
+    classification: fraud
+    reasoning: You identified that being asked to pay your employer is decisive on its own, regardless of how legitimate the earlier tasks felt.
+    score: 100
+  - id: choice.verify
+    label: Ask them to just subtract the $100 from your balance instead
+    classification: insufficient-evidence
+    reasoning: Not sending money is right, but negotiating inside their app keeps you in a conversation designed to wear you down. There is nothing to negotiate with.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: A job that charges you is not a job
+  explanation: These are usually called task scams. The early work is real in the sense that you actually do it, and small payouts sometimes arrive — that is what buys your trust. The turn always comes at the same place — to keep earning, you must deposit. Once you understand that pattern you do not need to evaluate the app, the company, or the dashboard. Money flowing from you to an employer is the whole answer. Be aware too that these operations sometimes ask workers to receive and forward payments for others, which can expose you to criminal liability for money laundering even if you were deceived.
+  safeActions:
+    - Never send money, crypto, or gift cards to an employer for any reason.
+    - Do not let anyone route payments through your bank account or ask you to forward funds.
+    - Save the number and app details, then tell a parent or another adult you trust.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

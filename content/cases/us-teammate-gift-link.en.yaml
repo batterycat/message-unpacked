@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-teammate-gift-link.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: friend-gift-link
+locale: en
+status: published
+title: A Friend Sends You a Game Gift Link
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: English adaptation of a teaching case on the difficulty of separating a real in-game gift from a compromised friend account.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: gaming-accounts
+  topic: Gaming & Accounts
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [online games, friend lists, account security]
+  skills:
+    [
+      checking in-game inventory,
+      verifying through another channel,
+      protecting a friend's account,
+    ]
+  riskTypes: [compromised account, phishing link, impersonated friend]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.gift
+    sender: Jordan (friend)
+    body: yo I pulled a duplicate skin bundle from the event crate, I can't use two. sending you the gift link, go claim it before it expires
+    timestamp: '7:18 PM'
+    direction: incoming
+clues:
+  - id: clue.feature-exists
+    label: Gifting is a real feature
+    explanation: Most games let you send duplicates to friends, and event crates really do produce them. Nothing about the story is unusual.
+  - id: clue.link-vs-inbox
+    label: Real gifts arrive in the game, not through a link
+    explanation: A genuine gift shows up in your in-game inbox or gift queue. This is the one detail that does not fit, though a friend might have pasted an official event page.
+  - id: clue.account-could-be-taken
+    label: The account might not be Jordan right now
+    explanation: Compromised accounts message the friend list first, because those messages get trusted. The name proves nothing about who is typing.
+choices:
+  - id: choice.trustworthy
+    label: It is from Jordan, so open the link and claim it
+    classification: trustworthy
+    reasoning: The friendship may be real while the sender is not. Opening it is the one step you cannot take back if the account has been taken over.
+    score: 40
+  - id: choice.fraud
+    label: Jordan's account is definitely hacked — block him and move on
+    classification: fraud
+    reasoning: Not clicking is right, but if he really did want to send you something you have blocked a friend, and if his account genuinely is compromised you have not warned him.
+    score: 60
+  - id: choice.verify
+    label: Do not open the link — check your in-game inbox, then ask Jordan somewhere else
+    classification: insufficient-evidence
+    reasoning: The inbox is a place the sender cannot control, and reaching Jordan through another app or in person tells you whether he sent it at all.
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: A real gift shows up in the game, not in a link
+  explanation: Most of this message is completely ordinary — the feature exists, duplicates happen, friends share them. Only one detail does not fit, which is why the gift needs a website. When a message is almost entirely plausible with one thing slightly off, guessing is the wrong tool. Go look somewhere the sender has no control over. Your in-game inbox either has a gift in it or it does not, and that costs you nothing to check. Reaching Jordan through a different app handles the other half, because if his account was taken over he needs to know quickly, before it reaches everyone else on his friend list.
+  safeActions:
+    - Do not open game links from chat, even from friends.
+    - Check the in-game inbox or event page directly.
+    - Contact the friend through a different app or in person to confirm.
+    - If the account was compromised, tell them to change the password and sign out all sessions.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

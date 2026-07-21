@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-team-fundraiser-collection.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-team-fundraiser-collection
+locale: en
+status: published
+title: Send Your $40 for Team Hoodies
+channel: chat
+classification: insufficient-evidence
+provenance:
+  kind: classic-pattern
+  note: Rewrites the group-chat collection scenario, where an impersonated organizer is difficult to distinguish from the real one.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, ethics]
+  topicId: social-relationships
+  topic: Social & Friendships
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [team group chat, peer payments, school activities]
+  skills:
+    [
+      confirming identity in person,
+      checking the payment handle,
+      avoiding public accusations,
+    ]
+  riskTypes:
+    [impersonated organizer, group chat infiltration, peer payment fraud]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.collect
+    sender: Team Chat
+    body: Hoodie order goes in tomorrow morning! $40 each, send to @coach-volley-pay by tonight so I can place it. Don't forget or you won't get one.
+    timestamp: '9:12 PM'
+    direction: incoming
+clues:
+  - id: clue.real-fundraiser
+    label: The hoodie order is real
+    explanation: Everyone at practice heard about it, and someone genuinely does need to collect the money. The scam version works precisely because the underlying event is true.
+  - id: clue.new-handle
+    label: The payment handle is not one you have seen before
+    explanation: You do not recognize the account name, and nothing in the message identifies who is behind it. That may be normal, or it may not be the coach.
+  - id: clue.who-posted
+    label: Group chats can be joined by people you do not know
+    explanation: Large team chats accumulate members, and display names can be changed. Being in the chat is not the same as being verified.
+choices:
+  - id: choice.trustworthy
+    label: Send the $40 now so you do not miss the order
+    classification: trustworthy
+    reasoning: Peer payments to a stranger are effectively final. If the handle is not the coach's, the money is gone and the real hoodie payment is still owed.
+    score: 15
+  - id: choice.fraud
+    label: Post in the chat that this is a scam and nobody should pay
+    classification: fraud
+    reasoning: Not paying yet is sensible, but if the coach did post it you have publicly accused them in front of the whole team, and the order still needs collecting.
+    score: 60
+  - id: choice.verify
+    label: Do not send yet — confirm the handle with the coach in person or through the school's own channel
+    classification: insufficient-evidence
+    reasoning: A ten-second question at practice settles it, protects the money, and does not accuse anyone of anything.
+    score: 100
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: The event is real, which is exactly why the request is hard to judge
+  explanation: Impersonated collections work because they copy something that genuinely happens. You do not need to doubt the hoodies, the coach, or the team — only the payment handle, and only long enough to confirm it. That distinction matters, because treating the whole thing as fake creates its own damage. If you announce a scam and you are wrong, you have accused a coach in front of everyone. Asking privately or in person costs almost nothing and answers the question completely, which is why it beats both paying immediately and denouncing publicly.
+  safeActions:
+    - Confirm the payment handle in person or through the school's official communication channel before sending.
+    - Ask the organizer to state the total, the count, and what each person owes.
+    - Raise concerns privately rather than accusing someone in the group chat.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

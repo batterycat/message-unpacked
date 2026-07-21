@@ -349,6 +349,50 @@ async function main() {
     `Validated ${cases.length} case files and ${registries.size} resource registries.`,
   );
   console.log(`Published case coverage: ${JSON.stringify(languageCounts)}`);
+  reportCellCoverage(published);
+}
+
+/**
+ * Reports how far each topic-stage cell is from the target in
+ * docs/CONTENT_AUTHORING.md (2 fraud, 1 insufficient-evidence, 1 trustworthy).
+ *
+ * Informational, not an error: stages are filled deliberately rather than all
+ * at once, and a half-filled cell is a plan, not a defect. It prints so that
+ * gaps stay visible instead of being discovered by a teacher mid-lesson.
+ */
+function reportCellCoverage(published: ScenarioCase[]): void {
+  const TARGET = { fraud: 2, 'insufficient-evidence': 1, trustworthy: 1 };
+
+  const started = new Map<string, ScenarioCase[]>();
+  for (const scenario of published) {
+    for (const stage of scenario.learning.stages) {
+      const key = `${scenario.locale} ${scenario.learning.topicId} ${stage}`;
+      started.set(key, [...(started.get(key) ?? []), scenario]);
+    }
+  }
+
+  const incomplete: string[] = [];
+  for (const [key, group] of [...started].sort()) {
+    const missing = Object.entries(TARGET)
+      .map(([classification, want]) => {
+        const have = group.filter(
+          (s) => s.classification === classification,
+        ).length;
+        return have < want ? `${want - have} ${classification}` : null;
+      })
+      .filter((entry): entry is string => entry !== null);
+    if (missing.length > 0)
+      incomplete.push(`  ${key}: needs ${missing.join(', ')}`);
+  }
+
+  if (incomplete.length === 0) {
+    console.log(`Cell coverage: all ${started.size} started cells complete.`);
+    return;
+  }
+  console.log(
+    `Cell coverage: ${started.size - incomplete.length}/${started.size} started cells complete.`,
+  );
+  for (const line of incomplete) console.log(line);
 }
 
 await main();

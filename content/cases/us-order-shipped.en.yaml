@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-order-shipped.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: own-order-shipped
+locale: en
+status: published
+title: Your Order Has Shipped
+channel: sms
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: English adaptation of a teaching case built as the positive counterpart to fake delivery texts.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topicId: online-shopping
+  topic: Online Shopping
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [online orders, shipping, text messages]
+  skills:
+    [
+      matching an order number,
+      checking what a message asks for,
+      protecting order details,
+    ]
+  riskTypes: [misjudging a normal notification]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.shipped
+    sender: Riverbend Outfitters
+    body: Your order #RB-4471902 has shipped and should arrive in three business days. Track it anytime in your account under Orders.
+    timestamp: '2:41 PM'
+    direction: incoming
+clues:
+  - id: clue.you-ordered
+    label: You placed this order yourself
+    explanation: You remember buying it, and the order number can be matched in your account. Fake delivery texts have to guess that you are expecting something.
+  - id: clue.no-ask
+    label: It does not ask you for anything
+    explanation: No fee, no address to re-enter, no deadline, no link to tap. It only tells you something.
+  - id: clue.points-back
+    label: It sends you to your own account
+    explanation: The message directs you to a place you already have access to, rather than offering a new entry point of its own.
+choices:
+  - id: choice.trustworthy
+    label: Match the order number in your account, then wait for the delivery
+    classification: trustworthy
+    reasoning: You confirmed it against your own order history, and the message asked nothing of you in the first place.
+    score: 100
+  - id: choice.fraud
+    label: Shipping texts are always scams, so delete it and ignore any delivery updates
+    classification: fraud
+    reasoning: Fake delivery texts are common, but this one has no link, no fee, and no request. Treating every notification as fake means missing real problems with real orders.
+    score: 20
+  - id: choice.verify
+    label: Post the order number in a group chat to ask whether others think it looks real
+    classification: insufficient-evidence
+    reasoning: Wanting a second opinion is reasonable, but an order number is your own transaction data and can reveal delivery details. Your account answers the question privately.
+    score: 15
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Real delivery texts survive a check against your own orders
+  explanation: Fake delivery messages all share one weakness, which is that the sender has to guess you are waiting for a package. That makes the test simple and reliable. Open the app or site you actually ordered from and see whether the order number matches. Notice what this message asks you to do as well, which is nothing. No fee to release the package, no address to confirm, no countdown. A fraudulent version needs at least one of those, because without an action from you there is nothing for the sender to gain.
+  safeActions:
+    - Match the order number in the retailer's own app or website rather than through a link.
+    - Keep order numbers and tracking numbers private.
+    - Treat any delivery message that asks for a fee or your address as suspect.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

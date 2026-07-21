@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-game-maintenance-notice.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: game-maintenance-notice
+locale: en
+status: published
+title: Servers Down for Maintenance Tuesday
+channel: email
+classification: trustworthy
+provenance:
+  kind: fictional
+  note: English adaptation of a teaching case about recognizing a notification that asks nothing of the reader.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention]
+  topicId: gaming-accounts
+  topic: Gaming & Accounts
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [online games, service announcements, email]
+  skills:
+    [
+      asking what a message wants,
+      recognizing low-risk notices,
+      avoiding third-party claim sites,
+    ]
+  riskTypes: [misjudging a normal notification]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.maintenance
+    sender: Skyforge Online
+    body: Servers will be offline Tuesday 2:00-6:00 AM ET for maintenance. You will not be able to log in during this window. All players receive a compensation pack, added automatically the next time you sign in.
+    timestamp: 'Sun 11:20 AM'
+    direction: incoming
+clues:
+  - id: clue.no-action
+    label: There is nothing for you to do
+    explanation: The compensation arrives on its own. No link to tap, no form, no login, no deadline to beat.
+  - id: clue.no-secrets
+    label: It asks for nothing at all
+    explanation: No password, no payment details, no verification code. A message that requests nothing has almost no way to hurt you.
+  - id: clue.also-in-game
+    label: The same notice appears in the game
+    explanation: Maintenance windows are posted in the launcher and on the official site, so you can confirm it somewhere the email does not control.
+choices:
+  - id: choice.trustworthy
+    label: Note the downtime, do nothing, and sign in afterward for the compensation
+    classification: trustworthy
+    reasoning: You recognized that the message makes no request, which is the strongest single indicator that it is safe.
+    score: 100
+  - id: choice.fraud
+    label: Emails from games are always phishing, so delete it and change your password immediately
+    classification: fraud
+    reasoning: Judging by who sent it rather than what it asks means missing real notices. There is nothing in this message a password change would protect you from.
+    score: 20
+  - id: choice.verify
+    label: Search for a site explaining how to claim the compensation pack early
+    classification: insufficient-evidence
+    reasoning: This creates risk where there was none. The pack is automatic, and third-party "claim your rewards" sites are a standard source of fake login pages.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: Start by asking what the message wants from you
+  explanation: It is the fastest filter you have. Every scam needs an action — tap this, log in here, send that, do it before the timer runs out — because without your participation there is nothing for the sender to collect. This notice asks for nothing, and tells you the reward arrives by itself. That is close to the safest shape a message can have. The last option is the interesting one, because the danger there is not in the email at all. Going looking for a shortcut leads to sites built for exactly that search, which is how a harmless announcement can still end with a stolen account.
+  safeActions:
+    - Confirm game announcements in the launcher or on the official site rather than searching for third-party guides.
+    - Do not enter game credentials on any site offering to claim rewards for you.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

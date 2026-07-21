@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-item-trade-code.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-item-trade-code
+locale: en
+status: published
+title: Confirm the Trade on This Site
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the item-trading scheme that routes players to an off-platform page to capture logins and two-step codes.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: gaming-accounts
+  topic: Gaming & Accounts
+  readingLevel: standard
+  difficulty: introductory
+  contexts: [online games, item trading, peer chat]
+  skills:
+    [
+      trading only in-game,
+      recognizing lookalike sites,
+      protecting two-step codes,
+    ]
+  riskTypes: [account takeover, phishing site, item theft]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.trade
+    sender: xX_TradeKing_Xx
+    body: Deal! I'll give you the limited hat for your two commons. The in-game trade window is bugged for limiteds rn so we have to use the trade verifier site.
+    timestamp: '6:33 PM'
+    direction: incoming
+  - id: message.link
+    sender: xX_TradeKing_Xx
+    body: Go to trade-verify.example.com, log in with your account so it can see your inventory, then send me the 6-digit code it texts you. Takes 20 seconds.
+    timestamp: '6:34 PM'
+    direction: incoming
+clues:
+  - id: clue.off-platform
+    label: The trade is moving off the game
+    explanation: Games handle trades inside their own interface because that is the only place both accounts actually exist. A third-party site has no ability to move items.
+  - id: clue.excuse
+    label: The bug explanation exists to justify the link
+    explanation: Every off-platform request needs a reason why the normal way will not work. The specific excuse changes; the need for one does not.
+  - id: clue.login-and-code
+    label: They want your login and the code that protects it
+    explanation: Together these are complete access to your account. Two-step verification only works if the second step stays with you.
+choices:
+  - id: choice.trustworthy
+    label: Log in on the site — it only needs to see the inventory
+    classification: trustworthy
+    reasoning: The site captures whatever you type and the code completes the login on their device. Nothing about the trade was ever going to happen.
+    score: 0
+  - id: choice.fraud
+    label: Refuse the link, tell them to trade in-game or not at all, and report the account
+    classification: fraud
+    reasoning: You recognized that any trade requiring an outside site and a login code is not a trade.
+    score: 100
+  - id: choice.verify
+    label: Open the site to see whether it looks legitimate, but do not log in
+    classification: insufficient-evidence
+    reasoning: Not logging in is right, but the page will look convincing because copying a game's design takes minutes. Looking at it cannot tell you anything useful.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: If a trade needs a website, it is not a trade
+  explanation: Item scams almost always come down to one move, which is getting you off the platform. Inside the game, trades are visible, reversible by support, and impossible to fake. Outside it, a page can look like anything. The excuse for leaving will always sound plausible — a bug, a limited-item restriction, a faster method, a special event — so it is more reliable to treat the destination as the signal rather than the reason. Real trades happen in the trade window, and real limited items are worth less than your account.
+  safeActions:
+    - Only trade through the game's own trade interface.
+    - Never enter your game login on a site you reached from a chat message.
+    - Never share a two-step verification code, even with someone you have traded with before.
+    - If you already logged in, change your password from another device and sign out all sessions.
+review:
+  lastReviewedAt: 2026-07-20
+  maintenanceStatus: active

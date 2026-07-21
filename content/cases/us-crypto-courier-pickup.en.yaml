@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-crypto-courier-pickup.en
+schemaVersion: 1
+contentVersion: 1.1.0
+translationGroupId: us-crypto-courier-pickup
+locale: en
+status: published
+title: The Courier Coming to Grandma's House
+channel: chat
+classification: fraud
+provenance:
+  kind: documented
+  note: Adapted from an FBI IC3 alert on cash couriers in cryptocurrency investment fraud. The family situation and dialogue are written for teaching.
+sources:
+  - id: source.ic3.cash-couriers
+    title: Scammers Use Couriers to Collect Cash in Cryptocurrency Investment Scams
+    publisher: FBI Internet Crime Complaint Center (IC3)
+    canonicalUrl: https://www.ic3.gov/PSA/2026/PSA260615
+    publishedAt: 2026-06-15
+    accessedAt: 2026-07-20
+    kind: official
+    usage: facts-paraphrased
+    licenseNote: Only the described method and official recommendations are paraphrased. No original text or victim details are reproduced.
+impact:
+  eventSummary: The FBI warned that when banks block transfers to fraudulent crypto platforms, scammers send couriers to collect cash in person, using a code word or a dollar bill serial number to authenticate the handoff. Victims are frequently older adults.
+  period: Alert I-061526-PSA, issued June 2026
+  location: United States
+  nonFinancialImpact: Victims see fabricated account balances that keep rising, and are told they must pay taxes or penalties before withdrawing, which restarts the cycle.
+  sourceIds: [source.ic3.cash-couriers]
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response, ethics]
+  topicId: investment-advertising
+  topic: Investing & Ads
+  readingLevel: advanced
+  difficulty: advanced
+  contexts: [family, elder fraud, cryptocurrency]
+  skills:
+    [
+      recognizing in-person cash handoffs,
+      helping a relative without shaming,
+      escalating safely,
+    ]
+  riskTypes: [investment fraud, cash courier, elder fraud]
+  sensitiveContent: []
+  trustedAdultRecommended: true
+messages:
+  - id: message.grandma
+    sender: Grandma
+    body: Sweetie, my investment advisor says the bank is blocking my transfer by mistake. A courier is coming Thursday to pick up the cash instead. He'll say a code word so I know it's him. Can you help me get to the bank?
+    timestamp: 'Tue 6:15 PM'
+    direction: incoming
+clues:
+  - id: clue.cash-handoff
+    label: Someone is coming to the house for cash
+    explanation: No legitimate investment firm sends a person to collect physical cash. This step exists specifically because banks and card networks would have stopped the transfer.
+  - id: clue.bank-blocked
+    label: The bank already tried to stop it
+    explanation: She is treating the block as an error. Banks flag transfers to known fraudulent platforms — the block is the warning, not the problem.
+  - id: clue.code-word
+    label: The code word feels like security but is not
+    explanation: A password proves the courier was sent by the person on the phone. It proves nothing about whether that person is real.
+choices:
+  - id: choice.trustworthy
+    label: Drive her to the bank — it is her money and her decision
+    classification: trustworthy
+    reasoning: Respecting her independence matters, but helping complete a cash handoff after the bank already blocked the transfer means the money is gone for good.
+    score: 0
+  - id: choice.fraud
+    label: Recognize this as investment fraud, tell her before Thursday, and loop in her adult children now
+    classification: fraud
+    reasoning: You identified the courier pickup as decisive, and you moved fast enough to matter while also bringing in the adults who can act on her accounts.
+    score: 100
+  - id: choice.verify
+    label: Ask her for the advisor's number so you can call him and check
+    classification: insufficient-evidence
+    reasoning: Wanting to verify is right, but that number reaches the scammer or a colleague. Any contact information she has came from them.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: When a stranger comes to the door for cash, the fraud is already late-stage
+  explanation: This scheme builds trust over weeks through a fake platform showing profits that grow on schedule. By the time couriers appear, the bank has usually already refused a transfer, which is why cash is now the only route left. Two things make this hard beyond spotting it. First, she believes she has a large balance and is not going to want to hear otherwise. Second, older relatives are often deeply embarrassed, and shame keeps people paying rather than telling anyone. Leading with what happens Thursday, rather than with what she should have noticed, is what makes the conversation work.
+  safeActions:
+    - Never let anyone hand cash to a courier, however they authenticate themselves.
+    - Bring in other adults in the family right away instead of handling it alone.
+    - Save the advisor, platform, courier, and transaction details before anyone deletes them.
+    - Talk about what happens next, not about whose fault it was.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active

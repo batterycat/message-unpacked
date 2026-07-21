@@ -11,9 +11,9 @@ Updated: 2026-07-21
   cases. The six current topics have 10–14 cases each. The set covers all five
   learning stages (`1-2`, `3-4`, `5-6`, `7-9`, and `10-12`), while the largest
   reviewed baseline remains grades 7–9.
-- An initial reviewed English case set uses US-localized scenarios and official
-  response resources. English content can expand independently without
-  substituting unreviewed Chinese placeholders.
+- A reviewed 25-case English demo is fixed to grades 10–12 and uses US-localized
+  scenarios and official response resources. English content can expand
+  independently without substituting unreviewed Chinese placeholders.
 - The reviewed classification balance is approximately 6:2:2 fraud,
   insufficient-evidence, and trustworthy cases; every topic includes at least
   one trustworthy case.
@@ -30,9 +30,10 @@ Updated: 2026-07-21
 - Static-root and project-subpath builds with automated path-integrity checks.
 - Content schema validation, license policy, unit/component tests, end-to-end
   tests, responsive checks, and automated accessibility scans.
-- CI editorial guards for score bands, red-flag classification, controlled
-  sensitive-content vocabulary, trusted-adult flags, high-school legal content,
-  fixed response-resource IDs, classification balance, and per-topic coverage.
+- CI editorial guards for score bands, red-flag classification,
+  Traditional-Chinese sensitive-content vocabulary, trusted-adult flags,
+  high-school legal content, fixed response-resource IDs, classification
+  balance, and per-topic coverage.
 - Public GitBook teacher guide with quick setup, facilitation scripts, mode
   guidance, local response resources, and a first-use testing checklist.
 - Topic and learning-stage coverage inventory in
@@ -50,7 +51,8 @@ Updated: 2026-07-21
 ## Intentionally deferred
 
 - Broad English coverage comparable to the Traditional Chinese library; the
-  current English release is a reviewed pilot set rather than full parity.
+  current English release is a reviewed grades 10–12 demo rather than full
+  parity, and it does not yet provide teacher-facing sensitive-content warnings.
 - Accounts, rosters, individual student history, ranking, gradebooks, and
   identity-based classroom analytics.
 - Production-grade operations for the public classroom demonstration,
