@@ -78,6 +78,3 @@ Updated: 2026-07-21
 - Complete VoiceOver and NVDA smoke tests on representative school devices.
 - Continue educator and localization review as the English pilot expands,
   especially before adding non-US response resources.
-- In GitBook site settings, configure the privacy-policy URL and disable the
-  optional AI assistant and page-rating controls until their classroom purpose
-  and privacy notice are separately reviewed.
