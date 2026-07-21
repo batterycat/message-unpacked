@@ -148,7 +148,9 @@ pnpm exec wrangler deploy --config workers/wrangler.toml \
 ```
 
 The frontend's `PUBLIC_ROOM_SERVICE_URL` is a public build-time URL, not a
-secret. Store it as a GitHub Actions repository variable. Cloudflare API tokens
+secret. Store it as a GitHub Actions repository variable. The canonical
+repository falls back to the maintainer demo URL, while forks remain
+unconfigured until their operator sets this variable. Cloudflare API tokens
 are required only for an operator-controlled automated Worker deployment and
 must never be exposed to the browser build.
 

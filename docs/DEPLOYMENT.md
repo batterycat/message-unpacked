@@ -167,10 +167,12 @@ enables or upgrades to Workers Paid, and the operator verifies the account stays
 on Workers Free.
 
 For GitHub Pages, set `PUBLIC_ROOM_SERVICE_URL` as a repository variable and
-let the Pages workflow embed that public service base URL at build time. It is
-not a credential. A Cloudflare API token is needed only if the operator later
-adds a separate automated Worker deployment workflow; it must not be passed to
-the static-site build.
+let the Pages workflow embed that public service base URL at build time. The
+canonical `batterycat/message-unpacked` repository has an explicit fallback to
+the maintainer demo; forks default to no room service unless their operator
+sets the variable. The URL is not a credential. A Cloudflare API token is
+needed only if the operator later adds a separate automated Worker deployment
+workflow; it must not be passed to the static-site build.
 
 See [`workers/README.md`](../workers/README.md) for the Wrangler commands and
 the protocol, credentials, privacy boundary, tests, and full configuration
