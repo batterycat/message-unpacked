@@ -134,6 +134,10 @@
   width: 1rem;
 }
 
+.setup > .primaryButton {
+  margin-top: 1rem;
+}
+
 .demoReminder,
 .inlineError {
   color: var(--muted);

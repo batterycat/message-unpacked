@@ -191,6 +191,18 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
 
   const teacherSetup = page.locator('.activity-page-stage');
   await waitForHydration(page, '.activity-page-stage');
+  const setupForm = teacherSetup.locator('form');
+  const casePicker = setupForm.getByRole('group', {
+    name: '確認本堂課案例',
+    exact: true,
+  });
+  const [setupFormBox, casePickerBox] = await Promise.all([
+    setupForm.boundingBox(),
+    casePicker.boundingBox(),
+  ]);
+  expect(setupFormBox).not.toBeNull();
+  expect(casePickerBox).not.toBeNull();
+  expect(casePickerBox!.width).toBeGreaterThan(setupFormBox!.width * 0.9);
   const stageSelect = teacherSetup.getByRole('combobox', {
     name: '學習階段',
     exact: true,
