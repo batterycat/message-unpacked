@@ -583,6 +583,7 @@ export function ClassroomHost({
           <DoorOpenIcon aria-hidden="true" weight="bold" />
           {creating ? copy.creatingRoom : copy.createRoom}
         </button>
+        <p className={styles.demoReminder}>{copy.demoReminder}</p>
       </section>
     );
   }

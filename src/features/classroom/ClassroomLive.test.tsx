@@ -160,6 +160,7 @@ describe('ClassroomHost', () => {
     );
     expect(screen.getByRole('checkbox', { name: /測試案例/ })).toBeChecked();
     expect(screen.getByRole('button', { name: '建立短期教室' })).toBeEnabled();
+    expect(screen.getByText('公開服務僅供體驗。')).toBeInTheDocument();
     expect(screen.queryByText(/免費額度用完/)).not.toBeInTheDocument();
   });
 

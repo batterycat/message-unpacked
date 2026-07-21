@@ -219,6 +219,7 @@ const zhTW = {
     invalidCode: '請輸入 10 碼有效教室代碼。',
     staleActivity: '這題與目前網站的案例版本不同，請告知教師重新建立教室。',
     privacyReminder: '不需輸入姓名；這台裝置只保存本教室的短期參與代碼。',
+    demoReminder: '公開服務僅供體驗。',
   },
   demo: {
     eyebrow: '互動試題',
@@ -595,6 +596,7 @@ const en: MessageCatalog = {
       'This case differs from the version on this site. Ask the teacher to create a new room.',
     privacyReminder:
       'No name is needed. This device keeps only a short-lived participation token for this room.',
+    demoReminder: 'The public service is for demonstration only.',
   },
   demo: {
     eyebrow: 'Interactive exercise',
