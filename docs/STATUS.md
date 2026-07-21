@@ -36,8 +36,8 @@ Updated: 2026-07-21
   balance, and per-topic coverage.
 - Public Traditional Chinese GitBook teacher guide with quick setup,
   facilitation scripts, mode guidance, local response resources, and a
-  first-use testing checklist. A separately maintained English guide covers the
-  grades 10–12 US-localized pilot and its blanket safety notice.
+  first-use testing checklist. A separately maintained English variant covers
+  the grades 10–12 US-localized pilot and its blanket safety notice.
 - Topic and learning-stage coverage inventory in
   `docs/CONTENT_COVERAGE.md`, with a test guard for the current topic minimum.
 - Optional live-classroom mode with separate teacher and student routes,
@@ -49,6 +49,8 @@ Updated: 2026-07-21
 - Local Miniflare integration coverage for credential handling, ticket replay,
   hidden/revealed answers, WebSocket hibernation, and alarm deletion.
 - Public product, architecture, decision, scope, and privacy documentation.
+- GitHub repository metadata, the public demo link, security policy, private
+  vulnerability reporting, and the intentionally disabled Wiki.
 
 ## Intentionally deferred
 
@@ -68,11 +70,6 @@ Updated: 2026-07-21
 
 ## External decisions or review still needed
 
-- Enable GitHub private vulnerability reporting from repository **Settings →
-  Security → Advanced Security**, then confirm the form linked from
-  `SECURITY.md` opens without exposing report details publicly.
-- Add the public demo, description, and topics to GitHub About and disable the
-  unused Wiki from an administrator session.
 - Protect `main` with the `verify` status check while allowing the sole
   maintainer an emergency bypass.
 - Keep a second educator review pass scheduled when the age-level balance or
@@ -81,8 +78,6 @@ Updated: 2026-07-21
 - Complete VoiceOver and NVDA smoke tests on representative school devices.
 - Continue educator and localization review as the English pilot expands,
   especially before adding non-US response resources.
-- Connect `docs/teacher-guide-en/` as the English GitBook variant, and
-  optionally choose a branded custom domain.
-- Configure the GitBook privacy-policy URL. Keep its optional AI assistant and
-  page-rating features disabled until their classroom purpose and privacy
-  notice are separately reviewed.
+- In GitBook site settings, configure the privacy-policy URL and disable the
+  optional AI assistant and page-rating controls until their classroom purpose
+  and privacy notice are separately reviewed.
