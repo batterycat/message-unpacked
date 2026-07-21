@@ -1,10 +1,10 @@
 # Accessibility Review
 
-Review date: 2026-07-19
+Review date: 2026-07-21
 
-Scope: the Traditional Chinese home and activity flows, the English
-availability states, the teacher configurator, one complete student activity,
-one projector activity, a documented-case debrief, and the 320 px layout.
+Scope: the Traditional Chinese and English home/activity flows, localized hero
+responsiveness, the teacher configurator, one complete student activity, one
+projector activity, a documented-case debrief, and the 320 px layout.
 
 ## Automated checks
 

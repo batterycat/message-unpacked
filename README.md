@@ -16,6 +16,7 @@ account, roster, backend, or student-data collection.
 ## What is included
 
 - 72 reviewed Traditional Chinese cases across Taiwan's five learning stages.
+- An initial reviewed English case set with US-localized official references.
 - SMS, chat, and email presentations with trustworthy, fraud, and
   insufficient-evidence exercises.
 - Student self-paced and teacher projector-led static modes.
@@ -27,8 +28,8 @@ account, roster, backend, or student-data collection.
 - Score explanations, final learning summaries, real-case provenance, and
   qualified impact information.
 - Localized official verification resources after each debrief.
-- Complete Traditional Chinese and English interface catalogs; reviewed English
-  case translations are deferred.
+- Complete Traditional Chinese and English interface catalogs; the reviewed
+  English pilot set is available and can expand independently.
 
 The current product contract is in [PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md). The
 code and data boundaries are in [ARCHITECTURE.md](docs/ARCHITECTURE.md).
@@ -79,7 +80,8 @@ The complete static experience deploys to GitHub Pages. An optional
 Cloudflare Durable Objects reference adapter adds short-lived classroom rooms
 without becoming a dependency of the static learning core. Its public service
 is demonstration-only, and schools may deploy a compatible backend with their
-own limits. See [DEPLOYMENT.md](docs/DEPLOYMENT.md) and
+own limits. See [how to connect or replace the backend](docs/DEPLOYMENT.md#connect-a-compatible-classroom-backend),
+the full [deployment guide](docs/DEPLOYMENT.md), and
 [USAGE_AND_PRIVACY.md](docs/USAGE_AND_PRIVACY.md).
 
 ## License

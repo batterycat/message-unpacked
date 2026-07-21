@@ -1,6 +1,6 @@
 # MVP Status
 
-Updated: 2026-07-20
+Updated: 2026-07-21
 
 ## Implemented
 
@@ -11,6 +11,9 @@ Updated: 2026-07-20
   cases. The six current topics have 10–14 cases each. The set covers all five
   learning stages (`1-2`, `3-4`, `5-6`, `7-9`, and `10-12`), while the largest
   reviewed baseline remains grades 7–9.
+- An initial reviewed English case set uses US-localized scenarios and official
+  response resources. English content can expand independently without
+  substituting unreviewed Chinese placeholders.
 - The reviewed classification balance is approximately 6:2:2 fraud,
   insufficient-evidence, and trustworthy cases; every topic includes at least
   one trustworthy case.
@@ -46,8 +49,8 @@ Updated: 2026-07-20
 
 ## Intentionally deferred
 
-- English case translations. The English interface reports their absence
-  honestly and links to the Chinese cases.
+- Broad English coverage comparable to the Traditional Chinese library; the
+  current English release is a reviewed pilot set rather than full parity.
 - Accounts, rosters, individual student history, ranking, gradebooks, and
   identity-based classroom analytics.
 - Production-grade operations for the public classroom demonstration,
@@ -71,7 +74,8 @@ Updated: 2026-07-20
   sensitive-content vocabulary changes, especially for `1-2`, `3-4`, and `5-6`
   cases.
 - Complete VoiceOver and NVDA smoke tests on representative school devices.
-- Decide when English case translation should begin and who will review it.
+- Continue educator and localization review as the English pilot expands,
+  especially before adding non-US response resources.
 - Optionally choose a branded GitBook custom domain; the first guide is
   published at the connected workspace URL.
 - Configure the GitBook privacy-policy URL and decide whether its AI assistant

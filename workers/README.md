@@ -122,17 +122,22 @@ Remote deployment is deliberately manual. This repository contains no
 workflow that deploys the Worker, upgrades a Cloudflare plan, creates a payment
 subscription, or enables Workers Paid.
 
-Before any remote deployment, the operator must:
+This document covers only the configuration specific to Message, Unpacked. It
+does not duplicate Cloudflare account, CLI, domain, or platform onboarding. Use
+Cloudflare's maintained
+[Workers getting-started guide](https://developers.cloudflare.com/workers/get-started/guide/)
+to prepare an authenticated Worker deployment environment.
 
-1. create or select their own Cloudflare account;
-2. confirm that Workers remains on the Free plan if zero billing is required;
-3. configure an exact HTTPS origin and suitable limits;
-4. review Cloudflare's current
+Before deploying this adapter, the operator must:
+
+1. confirm that the selected account remains on the Free plan if zero billing
+   is required;
+2. configure an exact HTTPS origin and suitable limits;
+3. review Cloudflare's current
    [Durable Objects pricing and limits](https://developers.cloudflare.com/durable-objects/platform/pricing/);
-5. review the current
+4. review the current
    [Workers Rate Limiting binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/)
-   configuration and namespace IDs;
-6. deploy manually from an authenticated operator session.
+   configuration and namespace IDs.
 
 For a first deployment, the checked-in migration creates only the
 SQLite-backed `ClassroomRoomV2` namespace. Do not add a legacy `new_classes`
@@ -147,12 +152,11 @@ pnpm exec wrangler deploy --config workers/wrangler.toml \
   --var ALLOWED_ORIGINS:https://example.github.io
 ```
 
-The frontend's `PUBLIC_ROOM_SERVICE_URL` is a public build-time URL, not a
-secret. Store it as a GitHub Actions repository variable. The canonical
-repository falls back to the maintainer demo URL, while forks remain
-unconfigured until their operator sets this variable. Cloudflare API tokens
-are required only for an operator-controlled automated Worker deployment and
-must never be exposed to the browser build.
+After deployment, connect the returned public base URL to the frontend by
+following
+[`docs/DEPLOYMENT.md`](../docs/DEPLOYMENT.md#connect-a-compatible-classroom-backend).
+`PUBLIC_ROOM_SERVICE_URL` is public build-time configuration, never a place for
+a Cloudflare API token.
 
 On the Free plan, exhausted free allocation can make room operations fail until
 the applicable limit resets. It must not be worked around by automatic paid

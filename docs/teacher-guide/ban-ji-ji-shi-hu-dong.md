@@ -62,3 +62,14 @@
 公開體驗後端只用來示範，可能因免費額度、容量或維護而暫停。學校若需要固定
 容量，應由資訊管理單位部署相容後端、設定適合的人數／題數／room 時間，並
 完成校內隱私與資訊安全審查。
+
+## 給學校資訊管理人員
+
+教師不需要保管 Cloudflare Token，也不必在課前設定 Worker。前端只需要在建置
+時指定相容 room 服務的公開網址；GitHub Pages 的變數位置、重建步驟與驗證方式
+整理在 GitHub repository 的
+[Connect a compatible classroom backend](https://github.com/batterycat/message-unpacked/blob/main/docs/DEPLOYMENT.md#connect-a-compatible-classroom-backend)。
+
+若選擇 Cloudflare Workers，帳號與平台部署請直接依
+[Cloudflare Workers 官方入門文件](https://developers.cloudflare.com/workers/get-started/guide/)
+操作；本專案只維護相容協定、參考程式與必要設定，不另行複製平台教學。

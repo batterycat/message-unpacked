@@ -12,10 +12,13 @@ editor schema from drifting.
 
 ## Language and Translation
 
-`locale` describes the case text, independently of the website interface.
-Initial cases use `zh-TW`. A future English translation uses `en`, keeps the
-same `translationGroupId`, and has its own ID, content version, and review date.
-Do not paste Chinese text into an English case as a placeholder.
+`locale` describes the case text, independently of the website interface. Use
+`zh-TW` for reviewed Traditional Chinese cases and `en` for reviewed English
+cases. A direct translation or localized adaptation of the same teaching case
+keeps its `translationGroupId`; a separately researched locale-specific case
+may use its own group. Every locale version has its own ID, content version,
+sources, response resources, and review date. Do not paste Chinese text into an
+English case as a placeholder or publish an unreviewed machine translation.
 
 ## Classification
 

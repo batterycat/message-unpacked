@@ -13,14 +13,15 @@ trusted channel.
 
 The Traditional Chinese case library supports Taiwan's five learning stages:
 grades 1–2, 3–4, 5–6, 7–9, and 10–12. The grades 7–9 collection remains the
-deepest baseline. Teachers are the primary facilitator audience; students may
-also complete a teacher-generated activity independently.
+deepest baseline. An initial English pilot provides separately reviewed,
+US-localized cases and response resources. Teachers are the primary facilitator
+audience; students may also complete a teacher-generated activity independently.
 
 ## Current release
 
 - Static Astro site deployable to GitHub Pages or another static host.
-- Traditional Chinese and English interface catalogs; reviewed cases currently
-  publish in Traditional Chinese.
+- Traditional Chinese and English interface catalogs, with a complete
+  Traditional Chinese library and an initial reviewed English pilot set.
 - At least 70 reviewed cases across SMS, chat, and email.
 - Five learning stages and six stable topic categories.
 - Three judgments: trustworthy, fraud, and insufficient evidence.

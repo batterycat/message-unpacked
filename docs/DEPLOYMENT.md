@@ -74,12 +74,51 @@ assets work under the project path. If the repository is renamed or moved to a
 custom domain, update the workflow's `SITE_BASE` and `SITE_URL` values together
 and rerun `pnpm check:subpath` with the new path.
 
+## Connect a compatible classroom backend
+
+`PUBLIC_ROOM_SERVICE_URL` is the only frontend setting needed to replace the
+optional live-classroom backend. It is a public build-time base URL, not an API
+token or browser credential. The service must implement the versioned contract
+listed in [`workers/README.md`](../workers/README.md#http-and-websocket-boundary),
+including `GET /v1/capabilities`, and allow the exact public frontend origin.
+
+For GitHub Pages:
+
+1. Obtain the HTTPS base URL of a compatible service, without an API path or
+   trailing slash; for example, `https://rooms.example.org`.
+2. Open the repository's **Settings → Secrets and variables → Actions →
+   Variables** page.
+3. Create or update the repository variable `PUBLIC_ROOM_SERVICE_URL` with that
+   base URL. Use a variable, not a secret: the value is embedded in public
+   browser JavaScript.
+4. Rerun **Deploy GitHub Pages** or push a new `main` revision. Changing the
+   variable does not alter an already published build until Pages rebuilds it.
+5. Open the teacher's live-classroom setup page and confirm that its service
+   check succeeds. The static activity path must remain usable if the service
+   check fails.
+
+For another static host, provide the same value while building:
+
+```bash
+PUBLIC_ROOM_SERVICE_URL=https://rooms.example.org \
+SITE_URL=https://learn.example.org \
+pnpm build
+```
+
+Omit the variable to build without live rooms. The canonical
+`batterycat/message-unpacked` workflow has an explicit demo fallback; forks do
+not. A fork replaces that fallback simply by setting its own repository
+variable. No Cloudflare token belongs in the static-site settings.
+
+GitHub's official documentation explains how repository variables work:
+[Store information in variables](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables).
+
 ## Release smoke check
 
 After deployment, verify:
 
-1. `/`, `/zh-TW/`, `/zh-TW/teacher/`, `/zh-TW/activity/`, `/en/`,
-   `/en/teacher/`, and `/en/activity/` load.
+1. `/`, both localized home and activity pages, both teacher pages, and both
+   classroom host/join pages load under the configured base path.
 2. The hero illustration and interactive components load without console
    errors.
 3. A teacher can generate, copy, scan, and open one activity URL.
@@ -166,14 +205,14 @@ would apply. The zero-billing guarantee therefore means: this project never
 enables or upgrades to Workers Paid, and the operator verifies the account stays
 on Workers Free.
 
-For GitHub Pages, set `PUBLIC_ROOM_SERVICE_URL` as a repository variable and
-let the Pages workflow embed that public service base URL at build time. The
-canonical `batterycat/message-unpacked` repository has an explicit fallback to
-the maintainer demo; forks default to no room service unless their operator
-sets the variable. The URL is not a credential. A Cloudflare API token is
-needed only if the operator later adds a separate automated Worker deployment
-workflow; it must not be passed to the static-site build.
+This repository documents only its adapter-specific configuration and safety
+boundary. Cloudflare account setup and general Worker deployment belong to
+Cloudflare's maintained
+[Workers getting-started guide](https://developers.cloudflare.com/workers/get-started/guide/).
+After an operator obtains a public service URL, use
+[Connect a compatible classroom backend](#connect-a-compatible-classroom-backend)
+to replace the frontend setting.
 
-See [`workers/README.md`](../workers/README.md) for the Wrangler commands and
-the protocol, credentials, privacy boundary, tests, and full configuration
-table.
+See [`workers/README.md`](../workers/README.md) for the project-specific
+protocol, credentials, privacy boundary, tests, configuration table, and the
+single adapter deployment command.
