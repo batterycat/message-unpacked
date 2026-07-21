@@ -94,6 +94,66 @@ const secondScenario = {
   },
 } as const satisfies ScenarioCase;
 
+const englishScenario = {
+  ...scenario,
+  id: 'case.example.en',
+  translationGroupId: 'case.example.en',
+  locale: 'en',
+  title: 'Unexpected account message',
+  provenance: { kind: 'classic-pattern', note: 'Test fixture' },
+  learning: {
+    ...scenario.learning,
+    stages: ['10-12'],
+    topic: 'Social & Relationships',
+    contexts: ['chat'],
+    skills: ['verification'],
+    riskTypes: ['impersonation'],
+  },
+  messages: [
+    {
+      id: 'message.one',
+      sender: 'Unknown person',
+      body: 'Please provide the verification code.',
+      direction: 'incoming',
+    },
+  ],
+  clues: [
+    {
+      id: 'clue.one',
+      label: 'Requests a verification code',
+      explanation: 'Never give it to another person.',
+    },
+  ],
+  choices: [
+    {
+      id: 'choice.trustworthy',
+      label: 'Send it',
+      classification: 'trustworthy',
+      reasoning: 'Unsafe',
+      score: 0,
+    },
+    {
+      id: 'choice.fraud',
+      label: 'Refuse and verify',
+      classification: 'fraud',
+      reasoning: 'Safe',
+      score: 100,
+    },
+    {
+      id: 'choice.verify',
+      label: 'Wait',
+      classification: 'insufficient-evidence',
+      reasoning: 'Verification is still needed',
+      score: 60,
+    },
+  ],
+  debrief: {
+    headline: 'Do not share verification codes',
+    explanation: 'Use an official channel instead.',
+    safeActions: ['Stop replying'],
+  },
+} as const satisfies ScenarioCase;
+
 afterEach(() => {
   cleanup();
   vi.useRealTimers();
@@ -131,6 +191,44 @@ function unauthorizedRoomResponse() {
 }
 
 describe('ClassroomHost', () => {
+  it('starts the English demo at its only published stage', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        Response.json({
+          protocolVersion: ROOM_PROTOCOL_VERSION,
+          maxParticipants: 60,
+          maxCases: 10,
+          maxChoicesPerCase: 6,
+          roomLifetimeSeconds: 7_200,
+          maxMessageBytes: 4_096,
+        }),
+      ),
+    );
+    render(
+      <ClassroomHost
+        catalog={getCatalog('en')}
+        joinPath="/en/classroom/join/"
+        locale="en"
+        roomServiceUrl="https://rooms.example"
+        scenarios={[englishScenario]}
+      />,
+    );
+
+    const stageSelect = await screen.findByLabelText('Learning stage');
+    expect(stageSelect).toHaveValue('10-12');
+    expect(
+      [...(stageSelect as HTMLSelectElement).options].map(
+        (option) => option.value,
+      ),
+    ).toEqual(['10-12']);
+    await waitFor(() =>
+      expect(
+        screen.getByRole('checkbox', { name: /Unexpected account message/ }),
+      ).toBeChecked(),
+    );
+  });
+
   it('loads adapter capabilities instead of hard-coding the selectable case limit', async () => {
     vi.stubGlobal(
       'fetch',

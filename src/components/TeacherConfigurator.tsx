@@ -15,13 +15,14 @@ import {
   activityDurations,
   buildActivityUrl,
   createActivityConfigFromCaseIds,
+  getTeacherLearningStagePolicy,
   maximumStaticActivityCases,
   recommendActivityCaseIds,
   type ActivityDuration,
   type ActivityMode,
   type LearningStage,
 } from '../domain/activity/config';
-import { learningStages, type ScenarioCase } from '../domain/cases/schema';
+import type { ScenarioCase } from '../domain/cases/schema';
 import {
   CasePicker,
   type CasePickerScenario,
@@ -52,7 +53,8 @@ export function TeacherConfigurator({
   locale,
   scenarios,
 }: TeacherConfiguratorProps) {
-  const [stage, setStage] = useState<LearningStage>('7-9');
+  const stagePolicy = getTeacherLearningStagePolicy(locale);
+  const [stage, setStage] = useState<LearningStage>(stagePolicy.defaultStage);
   const availableScenarios = useMemo(
     () =>
       scenarios.filter((scenario) => scenario.learning.stages.includes(stage)),
@@ -181,7 +183,7 @@ export function TeacherConfigurator({
                 resetRecommendation(nextStage, nextTopicId, durationMinutes);
               }}
             >
-              {learningStages.map((option) => (
+              {stagePolicy.options.map((option) => (
                 <option value={option} key={option}>
                   {catalog.teacherSetup.stageOptions[option]}
                 </option>

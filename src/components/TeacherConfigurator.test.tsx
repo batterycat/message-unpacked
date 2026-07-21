@@ -58,6 +58,21 @@ const candidates = [
   },
 ] as const satisfies readonly CasePickerScenario[];
 
+const englishCandidates = [
+  {
+    id: 'case.social.en',
+    title: 'Unexpected account message',
+    channel: 'chat',
+    contentVersion: '1.0.0',
+    learning: {
+      stages: ['10-12'] as const,
+      topicId: 'social-relationships',
+      topic: 'Social & Relationships',
+      contexts: ['social media'],
+    },
+  },
+] as const satisfies readonly CasePickerScenario[];
+
 describe('TeacherConfigurator', () => {
   afterEach(() => cleanup());
 
@@ -158,5 +173,27 @@ describe('TeacherConfigurator', () => {
     const url = new URL(launchLink.getAttribute('href') ?? '');
     expect(url.searchParams.get('stage')).toBe('1-2');
     expect(url.searchParams.get('cases')).toBe('case.primary');
+  });
+
+  it('starts the English demo at its only published stage', () => {
+    render(
+      createElement(TeacherConfigurator, {
+        catalog: getCatalog('en'),
+        locale: 'en',
+        scenarios: englishCandidates,
+      }),
+    );
+
+    const stageSelect = screen.getByLabelText(
+      'Learning stage',
+    ) as HTMLSelectElement;
+    expect(stageSelect).toHaveValue('10-12');
+    expect([...stageSelect.options].map((option) => option.value)).toEqual([
+      '10-12',
+    ]);
+    expect(screen.getByLabelText('Topic')).toHaveValue('social-relationships');
+    expect(
+      screen.getByRole('checkbox', { name: /Unexpected account message/ }),
+    ).toBeChecked();
   });
 });

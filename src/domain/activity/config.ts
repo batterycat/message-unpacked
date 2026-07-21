@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { learningStages } from '../cases/schema';
 import { topicIds, type TopicId } from '../cases/topics';
-import { supportedLocales } from '../locales';
+import { supportedLocales, type Locale } from '../locales';
 
 export const activityDurations = [10, 20, 30] as const;
 export const activityModes = ['self-paced', 'projector'] as const;
@@ -10,6 +10,28 @@ export const activityModes = ['self-paced', 'projector'] as const;
 export type ActivityDuration = (typeof activityDurations)[number];
 export type ActivityMode = (typeof activityModes)[number];
 export type LearningStage = (typeof learningStages)[number];
+
+type TeacherLearningStagePolicy = {
+  defaultStage: LearningStage;
+  options: readonly LearningStage[];
+};
+
+const teacherLearningStagePolicies = {
+  'zh-TW': {
+    defaultStage: '7-9',
+    options: learningStages,
+  },
+  en: {
+    defaultStage: '10-12',
+    options: ['10-12'],
+  },
+} satisfies Record<Locale, TeacherLearningStagePolicy>;
+
+export function getTeacherLearningStagePolicy(
+  locale: Locale,
+): TeacherLearningStagePolicy {
+  return teacherLearningStagePolicies[locale];
+}
 
 const caseIdSchema = z
   .string()

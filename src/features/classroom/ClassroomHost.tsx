@@ -14,11 +14,11 @@ import { QRCodeSVG } from 'qrcode.react';
 
 import {
   activityDurations,
+  getTeacherLearningStagePolicy,
   recommendActivityCaseIds,
   type ActivityDuration,
 } from '../../domain/activity/config';
 import type { ScenarioCase } from '../../domain/cases/schema';
-import { learningStages } from '../../domain/cases/schema';
 import {
   ROOM_PROTOCOL_VERSION,
   calculateClassScores,
@@ -138,11 +138,13 @@ export function ClassroomHost({
   scenarios,
 }: ClassroomHostProps) {
   const copy = catalog.classroomLive;
+  const stagePolicy = getTeacherLearningStagePolicy(locale);
   const [capabilities, setCapabilities] = useState<RoomCapabilities | null>(
     null,
   );
-  const [stage, setStage] =
-    useState<ScenarioCase['learning']['stages'][number]>('7-9');
+  const [stage, setStage] = useState<
+    ScenarioCase['learning']['stages'][number]
+  >(stagePolicy.defaultStage);
   const stageScenarios = useMemo(
     () =>
       scenarios.filter((scenario) => scenario.learning.stages.includes(stage)),
@@ -502,7 +504,7 @@ export function ClassroomHost({
                 );
               }}
             >
-              {learningStages.map((option) => (
+              {stagePolicy.options.map((option) => (
                 <option key={option} value={option}>
                   {catalog.teacherSetup.stageOptions[option]}
                 </option>
