@@ -148,7 +148,7 @@ repository has no CI workflow or application code that deploys this Worker,
 enables Workers Paid, upgrades a plan, or creates a payment subscription.
 
 The maintainer's best-effort demo currently uses
-`https://message-unpacked-room.lilianmaple.workers.dev`. Other operators should
+`https://message-unpacked-room.batterycat.workers.dev`. Other operators should
 deploy their own compatible service and point their frontend build at that URL;
 they should not depend on the maintainer endpoint for classroom availability.
 
