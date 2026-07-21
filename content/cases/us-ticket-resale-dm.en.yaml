@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=../case.schema.json
+id: us-ticket-resale-dm.en
+schemaVersion: 1
+contentVersion: 1.0.0
+translationGroupId: us-ticket-resale-dm
+locale: en
+status: published
+title: Cheaper If We Skip the Ticket App
+channel: chat
+classification: fraud
+provenance:
+  kind: classic-pattern
+  note: Rewrites the concert ticket resale scheme in which a seller steers the buyer off the platform's verified transfer and into an irreversible payment.
+sources: []
+learning:
+  stages: [10-12]
+  dimensions: [prevention, response]
+  topicId: social-relationships
+  topic: Social & Friendships
+  readingLevel: standard
+  difficulty: intermediate
+  contexts: [social media, concert tickets, peer payments]
+  skills:
+    [
+      using official ticket transfer,
+      recognizing irreversible payment demands,
+      resisting sold-out urgency,
+    ]
+  riskTypes: [fake ticket sale, off-platform payment, buyer protection loss]
+  sensitiveContent: []
+  trustedAdultRecommended: false
+messages:
+  - id: message.offer
+    sender: '@lastminute_seats'
+    body: Got 2 pit tickets for Friday, face value $180 each. Show's sold out so these move fast — first person to send gets them.
+    timestamp: '9:41 PM'
+    direction: incoming
+  - id: message.payment
+    sender: '@lastminute_seats'
+    body: Don't buy through the ticket app, they take a huge cut and it's slower. Send it as Zelle or Venmo friends-and-family and I'll email you the PDFs tonight. Two other people are asking.
+    timestamp: '9:44 PM'
+    direction: incoming
+clues:
+  - id: clue.off-platform
+    label: You are steered away from the official transfer
+    explanation: Modern tickets move between accounts inside the ticketing app, which is the only place a transfer can be confirmed. Being talked out of that step is the request, not a detail of it.
+  - id: clue.payment-type
+    label: The payment method removes your ability to dispute
+    explanation: Friends-and-family transfers exist for people you actually know and carry no purchase protection. Choosing that label for a sale to a stranger is choosing a payment you cannot reverse.
+  - id: clue.pdf
+    label: A PDF is not a ticket
+    explanation: An emailed screenshot or PDF barcode can be sent to any number of buyers at once, and only the first person scanned at the gate gets in.
+choices:
+  - id: choice.trustworthy
+    label: Send the money now — sold-out pit tickets at face value will not last
+    classification: trustworthy
+    reasoning: A friends-and-family transfer to a stranger cannot be recalled or disputed, and nothing has been transferred to you in return.
+    score: 0
+  - id: choice.fraud
+    label: Refuse to leave the ticketing app, stop the conversation, and report the account
+    classification: fraud
+    reasoning: You recognized that being steered off the official transfer and onto an unrecoverable payment is decisive on its own.
+    score: 100
+  - id: choice.verify
+    label: Ask them to send a photo of the tickets in their account first, then pay
+    classification: insufficient-evidence
+    reasoning: Paying nothing yet is right, but any screenshot they send can be edited or borrowed from a real listing, and you would still be paying outside the system that protects you.
+    score: 40
+recommendedActionIds: [anti-fraud.online-report, anti-fraud.consult]
+debrief:
+  headline: The transfer, not the ticket, is what you are buying
+  explanation: Ticket fraud is one of the most common ways people this age lose money, and it works because the excitement is real and the show genuinely is sold out. What makes it solvable is that the decisive move is always the same. Real tickets change hands through the ticketing app, where the transfer is recorded against an account. Anything that pulls you out of that — fees are lower, it is faster, the app is glitchy — is asking you to give up the only proof and the only recourse you would have had. The payment label matters just as much. Sending as friends-and-family is not a formality; it is the difference between a transaction you can dispute and one that is simply gone.
+  safeActions:
+    - Buy and receive tickets only through the ticketing platform's own transfer.
+    - Never send friends-and-family payments to someone you have not met.
+    - Treat sold-out urgency as a reason to slow down rather than to hurry.
+review:
+  lastReviewedAt: 2026-07-21
+  maintenanceStatus: active
