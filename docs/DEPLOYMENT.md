@@ -130,6 +130,11 @@ must use namespace IDs that do not collide with other bindings in the same
 Cloudflare account. Durable Object capacity checks remain the authoritative
 hard limits.
 
+The first remote deployment provisions only the SQLite-backed
+`ClassroomRoomV2` namespace. Do not restore the prototype `new_classes`
+migration: Cloudflare no longer permits newly created KV-backed Durable Object
+namespaces, and that migration prevents deployment on Workers Free.
+
 Setting `LIVE_ROOMS_ENABLED=false` stops capabilities, room creation, new
 ticket exchange, and new WebSocket upgrades. WebSockets that were already
 accepted continue until their room ends, expires, disconnects, or the Worker
@@ -141,6 +146,11 @@ drain window. The switch does not affect static activities.
 Remote Worker deployment is a separate, explicit operator action. The
 repository has no CI workflow or application code that deploys this Worker,
 enables Workers Paid, upgrades a plan, or creates a payment subscription.
+
+The maintainer's best-effort demo currently uses
+`https://message-unpacked-room.lilianmaple.workers.dev`. Other operators should
+deploy their own compatible service and point their frontend build at that URL;
+they should not depend on the maintainer endpoint for classroom availability.
 
 An operator who requires zero billing must keep the selected Cloudflare account
 on the Workers Free plan and confirm current Cloudflare limits before every
@@ -155,6 +165,12 @@ placed the account on Workers Paid; that account's own paid-plan billing rules
 would apply. The zero-billing guarantee therefore means: this project never
 enables or upgrades to Workers Paid, and the operator verifies the account stays
 on Workers Free.
+
+For GitHub Pages, set `PUBLIC_ROOM_SERVICE_URL` as a repository variable and
+let the Pages workflow embed that public service base URL at build time. It is
+not a credential. A Cloudflare API token is needed only if the operator later
+adds a separate automated Worker deployment workflow; it must not be passed to
+the static-site build.
 
 See [`workers/README.md`](../workers/README.md) for the Wrangler commands and
 the protocol, credentials, privacy boundary, tests, and full configuration

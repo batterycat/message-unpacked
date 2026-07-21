@@ -7,13 +7,8 @@ bindings = [
   { name = "ROOM", class_name = "ClassroomRoomV2" }
 ]
 
-# Preserve the prototype migration in case it was deployed. Durable Object
-# storage backends are immutable, so the production room implementation uses a
-# new SQLite-backed class rather than rewriting v1.
-[[migrations]]
-tag = "v1"
-new_classes = ["ClassroomRoom"]
-
+# This Worker has never shipped the prototype KV-backed class. New namespaces
+# must use SQLite, including first deployments on Workers Free.
 [[migrations]]
 tag = "v2"
 new_sqlite_classes = ["ClassroomRoomV2"]

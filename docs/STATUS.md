@@ -50,9 +50,10 @@ Updated: 2026-07-20
   honestly and links to the Chinese cases.
 - Accounts, rosters, individual student history, ranking, gradebooks, and
   identity-based classroom analytics.
-- Production operations for the public classroom demonstration, including
-  Cloudflare account setup, abuse monitoring, incident response, and capacity
-  monitoring. Remote deployment remains a deliberate operator action.
+- Production-grade operations for the public classroom demonstration,
+  including abuse monitoring, incident response, and capacity monitoring. The
+  initial maintainer demo is deployed, but remote updates remain a deliberate
+  operator action and the service has no availability commitment.
 - Alternate school-operated room-service adapters.
 - Uploading or automatically judging real messages.
 - Multi-step branching conversations and evidence inventories.

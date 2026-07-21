@@ -134,6 +134,24 @@ Before any remote deployment, the operator must:
    configuration and namespace IDs;
 6. deploy manually from an authenticated operator session.
 
+For a first deployment, the checked-in migration creates only the
+SQLite-backed `ClassroomRoomV2` namespace. Do not add a legacy `new_classes`
+migration: Cloudflare no longer permits new KV-backed Durable Object
+namespaces, and doing so also prevents a Workers Free deployment.
+
+Example deployment for a GitHub Pages project owned by `example`:
+
+```bash
+pnpm exec wrangler deploy --config workers/wrangler.toml \
+  --var LIVE_ROOMS_ENABLED:true \
+  --var ALLOWED_ORIGINS:https://example.github.io
+```
+
+The frontend's `PUBLIC_ROOM_SERVICE_URL` is a public build-time URL, not a
+secret. Store it as a GitHub Actions repository variable. Cloudflare API tokens
+are required only for an operator-controlled automated Worker deployment and
+must never be exposed to the browser build.
+
 On the Free plan, exhausted free allocation can make room operations fail until
 the applicable limit resets. It must not be worked around by automatic paid
 upgrade. The static learning site remains available independently.
