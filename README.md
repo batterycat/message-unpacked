@@ -62,6 +62,31 @@ pnpm build:subpath
 pnpm check:subpath
 ```
 
+## How Codex and GPT-5.6 were used
+
+This project was built with OpenAI Codex as the development harness, using
+GPT-5.6 in three roles:
+
+- **GPT-5.6 sol** — ideation and architecture. Framing the teaching problem,
+  deciding the static-first split between the offline learning core and the
+  optional live classroom service, and shaping the case schema.
+- **GPT-5.6 terra** and **GPT-5.6 luna** — implementation against those
+  decisions. Components, schemas, tests, documentation, localization checks,
+  and repeated code review.
+
+The division was deliberate. Educational principles, security boundaries,
+content policy, age-appropriateness, and every published case were decided and
+reviewed by a human. The models accelerated implementation and surfaced
+inconsistencies; they did not decide what the project should teach, which
+scenarios are appropriate for which age group, or whether a cited source
+supports the claim made from it.
+
+Automated editorial rules in `pnpm validate:content` exist for the same reason
+— they encode review decisions so that neither a contributor nor a model can
+quietly drift away from them. See
+[CONTENT_AUTHORING.md](docs/CONTENT_AUTHORING.md) for the rules and the
+reasoning behind each one.
+
 ## Contribute
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md) and the project
