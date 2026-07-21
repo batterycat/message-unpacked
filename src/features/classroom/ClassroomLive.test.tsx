@@ -160,6 +160,7 @@ describe('ClassroomHost', () => {
     );
     expect(screen.getByRole('checkbox', { name: /測試案例/ })).toBeChecked();
     expect(screen.getByRole('button', { name: '建立短期教室' })).toBeEnabled();
+    expect(screen.queryByText(/免費額度用完/)).not.toBeInTheDocument();
   });
 
   it('uses duration-based recommendations that remain editable and reset on filter changes', async () => {

@@ -137,9 +137,9 @@
 
 .setup > .primaryButton {
   margin-top: 1rem;
+  width: 100%;
 }
 
-.demoReminder,
 .inlineError {
   color: var(--muted);
   font-size: 0.8rem;
