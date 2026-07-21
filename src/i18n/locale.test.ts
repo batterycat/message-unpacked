@@ -7,6 +7,8 @@ import {
   localeTeacherActivityPath,
   localePath,
   localeTeacherPath,
+  teacherGuidePrivacyUrl,
+  teacherGuideUrl,
 } from './locale';
 
 describe('localized application paths', () => {
@@ -43,5 +45,20 @@ describe('localized application paths', () => {
       '/message-unpacked/zh-TW/classroom/join/',
     );
     expect(localeTeacherActivityPath('en', '/')).toBe('/en/teacher/activity/');
+  });
+
+  it('maps each locale to its reviewed teacher guide', () => {
+    expect(teacherGuideUrl('zh-TW')).toBe(
+      'https://batterycat.gitbook.io/message-unpacked-docs/',
+    );
+    expect(teacherGuidePrivacyUrl('zh-TW')).toBe(
+      'https://batterycat.gitbook.io/message-unpacked-docs/shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu',
+    );
+    expect(teacherGuideUrl('en')).toBe(
+      'https://batterycat.gitbook.io/message-unpacked-docs/en/',
+    );
+    expect(teacherGuidePrivacyUrl('en')).toBe(
+      'https://batterycat.gitbook.io/message-unpacked-docs/en/scope-privacy-and-external-services',
+    );
   });
 });

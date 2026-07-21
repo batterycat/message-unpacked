@@ -11,7 +11,13 @@ import {
 } from '@phosphor-icons/react/ssr';
 
 import { loadResponseRegistry } from '../domain/resources/load';
-import { getCatalog, localePath, localeTeacherPath } from '../i18n/locale';
+import {
+  getCatalog,
+  localePath,
+  localeTeacherPath,
+  teacherGuidePrivacyUrl,
+  teacherGuideUrl,
+} from '../i18n/locale';
 import type { Locale } from '../i18n/catalogs';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ScenarioDemo } from './ScenarioDemo';
@@ -49,9 +55,9 @@ const scenarios = [
 const responseRegistry = await loadResponseRegistry(locale);
 const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
 const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`;
-const teacherGuideHref = 'https://batterycat.gitbook.io/message-unpacked-docs/';
+const teacherGuideHref = teacherGuideUrl(locale);
 const repositoryHref = 'https://github.com/batterycat/message-unpacked';
-const usagePrivacyHref = `${teacherGuideHref}shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu`;
+const usagePrivacyHref = teacherGuidePrivacyUrl(locale);
 ---
 
 <BaseLayout {catalog} {locale}>

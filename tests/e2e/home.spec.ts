@@ -338,6 +338,23 @@ test('English homepage offers three reviewed practice cases', async ({
   await expect(demo.getByRole('button', { name: 'Show clues' })).toBeVisible();
 });
 
+test('English teacher area links to the English guide and shows pilot scope', async ({
+  page,
+}) => {
+  await page.goto('/en/teacher/');
+
+  await expect(
+    page.getByRole('link', { name: 'Open the teacher guide' }),
+  ).toHaveAttribute(
+    'href',
+    'https://batterycat.gitbook.io/message-unpacked-docs/en/',
+  );
+  await expect(
+    page.getByText(/per-case sensitive-content labels/),
+  ).toBeVisible();
+  await expect(page.getByText(/grades 10–12 demo/)).toBeVisible();
+});
+
 for (const width of [1024, 1373]) {
   test(`English hero keeps both actions inside the hero at ${width}px`, async ({
     page,

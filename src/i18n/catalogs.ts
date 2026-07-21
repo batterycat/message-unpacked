@@ -29,7 +29,7 @@ const zhTW = {
       '在安全的情境中練習判讀簡訊、聊天與 Email。找出線索、選擇查證方式，也理解真實事件可能造成的影響。',
     start: '開始體驗',
     teacher: '教師快速開課',
-    note: '免登入・不收集學生資料・可靜態部署',
+    note: '免登入・靜態模式不傳送答案・可自行部署',
   },
   activityPage: {
     heading: '訊息判讀活動',
@@ -42,6 +42,7 @@ const zhTW = {
       '兩種模式都能先挑選年級、主題、時間與案例；依課堂是否需要學生手機即時回傳來選擇。',
     backHome: '回到首頁',
     teacherGuide: '開啟教師手冊',
+    pilotNotice: '英文展示版尚未提供逐題敏感內容標記，使用前請先審閱所有選題。',
   },
   learningPath: {
     title: '四步驟，建立判斷力',
@@ -137,7 +138,7 @@ const zhTW = {
     unconfiguredDescription: '這個網站目前沒有連接即時教室後端。',
     localeUnavailableLabel: '這個語言尚無可用的班級案例',
     localeUnavailableDescription:
-      '英文介面已就緒，但目前經過審核的案例只提供繁體中文，不會混用未審查翻譯。',
+      '這個版本尚未包含此語言的已審閱案例，不會混用未審查翻譯。',
     startHosting: '建立互動教室',
     joinRoom: '學生加入教室',
     switchToChinese: '切換到中文班級',
@@ -305,7 +306,7 @@ const zhTW = {
     },
     emptyTitle: '這個語言的題目還在準備中',
     emptyDescription:
-      '英文介面已經就緒；目前首批案例先以繁體中文發布，不會用未審查的機器翻譯代替。',
+      '這個版本尚未包含此語言的已審閱案例，不會用未審查的機器翻譯代替。',
     switchToChinese: '切換到中文題目',
     projectorMode: '教師投影模式',
     projectorDiscussionTitle: '全班先討論，再由教師揭曉',
@@ -364,7 +365,7 @@ const en: MessageCatalog = {
     switchLanguage: '繁體中文',
   },
   hero: {
-    eyebrow: 'Digital literacy for learners',
+    eyebrow: 'Grades 10–12 digital literacy demo',
     title: 'Every message deserves a closer look.',
     titleLineOne: 'Every message deserves',
     titleLineTwo: 'a closer look.',
@@ -372,7 +373,7 @@ const en: MessageCatalog = {
       'Practise evaluating texts, chats, and emails in a safe environment. Find the clues, choose how to verify, and understand the real-world impact.',
     start: 'Try an exercise',
     teacher: 'Quick class setup',
-    note: 'No account · No student data · Static deployment',
+    note: 'No account · Static activities send no answers · Self-hostable',
   },
   activityPage: {
     heading: 'Message assessment activity',
@@ -382,9 +383,11 @@ const en: MessageCatalog = {
     eyebrow: 'Teacher area',
     heading: 'Choose how this class will interact',
     description:
-      'Both paths let you choose the stage, topic, time, and cases first. Choose based on whether student phones need to send live responses.',
+      'This grades 10–12 demo lets you choose the topic, time, and cases first. Choose based on whether student phones need to send live responses.',
     backHome: 'Back to home',
     teacherGuide: 'Open the teacher guide',
+    pilotNotice:
+      'Pilot safety notice: per-case sensitive-content labels are not yet available. Preview every selected case before class.',
   },
   learningPath: {
     title: 'Build judgment in four steps',
@@ -400,7 +403,7 @@ const en: MessageCatalog = {
     guideLabel: 'Teacher resource',
     guideTitle: 'Teacher guide',
     guideDescription:
-      'Quick setup, projector facilitation, sensitive-content notes, and classroom scripts.',
+      'Quick setup, projector facilitation, a pilot safety notice, and classroom guidance.',
     guideAction: 'Open the guide',
     contributeLabel: 'Open collaboration',
     contributeTitle: 'Help maintain the project',
@@ -495,9 +498,9 @@ const en: MessageCatalog = {
     unconfiguredDescription:
       'This site is not currently connected to a live classroom backend.',
     localeUnavailableLabel:
-      'No reviewed English classroom cases are available in this build',
+      'No reviewed classroom cases are available in this language',
     localeUnavailableDescription:
-      'The interface is ready, but this build does not include reviewed English cases. Unreviewed translations are not mixed into a room.',
+      'This build has no reviewed cases for the selected language. Unreviewed translations are not mixed into a room.',
     startHosting: 'Start a live classroom',
     joinRoom: 'Join as a student',
     switchToChinese: 'Switch to Chinese classroom',
@@ -522,7 +525,7 @@ const en: MessageCatalog = {
     serviceUnconfigured:
       'This deployment does not have a classroom service configured. Use the backend-free static activity link instead.',
     localeUnavailable:
-      'Reviewed cases are not available in this language. Switch to the Traditional Chinese classroom flow.',
+      'Reviewed cases are not available in this language in this build.',
     switchToChinese: 'Switch to Chinese classroom',
     staticActivity: 'Open static activity',
   },
@@ -689,7 +692,7 @@ const en: MessageCatalog = {
     },
     emptyTitle: 'Cases in this language are in preparation',
     emptyDescription:
-      'This build does not include reviewed English cases. Unreviewed machine translations are not substituted for reviewed content.',
+      'This build has no reviewed cases for the selected language. Unreviewed machine translations are not substituted for reviewed content.',
     switchToChinese: 'Switch to Chinese cases',
     projectorMode: 'Teacher projector mode',
     projectorDiscussionTitle: 'Discuss as a class, then let the teacher reveal',

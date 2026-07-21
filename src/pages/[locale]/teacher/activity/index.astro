@@ -66,6 +66,13 @@ const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
         <p class="eyebrow">{catalog.teacherSetup.eyebrow}</p>
         <h1 id="static-setup-title">{catalog.staticActivityEntry.heading}</h1>
         <p>{catalog.staticActivityEntry.description}</p>
+        {
+          locale === 'en' && (
+            <p class="teacher-pilot-notice">
+              <strong>{catalog.teacherPage.pilotNotice}</strong>
+            </p>
+          )
+        }
       </div>
     </section>
     <section class="activity-page-stage">

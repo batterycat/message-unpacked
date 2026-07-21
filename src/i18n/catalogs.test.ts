@@ -42,12 +42,10 @@ describe('interface catalogs', () => {
     }
   });
 
-  it('does not publish Chinese case copy as an English placeholder', () => {
-    expect(catalogs.en.demo.emptyDescription).toContain(
-      'reviewed English cases',
-    );
+  it('does not silently substitute unreviewed case translations', () => {
+    expect(catalogs.en.demo.emptyDescription).toContain('no reviewed cases');
     expect(catalogs.en.classroomEntry.localeUnavailableDescription).toContain(
-      'reviewed English cases',
+      'no reviewed cases',
     );
   });
 

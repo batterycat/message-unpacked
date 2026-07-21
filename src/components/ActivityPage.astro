@@ -9,6 +9,8 @@ import {
   localeActivityPath,
   localePath,
   localeTeacherPath,
+  teacherGuidePrivacyUrl,
+  teacherGuideUrl,
 } from '../i18n/locale';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ScenarioDemo } from './ScenarioDemo';
@@ -27,8 +29,8 @@ const scenarios = caseEntries
   .map((entry) => entry.data)
   .sort((left, right) => left.id.localeCompare(right.id));
 const responseRegistry = await loadResponseRegistry(locale);
-const teacherGuideHref = 'https://batterycat.gitbook.io/message-unpacked-docs/';
-const usagePrivacyHref = `${teacherGuideHref}shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu`;
+const teacherGuideHref = teacherGuideUrl(locale);
+const usagePrivacyHref = teacherGuidePrivacyUrl(locale);
 const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
 ---
 

@@ -289,6 +289,14 @@ a {
   margin: 0;
 }
 
+.teacher-pilot-notice {
+  border-left: 0.25rem solid var(--coral);
+  color: var(--brand-deep);
+  margin-top: 0.75rem;
+  max-width: 62rem;
+  padding-left: 0.75rem;
+}
+
 .teacher-page-links {
   align-items: center;
   display: flex;

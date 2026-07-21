@@ -13,6 +13,8 @@ import {
   localeTeacherActivityPath,
   localeTeacherPath,
   getCatalog,
+  teacherGuidePrivacyUrl,
+  teacherGuideUrl,
 } from '../i18n/locale';
 import { ClassroomEntry } from '../features/classroom/ClassroomEntry';
 import { StaticActivityEntry } from '../features/classroom/StaticActivityEntry';
@@ -25,8 +27,8 @@ interface Props {
 
 const { locale } = Astro.props;
 const catalog = getCatalog(locale);
-const teacherGuideHref = 'https://batterycat.gitbook.io/message-unpacked-docs/';
-const usagePrivacyHref = `${teacherGuideHref}shi-yong-fan-wei-yin-si-yu-wai-bu-fu-wu`;
+const teacherGuideHref = teacherGuideUrl(locale);
+const usagePrivacyHref = teacherGuidePrivacyUrl(locale);
 const caseEntries = await getCollection(
   'cases',
   ({ data }) => data.status === 'published' && data.locale === locale,
@@ -69,6 +71,13 @@ const isRoomServiceConfigured =
         <p class="eyebrow">{catalog.teacherPage.eyebrow}</p>
         <h1 id="teacher-page-title">{catalog.teacherPage.heading}</h1>
         <p>{catalog.teacherPage.description}</p>
+        {
+          locale === 'en' && (
+            <p class="teacher-pilot-notice">
+              <strong>{catalog.teacherPage.pilotNotice}</strong>
+            </p>
+          )
+        }
       </div>
       <div class="teacher-page-links">
         <a
