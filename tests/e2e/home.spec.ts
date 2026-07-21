@@ -203,6 +203,39 @@ test('Teacher can create and launch a projector activity', async ({ page }) => {
   expect(setupFormBox).not.toBeNull();
   expect(casePickerBox).not.toBeNull();
   expect(casePickerBox!.width).toBeGreaterThan(setupFormBox!.width * 0.9);
+  const setupTypography = await setupForm.evaluate((element) => {
+    const heading = element.querySelector('h2');
+    const fieldLabel = element.querySelector(':scope > label > span');
+    const select = element.querySelector('select');
+    const pickerLegend = element.querySelector('fieldset:last-of-type legend');
+    const caseTitle = element.querySelector(
+      'fieldset:last-of-type label strong',
+    );
+    return {
+      caseTitleColor: caseTitle ? getComputedStyle(caseTitle).color : null,
+      caseTitleSize: caseTitle ? getComputedStyle(caseTitle).fontSize : null,
+      fieldLabelColor: fieldLabel ? getComputedStyle(fieldLabel).color : null,
+      fieldLabelSize: fieldLabel ? getComputedStyle(fieldLabel).fontSize : null,
+      headingSize: heading ? getComputedStyle(heading).fontSize : null,
+      pickerLegendColor: pickerLegend
+        ? getComputedStyle(pickerLegend).color
+        : null,
+      pickerLegendSize: pickerLegend
+        ? getComputedStyle(pickerLegend).fontSize
+        : null,
+      selectSize: select ? getComputedStyle(select).fontSize : null,
+    };
+  });
+  expect(setupTypography).toEqual({
+    caseTitleColor: 'rgb(21, 50, 70)',
+    caseTitleSize: '16px',
+    fieldLabelColor: 'rgb(21, 50, 70)',
+    fieldLabelSize: '12.8px',
+    headingSize: '24px',
+    pickerLegendColor: 'rgb(6, 67, 93)',
+    pickerLegendSize: '16px',
+    selectSize: '16px',
+  });
   const stageSelect = teacherSetup.getByRole('combobox', {
     name: '學習階段',
     exact: true,
