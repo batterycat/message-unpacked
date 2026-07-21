@@ -315,18 +315,77 @@ test('Stale teacher activity link offers a safe recovery path', async ({
   ).toHaveAttribute('href', './#demo');
 });
 
-test('English interface reports unavailable case translations honestly', async ({
+test('English activity uses reviewed English cases without a Chinese fallback', async ({
   page,
 }) => {
   await page.goto('/en/activity/');
   await expect(
-    page.getByRole('heading', {
-      name: 'Cases in this language are in preparation',
-    }),
+    page.getByRole('heading', { name: 'How would you assess it?' }),
   ).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Show clues' })).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Switch to Chinese cases' }),
-  ).toHaveAttribute('href', '/zh-TW/activity/#demo');
+    page.getByText('Cases in this language are in preparation'),
+  ).toHaveCount(0);
+});
+
+test('English homepage offers three reviewed practice cases', async ({
+  page,
+}) => {
+  await page.goto('/en/');
+  const demo = page.locator('#demo');
+  await waitForHydration(page, '#demo');
+  await expect(demo).toContainText('01／03');
+  await expect(demo.getByRole('button', { name: 'Show clues' })).toBeVisible();
+});
+
+for (const width of [1024, 1373]) {
+  test(`English hero keeps both actions inside the hero at ${width}px`, async ({
+    page,
+  }) => {
+    const browserErrors: string[] = [];
+    page.on('pageerror', (error) => browserErrors.push(error.message));
+    page.on('console', (message) => {
+      if (message.type() === 'error') browserErrors.push(message.text());
+    });
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto('/en/');
+
+    const hero = page.locator('.hero');
+    const title = hero.getByRole('heading', {
+      level: 1,
+      name: 'Every message deserves a closer look.',
+    });
+    const actions = hero.locator('.hero-actions');
+    await expect(title).toBeVisible();
+    await expect(
+      actions.getByRole('link', { name: 'Try an exercise' }),
+    ).toBeVisible();
+    await expect(
+      actions.getByRole('link', { name: 'Quick class setup' }),
+    ).toBeVisible();
+
+    const [heroBox, titleBox, actionsBox] = await Promise.all([
+      hero.boundingBox(),
+      title.boundingBox(),
+      actions.boundingBox(),
+    ]);
+    expect(heroBox).not.toBeNull();
+    expect(titleBox).not.toBeNull();
+    expect(actionsBox).not.toBeNull();
+    expect(titleBox!.y + titleBox!.height).toBeLessThanOrEqual(actionsBox!.y);
+    expect(actionsBox!.y + actionsBox!.height).toBeLessThanOrEqual(
+      heroBox!.y + heroBox!.height,
+    );
+    expect(browserErrors).toEqual([]);
+  });
+}
+
+test('Traditional Chinese desktop hero keeps its established fixed height', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1373, height: 800 });
+  await page.goto('/zh-TW/');
+  await expect(page.locator('.hero')).toHaveCSS('height', '400px');
 });
 
 test('Teacher setup remains visible at the 320px mobile boundary', async ({

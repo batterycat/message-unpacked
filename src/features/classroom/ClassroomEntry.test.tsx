@@ -52,7 +52,7 @@ describe('ClassroomEntry', () => {
     expect(screen.getByText(/靜態活動連結仍可正常使用/)).toBeInTheDocument();
   });
 
-  it('directs English teachers to reviewed Chinese cases', () => {
+  it('offers a locale fallback when a build has no reviewed English cases', () => {
     render(
       <ClassroomEntry
         catalog={getCatalog('en')}
@@ -65,7 +65,9 @@ describe('ClassroomEntry', () => {
     );
 
     expect(
-      screen.getByText('Reviewed classroom cases are not available in English'),
+      screen.getByText(
+        'No reviewed English classroom cases are available in this build',
+      ),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('link', { name: 'Switch to Chinese classroom' }),

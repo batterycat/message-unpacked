@@ -495,9 +495,9 @@ const en: MessageCatalog = {
     unconfiguredDescription:
       'This site is not currently connected to a live classroom backend.',
     localeUnavailableLabel:
-      'Reviewed classroom cases are not available in English',
+      'No reviewed English classroom cases are available in this build',
     localeUnavailableDescription:
-      'The English interface is ready, but reviewed cases are currently available only in Traditional Chinese. Unreviewed translations are not mixed into a room.',
+      'The interface is ready, but this build does not include reviewed English cases. Unreviewed translations are not mixed into a room.',
     startHosting: 'Start a live classroom',
     joinRoom: 'Join as a student',
     switchToChinese: 'Switch to Chinese classroom',
@@ -689,7 +689,7 @@ const en: MessageCatalog = {
     },
     emptyTitle: 'Cases in this language are in preparation',
     emptyDescription:
-      'The English interface is ready. Initial cases are published in Traditional Chinese, without substituting unreviewed machine translations.',
+      'This build does not include reviewed English cases. Unreviewed machine translations are not substituted for reviewed content.',
     switchToChinese: 'Switch to Chinese cases',
     projectorMode: 'Teacher projector mode',
     projectorDiscussionTitle: 'Discuss as a class, then let the teacher reveal',

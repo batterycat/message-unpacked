@@ -34,11 +34,18 @@ const homepageScenarioGroups = [
   'dm-friend-crisis',
   'bank-security-call',
 ];
-const scenarios = homepageScenarioGroups.flatMap((translationGroupId) =>
+const curatedScenarios = homepageScenarioGroups.flatMap((translationGroupId) =>
   allScenarios.filter(
     (scenario) => scenario.translationGroupId === translationGroupId,
   ),
 );
+const curatedScenarioIds = new Set(
+  curatedScenarios.map((scenario) => scenario.id),
+);
+const scenarios = [
+  ...curatedScenarios,
+  ...allScenarios.filter((scenario) => !curatedScenarioIds.has(scenario.id)),
+].slice(0, homepageScenarioGroups.length);
 const responseRegistry = await loadResponseRegistry(locale);
 const alternateLocale: Locale = locale === 'zh-TW' ? 'en' : 'zh-TW';
 const heroImagePath = `${import.meta.env.BASE_URL}assets/hero-message-check.png`;
