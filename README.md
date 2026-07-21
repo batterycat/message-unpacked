@@ -19,25 +19,25 @@ account, roster, backend, or student-data collection.
 
 ## What is included
 
-- 72 reviewed Traditional Chinese cases across Taiwan's five learning stages.
-- A 25-case English demo for grades 10–12 with US-localized official
-  references; broader use still needs review by local educators.
-- SMS, chat, and email presentations with trustworthy, fraud, and
-  insufficient-evidence exercises.
-- Student self-paced and teacher projector-led static modes.
-- Separate teacher entry paths with shared 10/20/30-minute recommendations and
-  an editable case list before starting either mode.
-- Optional live-classroom clicker mode with an ephemeral Durable Objects
-  reference backend; student phones show only the question number and choices.
-- Versioned activity links and browser-generated QR codes.
-- Score explanations, final learning summaries, real-case provenance, and
-  qualified impact information.
-- Localized official verification resources after each debrief.
-- Complete Traditional Chinese and English interface catalogs; the grades
-  10–12 English demo is available and can expand independently.
+- **97 reviewed cases** — 72 Traditional Chinese across Taiwan's five learning
+  stages, plus a 25-case English demo for grades 10–12 with US-localized
+  official references. Broader English use still needs local educator review.
+- **Three verdicts per case** — trustworthy, fraud, and insufficient-evidence,
+  presented as SMS, chat, or email. The third is the point: students practise
+  recognizing when they cannot yet tell, instead of labelling everything a scam.
+- **Two teaching modes** — static student and projector-led activities that
+  need no backend, plus an optional live-classroom clicker mode where student
+  phones show only the question number and choices.
+- **Teacher control before starting** — learning stage, topic, 10/20/30-minute
+  length, and an editable case list, shared by both modes.
+- **Versioned activity links and browser-generated QR codes**, with no account,
+  roster, or student-data collection.
+- **Debriefs with provenance** — score explanations, red-flag breakdowns,
+  qualified real-case impact figures, and localized official verification
+  resources.
 
-The current product contract is in [PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md). The
-code and data boundaries are in [ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Product contract: [PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md). Code and data
+boundaries: [ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Run locally
 
@@ -63,28 +63,36 @@ Then start the site in another terminal:
 PUBLIC_ROOM_SERVICE_URL=http://127.0.0.1:8787 pnpm dev
 ```
 
-Before opening a pull request:
+**No sample data or seeding is required.** The full case library ships in the
+repository as YAML under `content/cases/` and is validated and bundled at build
+time. There is no database, no API key, and no account to create.
+
+## How to test it
 
 ```bash
-pnpm format:check
-pnpm lint
-pnpm typecheck
-pnpm worker:typecheck
-pnpm schema:check
-pnpm validate:content
-pnpm test
-pnpm test:worker
-pnpm license:check
-pnpm build
-pnpm test:e2e
-pnpm build:subpath
-pnpm check:subpath
+pnpm check     # everything below, in one command
 ```
+
+Individually, the checks that matter most here:
+
+| Command                 | What it proves                                                                                                                                                   |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm validate:content` | Every case parses, and passes the editorial rules — score bands, classification consistency, coverage, sensitive-content flags, and required response resources. |
+| `pnpm test`             | Unit and component behaviour, including the scoring and activity-link contracts.                                                                                 |
+| `pnpm test:worker`      | The live-room protocol against a real Workers runtime — role separation, ticket validation, and room expiry.                                                     |
+| `pnpm test:e2e`         | Full flows in a browser. Needs `pnpm exec playwright install` first, so it is excluded from `pnpm check`.                                                        |
+| `pnpm test:a11y`        | Automated accessibility checks on representative pages.                                                                                                          |
+
+`pnpm validate:content` is the unusual one. Content correctness is the main
+risk in this project, so editorial decisions are enforced in CI rather than
+left to review memory — see
+[CONTENT_AUTHORING.md](docs/CONTENT_AUTHORING.md).
 
 ## How Codex and GPT-5.6 were used
 
-This project was built with OpenAI Codex as the development environment, using
-GPT-5.6 model variants in complementary roles:
+**No model runs in the product.** This is a static site with no inference, no
+API key, and no AI dependency at runtime. Codex and GPT-5.6 were the
+development environment, used in two roles:
 
 - **GPT-5.6 sol** — ideation and architecture. Framing the teaching problem,
   deciding the static-first split between the backend-free learning core and
@@ -92,18 +100,36 @@ GPT-5.6 model variants in complementary roles:
 - **GPT-5.6 terra** — implementation against those decisions: components,
   schemas, tests, documentation, localization checks, and repeated code review.
 
-The division was deliberate. Educational principles, security boundaries,
-content policy, age-appropriateness, and every published case were decided and
-reviewed by a human. The models accelerated implementation and surfaced
-inconsistencies; they did not decide what the project should teach, which
-scenarios are appropriate for which age group, or whether a cited source
-supports the claim made from it.
+### Where Codex accelerated the work
 
-Automated editorial rules in `pnpm validate:content` exist for the same reason
-— they encode review decisions so that neither a contributor nor a model can
-quietly drift away from them. See
-[CONTENT_AUTHORING.md](docs/CONTENT_AUTHORING.md) for the rules and the
-reasoning behind each one.
+Most of the speedup was in work that is mechanical but easy to get wrong at
+scale — generating the JSON Schema from the Zod contract, keeping two locale
+catalogs in sync, writing the Durable Object tests, and sweeping 97 YAML files
+for a rule change. A calibration pass that retuned score bands across the
+whole library took an afternoon instead of a week.
+
+It was also useful as an adversarial reader. Asking it to argue against a case
+surfaced problems a single author misses: options that punished a correct
+verdict, "trustworthy" signals a scammer could copy verbatim, and one bulk
+find-and-replace that silently corrupted a cited police headline.
+
+### Where the human decided
+
+Every call that determines what a student learns was made and reviewed by a
+person, and the reasoning is written down rather than asserted:
+
+- what counts as a decisive red flag, and when a case is genuinely ambiguous —
+  [CONTENT_AUTHORING.md](docs/CONTENT_AUTHORING.md)
+- what each score band means, so partial disclosure never outscores caution
+- which scenarios suit which age group, and which need a trusted adult present
+- whether a cited source actually supports the claim made from it; each
+  documented case was re-opened at its URL and checked line by line
+- what not to build — no accounts, no rankings, no behavioural profiles, no
+  persistent classroom history
+
+The editorial rules in `pnpm validate:content` exist to hold those decisions in
+place, so that neither a future contributor nor a model can quietly drift away
+from them.
 
 ## Contribute
 
