@@ -63,8 +63,9 @@ student's intelligence, character, or worth.
   `anti-fraud.online-report` and `anti-fraud.consult`.
 - Trusted-adult metadata is a mandatory part of editorial review. The reviewed
   Traditional Chinese library also requires controlled sensitive-content
-  warnings; the grades 10–12 English demo currently leaves those warnings empty
-  and must not present them as reviewed guidance for teachers.
+  warnings. The grades 10–12 English pilot currently leaves per-case warnings
+  empty, so its teacher area and English guide provide a blanket pilot warning
+  and require teachers to preview every selected case.
 
 See [CONTENT_AUTHORING.md](CONTENT_AUTHORING.md),
 [CASE_REVIEW_CHECKLIST.md](CASE_REVIEW_CHECKLIST.md), and the project

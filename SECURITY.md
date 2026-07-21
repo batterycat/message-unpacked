@@ -14,15 +14,15 @@ reviewed main-branch revision.
 
 ## Reporting a vulnerability
 
-Private vulnerability reporting is a launch requirement but is not yet enabled
-for this repository. Do not open a public issue containing an active exploit,
-malicious URL, student information, credentials, threats, or other sensitive
-data.
+Use GitHub's
+[private vulnerability report form](https://github.com/batterycat/message-unpacked/security/advisories/new)
+for an active exploit, malicious URL, student information, credentials,
+threats, or other sensitive data. Do not put those details in a public issue.
 
-Non-sensitive hardening suggestions may use a regular issue. For a sensitive
-report, open only a brief issue asking the maintainer to confirm a private
-contact; do not include the vulnerability itself. This section will link the
-GitHub private-report form after an administrator enables it.
+If GitHub does not show the private report form, do not publish the details.
+Open only a brief, non-sensitive issue asking the maintainer to verify the
+private-report setting. Non-sensitive hardening suggestions may use a regular
+issue.
 
 A useful report includes:
 

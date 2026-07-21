@@ -21,7 +21,7 @@
 自主練習與純靜態投影的作答與活動進度只存在目前的瀏覽器頁面，沒有由本專案
 營運的作答資料庫或班級分析服務。
 
-## 班級即時互動的資料
+## 即時班級互動的資料
 
 網站有設定可選的 room 服務時，學生分頁會取得一個隨機參與憑證。後端只保存
 憑證摘要與目前這一題的答案，不收姓名、座號、Email、名單或學校帳號。作答中
@@ -40,6 +40,11 @@
 - [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)
 - [GitBook Privacy Statement](https://gitbook.com/docs/policies/privacy-and-security/statement)
 - [GitBook Cookie 說明](https://gitbook.com/docs/policies/privacy-and-security/statement/cookies)
+
+GitBook 的搜尋、AI 助理或頁面評分功能，可能另外把讀者輸入的查詢、提示或
+評分送到 GitBook。不要在這些控制項輸入真實訊息、個人資料、憑證或可疑網址。
+本專案建議先關閉選用的 AI 助理與頁面評分，除非已另外確認課堂用途並更新
+隱私說明。
 
 可選的參考 room 服務使用 Cloudflare Workers 與 Durable Objects：
 
@@ -63,4 +68,4 @@ Cloudflare 依其政策處理。
 證據、告訴可信任的大人，並使用當下適合的正式管道。不要把教學題目的解析當成
 緊急服務或個案法律判斷。
 
-最後查核：2026-07-20。
+最後查核：2026-07-21。

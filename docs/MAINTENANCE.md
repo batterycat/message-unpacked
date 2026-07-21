@@ -4,7 +4,8 @@
 手冊的來源分工如下：
 
 - 程式碼、案例 YAML、測試與治理文件以 repository 為準。
-- `docs/teacher-guide/` 是 GitBook 同步來源；GitBook 是教師閱讀介面。
+- `docs/teacher-guide/` 與 `docs/teacher-guide-en/` 分別是繁體中文與英文
+  GitBook 同步來源；GitBook 是教師閱讀介面。
 - `docs/THIRD_PARTY_RESOURCES.md` 是外部軟體、來源、媒體與服務的登錄簿。
 - `CONSTITUTION.md` 是所有內容與程式變更的不可違反規則。
 
@@ -17,8 +18,9 @@
    review date。
 3. 執行 `pnpm schema:check`、`pnpm validate:content`、`pnpm test`，並在
    PR 描述中列出來源、授權與敏感內容處理。
-4. 至少由一位熟悉國中教學現場的人員檢查措辭、難度、非羞辱性與討論引導；
-   真實事件的數字與來源另外核對。
+4. 至少由一位熟悉目標學習階段教學現場的人員檢查措辭、難度、非羞辱性與
+   討論引導；英文案例另需完成美國在地化與英文教學用語審閱，真實事件的
+   數字與來源另外核對。
 5. 合併前確認案例狀態為 `published`、外部資源已登錄，且沒有把來源原文
    或圖片誤當成 CC BY-SA 內容。
 
@@ -35,17 +37,31 @@
 
 ## GitBook 與靜態網站發布
 
+GitBook 採兩份人工審閱來源，不使用自動翻譯覆蓋內容：
+
+- 繁體中文 Space 連接同一個 repository 的 `docs/teacher-guide/`。
+- 英文 Space 連接同一個 repository 的 `docs/teacher-guide-en/`。
+- 在同一個 Docs site 的 **Structure / Variants** 加入英文 variant，路徑設為
+  `en`，並把英文 Space 指派給它；公開網址因此為
+  `https://batterycat.gitbook.io/message-unpacked-docs/en/`。
+- Site 名稱使用「Message, Unpacked. 教師手冊」，英文 variant 顯示
+  「Message, Unpacked. Teacher Guide」。
+- Privacy policy URL 指向各語系的「使用範圍、隱私與外部服務」頁；選用的
+  AI 助理與頁面評分先保持關閉。
+
 1. 在 local 完成檢查後建立有意義的 commit。
 2. 推送 `main` 後確認 GitHub Pages 的 `Deploy GitHub Pages` workflow 成功。
-3. 確認 GitBook connector 已同步 `docs/teacher-guide/`，再用教師快速開課、
-   學生自主練習與教師投影模式各走一次 smoke test。
-4. 若文件來源與 GitBook 畫面不一致，以 repository 內容修正後重新同步；
+3. 確認 GitBook connector 已同步 `docs/teacher-guide/` 與
+   `docs/teacher-guide-en/`，兩個語系的導覽與切換連結都正確。
+4. 以繁體中文跑一次學生自主練習、教師投影與即時班級互動；以英文 10–12
+   年級展示題跑一次靜態活動與即時班級互動，確認課前警示與隱私連結可見。
+5. 若文件來源與 GitBook 畫面不一致，以 repository 內容修正後重新同步；
    不直接在 GitBook 編輯而讓來源分叉。
 
 ## 漏洞回報與公開前檢查
 
 - Repository administrator 必須啟用 GitHub Private vulnerability reporting；
-  啟用後把正式私人表單連結寫入 `SECURITY.md`，每次發布前再確認仍可使用。
+  每次發布前開啟 `SECURITY.md` 的正式私人表單連結，確認仍可使用。
 - 不接受公開 Issue 中的敏感漏洞、有效惡意網址、學生資料、憑證或可利用
   步驟；一律改用私人通報管道。
 - 公開前再次檢查 `SECURITY.md`、`CONSTITUTION.md`、授權檔案與第三方登錄簿，

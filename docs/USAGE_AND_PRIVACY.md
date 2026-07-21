@@ -56,6 +56,12 @@ service logs under their own policies:
 - [GitBook Privacy Statement](https://gitbook.com/docs/policies/privacy-and-security/statement)
 - [GitBook cookie information](https://gitbook.com/docs/policies/privacy-and-security/statement/cookies)
 
+GitBook search, an AI assistant, or page-rating features may additionally send
+the query, prompt, or rating entered by a reader to GitBook. Do not enter real
+messages, personal data, credentials, or suspicious links into those controls.
+The project recommends leaving optional AI-assistant and page-rating features
+disabled unless their classroom purpose and privacy notice have been reviewed.
+
 The optional reference classroom service runs on Cloudflare Workers and Durable
 Objects. Cloudflare may process basic network and service metadata under its
 own policies:
@@ -88,6 +94,6 @@ emergency service or case-specific legal determination.
 
 ## Updates
 
-This notice was reviewed on 2026-07-20. Material changes to hosting, data flow,
+This notice was reviewed on 2026-07-21. Material changes to hosting, data flow,
 classroom synchronization, or third-party services require an update to this
 notice, the project constitution, and the third-party resource register.

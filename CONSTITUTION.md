@@ -50,7 +50,11 @@ override these rules.
 - Do not use humiliation, victim-blaming, deceptive consent, forced urgency, or
   emotionally manipulative surprise as a teaching device.
 - Sensitive situations must carry content warnings and trusted-adult guidance
-  appropriate to the learning stage.
+  appropriate to the learning stage. A narrowly scoped pilot that has not
+  completed per-case sensitive-content review may publish only with a prominent
+  teacher-facing blanket warning, mandatory teacher preview guidance, and an
+  explicit statement that per-case warnings are unavailable. It must not be
+  presented as fully reviewed teacher guidance.
 
 ## 4. Educational Quality
 

@@ -34,8 +34,10 @@ Updated: 2026-07-21
   Traditional-Chinese sensitive-content vocabulary, trusted-adult flags,
   high-school legal content, fixed response-resource IDs, classification
   balance, and per-topic coverage.
-- Public GitBook teacher guide with quick setup, facilitation scripts, mode
-  guidance, local response resources, and a first-use testing checklist.
+- Public Traditional Chinese GitBook teacher guide with quick setup,
+  facilitation scripts, mode guidance, local response resources, and a
+  first-use testing checklist. A separately maintained English guide covers the
+  grades 10–12 US-localized pilot and its blanket safety notice.
 - Topic and learning-stage coverage inventory in
   `docs/CONTENT_COVERAGE.md`, with a test guard for the current topic minimum.
 - Optional live-classroom mode with separate teacher and student routes,
@@ -52,7 +54,7 @@ Updated: 2026-07-21
 
 - Broad English coverage comparable to the Traditional Chinese library; the
   current English release is a reviewed grades 10–12 demo rather than full
-  parity, and it does not yet provide teacher-facing sensitive-content warnings.
+  parity, and it does not yet provide per-case sensitive-content warnings.
 - Accounts, rosters, individual student history, ranking, gradebooks, and
   identity-based classroom analytics.
 - Production-grade operations for the public classroom demonstration,
@@ -66,8 +68,9 @@ Updated: 2026-07-21
 
 ## External decisions or review still needed
 
-- Enable GitHub private vulnerability reporting; the current CLI token and
-  available browser session do not have repository-settings access.
+- Enable GitHub private vulnerability reporting from repository **Settings →
+  Security → Advanced Security**, then confirm the form linked from
+  `SECURITY.md` opens without exposing report details publicly.
 - Add the public demo, description, and topics to GitHub About and disable the
   unused Wiki from an administrator session.
 - Protect `main` with the `verify` status check while allowing the sole
@@ -78,7 +81,8 @@ Updated: 2026-07-21
 - Complete VoiceOver and NVDA smoke tests on representative school devices.
 - Continue educator and localization review as the English pilot expands,
   especially before adding non-US response resources.
-- Optionally choose a branded GitBook custom domain; the first guide is
-  published at the connected workspace URL.
-- Configure the GitBook privacy-policy URL and decide whether its AI assistant
-  and page-rating features should remain enabled.
+- Connect `docs/teacher-guide-en/` as the English GitBook variant, and
+  optionally choose a branded custom domain.
+- Configure the GitBook privacy-policy URL. Keep its optional AI assistant and
+  page-rating features disabled until their classroom purpose and privacy
+  notice are separately reviewed.

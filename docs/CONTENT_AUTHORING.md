@@ -154,10 +154,11 @@ should be introduced with the teacher already knowing it is there.
 If `debrief` tells the reader to involve a parent or teacher, then
 `trustedAdultRecommended` must be `true`. The two drifted apart once already.
 
-The grades 10–12 English demo currently leaves `sensitiveContent` empty. It is
-display-only pilot content and does not claim to provide reviewed
-teacher-facing sensitive-content warnings. Do not add an English warning tag
-until its wording and classroom use have received a separate editorial review.
+The grades 10–12 English demo currently leaves `sensitiveContent` empty. Its
+teacher area and English guide therefore use a blanket pilot warning and
+require teachers to preview every selected case. This is not a reviewed English
+per-case taxonomy. Do not add an English warning tag until its wording and
+classroom use have received a separate editorial review.
 
 ## The `law` dimension
 

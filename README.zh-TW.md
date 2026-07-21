@@ -65,7 +65,7 @@ pnpm check:subpath
 
 所有外部套件、來源、引文、資料集、Action 或媒體素材，都必須先登錄於
 [第三方資源清冊](docs/THIRD_PARTY_RESOURCES.md)。安全問題請依
-[SECURITY.md](SECURITY.md)私下通報；社群互動遵循
+[SECURITY.md](SECURITY.md)使用 GitHub 私人漏洞表單通報；社群互動遵循
 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)。
 
 ## 部署與使用範圍
@@ -79,5 +79,5 @@ pnpm check:subpath
 ## 授權
 
 - 程式碼：[Apache-2.0](LICENSE)
-- 原創教育內容：[CC BY-SA 4.0](LICENSE-CONTENT.md)
+- 原創教育內容：[CC BY-SA 4.0](CONTENT-LICENSE.md)
 - 外部資源：依各自條款，並記錄於第三方資源清冊

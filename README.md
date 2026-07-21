@@ -8,8 +8,8 @@ acting. Teachers can create a focused activity link or QR code without an
 account, roster, backend, or student-data collection.
 
 [Try the public site](https://batterycat.github.io/message-unpacked/) ·
-[Open the teacher guide](https://batterycat.gitbook.io/message-unpacked-docs/) ·
-[Set up a class](https://batterycat.github.io/message-unpacked/zh-TW/teacher/)
+[Open the English teacher guide](https://batterycat.gitbook.io/message-unpacked-docs/en/) ·
+[Set up a class](https://batterycat.github.io/message-unpacked/en/teacher/)
 
 ![Message, Unpacked. learning experience](public/assets/hero-message-check.png)
 
@@ -88,5 +88,5 @@ the full [deployment guide](docs/DEPLOYMENT.md), and
 ## License
 
 - Source code: [Apache-2.0](LICENSE)
-- Original educational content: [CC BY-SA 4.0](LICENSE-CONTENT.md)
+- Original educational content: [CC BY-SA 4.0](CONTENT-LICENSE.md)
 - External resources: their own terms, recorded in the third-party register
