@@ -98,6 +98,31 @@
   margin-top: 0.25rem;
 }
 
+.options .safetyNotes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.options .safetyNotes > span {
+  background: #fff3e7;
+  border: 1px solid #edc99f;
+  border-radius: 99px;
+  color: #784514;
+  display: inline-flex;
+  font-size: 0.67rem;
+  font-weight: 750;
+  line-height: 1.35;
+  padding: 0.25rem 0.45rem;
+}
+
+.options .safetyNotes > span[data-guidance='trusted-adult'] {
+  background: #eef2ff;
+  border-color: #bec8ec;
+  color: #37477d;
+}
+
 .options b {
   background: #d8eee8;
   border-radius: 99px;

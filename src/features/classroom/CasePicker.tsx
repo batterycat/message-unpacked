@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 import type { ActivityCaseCandidate } from '../../domain/activity/config';
 import type { ScenarioCase } from '../../domain/cases/schema';
 import type { MessageCatalog } from '../../i18n/catalogs';
@@ -14,7 +16,13 @@ type CasePickerProps = {
 };
 
 export type CasePickerScenario = ActivityCaseCandidate &
-  Pick<ScenarioCase, 'channel' | 'title'>;
+  Pick<ScenarioCase, 'channel' | 'title'> & {
+    learning: ActivityCaseCandidate['learning'] &
+      Pick<
+        ScenarioCase['learning'],
+        'sensitiveContent' | 'trustedAdultRecommended'
+      >;
+  };
 
 function interpolate(
   template: string,
@@ -99,6 +107,21 @@ export function CasePicker({
                   {scenario.learning.topic}・
                   {scenarioChannelLabel(catalog, scenario.channel)}
                 </small>
+                {(scenario.learning.sensitiveContent.length > 0 ||
+                  scenario.learning.trustedAdultRecommended) && (
+                  <span className={styles.safetyNotes}>
+                    {scenario.learning.sensitiveContent.map((content) => (
+                      <span key={content}>
+                        {interpolate(copy.sensitiveContent, { content })}
+                      </span>
+                    ))}
+                    {scenario.learning.trustedAdultRecommended && (
+                      <span data-guidance="trusted-adult">
+                        {copy.trustedAdultRecommended}
+                      </span>
+                    )}
+                  </span>
+                )}
               </span>
               {recommended && <b>{copy.recommendedBadge}</b>}
             </label>
@@ -115,4 +138,3 @@ export function CasePicker({
     </fieldset>
   );
 }
-import { useId } from 'react';

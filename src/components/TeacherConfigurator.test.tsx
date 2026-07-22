@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { getCatalog } from '../i18n/locale';
 import type { CasePickerScenario } from '../features/classroom/CasePicker';
@@ -18,6 +18,8 @@ const candidates = [
       topicId: 'social-relationships',
       topic: '社群與交友',
       contexts: ['社群平台', '同儕互動'],
+      sensitiveContent: ['陌生人私訊', '情緒操控'],
+      trustedAdultRecommended: true,
     },
   },
   {
@@ -30,6 +32,8 @@ const candidates = [
       topicId: 'gaming-accounts',
       topic: '遊戲與帳號',
       contexts: ['線上遊戲'],
+      sensitiveContent: ['帳號盜用'],
+      trustedAdultRecommended: false,
     },
   },
   {
@@ -42,6 +46,8 @@ const candidates = [
       topicId: 'social-relationships',
       topic: '社群與交友',
       contexts: ['社群平台'],
+      sensitiveContent: [],
+      trustedAdultRecommended: false,
     },
   },
   {
@@ -54,6 +60,8 @@ const candidates = [
       topicId: 'gaming-accounts',
       topic: '遊戲與帳號',
       contexts: ['線上遊戲'],
+      sensitiveContent: ['陌生人接觸'],
+      trustedAdultRecommended: true,
     },
   },
 ] as const satisfies readonly CasePickerScenario[];
@@ -69,6 +77,8 @@ const englishCandidates = [
       topicId: 'social-relationships',
       topic: 'Social & Relationships',
       contexts: ['social media'],
+      sensitiveContent: ['unexpected contact'],
+      trustedAdultRecommended: true,
     },
   },
 ] as const satisfies readonly CasePickerScenario[];
@@ -151,6 +161,43 @@ describe('TeacherConfigurator', () => {
     expect(screen.getByText('已選 3／最多 10 題')).toBeInTheDocument();
     expect(screen.getByRole('checkbox', { name: /社群投票/ })).toBeChecked();
     expect(screen.getByRole('checkbox', { name: /遊戲帳號/ })).toBeChecked();
+  });
+
+  it('shows sensitive-content and trusted-adult guidance before case selection', () => {
+    render(
+      createElement(TeacherConfigurator, {
+        catalog: getCatalog('zh-TW'),
+        locale: 'zh-TW',
+        scenarios: candidates,
+      }),
+    );
+
+    expect(screen.getByText('敏感內容：陌生人私訊')).toBeInTheDocument();
+    expect(screen.getByText('敏感內容：情緒操控')).toBeInTheDocument();
+    expect(screen.getAllByText('建議由可信任的大人陪同')).not.toHaveLength(0);
+  });
+
+  it('focuses and scrolls the generated activity result into view', () => {
+    const scrollIntoView = vi.fn();
+    Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+      configurable: true,
+      value: scrollIntoView,
+    });
+    render(
+      createElement(TeacherConfigurator, {
+        catalog: getCatalog('zh-TW'),
+        locale: 'zh-TW',
+        scenarios: candidates,
+      }),
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: '產生活動連結' }));
+
+    const result = screen.getByRole('status');
+    expect(result).toHaveFocus();
+    expect(scrollIntoView).toHaveBeenCalledWith(
+      expect.objectContaining({ block: 'start' }),
+    );
   });
 
   it('switches to another learning stage and uses its matching case', () => {

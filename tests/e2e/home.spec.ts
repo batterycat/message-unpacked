@@ -423,8 +423,11 @@ test('Teacher setup remains visible at the 320px mobile boundary', async ({
   await expect(
     page.getByRole('combobox', { name: '主題', exact: true }),
   ).toBeVisible();
+  await expect(page.getByText('敏感內容：金錢損失').first()).toBeVisible();
   await page.getByRole('button', { name: '產生活動連結' }).click();
-  await expect(page.getByRole('img', { name: '活動 QR Code' })).toBeVisible();
+  const result = page.getByRole('status');
+  await expect(result).toBeFocused();
+  await expect(result.getByRole('img', { name: '活動 QR Code' })).toBeVisible();
   const viewport = await page.evaluate(() => ({
     clientWidth: document.documentElement.clientWidth,
     scrollWidth: document.documentElement.scrollWidth,
@@ -460,7 +463,7 @@ test('Core student and teacher controls work with the keyboard', async ({
   await createButton.focus();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('img', { name: '活動 QR Code' })).toBeVisible();
-  await expect(createButton).toBeFocused();
+  await expect(page.getByRole('status')).toBeFocused();
 
   await page.goto('/zh-TW/activity/');
   await page.keyboard.press('Tab');

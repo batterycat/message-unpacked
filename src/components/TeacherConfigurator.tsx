@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import {
   ArrowSquareOutIcon,
@@ -96,7 +96,23 @@ export function TeacherConfigurator({
   );
   const [activityUrl, setActivityUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const resultRef = useRef<HTMLElement>(null);
   const unavailable = availableScenarios.length === 0 || topics.length === 0;
+
+  useEffect(() => {
+    if (!activityUrl) return;
+
+    const result = resultRef.current;
+    if (!result) return;
+
+    const prefersReducedMotion =
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    result.focus({ preventScroll: true });
+    result.scrollIntoView?.({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+  }, [activityUrl]);
 
   function resetRecommendation(
     nextStage: LearningStage,
@@ -295,7 +311,14 @@ export function TeacherConfigurator({
       )}
 
       {activityUrl && (
-        <aside className={styles.result} aria-live="polite">
+        <aside
+          ref={resultRef}
+          className={styles.result}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          tabIndex={-1}
+        >
           <>
             <CheckCircleIcon aria-hidden="true" weight="fill" />
             <div>

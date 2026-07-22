@@ -153,6 +153,11 @@
   padding: 1rem;
 }
 
+.result:focus-visible {
+  outline: 4px solid var(--focus);
+  outline-offset: 4px;
+}
+
 .result > svg {
   color: #90d2b7;
   height: 1.8rem;
